@@ -1,0 +1,47 @@
+/*用于积分明细页面*/
+.cenbi{
+	width:100%;
+	height:40px;
+	line-height:40px;
+	background:#ffffff;
+	border-top:2px solid #e5e5e5;
+	padding:10px 0;
+}
+.cenbl{
+	float:left;
+	color:#666666;
+	margin-left:25px;
+	font-size:14px;
+	width:100px;
+	height:40px;
+}
+.texttop{
+	width:600px;
+	height:20px;
+	line-height:20px;
+
+}
+.textbot{
+	width:600px;
+	height:20px;
+	line-height:20px;
+	font-size:13px;
+}
+.cenbr{
+	float:right;
+	color:#ff0000;
+	margin-right:25px;
+	width:40px;
+	text-align:right;
+}
+
+.integ{
+	
+	height:30px;
+	line-height:30px;
+	padding:10px 0 10px 25px;
+
+}
+.integ span{
+	color:#FF0000;
+}

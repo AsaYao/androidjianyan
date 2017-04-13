@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>菜品评价结果</title>
+<link rel="stylesheet" type="text/css" href="css/foodevajg.css"/>
+</head>
+
+<body>
+<div class="boxk"></div>
+<div class="fooddt">
+	<div class="fooddtl">菜品详情</div>
+	<div class="fooddtl xz">评价</div>
+</div>
+<div class="boxk"></div>
+<div class="foodm">
+	<div class="foodmt">
+		<div class="foodmtl">150****0000</div>
+		<div class="foodmtr">2016-4-19</div>
+	</div>
+	<div class="connb">是否有低盐提示服务：<span>是</span></div>
+	<div class="connb">菜品口感：<span>微咸</span></div>
+	<div class="connb">菜品质量：<img src="img/pro_xm.jpg" width="15px" height="15px" /><img src="img/pro_xm.jpg" width="15px" height="15px" /><img src="img/pro_xm.jpg" width="15px" height="15px" /><img src="img/pro_xb.jpg" width="15px" height="15px" /><img src="img/pro_xk.png" width="15px" height="15px" /></div>
+</div>
+
+
+<div class="wypj"><img src="img/wypj.png" width="200"  height="42"/></div>
+
+
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var ml=(widthb-200)/2;
+		$(document).ready(function(){
+			$(".wypj").css("margin-left",ml);
+  		});
+</script>
+</body>
+</html>
+

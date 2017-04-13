@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+		
+			body {
+				height: 100%;
+			}
+			.head {
+				font-size: 5px;
+				margin-top: 30px;
+				text-align: center;
+				height: 20%;
+			}
+			.head b {
+				vertical-align: middle;
+				font-size: 15px;
+			}
+			.head img {
+				vertical-align:right;
+			}
+			.nav {
+			margin:10px auto;
+				text-align: center;
+				height: 80%;
+			}
+			.num {
+				float: inherit;
+				margin: 15px 15px;
+				background-color: #ebeaea;
+				height: 60px;
+				width: 160px;
+				border-radius: 10px;
+			}
+			p{
+				padding:15px;
+				
+			}
+			.nav img{
+				float: right;
+				margin-top: 15px;
+				
+			}
+			.BtnNext {
+				background: url('../../image/inputfood/btn_input_next.png');
+				background-repeat: no-repeat;
+				display: block;
+				color: white;
+				/*margin: 20px 30%;*/
+				position: absolute;
+				left: 50%;
+				margin-left: -62px;
+				margin-top: 20px;
+				text-align: center;
+				/*border-radius: 8px;*/
+				height: 50px;
+				width: 124px;
+				line-height: 50px;
+			}
+			.border_dashed{
+			
+				
+			    text-align: center;
+			    margin: 30px 40px;
+                width:260px;
+                height:180px;
+                border:1px dashed black;
+                background:white;
+                border-radius:10px;
+            }
+            #n1 { margin:0px 20px;  padding:0px; float:left; }
+            #n2 { margin:0px auto; padding:0px; float:left; }
+		</style>
+	</head>
+	<body>
+		<!--<div class="head">
+			<img src="../../image/scancode/sadface.png" height="70px" width="70px" />
+			<b>当前商品未录入</b>
+		</div>
+		<table class="nav">
+			<tr >
+				<td class="num1"><div class="num">
+				<img src="../../image/scancode/arrow_right.png" height="30px" width="30px" />
+				<p>动动手指，帮忙录入</p>
+				<p>通过后即可获取10积分</p>
+				</div></td>
+				<td><img src="../../image/scancode/thumb_up.png" height="150px" width="100px" onclick="luru()"/></td>
+			</tr>
+			
+		</table>-->
+		<!--<div class="head">
+		  <img src="../../image/scancode/login_next.png" height="50px" width="100px" onclick="luru()" />
+		  
+		</div>-->
+		<div class="border_dashed" >
+		     <div class="head">
+		          <div id="n1">
+		             <img src="../../image/scancode/no_goods.png" height="40px" width="40px" />
+			      </div>
+			      <div id="n2">
+			        <b >抱 歉！</b><br />
+			        <b>当前商品未录入</b>
+			      </div>
+	         </div>	
+	         <div class="head">  
+		       <b>动动手指，</b><br />
+		       <b>帮忙录入通过后即可获得10积分</b>
+		     </div> 
+		</div>
+		<div class='BtnNext' onclick="luru()">录入 </div>
+		<!--<input name="录入" type="button" value="录入"  style=" width:46px; height:35px; font-size:23px; text-align:center; background-color:#00a0e9 " />
+		-->
+		<!--<div class="nav">
+		<div class="num"></div>
+		<img src="../../image/scancode/shou.png" height="150px" width="100px" onclick="luru()"/>
+		</div>-->
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript">
+		function luru() {
+			var params = api.pageParam;
+//			alert(JSON.stringify(params));
+			api.openWin({
+				name : 'foodinput',
+//				url : '../foodinput/luru_window.html',
+//				url : '../foodinput/food_input1.html',
+				url : '../foodinput/food_input_windows1.html',
+				pageParam:params//productcode
+			});
+			
+		}
+
+		apiready = function() {
+		};
+	</script>

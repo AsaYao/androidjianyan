@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" href="../../css/light3.css" class="light-style">
+		<style>
+			html, body {
+				background-color: #F3F5F3;
+			}
+			.pull-left {
+				float: left;
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="qiushi-tabBar clearfix">
+			<div class="tabBar-btn pull-left all-type active" tapmode="tap-active" onclick="changeGroupIndex(0);">
+				在库
+			</div>
+			<div class="tabBar-btn pull-left text-type" tapmode="tap-active" onclick="changeGroupIndex(1);">
+				不在库
+			</div>
+			<div class="tabBar-bar"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		// 糗事底部tabBar状态初始化
+		$api.setStorage('bottomTabBarLock', 'shown');
+		// 记录窗口状态
+		$api.setStorage('win', {
+			'root' : 1
+		});
+		$api.setStorage('frame', {});
+		// 糗事 tabBar切换效果
+		var aTabBarBtn = $api.domAll('.qiushi-tabBar .tabBar-btn');
+		var tabBar = $api.dom('.qiushi-tabBar .tabBar-bar');
+		var changeBar = function(index) {
+			tabBar.style.webkitTransform = 'translateX(' + (100 * index) + '%)';
+			tabBar.style.transform = 'translateX(' + 100 * index + '%)';
+			for (var i = 0, len = aTabBarBtn.length; i < len; i++) {
+				if (index == i) {
+					$api.addCls(aTabBarBtn[i], 'active');
+				} else {
+					$api.removeCls(aTabBarBtn[i], 'active');
+				}
+			};
+			api.sendEvent({
+				name : 'myscan_header',
+				extra : {
+					'index' : index
+				}
+			});
+		};
+		apiready = function() {
+			var params = api.pageParam;
+			api.openFrameGroup({
+				name : 'qiushi-group',
+				scrollEnabled : true,
+				rect : {
+					x : 0,
+					y : 85,
+					w : 'auto',
+					h : 'auto'
+				},
+				index : 0,
+				preload : 1,
+				frames : [{
+					name : 'myscan_in',
+					url : './myscan_in.html',
+					pageParam : params,
+					bounces : true,
+					opaque : true,
+				}, {
+					name : 'myscan_out',
+					url : './myscan_out.html',
+					pageParam : params,
+					bounces : true,
+					opaque : true,
+				}]
+			}, function(ret, err) {
+				var name = ret.name;
+				var index = ret.index;
+				changeBar(index);
+			});
+		};
+		var changeGroupIndex = function(index) {
+//			api.sendEvent({
+//				name : 'myscan_header',
+//				extra : {
+//					'index' : index
+//				}
+//			});
+			api.setFrameGroupIndex({
+				name : 'qiushi-group',
+				index : index,
+				scroll : true
+			});
+		};
+	</script>
+</html>

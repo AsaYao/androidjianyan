@@ -1,0 +1,62 @@
+/*基本信息和详细信息页面*/
+.basic{
+	width:100%;
+	height:50px;
+	background:#ffffff;
+	color:#666666;
+}
+.basicj{
+	float:left;
+	width:50%;
+	height:50px;
+	border-bottom:2px solid #e5e5e5;
+	border-right:2px solid #e5e5e5;
+	text-align:center;
+	line-height:50px;
+	font-weight:600;
+}
+.basicx{
+	float:left;
+	width:49%;
+	height:50px;
+	text-align:center;
+	line-height:50px;
+	border-bottom:2px solid #e5e5e5;
+	font-weight:600;
+}
+.basicz{
+	width:100px;
+	height:50px;
+	border-bottom:2px solid #36b160;
+	color:#36b160;
+}
+.cenbtext1{
+	float:left;
+	color:#666666;
+	margin-left:25px;
+	
+}
+.cenbright1{
+	float:right;
+	
+}
+.cenbright1 span{
+	display:block;
+	
+}
+.cenbrightm{
+	float:right;
+	
+}
+.cenbrightm span{
+	display:block;
+	
+}
+.cenbright2{
+	float:right;
+	margin-right:30px;
+	margin-top:3px;
+}
+.basicbc{
+	margin-top:50px;
+}

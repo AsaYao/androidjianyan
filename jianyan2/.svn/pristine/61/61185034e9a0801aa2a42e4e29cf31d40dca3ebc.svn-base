@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <!--<link rel="stylesheet" type="text/css" href="../css/api.css"/>-->
+    <style>
+    	     /*html,body{
+            background: rgba(5, 0, 0, 10);
+            
+    	}*/
+    	#test  {
+    		/*display:none;*/
+    		text-align:center;
+    		color:red;
+    		width:70%;
+    		/*margin-top:100px;*/
+       		margin-left:15%;
+    		border:1px solid black;
+            background:white;
+            border-radius:5px
+    	}
+    	
+    	.item {
+    		color:#000000;
+    		margin-top:20px;
+    		/*margin-bottom:20px;*/
+    		background: url(../../image/dialog/button1.png);
+    		background-repeat:no-repeat;
+    		background-size:100%,100%;
+    		height:38px;
+    		line-height:38px;
+    		width:80%;
+    		margin-left:10%;
+    		
+    	}
+    	.itemcancel {
+    		color:#000000;
+    		margin-top:20px;
+    		margin-bottom:40px;
+    		background: url('../../image/dialog/buttoncancel.png');
+    		background-repeat:no-repeat;
+    		background-size:100%,100%;
+    		height:38px;
+    		line-height:38px;
+    		width:70%;
+    		margin-left:15%;
+    	}
+    	.header {
+    	background: url('../../image/dialog/titlebg.png') repeat-x;
+    	height:49px;
+    	margin-top:-2px;
+    	text-align:left;
+    	color:#000000;
+    	}
+  </style>
+</head>
+<body>
+	<div id = "test">
+	 <div class="header"><table><tr><td><img src = "../../image/dialog/header.png" ></td><td>分享</td></tr></table></div>
+	 <div class = "item" onclick = "qq()">QQ</div>
+	 <div class = "item" onclick="weixin()">微信</div>
+	 <div class = "itemcancel" onclick = "cancel()">取 消</div>
+	
+	</div>
+	
+	
+	
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript">
+	var DW  = 250;
+	var dh = 200;
+	function picture () {
+		alert('picture');
+	}
+	
+	function cancel() {
+	api.closeFrame({
+	    name: 'dialog'
+    });
+	}
+	
+	
+//	function qq () {
+//			var obj = api.require('qq');
+//		obj.installed(function(ret,err){
+//		    if(ret.status){
+////		       api.alert({msg: "安装"});
+//		      
+//		       
+//		       var obj1 = api.require('screenClip');
+//				obj1.screenShot (
+//						{imgPath:"fs://cache",
+//							imgName:"test.png",
+//							album:true,
+//						},function(ret, err){
+//					    if(ret.status){
+////					        api.alert({msg:'保存完成'});
+//					        
+//					        
+//					        obj.shareImage({
+//							    title:'test',
+//							    description:'testd',
+//							    imgPath:'fs://cache/test.png'
+//					//			imgPath:'widget://res/button.jpg'
+//							},function(ret,err) {
+//								alert("fen");
+//								 
+//					   			if (ret.status) {
+//							      api.alert({msg:'分享成功'});
+//							      
+//							   }else{
+//							      api.alert({msg:err.msg});
+//							   }
+//									
+//					    	});
+//					        
+//					       setTimeout('cancel()',3000)
+//					        
+//					        
+//					    }else{
+//					        api.alert({msg:err.code});
+//					    }
+//				});
+//		       
+//		    }else{
+//		        api.alert({msg: "没有安装"});
+//		    } 
+//		});
+//
+//
+//		
+//	}
+
+
+
+
+
+	function qq () {
+			var obj = api.require('qq');
+		obj.installed(function(ret,err){
+		    if(ret.status){
+//		       api.alert({msg: "安装"});
+		      
+		       
+		       
+					        
+					        
+			        obj.shareImage({
+					    title:'分享',
+					    description:'',
+					    imgPath:'fs://cache/test.png'
+			//			imgPath:'widget://res/button.jpg'
+					},function(ret,err) {
+						alert("fen");
+						 
+			   			if (ret.status) {
+					      api.alert({msg:'分享成功'});
+					      
+					   }else{
+					      api.alert({msg:err.msg});
+					   }
+							
+			    	});
+			        
+			       setTimeout('cancel()',3000)
+			        
+					        
+					    
+		       
+		    }else{
+		        api.alert({msg: "没有安装"});
+		    } 
+		});
+
+
+		
+	}
+
+
+
+	function weixin() {
+		var wx = api.require('wx');
+		wx.isInstalled(function(ret, err){
+			if(ret.installed){
+			        
+			    wx.shareImage({
+			    apiKey: '',
+			    scene: 'timeline',
+			    thumb: 'widget://res/button.jpg',
+			    contentUrl: 'fs://cache/test.png'
+			}, function(ret, err){
+			    if(ret.status){
+			        alert('分享成功');
+			    }else{
+			        alert(err.code);
+			    }
+			});  
+		        
+		     setTimeout('cancel()',3000)
+		    }else{
+		        alert('当前设备未安装微信客户端');
+		    }
+		});
+	}
+	
+
+
+
+	apiready = function(){
+//		alert('dialog');
+//		alert(api.winHeight);
+		var ts = document.getElementById("test");
+  
+    	var header = $api.byId('test');
+        //适配iOS 7+，Android 4.4+状态栏
+//      $api.fixStatusBar(header);
+
+        var headerPos = $api.offset(header);
+	
+		ts.style.marginTop = (api.winHeight - headerPos.h) /3 + 'px';
+//		ts.style.marginLeft= (api.winWidth - headerPos.w)/2 + 'px';
+
+//		ts.style.marginTop = (api.winHeight - dh) /3 + 'px';
+//		ts.style.marginLeft= (api.winWidth - DW)/2 + 'px';
+		ts.style.display = "block";
+		
+		
+		var params = api.pageParam;
+		
+		var saveuser = $api.getStorage('userId');
+		
+		api.ajax({
+	        url : SERVER_URL + SERVER_ROOT_PATH + SHARE_HISTORY,
+			method : 'post',
+			timeout : 30,
+			dataType : 'json',
+			returnAll : false,
+			data : {
+				values : {
+					userId : saveuser,
+					foodId: params.foodid,
+					type:params.type,
+				}
+			}
+        },function(ret,err){
+//      	alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+        	//coding...
+        });
+		
+		
+	
+	};
+</script>
+</html>

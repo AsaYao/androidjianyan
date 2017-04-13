@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>菜品评价</title>
+<link rel="stylesheet" type="text/css" href="../../css/info/foodeva.css"/>
+</head>
+
+<body>
+<div class="boxk"></div>
+<div class="weva"><span id="dishName"></span></div>
+<div class="wevab">
+	<div class="wevabt">
+		<div class="wevabt" id="lowservice">
+		<div class="wevabtt">是否有低盐提示服务：</div>
+		<!--<form>
+			<input type="radio" name="商品口味" value="微咸" />微咸
+			<input type="radio" name="商品口味" value="适中"/>适中
+			<input type="radio" name="商品口味" value="微淡" />微淡
+		</form>-->
+		<img id="imgIdd1"  name="1" src="../../image/userInfo/wxz.png" width="13px" height="13px" onclick="changeLow('imgIdd1')" />是
+		<img id="imgIdd2" name="0" src="../../image/userInfo/wxz.png" width="13px" height="13px" onclick="changeLow('imgIdd2')" />否
+	</div>
+	<div class="wevabt" id="type">
+		<div class="wevabtt">菜品口感：</div>
+		<img id="imgId1" name="1" src="../../image/userInfo/wxz.png" width="13px" height="13px" onclick="changeImage(1)" />微咸
+		<img id="imgId2" name="0" src="../../image/userInfo/wxz.png" width="13px" height="13px" onclick="changeImage(2)" />适中
+		<img id="imgId3" name="2" src="../../image/userInfo/wxz.png" width="13px" height="13px" onclick="changeImage(3)" />微淡
+	</div>
+	<div class="wevabt" id="quality">
+		<div class="wevabtt">菜品质量：</div>
+		<img src="../../image/userInfo/pro_xk.png" width="18px" height="18px" onclick="changeStart(1)"/>
+		<img src="../../image/userInfo/pro_xk.png" width="18px" height="18px" onclick="changeStart(2)"/>
+		<img src="../../image/userInfo/pro_xk.png" width="18px" height="18px" onclick="changeStart(3)"/>
+		<img src="../../image/userInfo/pro_xk.png" width="18px" height="18px" onclick="changeStart(4)"/>
+		<img src="../../image/userInfo/pro_xk.png" width="18px" height="18px" onclick="changeStart(5)"/>
+	</div>
+	<div class="tjpj" onclick="submit();"><img src="../../image/userInfo/tjpj.png" width="200"  height="42"/></div>
+</div>
+
+
+
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script>
+function changeImage(x)
+{
+	for(i=1;i<4;i++)
+	{
+		imgid=document.getElementById("imgId"+i);
+		imgid.src="../../image/userInfo/wxz.png";
+	}
+	
+	imgid=document.getElementById("imgId"+x);
+	imgid.src="../../image/userInfo/xz.png";
+}
+
+function changeLow(id){
+	$("#imgIdd1").attr("src","../../image/userInfo/wxz.png");
+	$("#imgIdd2").attr("src","../../image/userInfo/wxz.png");
+	$("#"+id).attr("src","../../image/userInfo/xz.png");
+}
+function changeStart(num){
+	var arr = $("#quality > img");
+	for(i=0,len=arr.length;i<len;i++){
+		arr[i].src="../../image/userInfo/pro_xk.png";
+	}
+	for(i=0;i<num;i++){
+		arr[i].src="../../image/userInfo/pro_xm.jpg";
+	}
+}
+
+		var heightw=document.documentElement.clientHeight;
+		var widthb=document.documentElement.clientWidth;
+		var ml=(widthb-200)/2;
+		$(document).ready(function(){
+			$(".wevab").height(heightw-59);
+			$(".tjpj").css("margin-left",ml);
+  		});
+  	var type,quality,lowservice;
+  	apiready = function(){
+		$("#dishName").text(api.pageParam.name);
+  	}
+  	function submit(){
+  		if($("#lowservice > img[src$='/xz.png']").length==0){
+  			alert("请评价是否有低盐提示服务!");
+  			return;
+  		}
+  		if($("#type > img[src$='/xz.png']").length==0){
+  			alert("请评价菜品口感!");
+  			return;
+  		}
+  		var arr = $("img[src$='/xz.png']");
+  		lowservice = arr[0].name;
+  		type = arr[1].name;
+  		quality = $("img[src$='xm.jpg']").length;
+  		if(quality==0){
+  			alert("请评价菜品质量!");
+  			return;
+  		}
+  		saveData();
+  	}
+  	function saveData(){
+  		api.ajax({
+			url:SERVER_URL+SERVER_ROOT_PATH+'/common/foodsRatingAction!addDishRate.action',
+			method : 'post',
+			timeout : 30,
+			data : {
+				values:{
+					userId:$api.getStorage("userInfo").userID,
+					'type':type,
+					'quality':quality,
+					'lowservice':lowservice,
+					'dishid':api.pageParam.gid
+				}
+			}
+		},function(ret,err){
+			if (processNetWorkErr(err)) {
+					return;
+				}	
+			if(ret.status==0){
+				api.toast({
+				    msg: '评价成功！',
+				    duration: 2000,
+				    location: 'bottom'
+				});
+				api.sendEvent({
+				    name: 'list_windows_reload'
+				});
+				api.closeToWin({
+				    name: 'list_windows'
+				});
+			}else if(ret.status==1){
+				alert(ret.data.errorMsg);
+			}
+		});
+  	}
+</script>
+</body>
+</html>

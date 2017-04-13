@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <style>
+    	body {
+				
+				height: 100%;
+				background-color: #F3F6F5;
+			}
+			#wrap {
+				height: 100%;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-flex-flow: column;
+				flex-flow: column;
+			}
+			#header {
+				width: 100%;
+				height: 45px;
+				background: url(../../image/statusbar/background.png);
+				background-repeat: repeat-x;
+			}
+			
+			.menu {
+				float:left;
+				margin: 0px;
+				padding: 0px;
+				width: 100%;
+				font-size: 10px;
+				
+			}
+			.menuback {
+				margin-top: 5px;
+				margin-right: 5px;
+				margin-left: 5px;
+				float: left;
+				
+			}
+			.title{
+				float:left;
+				margin-top:8px;
+				margin-left:10px;
+				color:#ffffff;
+				text-align: center;
+				line-height: 30px;
+				font-size:22px;
+			}
+    </style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+				<div id = "menu">
+					<div class="menuback"  onclick="backTo()">
+						<img src="../../image/statusbar/back.png" height="32px" width="32px" />
+					</div>
+				</div>
+				<div class="title">个人中心</div>
+				
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src = "../../script/jquery-2.1.4.min.js"> </script>
+<script type="text/javascript">
+var widthb=document.documentElement.clientWidth;
+		$(document).ready(function(){
+			$(".title").width(widthb-84);
+  		});
+
+
+
+
+	function backTo() {
+			api.closeWin({
+			});
+		}
+
+		function backToHome() {
+			api.closeToWin({
+				name : 'root'
+			});
+		}
+		var header = $api.byId('header');
+		var headerPos = $api.offset(header);
+	apiready = function(){
+		api.openFrame({
+	        name: 'userInfo_header',
+	        url: './personalcen.html',
+	        rect: {
+		        x:0,
+		        y:headerPos.h,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	};
+</script>
+</html>

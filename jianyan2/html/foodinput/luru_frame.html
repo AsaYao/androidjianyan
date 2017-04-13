@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+			body {
+				height: 100%;
+				background-color: #EBEAEA;
+			}
+			
+			.tj {
+				border-bottom:1px solid gray;
+				background-color:#FFFFFF;
+				width: 100%;
+				
+			}
+			.tj img {
+				width:60px;
+				height:60px;
+				margin-left:15px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			.tj b {
+				font-size: 13px;
+			}
+			.input-wrap input {
+				outline-color: #808080;
+				height: 20px;
+				width: 25%;
+			}
+			.table {
+			margin-top: 10px;
+				width: 70%;
+				text-align: center;
+				margin: 5px auto;
+			}
+			.form p {
+				text-align: center;
+			}
+			.button.blue {
+				background-color: blue;
+			}
+			.button {
+				display: block;
+				color: white;
+				margin: 20px 30%;
+				text-align: center;
+				border-radius: 8px;
+				height: 30px;
+				line-height: 40px;
+			}
+			.qymc,.cpmc,.ywm,.ewm,.ckjg,.scdz,.pp{
+				background-color:#FFFFFF;
+				border-bottom:1px solid gray;
+				
+				width: 100%;
+				height: 50px;
+			}
+			.cplb{
+			background-color:#FFFFFF;
+				border-bottom:1px solid gray;
+				float:left;
+				width: 100%;
+				height: 50px;
+			}
+			i {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 30px;
+            background-repeat: no-repeat no-repeat;
+            background-position: center;
+        }
+
+			 .user1 {
+			 
+            background-image: url("../../image/saomamokuai/yjt.png");
+            float: right;
+            margin-right: 10px;
+        }
+        .yycfb{
+        	padding: 0 5px;
+        }
+        #22{
+        	
+        }
+        .table input{
+        	width: 15px;
+        }
+        
+       /* .txt {
+        	border: 1px solid;
+        	margin-left:5px;
+        	margin-right:5px;
+        }*/
+        input.txt{
+    	border:1 solid black;
+    	FONT-SIZE: 10pt; 
+    	FONT-STYLE: normal;
+    	 FONT-VARIANT: normal; 
+    	 FONT-WEIGHT: normal; 
+    	 HEIGHT: 25px;
+    	LINE-HEIGHT:normal;
+    	border-radius:10px;}
+    	 
+    	 
+    	input.buttonface{BACKGROUND: #ffcc00; border:1 solid #ff6633; COLOR: #ff0000; FONT-SIZE: 9pt; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; HEIGHT: 18px; LINE-HEIGHT: normal
+    	}
+    	
+    	#picaddbtn {
+    		float:left;
+    		margin-top:0px;
+    	}
+        
+		</style>
+	</head>
+	<body>
+		<table class="tj">
+			<tr  >
+			<td  ><div id = "first" style="float:left" onclick="preAndDelIcon()"></div><div id ="picaddbtn" style="float:left" ><img src="../../image/scancode/pic_add.png" height="60px" width="60px" onclick="addPic()"/></div></td>
+			<td><b> 图片上传，最多上传两张(必填) </b></td>
+			</tr>
+		</table>
+		<table class="qymc">
+			<tr >
+			<td>企业名称</td>
+			<td><input type="text" placeholder="请输入企业名称" class="txt" id = "username" value="" /></td>
+			</tr>
+		</table>
+		<table class="cpmc">
+			<tr >
+			<td><b> 【产品名称】 </b>
+				
+				<input type="text" placeholder="请输入产品名称" class="txt" id="username" value=""/></td>
+			</tr>
+		</table>
+		<table class="ywm">
+			<tr >
+			<td><b> 【一维码】 </b>
+				
+				<input type="text" placeholder="请输入一维码" class="txt" id="scancode" value="" readonly="true"/></td>
+			</tr>
+		</table>
+	
+		<table class="cplb">
+			<tr >
+			<td><b> 【产品类别】 </b>
+				<i class="user1" onclick="cplb()"></i>
+				<!--<input type="text" placeholder="请选择(必填)" class="txt" id="username" value=""/>--></td>
+				<td><div onclick='choiceType()' id = 'type'> 点击产品类别</div>
+			</tr>
+		</table>
+		<table class="pp">
+			<tr >
+			<td><b> 【品牌】 </b>
+				
+				<input type="text" placeholder="请选择(必填)" class="txt" id="username" value=""/></td>
+			</tr>
+		</table>
+		<table class="scdz">
+			<tr >
+			<td><b> 【生产地址】 </b>
+				<i class="user1" ></i>
+				<!--<input type="text" placeholder="请选择(必填)" class="txt" id="username" value=""/>--></td>
+				<td><div onclick='choiceMadein()' id = 'madein'> 点击选择生产地</div></td>
+			</tr>
+		</table>
+		<div class="yycfb">
+			<p>
+				营养成分表(必填)
+			</p>
+			<b>【项目】</b>
+			<select style="width: 23% " id="city" onchange="check(this.value)">
+				<option>每100g</option>
+				<div class="input-wrap">
+					<i class="user"></i>
+					<input type="text" placeholder="请输入例如25g或25ml" class="txt" id="username" value=""/>
+				</div>
+			</select>
+		</div>
+		<div class="form">
+			<p>
+				能量单位：
+				<input type="checkbox"  id="123"/>KJ   <input type="checkbox"  id="123"/>Kacl
+			</p>
+			<table class="table" border="1">
+				<tr bgcolor="#ffff">
+					<th>项目</th>
+					<th>能量(g)</th>
+					<th>能量(NRV)</th>
+				</tr>
+				<tr>
+					<td>能量</td>
+					<td><input type="text" /> KJ</td>
+					<td><input type="text" /> %</td>
+				</tr>
+				<tr bgcolor="#ffff">
+					<td>蛋白质</td >
+					<td><input type="text" id='22' /> g</td>
+					<td><input type="text" /> %</td>
+				</tr>
+				<tr>
+					<td>脂肪</td>
+					<td><input type="text" /> g</td>
+					<td><input type="text" /> %</td>
+				</tr>
+				<tr bgcolor="#ffff">
+					<td>碳水化合物</td>
+					<td><input type="text" /> g</td>
+					<td><input type="text" /> %</td>
+				</tr>
+				<tr>
+					<td>钠</td>
+					<td><input type="text" /> mg</td>
+					<td><input type="text" /> %</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<div class="button blue" id="login" tapmode="" onclick="login()">
+				提交
+			</div>
+		<!--<div class="tj">
+			<img src="../../image/saomamokuai/tptj.png" height="15%" width="15%" onclick="tptj()"/>
+			<b> 图片上传，最多上传两张(必填) </b>
+		</div>-->
+		<!--<div class="qymc">
+			<div class="input-wrap">
+				<b> 【企业名称】 </b>
+				<i class="user"></i>
+				<input type="text" placeholder="请输入企业名称" class="txt" id="username" value=""/>
+			</div>
+		</div>
+		<div class="spmc">
+			<div class="input-wrap">
+				<b> 【产品名称】 </b>
+				<i class="user1"></i>
+				<input type="text" placeholder="（必填1）" class="txt" id="username" value=""/>
+			</div>
+		</div>
+		<div class="ywm">
+			<div class="input-wrap">
+				<b> 【一维码】 </b>
+				<i class="user"></i>
+				<input type="text" placeholder="（必填）" class="txt" id="username" value=""/>
+			</div>
+		</div>
+		<div class="ewm">
+			<div class="input-wrap">
+				<b> 【二维码】 </b>
+				<i class="user"></i>
+				<input type="text" placeholder="选填" class="txt" id="username" value=""/>
+			</div>
+		</div>
+		<div class="splb">
+			<b> 【产品类别】 </b>
+			<select style="width: 30% " id="qylx" onchange="checkqylx(this.value)">
+				<option>请选择</option>
+			</select>
+			<select style="width: 30% " id="cpzl">
+				<option>请选择</option>
+			</select>
+		</div>
+		<div class="pp">
+			<div class="input-wrap">
+				<b> 【品牌】 </b>
+				<i class="user"></i>
+				<input type="text" placeholder="(必填)" class="txt" id="username" value=""/>
+			</div>
+		</div>
+		<div  class="scdz">
+			<b> 【生产地址】 </b>
+			<select style="width: 30% " id="provice" onchange="checkField(this.value)">
+				<option>省</option>
+			</select>
+			<select style="width: 30% " id="city" onchange="check(this.value)">
+				<option>市</option>
+			</select>
+			<select style="width: 30% " id="town" onchange="checkx(this.value)">
+				<option>县(街道)(必填)</option>
+			</select>
+			<select style="width: 30% " id="xiang" >
+				<option>乡</option>
+			</select>
+		</div>
+		<div class="sssj">
+			<div class="input-wrap">
+				<p>
+					【上市时间】
+				</p>
+				<i class="user"></i>
+				<input type="text" placeholder="  年   月   日（选填）" class="txt" id="username" value=""/>
+			</div>
+		</div>
+		<div class="yycfb">
+			<p>
+				营养成分表(必填)
+			</p>
+			<b>【项目】</b>
+			<select style="width: 23% " id="city" onchange="check(this.value)">
+				<option>每100g</option>
+				<div class="input-wrap">
+					<i class="user"></i>
+					<input type="text" placeholder="请输入例如25g或25ml" class="txt" id="username" value=""/>
+				</div>
+			</select>
+		</div>
+		<div class="form">
+			<p>
+				能量单位：
+				KJ   Kacl
+			</p>
+			<table class="table" border="1">
+				<tr bgcolor="#ffff">
+					<th>项目</th>
+					<th>能量(g)</th>
+					<th>能量(NRV)</th>
+				</tr>
+				<tr>
+					<td>能量</td>
+					<td>row 1, cell 2</td>
+					<td>row 1, cell 2</td>
+				</tr>
+				<tr bgcolor="#ffff">
+					<td>蛋白质</td >
+					<td><input type="text" /> KJ</td>
+					<td><input type="text" /> KJ</td>
+				</tr>
+				<tr>
+					<td>脂肪</td>
+					<td><input type="text" /> KJ</td>
+					<td><input type="text" /> KJ</td>
+				</tr>
+				<tr bgcolor="#ffff">
+					<td>碳水化合物</td>
+					<td><input type="text" /> KJ</td>
+					<td><input type="text" /> KJ</td>
+				</tr>
+				<tr>
+					<td>钠</td>
+					<td><input type="text" /> KJ</td>
+					<td><input type="text" /> KJ</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<div class="button blue" id="login" tapmode="" onclick="login()">
+				提交
+			</div>
+		</div>-->
+		<!--</nav>-->
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript">
+		function cplb() {
+			api.openWin({
+				name : 'querenluru',
+				url : 'cplb_window.html'
+			});
+		}
+		function login() {
+			api.openWin({
+				name : 'querenluru',
+				url : 'querenluru_window.html'
+			});
+		}
+		
+		
+		function addPic() {
+			api.openWin({
+	            name: 'iconinput',
+	            url: './icons/icon_input.html'
+            });
+		}
+		
+		
+		function preAndDelIcon() {
+			api.openWin({
+	            name: 'iconpreview',
+	            url: './icons/icon_preview.html',
+	            pageParam:{'pics':pics}
+            });
+		}
+		
+
+//		function addPic() {
+//			api.confirm({
+//				tittle : '添加图片',
+//				msg : '请选择图片来源',
+//				buttons : ['拍摄','相册', '取消']
+//			}, function(ret, err) {
+//				//coding...
+//				if (ret.buttonIndex == 1) {
+//					api.getPicture({
+//						sourceType : 'camera',
+//						encodingType : 'jpg',
+//						mediaValue : 'pic',
+//						destinationType : 'url',
+//						allowEdit : true,
+//						quality : 50,
+//						targetWidth : 100,
+//						targetHeight : 100,
+//						saveToPhotoAlbum : false
+//					}, function(ret, err) {
+//						if (ret) {
+//						alert(JSON.stringify(ret));
+//						
+//						alert("retdata:"+ret.data);
+//						
+//							api.confirm({
+//								tittle : '添加照片',
+//								msg : '上传图片',
+//								buttons : ['确定', '取消']
+//							}, function(ret, err) {
+//								if (ret.buttonIndex == 1) {
+//									//showLoading();
+//									api.ajax({
+//										url : 'http://192.168.1.222:8080/salt_reduction/common/foodsNrvAction!uploadFile.action',
+//										method : 'post',
+//										timeout : 10,
+//										cache : false,
+//										dataType : 'json',
+//										returnAll : true,
+//										data : {
+//											values:{},
+//											files:{'uploadFile': ret.data,'':''}
+//											
+//										}
+//									}, function(ret, err) {
+//										alert(JSON.stringify(ret));
+//										api.hideProgress();
+//									});
+//								}
+//							});
+//						}
+//					});
+//				} else {
+//					api.getPicture({
+//						sourceType : 'album',
+//						encodingType : 'jpg',
+//						mediaValue : 'pic',
+//						destinationType : 'url',
+//						allowEdit : true,
+//						quality : 50,
+//						targetWidth : 100,
+//						targetHeight : 100,
+//						saveToPhotoAlbum : false
+//					}, function(ret, err) {
+////	
+//						if (ret) {
+//						alert(JSON.stringify(ret));
+//						
+//						alert("retdata:"+ret.data);
+//						
+//							api.confirm({
+//								tittle : '添加照片',
+//								msg : '上传图片',
+//								buttons : ['确定', '取消']
+//							}, function(ret, err) {
+//								if (ret.buttonIndex == 1) {
+//									//showLoading();
+//									api.ajax({
+//										url : 'http://192.168.1.222:8080/salt_reduction/common/foodsNrvAction!uploadFile.action',
+//										method : 'post',
+//										timeout : 300,
+//										dataType : 'json',
+//										returnAll : false,
+//										data : {
+//											values:{'productName':'hello'},
+////											files:{'uploadFile': 'widget://icon/icon150x150.png'}
+//											files:{'uploadFile':'fs://picture/p-df80540d.jpg'}
+//										}
+//									}, function(ret, err) {
+//										alert(JSON.stringify(ret));
+//										api.hideProgress();
+//									});
+//								}
+//							});
+//						}
+/////
+//					});
+//				}
+//			});
+//		}
+
+		function checkqylx(val) {//产品种类
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/common/foodsClassAction!fetchAllApp.action',
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+				data : {
+					values : {
+						jsonParam : val
+					}
+				}
+			}, function(ret, err) {
+				//alert(ret.status);
+				if (ret.status == 0) {
+					var str = '';
+					var select = $api.byId('cpzl');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option  value="' + ret.data[i].gid + '">' + ret.data[i].name + '</option>'
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+
+		//市的
+		function checkField(val) {
+			//alert(val);
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/area/areaAction!fetchCityList.action',
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+				data : {
+					values : {
+						jsonParam : val
+					}
+				}
+			}, function(ret, err) {
+				//alert(ret.status);
+				if (ret.status == 0) {
+					var str = '';
+					var select = $api.byId('city');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option  value="' + ret.data[i].gid + '">' + ret.data[i].name + '</option>'
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+
+		//县的
+		function check(val) {
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/area/areaAction!fetchCountryList.action', //县
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+				data : {
+					values : {
+						jsonParam : val
+					}
+				}
+			}, function(ret, err) {
+				alert(ret.status);
+				if (ret.status == 0) {
+					var str = '';
+					var select = $api.byId('town');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option value="' + ret.data[i].gid + '">' + ret.data[i].name + '</option>'
+						//						alert(ret.data[i].name);
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+
+		//乡
+		function checkx(val) {
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/area/areaAction!fetchTownList.action', //县
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+				data : {
+					values : {
+						jsonParam : val
+					}
+				}
+			}, function(ret, err) {
+				alert(ret.status);
+				if (ret.status == 0) {
+					var str = '';
+					var select = $api.byId('xiang');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option value="' + ret.data[i].gid + '">' + ret.data[i].name + '</option>'
+						//alert(ret.data[i].name);
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+
+		function biao() {
+			api.openFrame({
+				name : 'test',
+				url : '../html/test.html',
+				rect : {
+					x : 20,
+					y : 20,
+					w : 250,
+					h : 250,
+					marginLeft : 20, //相对父window左外边距的距离
+					marginTop : 120, //相对父window上外边距的距离
+					marginBottom : 20, //相对父window下外边距的距离
+					marginRight : 20 //相对父window右外边距的距离
+				}
+			});
+		}
+
+		function loginout() {
+			api.closeWin({
+			});
+		}
+		
+		
+		function choiceMadein() {
+		
+		api.openWin({
+	            name: 'choiceMadein',
+	            url: './madein/listmadein.html'
+            });
+		}
+		
+		function choiceType() {
+		
+		api.openWin({
+	            name: 'choiceType',
+	            url: './type/listtype.html'
+            });
+		}
+		
+		
+		var madeins;
+		function changeMadein(ret) {
+		madrins = ret;
+//			alert("event" + JSON.stringify(ret));
+			var str='';
+			for (var i = 0;i < 4; i ++) {
+				str += ret.data[i].title + ' ';
+			}
+			$api.byId('madein').innerHTML = str;
+		}
+		
+		
+		function changeType (ret) {
+			var str='';
+			for (var i = 0;i < 2; i ++) {
+				str += ret.data[i].title;
+				if (i < 1) {
+					str += ">";
+				}
+			}
+			$api.byId('type').innerHTML = str;
+		}
+		
+		
+		
+		
+		var pics = new Array(2);
+		pics[0] = null;
+		pics[1] = null;
+		function changeIcon (ret) {
+//		alert(JSON.stringify(ret));
+		
+			for (var i = 0;i < 2; i ++) {
+				if (pics[i] == null) {
+					pics[i] = ret.savePath;
+					break;
+				}
+			}
+			
+			showIcon();
+			
+//			var allchild = document.getElementById("first").childNodes;
+//			for (var i = 0; i < allchild.length; i ++) {
+//				var chld = allchild[i];
+//				document.getElementById("first").removeChild(chld);
+//			}
+//			for (var i = 0; i <2; i ++) {
+//				if (pics[i] != null) {
+//					var add =document.getElementById("first");
+//					var bigImg = document.createElement("img");     
+//					bigImg.src= pics[i];
+//					bigImg.style.width = "60px";
+//					bigImg.style.height = "60px";
+//			        add.appendChild(bigImg);
+//			  	}
+//			}
+//			
+//			if (pics[1] != null) {
+//				var add =document.getElementById("picaddbtn");
+//				add.style.display = "none";
+//			}  else {
+//				var add = document.getElementById("picaddbtn");
+//				add.style.display = "";
+//			}
+
+		}
+		
+		
+		function delIcon(arr) {
+//			alert(JSON.stringify(arr));
+			for (var i = 0; i < 2; i ++) {
+				if(arr.delarr[i]) {
+					pics[i] = null;
+//					alert(JSON.stringify(pics[i]));
+				}
+			}
+			showIcon();
+		}
+		
+		function showIcon() {
+		
+			
+			var allchild = document.getElementById("first").childNodes;
+//			alert(allchild.length);
+			var len = allchild.length;
+			for (var i = 0; i < len; i ++) {
+				var chld = allchild[0];
+				document.getElementById("first").removeChild(chld);
+//				alert("remove" + chld + "i=" + i);
+			}
+			
+			for (var i = 0; i <2; i ++) {
+				if (pics[i] != null) {
+					var add =document.getElementById("first");
+					var bigImg = document.createElement("img");     
+					bigImg.src= pics[i];
+					bigImg.style.width = "60px";
+					bigImg.style.height = "60px";
+			        add.appendChild(bigImg);
+			  	}
+			}
+			
+			if (pics[1] != null && pics[0] !=null) {
+				var add =document.getElementById("picaddbtn");
+				add.style.display = "none";
+			}  else {
+				var add = document.getElementById("picaddbtn");
+				add.style.display = "";
+			}
+		}
+		
+
+		apiready = function() {
+		
+			api.addEventListener({
+	        	name: 'changeIcon'
+	        }, function(ret){
+		        if(ret && ret.value){
+		        	changeIcon(ret.value);
+		        }
+	        });
+	
+			api.addEventListener({
+	        	name: 'deleteIcon'
+	        }, function(ret){
+		        if(ret && ret.value){
+		        	delIcon(ret.value);
+		        }
+	        });
+	
+		
+			 api.addEventListener({
+	        	name: 'changeMadein'
+	        }, function(ret){
+		        if(ret && ret.value){
+		        	changeMadein(ret.value);
+		        }
+	        });
+	
+	
+		api.addEventListener({
+	        	name: 'changeType'
+	        }, function(ret){
+		        if(ret && ret.value){
+		        	changeType(ret.value);
+		        }
+	        });
+
+		
+		
+			var params = api.pageParam;
+			var code = $api.byId('scancode');	
+//			alert(params.productcode);
+			$api.val(code, params.productcode);
+//			$api.append(code,'value = ' + params.productcode);
+			
+	
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/common/foodsClassAction!fetchAllApp.action',
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+			}, function(ret, err) {
+				//alert(ret.status);
+				if (ret.status == 0) {
+					var str = '';
+					var select = $api.byId('qylx');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option  value="' + ret.data[i].gid + '">' + ret.data[i].name + '</option>'
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+			//省的
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/area/areaAction!fetchProvinceList.action', //省
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+			}, function(ret, err) {
+				//alert(ret.status);
+				if (ret.status == 0) {
+					//					alert(ret.data.length);
+					var str = '';
+					var select = $api.byId('provice');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option value="' + ret.data[i].gid + '">' + ret.data[i].name + '</option>'
+						//						alert(ret.data[i].name);
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		};
+	</script>
+</html>

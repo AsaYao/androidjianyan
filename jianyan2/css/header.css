@@ -1,0 +1,137 @@
+/*共同使用的css开始*/
+body {
+				height: 100%;
+				background-color: #F3F6F5;
+			}
+			#wrap {
+				height: 100%;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-flex-flow: column;
+				flex-flow: column;
+			}
+			#header {
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				width: 100%;
+				height: 45px;
+				background: url(../image/detailsfood/background.png);
+				background-repeat: repeat-x;
+			}
+			#header h1 {
+				float: left;
+				font-size: 15pt;
+				font-family: sans-serif;
+				margin-left: 50px;
+			}
+			
+			#header table {
+				width:100%;
+				/*width:300px;*/
+				height:45px;
+				border:0;
+				padding: 0;
+				margin:0;
+				
+				table-layout: fixed;  
+    			text-align:center;
+   				
+			}
+			
+			#header tr td {
+			   	text-overflow: ellipsis; /* for IE */  
+   			 	-moz-text-overflow: ellipsis; /* for Firefox,mozilla */  
+			    overflow: hidden;  
+			    white-space: nowrap;  
+			    /*border: 1px solid;*/  
+			    text-align: center;
+			}
+			.leftback{
+				
+				margin-left: 10px;
+				margin-top: 5px;
+			}
+			.modd{
+				margin-top:-5px;
+				margin-left:10px;
+				line-height:30px;
+				font-size:22px;
+			}
+			
+			.righthome{
+				margin-top: 5px;
+			}
+/*共同使用的css结束*/
+/*搜索的css开始*/
+          .menu {
+				margin: 0px;
+				padding: 0px;
+				width: 100%;
+				/*background-color: #00a0e9;*/
+				font-size: 10px;
+				
+			}
+			.menuhome {
+				/*background-color: #00a0e9;*/
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 0px;
+				height: 45px;
+			}
+			.menuback {
+				margin-top: -3px;
+				margin-right: 5px;
+				margin-left: 5px;
+				float: left;
+				
+			}
+			.salt {
+				margin-left:8px;
+				margin-top:6px;
+				display: block;
+				width: 15px;
+				height: 15px;
+				background-size: 15px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url("../image/main/navibar_search_icon_search.png");
+			}
+			.input-wrap {
+				margin-top:9px;
+				border-bottom: 1px solid #d4d4d4;
+				font-size:13px;
+				text-align:center;
+				display: -webkit-box;
+				background-color: rgba(255, 255, 255, 1);
+			}
+			.input-wrap:first-child {
+			
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+			.input-wrap:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			.input-wrap input {
+			vertical-align:middle;
+				margin-top:4px;
+				font-size:15px;
+				margin-left:20px;
+				display: block;
+				-webkit-box-flex: 1;
+				background-color: rgba(255, 255, 255, 0);
+				outline: none;
+				height: 20px;
+			}
+			
+			.input-wrap img {
+			vertical-align:middle;
+			}
+/*搜索的css结束*/
+			

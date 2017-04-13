@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全选删除</title>
+<style>
+body{
+	margin:0px;
+	padding:0px;
+}
+.br{
+	float:left;
+	height:52px;
+	border-right:2px solid #e5e5e5;
+}
+.mainb{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	height:52px;
+	background:#ffffff;
+}
+.mainbl{
+	float:left; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+	 color:#000000;
+}
+.mainbr{
+	float:left; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+	 color:#b1b1b1;
+}
+
+</style>
+</head>
+
+<body>
+<div class="mainb">
+	<div class="mainbl" id="mainbL" onclick="allSelect()">全选</div>
+	<div class="br"></div>
+	<div class="mainbr" id="mainbR" onclick="oneDelect()">删除</div>
+</div>
+
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		$(document).ready(function(){
+			$(".mainbl").width((widthb-2)/2);
+			$(".mainbr").width((widthb-2)/2);
+			
+  		});
+  		var isable =false;
+  		apiready = function(){
+  			api.addEventListener({
+	              name:'myrating_get'
+              },function(ret,err){
+//            	alert(JSON.stringify(ret.value));
+              	delectHistory(ret.value.foodGid,ret.value.type);
+            });
+            setInterval("sendevent('myrating_delete')",200);
+            api.addEventListener({
+	            name:'myrating_able'
+            },function(ret,err){
+            	var abled= ret.value.isable;
+            	if(abled==isable){
+            	}else{
+            		isable=abled;
+            		if(isable){
+            			$("#mainbR").css("color","#000000");
+            		}else{
+            			$("#mainbR").css("color","#b1b1b1");
+            		}
+            	}
+            });
+  		}
+		function allSelect(){
+			document.getElementById("mainbL").style.color="#36b160";
+			setTimeout("changeColor('mainbL')",700); 
+//			document.getElementById("mainbR").style.color="#000000"; 
+			api.sendEvent({
+					name : 'myrating_all'
+			});
+		}
+		function oneDelect(){
+			if(isable){
+				document.getElementById("mainbR").style.color="#36b160"; 
+//				document.getElementById("mainbL").style.color="#000000";
+				setTimeout("changeColor('mainbR')",700);
+				sendevent('myrating_request');
+			}
+		}
+		function delectHistory(foods,type){
+			api.ajax({
+	           	url: SERVER_URL + SERVER_ROOT_PATH + '/common/foodsRatingAction!deleteRate.action',
+	           	method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+					jsonParam: foods,
+					'type':type
+					}
+				}
+            },function(ret,err){
+                if(ret.status==0){
+	                api.toast({
+						msg: '删除成功',
+						duration: 2000,
+						location: 'bottom'
+					});
+					sendevent('myrating_reload');
+                }else{
+                    alert(ret.data.errorMsg);
+                }
+            });
+		}
+		function sendevent(names){
+			api.sendEvent({
+				name : names
+			});
+		}
+		function changeColor(id){
+			$("#"+id).css("color","#000000");
+		}
+</script>
+</body>
+</html>

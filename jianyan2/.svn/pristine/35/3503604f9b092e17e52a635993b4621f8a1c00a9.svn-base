@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+		<style>
+			html, body {
+				background-color: #F3F5F3;
+				width:100%;
+				height:100%;
+			}
+			table{
+				width:200px;
+				height:200px;
+				margon-top:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<table rules="rows">
+			<tr>
+				<td colspan="2">性别</td>
+			</tr>
+			<tr>
+				<td>男</td>
+				<td align="right">
+				<input type="radio" name="items" class="radioItem" value="1" />
+				</td>
+			</tr>
+			<tr>
+				<td>女</td>
+				<td align="right">
+				<input type="radio" name="items" class="radioItem" value="0"/>
+				</td>
+			</tr>
+			<tr>
+				<td>保密</td>
+				<td align="right">
+				<input type="radio" name="items" class="radioItem" checked="checked" value="2"/>
+				</td>
+			</tr>
+			<tr>
+			<td><input type="button" value="确定" onClick="selectValue(0);"/></td>
+			<td><input type="button" value="取消" onClick="selectValue(1);"/></td>
+			</tr>
+		</table>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+		};
+		function selectValue(index){
+//			alert(index);
+			switch(index){
+			case 0:
+				var value = $("input[name='items']:checked").val();
+				var userInfo = $api.getStorage('userInfo');
+				userInfo.sex = value;
+				$api.setStorage('userInfo',userInfo);
+//				alert(JSON.stringify(userInfo));
+				
+				$api.setStorage("sex",value);
+				api.sendEvent({
+    				name: 'sexEvent',
+    				extra: {
+        				sex: value 
+    				}
+				});
+				api.closeFrame({
+					name: 'selectsex'
+				});
+				break;
+			case 1:
+				api.closeFrame({
+					name: 'selectsex'
+				});
+				break;
+               
+			}
+		}
+	</script>
+	<script>
+		var x = document.documentElement.clientWidth;
+		$(function() {
+			$("table").css("margin-left",(x - 200)*0.5);
+		})
+	</script>
+</html>

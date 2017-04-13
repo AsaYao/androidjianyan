@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport"
+		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			body, html {
+				height: 90%;
+			}
+			body {
+				background-image: url(../../image/register/bg.jpg);
+				
+				background-repeat: repeat-y;
+				
+				background-size: 100%;
+			}
+			
+		
+			.content {
+				padding-top: 80px;
+				margin-top: 10%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-flex: 1;
+			}
+			/*i {
+			 display: block;
+			 width: 30px;
+			 height: 30px;
+			 background-size: 30px;
+			 background-repeat: no-repeat;
+			 background-position: center;
+			 }*/
+			.user {
+				margin-top:10px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-size: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url("../../image/register/shouji.png");
+			}
+		
+			.check {
+				margin-top:10px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-size: 30px;
+				background-repeat: no-repeat;
+				
+				background-image: url("../../image/register/check.png");
+				background-position: center;
+			}
+			
+			.input-wrap {
+				vertical-align:middle;
+				
+				display: -webkit-box;
+				background-color: rgba(255, 255, 255, 0.8);
+			}
+			.input-wrap:first-child {
+			
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+			.input-wrap:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			.form {
+				
+				
+				margin: 0 20px;
+				line-height: 30px;
+			}
+			.input-wrap input {
+			vertical-align:middle;
+				margin-top: 15px;
+				display: block;
+				-webkit-box-flex: 1;
+				background-color: rgba(255, 255, 255, 0);
+				outline: none;
+				height: 30px;
+			}
+			input {
+				padding-bottom:5px;
+				padding-left: 10px;
+			}
+			.input-wrap img {
+			vertical-align:middle;
+			}
+				.footer {
+				margin-top: 120px;
+			}
+			#register {
+				color: #000000;
+				margin: 0 40px;
+				text-align: center;
+				border-radius: 5px;
+				height: 40px;
+				line-height: 40px;
+				margin-top: 20px;
+				background-color: #FFFFFF;
+			}
+			
+			
+			#password::-webkit-input-placeholder:before{
+            display: block;
+            position: absolute;
+            width: 100px;
+            height: 25px;
+             margin-top:-20px;
+            font-size: 15px;
+            line-height: 36px;
+            color: #999;
+            content: "重新输入密码";
+        }
+        #password::-webkit-input-placeholder:after{
+            display: block;
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            font-size: 10px;
+            margin-top:-10px;
+            line-height: 20px;
+            color: #999;
+            content: "(密码长度6-20位，字母、数字、下划线)";
+        }
+		</style>
+	</head>
+	<body>
+		<header>
+			<!--<div class="menu" >
+				<div class="menu2"  onclick="closeWin() ">
+					<img src="../../image/register/zhucejiantou.png" height="20px" width="30px"/>
+				</div>
+				<h1>忘记密码</h1>
+			</div>-->
+		</header>
+		<div class="content">
+			<div class="form">
+				<div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+					
+					<input type="password" placeholder="." class="txt" id="password" value=""/>
+				</div>
+				
+				<div class="input-wrap">
+					
+					<input type="password" placeholder='重新再次输入密码' class="txt" id="passwordAgain" value=""/>
+					
+					<!--<i class="send"></i>-->
+				</div>
+			</div>
+			
+			<footer class="footer">
+				<div class="blue" id="register" tapmode="blue-btn-active" onclick="register()">
+					提交完成
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
+<script src="../../script/zepto.min.js"></script>
+<script src="../../script/bts_common.js"></script>
+<script>
+	var username;
+apiready = function(){
+var params = api.pageParam;
+username = params.username
+}
+
+
+	function register() {
+//		var username = $("#username").val();
+		
+		var password = $("#password").val();
+		var passwordAgain = $("#passwordAgain").val();
+		if (password !== passwordAgain) {
+			alert('您两次输入的密码不一致');
+			$("#passwordAgain").val('');
+			return false;
+		}if (password.length < 6) {
+			alert('密码长度不小于六位');
+			$("#password").val('');
+			$("#passwordAgain").val('');
+			$("#check").val('');
+			return false;
+		}
+		if (password.length > 20) {
+			alert('密码长度不大于二十位');
+			$("#password").val('');
+			$("#passwordAgain").val('');
+			$("#check").val('');
+			return false;
+		}else
+		{
+		
+			
+			api.ajax({
+//					url : 'http://192.168.1.222:8080/salt_reduction/login/appLogin.action',
+					url :  SERVER_URL + '/salt_reduction/login/resetPwd.action',
+					method : 'post',
+					timeout : 30,
+					dataType : 'json',
+					returnAll : false,
+					data : {
+						values : {
+							userName : username,
+							password : password
+						}
+					}
+				}, function(ret, err) {
+//					alert(JSON.stringify(ret));
+					
+					
+					
+					
+					
+					
+					
+					if (ret.status == 0) {
+						alert('密码重置成功');
+						//存储用户名密码等相关的东西
+//						$api.setStorage("password",password);
+//						api.setPrefs({
+//							    key: 'password',
+//							    value: ret.data.password
+//							});
+//						api.openWin({
+//							name : 'login',
+//							url : '../../html/login/login.html',
+//					
+//				})
+				api.closeToWin({
+	                name: 'root'
+                });
+						
+						
+//						//跳转到主界面
+//						api.openFrame({
+//							name : 'frame1',
+//							url : '../html/1.html',
+//							bounces : false,
+//							rect : {
+//								x : 0,
+//								y : 0,
+//								w : 'auto',
+//								h : 'auto'
+//							}
+//						});
+//					api.closeWin();
+					} else {
+//						alert("您的账号与密码不符");
+//						$("#password").val('');
+					}
+				});
+			
+			
+		}
+		
+		
+		
+	}
+	
+	function closeWin() {
+		api.closeWin({
+	        
+        });
+	}
+
+
+</script>

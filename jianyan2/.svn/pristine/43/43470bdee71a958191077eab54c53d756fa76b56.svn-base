@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+	
+		<link rel="stylesheet" type="text/css" href="../../css/apizl.css"/>
+
+		<style>
+			body {
+				margin: 0;
+				border: 0;
+				padding: 0;
+				height: 100%;
+				width: auto;
+				background-color: #EBEAEA;
+			}
+			.input-wrap input {
+				outline-color: #808080;
+				height: 20px;
+				width: 25%;
+			}
+			.table {
+				background-image:url(../../image/inputfood/table_image.png);
+				width: 100%;
+				height: 300px;
+				text-align: center;
+			}
+			.forms {
+				margin-top: 20px;
+			}
+			.form p {
+				text-align: center;
+			}
+			.button.blue {
+				background-color: green;
+				height: 40px;
+			}
+			.button {
+				display: block;
+				color: white;
+				margin: 20px 30%;
+				text-align: center;
+				border-radius: 8px;
+				height: 30px;
+				line-height: 40px;
+			}
+			.table input {
+				width: 100px;
+				border: 1 solid black;
+				FONT-SIZE: 10pt;
+				FONT-STYLE: normal;
+				FONT-VARIANT: normal;
+				FONT-WEIGHT: normal;				
+				LINE-HEIGHT: normal;
+				HEIGHT: 25px;
+				border-radius: 10px;
+				outline: none;
+			}
+			/* .txt {
+			 border: 1px solid;
+			 margin-left:5px;
+			 margin-right:5px;
+			 }*/
+			input.txt {
+				outline: none;
+				border: 1 solid black;
+				FONT-SIZE: 10pt;
+				FONT-STYLE: normal;
+				FONT-VARIANT: normal;
+				FONT-WEIGHT: normal;				
+				LINE-HEIGHT: normal;
+				HEIGHT: 25px;
+				border-radius: 10px;
+			}
+			.yycfb {
+				background-color: #FFFFFF;
+				height: auto;
+				border-bottom: 1px solid gray;
+				border-top: 1px solid gray;
+				margin-top:10px;
+			}
+			/*	tr{
+			 background-image: url(../image/0XY.png);
+			 }*/
+			#zd {
+				border-bottom: 2px solid gray;
+
+			}
+			td {
+				border-bottom: 1px solid gray;
+				border-right: 1px solid gray;
+			}
+			p{
+				margin-left: 15px;
+				margin-top: 0;
+				margin-top: 13px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="yycfb">
+			<p style="font-size: 18px;font-weight:bold">
+				营养成分表
+			</p>
+			<b>【产品规格】</b>
+			<select style="width: 23% " id="dropBox" onchange="check()">
+				<!--<option>每100g</option>
+				<option>每100ml</option>
+				<option>每15g</option>
+				<option>每15ml</option>
+				<option>其它</option>-->
+				<!--<div class="input-wrap">-->
+				<i class="user"></i>
+				<input type="text" style="visibility:hidden" placeholder="请输入例如25g或25ml" class="txt" id="otherval" value="" onblur="miss()" onkeyup="checkOtherVal(this)"/>
+				<!--</div>	-->
+			</select>
+			<p>
+				能量单位：
+				<input type="radio" name="sport_radio" id="radio_KJ" checked="checked" onclick="choiceKJ()"/>
+				KJ
+				<input type="radio" name="sport_radio" id="radio_Kacl" onclick="choiceKacl()"/>
+				Kcal
+			</p>
+		</div>
+		<div class="forms">
+			<table class="table"  cellspacing="0">
+				<tr id="zd">
+					<th>项目</th>
+					<th><span id="span_one">每100g</span></th>
+					<th>NRV%</th>
+				</tr>
+				<tr>
+					<td>能量</td>
+					<td>
+					<input type="text" maxlength="8" id="energyPerVal" onkeyup="checkPositiveOrWithOneFloat(this)"/>
+					<span id="span_two">KJ</span></td>
+					<td>
+					<input type="tel" id="energyNrvVal" onkeyup="checkPositive(this)" />
+					%</td>
+				</tr>
+				<tr >
+					<td>蛋白质</td >
+					<td>
+					<input type="text" maxlength="8" id='proteinPerVal' onkeyup="checkPositiveOrWithOneFloat(this)"/>
+					g</td>
+					<td>
+					<input type="tel" id="proteinNrvVal" onkeyup="checkPositive(this)" />
+					%</td>
+				</tr>
+				<tr>
+					<td>脂肪</td>
+					<td>
+					<input type="text" maxlength="8" id="fatPerVal" onkeyup="checkPositiveOrWithOneFloat(this)"/>
+					g</td>
+					<td>
+					<input type="tel" id="fatNrvVal" onkeyup="checkPositive(this)" />
+					%</td>
+				</tr>
+				<tr >
+					<td>碳水化合物</td>
+					<td>
+					<input type="text"  maxlength="8" id="carbohydratePerVal" onkeyup="checkPositiveOrWithOneFloat(this)"/>
+					g</td>
+					<td>
+					<input type="tel" id="carbohydrateNrvVal" onkeyup="checkPositive(this)" />
+					%</td>
+				</tr>
+				<tr>
+					<td>钠</td>
+					<td>
+					<input type="text"  maxlength="8" id="sodiumPerVal" onkeyup="checkPositiveOrWithOneFloat(this)"/>
+					mg</td>
+					<td>
+					<input type="tel" id="sodiumNrvVal" onkeyup="checkPositive(this)" />
+					%</td>
+				</tr>
+			</table>
+		</div>
+		<div class="button blue" id="login" tapmode="" onclick="submit()">
+			提交
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src = "../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	
+
+	var serverPics = new Array(2);
+	serverPics[0] = null;
+	serverPics[1] = null;
+	var userId;
+	
+	apiready = function() {
+		var params = api.pageParam;
+//		alert(JSON.stringify(params));
+		$("#energyPerVal").attr("value",params.energyPerVal);
+		$("#energyNrvVal").attr("value",params.energyNrvVal);
+		$("#proteinPerVal").attr("value",params.proteinPerVal);
+		$("#proteinNrvVal").attr("value",params.proteinNrvVal);
+		$("#fatPerVal").attr("value",params.fatPerVal);
+		$("#fatNrvVal").attr("value",params.fatNrvVal);
+		$("#carbohydratePerVal").attr("value",params.carbohydratePerVal);
+		$("#carbohydrateNrvVal").attr("value",params.carbohydrateNrvVal);
+		$("#sodiumPerVal").attr("value",params.sodiumPerVal);
+		$("#sodiumNrvVal").attr("value",params.sodiumNrvVal);
+		getAllOptions();
+	}
+	
+	function getAllOptions() {
+			//alert(val);
+			api.ajax({
+				url : '' + SERVER_URL+ '/salt_reduction/system/metadataItemAction!fetchItemList.action',
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+				data : {
+					values : {
+						jsonParam : ''
+					}
+				}
+			}, function(ret, err) {
+				//alert(ret.status);
+				if (!varIsNull(err)) {
+					alert(err.msg);
+					return;
+				}
+				if (ret.status == 0) {
+					var str = '';
+					var select = $api.byId('dropBox');
+					for (var i = 0; i < ret.data.length; i++) {
+						str += '<option  value="' + ret.data[i].gid + '"';
+						
+						if (ret.data[i].name == '每100g') {
+							str += ' selected = "selected" ';
+					
+						}
+						 
+						str += '>' + ret.data[i].name + '</option>'
+					}
+					$api.append(select, str);
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+	
+	function checkOtherVal(inp) {
+		var value = inp.value;
+		if (value.length == 0) {
+			return;
+		}
+		
+		var check = value.match('^[0-9]+([gGmM]|ml|ML|mL|Ml){0,1}$');
+		
+		
+			if (check == null ) {
+				alert('只能输入数字g或者数字ml');
+				inp.value = inp.value.substring(0,inp.value.length - 1);
+
+			}
+		
+	}
+	
+	function checkPositiveOrWithOneFloat(inp,salt){
+			var value = inp.value;
+			inp.value = inp.value;
+//			alert(value + "-" +value.split ('.').length +　'value length' + value.length);
+			if ( value.length == 0 ) {
+			return;
+			}
+			
+//			alert (value.split('.').length);
+			if (value.charAt(value.length - 1) == '.' && value.split ('.').length <= 2) {
+				return;
+			}
+			
+//			alert('check' + value.match('^[0-9]+([\\.][1-9]{1}){0,1}$'));
+			
+			var check  = value.match('^[0-9]+([\\.][0-9]{1}){0,1}$');
+			if (check == null) {
+			
+//				alert('请输入整数或者一位小数' + inp.value.substring(0,inp.value.length - 1));
+				if (salt == null) {
+					alert('请输入整数或者带一位小数的数字');
+				}
+				inp.value = inp.value.substring(0,inp.value.length - 1);
+				//再次检测，直至合法
+				checkPositiveOrWithOneFloat(inp,'true');
+			}
+			
+		}
+
+
+
+		function checkPositive(inp,show){
+			var maxvalue =200;
+			var value = inp.value;
+			if ( value.length == 0) {
+				return;
+			}
+			
+			
+//			if (value.charAt(value.length - 1) == '.' && value.split ('.').length <= 2) {
+//				return;
+//			}
+			
+			var check  = value.match('^[0-9]*$');
+			
+			if (check == null) {
+			
+//				alert('请输入整数或者一位小数' + inp.value.substring(0,inp.value.length - 1));
+				if (varIsNull(show)) {
+					alert('请输入小于等于' + maxvalue +  '的整数');
+				}
+				
+				
+				inp.value = inp.value.substring(0,inp.value.length - 1);
+				
+				//再次检测，直至合法
+				checkPositive(inp,'true');
+				
+			}
+			
+			if(value<0 || value>maxvalue){
+				if (varIsNull(show)) {
+					alert('请输入小于等于' + maxvalue +  '的整数');
+				}
+				
+				inp.value = inp.value.substring(0,inp.value.length - 1);
+				//再次检测，直至合法
+				checkPositive(inp,'true');
+			}
+		}
+		/*
+		 *正整数判断，不能大于100 用maxleng
+		 */
+		
+//		function checkPositive(inp){
+//
+//			var value = inp.value;
+//			inp.value = inp.value;
+//			if ( value.length == 0) {
+//			return;
+//			}
+			
+			
+//			alert('check' + value.match('^[0-9]*$'));
+			
+//			var check  = value.match('^[0-9]*$');
+//			if (check == null || value.length >2) {
+			
+//				alert('请输入小于100的整数' + inp.value.substring(0,inp.value.length - 1));
+//				alert('请输入小于100的整数');
+//				inp.value = inp.value.substring(0,inp.value.length - 1);
+				
+//			}
+			
+//		}
+		function check() {
+			var select = document.getElementById('dropBox');
+			var span = document.getElementById('span_one');
+			var otherval =  document.getElementById('otherval');
+			var index = select.selectedIndex;
+			// 选中索引
+			var text = select.options[index].text;
+			
+			// 选中文本
+			var value = select.options[index].value;
+			// 选中值
+//			alert('begin'+text + 'end');
+			if (text == "其它") {
+//			alert ("equals");
+				otherval.style.visibility = "";
+			} else {
+//			alert('not equals');
+				span.innerHTML = text;
+				otherval.style.visibility = "hidden";
+			}
+		}
+
+		function choiceKJ() {
+			var span = document.getElementById('span_two');
+			span.innerHTML = "KJ";
+		}
+
+		function choiceKacl() {
+			var span = document.getElementById('span_two');
+			span.innerHTML = "Kcal";
+		}
+
+		function miss() {
+			var span = document.getElementById('span_one');
+			var otherval = document.getElementById('otherval').value;
+			span.innerHTML = otherval;
+			//						if (otherval == '25g') {
+			//							span.innerHTML="25g"
+			//
+			//						}if(otherval == '25ml'){
+			//							span.innerHTML="25ml"
+			//						}if(otherval !== '25g'&&otherval !== '25ml'){
+			//							alert('请输入例如25g或25ml');
+			//						}
+			//
+		}
+
+		function submit() {
+		
+//		var params = api.pageParam;
+//			var pics = params.pics;
+//			alert(JSON.stringify(pics));
+//			var savePath = new Array(2);
+//			savePath[0]= null;
+//			savePath[1] = null;
+//			不可用，原因：uploadFile 会单独起线程，不会等上传完毕后在执行下一句
+//			for (var i = 0; i < 2; i ++) {
+//				var fpath = pics[i];
+//				if(fpath != null) {
+//					savePath[i] = uploadFile(fpath);
+//					alert(savePath[i] + 'after submit');
+//					if (savePath[i] == null) {
+//						alert('图片提交异常，请稍后再试');
+//					}
+//				}
+//			}
+		
+		
+			var radio = document.getElementById('radio_KJ');
+			var radio1 = document.getElementById('radio_Kacl');
+			var select = document.getElementById('dropBox');
+			var energyPerVal = document.getElementById('energyPerVal').value;
+			var energyNrvVal = document.getElementById('energyNrvVal').value;
+			var proteinPerVal = document.getElementById('proteinPerVal').value;
+			var proteinNrvVal = document.getElementById('proteinNrvVal').value;
+			var fatPerVal = document.getElementById('fatPerVal').value;
+			var fatNrvVal = document.getElementById('fatNrvVal').value;
+			var carbohydratePerVal = document.getElementById('carbohydratePerVal').value;
+			var carbohydrateNrvVal = document.getElementById('carbohydrateNrvVal').value;
+			var sodiumPerVal = document.getElementById('sodiumPerVal').value;
+			var sodiumNrvVal = document.getElementById('sodiumNrvVal').value;
+			var index = select.selectedIndex;
+			// 选中索引
+			var text = select.options[index].text;
+			// 选中文本
+			var value = select.options[index].value;
+			// 选中值
+			//alert(text);
+			if (text == "其它") {
+				var otherval = document.getElementById('otherval').value;
+				if (otherval == '') {
+					alert('请输入例如25g或25ml');
+					return false;
+				}
+				
+				var check = otherval.match('^[1-9]*[0-9]([gG]|ml|ML|mL|Ml){1,}$');
+//				alert(check);
+				if (check == null) {
+					alert('请输入例如25g或25ml');
+					return false;
+				}
+				
+			}
+			if (radio.checked == false && radio1.checked == false) {
+				alert('请勾选能量单位');
+				return false;
+			}
+			if (energyPerVal == "") {
+				alert('请输入能量值');
+				return false;
+			}
+			if (energyNrvVal == '') {
+				alert('请输入能量百分比');
+				return false;
+			}
+			if (proteinPerVal == '') {
+				alert('请输入蛋白质值');
+				return false;
+			}
+			if (proteinNrvVal == '') {
+				alert('请输入蛋白质百分比');
+				return false;
+			}
+			if (fatPerVal == '') {
+				alert('请输入脂肪值');
+				return false;
+			}
+			if (fatNrvVal == '') {
+				alert('请输入脂肪百分比');
+				return false;
+			}
+			if (carbohydratePerVal == '') {
+				alert('请输入碳水化合物值');
+				return false;
+			}
+			if (carbohydrateNrvVal == '') {
+				alert('请输入碳水化合物百分比');
+				return false;
+			}
+			if (sodiumPerVal == '') {
+				alert('请输入钠值');
+				return false;
+			}
+			if (sodiumNrvVal == '') {
+				alert('请输入钠百分比');
+				return false;
+			}
+
+			
+			
+			var params = api.pageParam;
+			var pics = params.pics;
+//			alert(JSON.stringify(pics));
+			api.getPrefs({
+			    key: 'userId'
+			}, function(ret, err){
+			    userId = ret.value;
+//			    api.alert({msg:userId});
+			});
+			
+			uploadFile1(pics[0],pics[1]);
+		}
+		
+		
+		
+		
+		
+//		function uploadFile(filePath) {
+//			var severPath = null;
+//			api.showProgress({
+//				title:'图片上传',
+//				text:'正在提交图片...',
+//          });
+//          
+//			api.ajax({
+//						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!uploadFile.action',
+//						method : 'post',
+//						timeout : 300,
+//						dataType : 'json',
+//						returnAll : false,
+//						data : {
+//							
+//							//files:{'uploadFile': 'widget://icon/icon150x150.png'}
+//							files : {
+////								'uploadFile' : 'fs://picture/p-df80540d.jpg'
+//								'uploadFile' : filePath
+//							}
+//						}
+//					}, function(ret, err) {
+////						alert(JSON.stringify(ret));
+//						if (!varIsNull(err)) {
+//							alert(err.msg);
+//						}
+////						alert('severPath' + ret.data.filePath);
+//						severPath = ret.data.filePath;
+//						api.hideProgress();
+//					});
+//				return severPath;
+//		}
+		
+		function uploadFile1(filePath,filePath2) {
+			
+			api.showProgress({
+				title:'图片1上传',
+				text:'正在提交图片1...',
+            });
+            
+			api.ajax({
+						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!uploadFile.action',
+						method : 'post',
+						timeout : 300,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							
+							//files:{'uploadFile': 'widget://icon/icon150x150.png'}
+							files : {
+//								'uploadFile' : 'fs://picture/p-df80540d.jpg'
+								'uploadFile' : filePath
+							}
+						}
+					}, function(ret, err) {
+//						alert(JSON.stringify(ret));
+						if (!varIsNull(err)) {
+							alert(err.msg);
+						} else {
+//						alert('severPath' + ret.data.filePath);
+							serverPics[0] = ret.data.filePath;
+							uploadFile2(filePath2);
+						}
+						
+						api.hideProgress();
+						
+					});
+				
+		}
+		
+		
+		function uploadFile2(filePath) {
+			if (filePath == null) {
+				submitProductToServer();
+				return;
+			}
+			var severPath = null;
+			api.showProgress({
+				title:'图片2上传',
+				text:'正在提交图片2...',
+            });
+            
+			api.ajax({
+						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!uploadFile.action',
+						method : 'post',
+						timeout : 300,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							
+							//files:{'uploadFile': 'widget://icon/icon150x150.png'}
+							files : {
+//								'uploadFile' : 'fs://picture/p-df80540d.jpg'
+								'uploadFile' : filePath
+							}
+						}
+					}, function(ret, err) {
+//						alert(JSON.stringify(ret));
+						if (!varIsNull(err)) {
+							alert(err.msg);
+						} else {
+							serverPics[1] = ret.data.filePath;
+							submitProductToServer();
+						}
+//						
+						api.hideProgress();
+					});
+				return severPath;
+		}
+		
+		function submitProductToServer() {
+			var radio = document.getElementById('radio_KJ');
+			var radio1 = document.getElementById('radio_Kacl');
+			
+			var select = document.getElementById('dropBox').value;
+			var otherval = document.getElementById('otherval').value;
+			
+			var energyPerVal = document.getElementById('energyPerVal').value;
+			var energyNrvVal = document.getElementById('energyNrvVal').value;
+			var proteinPerVal = document.getElementById('proteinPerVal').value;
+			var proteinNrvVal = document.getElementById('proteinNrvVal').value;
+			var fatPerVal = document.getElementById('fatPerVal').value;
+			var fatNrvVal = document.getElementById('fatNrvVal').value;
+			var carbohydratePerVal = document.getElementById('carbohydratePerVal').value;
+			var carbohydrateNrvVal = document.getElementById('carbohydrateNrvVal').value;
+			var sodiumPerVal = document.getElementById('sodiumPerVal').value;
+			var sodiumNrvVal = document.getElementById('sodiumNrvVal').value;
+			
+			var params = api.pageParam;
+//			alert (JSON.stringify(params));
+//			alert(otherval);
+
+			var paramsa = {
+								'enterpriseName':params.enterpriseName,
+								'barcodeType':'1',
+								'barcodeVal':params.productcode,
+								'enterpriseType':params.types.data[0].uid,
+								'productType':params.types.data[1].uid,
+								'productName':params.productName,
+//								'productPrice':'0',
+								'brand':params.brand,
+								'provinceId':params.madeins.data[0].uid,
+								'cityId':params.madeins.data[1].uid,
+								'countyId':params.madeins.data[2].uid,
+								'townId':params.madeins.data[3].uid,
+								'address':'',
+								'metaItemId':select,
+								'specVal':otherval,
+								'energyNrvVal':energyNrvVal,
+								'energyPerUnit':radio.checked ? '1':'2',
+								'energyPerVal':energyPerVal,
+								'proteinNrvVal':proteinNrvVal,
+								'proteinPerVal':proteinPerVal,
+								'fatNrvVal':fatNrvVal,
+								'fatPerVal':fatPerVal,
+								'carbohydrateNrvVal':carbohydrateNrvVal,
+								'carbohydratePerVal':carbohydratePerVal,
+								'sodiumNrvVal':sodiumNrvVal,
+								'sodiumPerVal':sodiumPerVal,
+								'createBy':userId,
+								'filePath1':serverPics[0] == null ? '':serverPics[0]  ,
+								'filePath2':serverPics[1] == null ? '':serverPics[1] ,
+							};
+//				alert(JSON.stringify(paramsa));
+			
+			api.ajax({
+						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!saveEditFoods.action',
+						method : 'post',
+						timeout : 10,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							values:paramsa
+							
+						}
+					}, function(ret, err) {
+//						alert(JSON.stringify(ret));
+						if (!varIsNull(err)) {
+							alert(err.msg);
+						} else {
+//							alert('submit ok' + JSON.stringify(ret));
+							api.openWin({
+	                            name: 'inputsuccess',
+	                            url: './food_input_success_windows.html'
+                            });
+						}
+//						
+						api.hideProgress();
+					});
+			
+		}
+	</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+			.border_dashed{
+				margin-top:80px;
+			    text-align: center;
+                width:240px;
+                height:140px;
+                
+            }
+            #n1 { 
+            	margin:0px 20px;  
+            	padding:0px; 
+            	text-align: center;
+            }
+            #n2 { 
+            	margin:20px auto 0px; 
+            	padding:0px; 
+            	text-align: center;
+            	font-size: 20px;
+            	line-height:25px;
+            }
+            #n3 { 
+            	color:#666666;
+            	margin:5px auto 0px; 
+            	padding:0px; 
+            	text-align: center;
+            	font-size: 16px;
+            	line-height:25px;
+            }
+            .BtnNext {
+				
+				display: block;
+				position: absolute;
+				top: 65%;
+				text-align: center;
+				height:auto;
+				line-height: 24px;
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="border_dashed" >
+		          <div id="n1">
+		             <img src="../../image/inputfood/mark.png" height="42px" width="42px" />
+			      </div>
+			      <div id="n2">
+			        <p><b>抱 歉，当前商品未录入！</b></p>
+			      </div>
+			      <div id="n3"> 
+		       		<span>动动手指</span><br />
+		       		<span>录入审核通过可获得10积分</span>
+		       	</div>
+		</div>
+		<div class="BtnNext" onclick="luru()"><img src="../../image/inputfood/btn_input.png" /></div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		function luru() {
+			var params = api.pageParam;
+//			alert(JSON.stringify(params));
+			api.openWin({
+				name : 'foodinput',
+//				url : '../foodinput/luru_window.html',
+//				url : '../foodinput/food_input1.html',
+				url : '../foodinput/food_input_windows1.html',
+				pageParam:params//productcode
+			});
+			
+		}
+
+		apiready = function() {
+		};
+	</script>
+	<script type="text/javascript">
+		var inputw=document.documentElement.clientWidth;
+		var ml=(inputw-240)/2;
+		var imgw=inputw-20;
+		var imgh=imgw*120/1034;
+		
+		$(document).ready(function(){
+
+  			$(".border_dashed").css("margin-left",ml);
+  			$(".BtnNext img").width(imgw);
+			$(".BtnNext img").height(imgh);
+  		});
+		
+	</script>

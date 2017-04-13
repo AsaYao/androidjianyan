@@ -1,0 +1,142 @@
+body{
+	margin:0px;
+	padding:0px;
+	background:#f3f5f4;
+	height:100%;
+}
+
+.mainp{ 
+	width:100%; 
+	height:52px; 
+	background:#ffffff;
+}
+.br{
+	float:left;
+	height:52px;
+	border-right:2px solid #e5e5e5;
+}
+.mainpl{
+	 float:left; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-bottom:2px solid #e5e5e5;
+}
+.mainpm{ 
+	float:left; 
+	height:50px;
+	line-height:50px; 
+	text-align:center; 
+	border-bottom:2px solid #e5e5e5;
+}
+.mainpr{ 
+	float:left; 
+	height:50px;
+	line-height:50px; 
+	text-align:center; 
+	border-bottom:2px solid #e5e5e5;
+}
+.mainz{
+	width:70px;
+	height:50px;
+	border-bottom:2px solid #36b160;
+	color:#36b160;
+}
+.maink{
+	width:80%;
+	height:30px;
+	line-height:30px;
+	margin-left:20px;
+}
+.maincon{
+	width:100%;
+	height:auto;
+	background:#ffffff;
+}
+.conn{
+	width:100%;
+	height:170px;
+	border-top:2px solid #e5e5e5;
+}
+.conn1{
+	width:100%;
+	height:auto;
+	border-top:2px solid #e5e5e5;
+	padding-bottom:10px;
+}
+.connt{
+	width:95%;
+	margin:0 auto;
+	height:40px;
+	border-bottom:1px dashed #e5e5e5;
+}
+.connt img{
+	display:block;
+	float:left;
+	margin: 14px 0px 0px 0px;
+}
+.connl{
+	float:left;
+	height:40px;
+	line-height:40px;
+	margin-left:10px;
+}
+.connl span{
+	color:#cd9933;
+}
+.connr{
+	float:right;
+	width:90px;
+	height:40px;
+	line-height:40px;
+	margin-left:10px;
+	color:#8a8888;
+}
+.connb{
+	width:80%;
+	height:40px;
+	line-height:40px;
+	color:#747474;
+	margin-left:35px;
+}
+.connb img{
+	margin-right:5px;
+}
+.eva{
+	width:80%;
+	margin:0 auto;
+	line-height:20px;
+	color:#747474;
+	font-size:12px;
+}
+.bk{
+	border-bottom:2px solid #e5e5e5;
+}
+
+
+.mainb{
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	height:52px;
+	background:#ffffff;
+}
+.mainbl{
+	float:left; 
+	 width:50%; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+}
+.mainbr{
+	float:left; 
+	 width:49%; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+}
+.mainbs{
+	color:#36b160;
+}

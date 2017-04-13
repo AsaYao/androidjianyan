@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/inputcss.css"/>
+		<style>
+			body {
+			}
+		</style>
+	</head>
+	<body>
+		<div class="maincon">
+			<div class="conn">
+				<img id="imgId1" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(1)" />
+				<div class="connll">
+					好丽友薯愿
+				</div>
+				<div class="connr">
+					2016-4-18
+				</div>
+			</div>
+			<div class="conn">
+				<img id="imgId2" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(2)" />
+				<div class="connll">
+					好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿
+				</div>
+				<div class="connr">
+					2016-4-18
+				</div>
+			</div>
+			<div class="conn">
+				<img id="imgId3" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(3)" />
+				<div class="connll">
+					好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿
+				</div>
+				<div class="connr">
+					2016-4-18
+				</div>
+			</div>
+		</div>
+		<div class="mainb">
+			<div class="mainbl">
+				全选
+			</div>
+			<div class="br"></div>
+			<div class="mainbr" id="mainbR">
+				删除
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../jquery-2.1.4.min.js"></script>
+	<script>
+		function changeImage(x) {
+			imgid = document.getElementById("imgId" + x);
+			if (imgid.src.match("wxz")) {
+				imgid.src = "img/pro_xz.png";
+				document.getElementById("mainbR").style.color = "#36b160";
+			} else {
+				imgid.src = "img/pro_wxz.png";
+				document.getElementById("mainbR").style.color = "#000000";
+			}
+		}
+
+		var widthb = document.documentElement.clientWidth;
+		var heighth = document.documentElement.clientHeight;
+		var mainwidth = widthb - 4;
+		var mainz = (mainwidth / 3 - 70) / 2;
+		$(document).ready(function() {
+		alert('check');
+			$(".mainpl").width(mainwidth / 3);
+			$(".mainpm").width(mainwidth / 3);
+			$(".mainpr").width(mainwidth / 3);
+			$(".connll").width(widthb - 150);
+			$(".mainz").css("margin-left", mainz);
+			$(".mainbl").width((widthb - 2) / 2);
+			$(".mainbr").width((widthb - 2) / 2);
+			$(".maincon").height(heighth - 104);
+		});
+		apiready = function(){
+			alert('check');
+		}
+	</script>
+</html>

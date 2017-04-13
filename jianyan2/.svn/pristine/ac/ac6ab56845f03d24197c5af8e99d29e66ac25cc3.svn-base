@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	    <title>分类列表</title>
+	    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+	    <link rel="stylesheet" type="text/css" href="../../css/common_menu.css"/>
+		<style>
+        html, body {
+            background-color: #ffffff;
+            height:100%;
+            width:100%;
+        }
+        .detail-nav-con{
+        	width:100%;
+        	height:100%; 
+        	/*不加这个如果左侧*/ 
+        	
+        /*max-height:100%;
+        	overflow:scroll;*/
+        	/*overflow:hidden;*/
+        	
+        	
+           display: -webkit-box;
+            /*display: -webkit-flex;
+            display: flex;*/  /*这个有的话，detail-nav-con-l width:30% 不起作用*/
+            /*color: #666;*/
+        }
+        
+        
+          .conlt{
+    	
+    		background-color:#f3f5f4;
+    		float:left;
+    		height:100%;
+    		
+    	}
+    	.conltb{
+    		width:100%;
+    		
+    		background-color:#f3f5f4;
+    		border-right:1px solid #dedede;
+    	}
+          .detail-nav-con-l {
+            
+            /*height: 350px;*/
+			width:100%;
+           	/*width:25%;*/
+            height: auto;
+            font-size: 16px;
+            overflow-y:scroll;
+        }
+       
+        
+        .detail-nav-con-r{
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            /*height: 350px;*/
+            height: 100%;
+           /* width:75%;*/
+            display: -webkit-box;
+            float:right;
+            font-size: 15px;
+            
+            overflow-y:scroll; 
+          
+        }
+        
+        .detail-nav-con-l::-webkit-scrollbar,
+        .detail-nav-con-r::-webkit-scrollbar{
+            display: none;
+        }
+        .detail-nav-con-l{
+            background-color: #fff;
+        }
+        .detail-nav-con-l li,
+        .detail-nav-con-r li{
+            padding-left: 0;
+            /*height: 40px;*/
+            line-height: 40px;
+        }
+        .detail-nav-con-l li {
+          	height:auto;
+			background-color:#f3f5f4;
+			border-bottom:1px solid #dedede;
+			border-right:1px solid #dedede;
+			text-align:center;
+			padding:15px 10px;
+        }
+        .detail-nav-con-l li.active{
+           background-color: #ffffff;
+            height:auto;
+			border-bottom:1px solid #dedede;
+			border-left:5px solid #36b160;
+			border-right:0px;
+			text-align:center;
+			padding:15px 10px;
+			color:#047f72;
+        }
+        .detail-nav-con-l li.active .flex-title{
+            color: #3ac0b5;
+        }
+        .detail-nav-con-l li .flex-title,
+        .detail-nav-con-l li .flex-num,
+        .detail-nav-con-r li .flex-title,
+        .detail-nav-con-r li .flex-num
+        {
+            float: left;
+           /* width: 30%;*/
+        }
+        .detail-nav-con-l li .flex-num{
+            text-align: right;
+            background: url(../image/ic_global_arrow_right.png) no-repeat right center;
+            -webkit-background-size: 15px;
+            background-size: 15px;
+            padding-right: 15px;
+        }
+        .detail-nav-con-l .food{
+          /*  background: url(../image/inn_chinese_restaurant.png) no-repeat 5px center;
+            -webkit-background-size: 20px;
+            background-size: 20px;*/
+            width:100%;
+        }
+        .detail-nav-con-l .tour{
+           /* background: url(../image/inn_pick_up.png) no-repeat 5px center;
+            -webkit-background-size: 20px;
+            background-size: 20px;*/
+            
+             width:100%;
+        }
+        .detail-nav-con-l .play{
+            background: url(../image/inn_card_charge.png) no-repeat 5px center;
+            -webkit-background-size: 20px;
+            background-size: 20px;
+        }
+        
+        .detail-nav-con-r{
+            background-color: #ffffff;
+        }
+        .detail-nav-con-r li .flex-num{
+            text-align: right;
+            padding-right: 10px;
+            color: #999;
+        }
+        .detail-nav-con-r li.active{
+            /*background: url(../image/ic_global_filter_check_green.png) no-repeat 10px center;*/
+           /* -webkit-background-size: 12px;
+            background-size: 12px;*/
+        }
+
+        .detail-nav-con-r li.active .flex-title{
+            color: #3ac0b5;
+        }
+        
+        .leftmenudiv {
+        	width: 100%;
+        	line-height: 20px;
+        	padding: 5px;
+        	text-align:center;
+        }
+        
+        .rightmenudiv {
+        	/*width: 100%;*/
+        	padding: 10px;
+        	border-bottom: 1px dashed #dcdcdc;
+        	text-align:center;
+        }
+        .rightmenudiv img{
+        	
+        	
+        }
+        .rightmenudiv #righttxt{
+        	padding-left:20px;
+        	padding-right:20px;
+        	line-height: 20px;
+        	
+        }
+        
+        #rightmenu {
+        	height:100%;
+        }
+        </style>
+	</head>
+	<body>
+	
+        <div class="conlt" id="con">
+	        <div class="detail-nav-con-l" id = 'leftmenu'>
+	            <ul style="width:100%" id="leftmenuul">
+	              
+	            </ul>
+	            
+	        </div>
+        	<div class="conltb" id="conb"></div>
+		</div>
+
+        <div class="detail-nav-con-r" id="rightmenu">
+            <ul style="width:100%">
+            </ul>
+        </div>
+   
+
+    <script type="text/javascript" src="../../script/api.js"></script>
+    <script type="text/javascript" src="../../script/bts_common.js"></script>
+    <script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+   <script type="text/javascript">
+	$(function(){
+		var x=document.documentElement.clientWidth;
+		
+	
+		$(".conlt").width(x*0.3);
+		$(".detail-nav-con-r").width(x*0.7);
+		$(".righttxt").width(x*0.7-125);
+	});
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	var y=document.documentElement.clientWidth;
+		$("ul>li").click(function(){
+				$(this).siblings("li").removeClass("active");
+				$(this).addClass("active");	
+		});
+		if($("ul>li").focus()){
+			$(this).width(y*0.3-35);
+		
+		}else{
+			$(this).width(y*0.3-31);
+		}
+	});
+	</script>
+	
+    <script>
+      var dataArr;
+
+	 apiready = function(){
+    
+    	getLeftMenus();
+    }
+    
+    var $body = $api.dom('body');
+    var $con = $api.dom('.detail-nav-con')
+    $api.addEvt($body, 'click', function(e){
+        if(e.target == $body){
+            api.closeFrame();
+        }else{
+            e.stopPropagation();
+        }
+    });
+
+
+
+    function selectNav(index){
+//  	alert('selectNav' + index);
+    	var $navL = $api.dom('.detail-nav-con-l');
+    	var $navLli = $api.domAll($navL,'li');
+    
+        for (var i = 0; i < $navLli.length; i++) {
+            if (index == i) {
+                $api.addCls($navLli[i],'active');
+            } else{
+                $api.removeCls($navLli[i],'active');
+            }
+        };
+        
+      	buildRHTML(index);
+      	//add by w.g 薛丽手机 有时不显示,需要构建两次
+      	buildRHTML(index);
+      	//add by w.g 薛丽手机 有时不显示
+    }
+    
+    
+    function buildRHTML(param){
+        
+        var buildHTML = '';
+        var active = '';
+        
+        api.showProgress({
+        });
+        
+        api.ajax({
+	       url: SERVER_URL  + ALL_FOOD_KIND_PATH,
+	       method : 'post',
+		   timeout : 30,
+		   dataType : 'json',
+		   returnAll : false,
+		   data: {
+				values: {
+					'jsonParam':dataArr[param].gid ,
+					}
+				}
+        },function(ret,err){
+        	api.hideProgress();
+        	processNetWorkErr(err);
+        	if (ret.status == 0) {
+        		var rarr = ret.data;
+        		for (var i = 0; i < rarr.length; i ++) {
+        			if (i == 0) {
+        				active = 'active'
+        			} else {
+        				active = '';
+        			}
+        			
+        			
+        			 var iconpath = '../../image/default.png';
+        			//如果服务器端有图标则显示服务器端的图标，没有验证服务器端的图标是否存在，只是根据值判定
+        			if (!varIsNull(rarr[i].pic)) {
+        				iconpath = SERVER_URL + SERVER_ROOT_PATH + rarr[i].pic;
+        			}
+        			
+		 			var rightmenu=document.documentElement.clientWidth;
+		 			buildHTML += '<li class="tap '+active+'" tapmode="tap-active" onclick="selectItem(this,\''+rarr[i].gid+'\',\''+rarr[i].name+'\')">'
+		  					+
+                            '<div class="rightmenudiv" style="width:'+rightmenu*0.7+'px"><table width="100%"><tr><td width="75px"><img src = "' + iconpath + '" width = "75px" height = "75px" style="vertical-align:middle;"/></td><td id="righttxt"  align="left">'
+                            + rarr[i].name + '</td></tr></table></div></li>';
+                            
+        		}
+        		
+        		$navRul.innerHTML = '';
+//		        document.getElementById("rightmenu").style.height = '';
+//		      alert(buildHTML);
+//				console.log(buildHTML);
+		        $api.append($navRul,buildHTML);
+		        
+		        
+		        
+//		        $navRul.innerHTML = '';
+//		        $api.append($navRul,buildHTML);
+		        
+/*lx修改*/		        
+//	        var h = document.getElementById("rightmenu").offsetHeight;
+	        
+//          alert(h);
+//		        if (h > api.winHeight -100) {
+//		        	document.getElementById("rightmenu").style.height = '100%';
+//		        } 
+		        
+		       
+/*lx修改*/		        		
+		        		
+		  } else  {
+		     alert(ret.data.errorMsg);
+		  }
+	});
+		    
+    }
+    
+
+
+    function changeTitle(name){
+        api.execScript({
+            frameName: 'frm_detailNav',
+            script: 'changeTitle(\"'+ name +'\")'
+        });
+        api.execScript({
+            name: 'win_detail',
+            script: 'changeTitle(\"'+ name +'\")'
+        });
+    }
+
+    var $navRul = $api.dom('.detail-nav-con-r ul');
+    
+    
+    
+    
+    function selectItem(obj,gid,name){
+        
+//      alert('你选择了' + name + ',即将关闭！' );
+//      setTimeout(api.closeFrame(),500);
+
+		api.openWin({
+	        name: 'LowSaltWindowsList',
+	        url: './list_windows.html',
+	        pageParam:{"gid":gid,
+	        			'name':name},
+        });
+
+    }
+    
+    
+ 
+    
+    function getLeftMenus() {
+    	api.showProgress({
+            });
+            
+       api.ajax({
+	       url: SERVER_URL  + ALL_FOOD_KIND_PATH,
+	       method : 'post',
+		   timeout : 30,
+		   dataType : 'json',
+		   returnAll : false,
+       },function(ret,err){
+       api.hideProgress();
+       	processNetWorkErr(err);
+       	if (ret.status == 0) { 
+       		var arr = ret.data;
+//     		alert(arr);
+       		dataArr = arr;
+       		
+       		buildLeftMenuHtml(arr);
+    
+    
+    
+       		
+       		var h = document.getElementById("leftmenu").offsetHeight;
+       		
+ /*lx添加*/      	
+ 
+ 			
+       		var conb=document.getElementById("conb");
+   			var y=document.documentElement.clientHeight;
+   			var conbh=y-h;
+   			if(y>h){
+   				$("#conb").height(conbh);
+   			}else{
+   				document.getElementById("leftmenu").style.height = '100%';
+   			}
+   			
+  /*lx添加*/ 
+	//      alert(h);
+	/*lx修改*/
+	        /* if (h > api.winHeight -100) {
+	        	document.getElementById("leftmenu").style.height = '100%';
+	        }*/
+	/*lx修改*/
+//	    	alert('leftmenu network' );
+	        selectNav(0);
+    
+       		
+       		
+       		
+       		
+       	} else {
+       		alert(ret.data.errorMsg);
+       	}
+       });    
+    }
+    
+    
+   function buildLeftMenuHtml(arr){
+//  	var $navLul = $api.dom('.detail-nav-con-l ul');
+    		var $navLul = $api.byId('leftmenuul');
+//  	alert($navLul);
+    	var buildHtml = '';
+    	if (!varIsNull(arr)) {
+    		for (var i = 0; i < arr.length; i ++) {
+    			buildHtml += '<li class="tap menu' + i + '" tapmode="tap-active" onclick="selectNav('  +
+    				 i + ')">' +
+                   '<div class="leftmenudiv">' + arr[i].name + '</div>' +
+                '</li>';
+               
+    		}
+    		$navLul.innerHTML = '';
+    		$navLul.innerHTML = buildHtml;
+    		
+//  		alert(buildHtml);
+    	}
+    }
+    
+    </script>
+    
+	</body>
+
+</html>

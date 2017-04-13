@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+    <style>
+    	html, body {
+			 	/*background-color: #808080;*/
+			 /*	filter:alpha(Opacity=80);
+			 	-moz-opacity:0.5;
+			 	opacity: 0.5;*/
+			 	background-color: transparent;
+			 }
+			 .button_one {
+				
+				width: 300px;
+				height:264px;
+				background-color: #f2f2f3;
+			}
+			.wei-top {
+				width: 300px;
+				height: 50px;
+				border-bottom: 1px solid #dddddd;
+				font-size: 16px;
+				color: #525050;
+				background: #e5e5e5;
+				line-height: 50px;
+			}
+			.wei-top1 {
+				margin-left: 20px;
+			}
+			.wei-m{
+				width:300px;
+				height:140px;
+				text-align: center;
+				margin:5px 0;
+			}
+			.wei-b {
+				width: 300px;
+				height: 60px;
+				line-height: 60px;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+			.wei-b1 {
+				float: left;
+				width: 100px;
+				height: 40px;
+				border: 1px solid #dddddd;
+				border-radius: 5px;
+				line-height: 40px;
+				text-align: center;
+				margin: 10px 24px;
+				color: #666666;
+			}
+			
+			
+    </style>
+</head>
+<body>
+	
+	<div class="button_one" >
+			<div class="wei-top">
+				<div class="wei-top1">体重</div>
+			</div>
+			<div class="wei-m">
+				
+			</div>
+			<div class="wei-b">
+					<div class="wei-b1" onclick="gocancel()">
+						取消
+					</div>
+					<div class="wei-b1" onclick="doIt()">
+						确定
+					</div>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript" src="../../../script/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	var xp = document.documentElement.clientWidth;
+	var yp = document.documentElement.clientHeight;
+	var weights = 80;
+	
+	var sexl = (xp - 300) / 2;
+	var sext = (yp - 264) / 2;
+		$(document).ready(function() {
+			$(".button_one").css("margin-left", sexl);
+			$(".button_one").css("margin-top", sext);
+		});
+		
+	apiready = function(){
+		var params = api.pageParam;
+		weights = params.wei;
+		if(weights!='未填写'){
+			weights = weights.substring(0,weights.length-2);
+		}
+		var UICustomPicker = api.require('UICustomPicker');
+			UICustomPicker.open({
+				rect : {
+					x : (xp - 140) / 2,
+					y : (yp - 130) / 2,
+					w : 120,
+					h : 130
+				},
+				styles : {
+					bg : 'rgba(0,0,0,0)',
+					normalColor : '#959595',
+					selectedColor : '#ff6a0e',
+					selectedSize : 25,
+					tagColor : '#ff6a0e',
+					tagSize : 20
+				},
+				data : [{
+					tag : 'kg',
+					scope : '25-300'
+				}],
+				rows : 3,
+				fixedOn : api.frameName,
+				fixed : true
+			}, function(ret, err) {
+				if (ret) {
+					if(ret.data!=null){
+						weights = ret.data[0];
+					}
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+			var UICustomPicker = api.require('UICustomPicker');
+			UICustomPicker.setValue({
+			    id: 0,
+			    data: [weights]
+			});
+	};
+	
+	function doIt(){
+		api.sendEvent({
+    		name: 'weightEvent',
+    		extra: {
+        		weight: weights
+    		}
+		});
+		var userInfo = $api.getStorage('userInfo');
+		userInfo.weight = weights;
+		$api.setStorage('userInfo',userInfo);
+		api.closeFrame({
+        });
+	}
+	function gocancel(){
+		api.closeFrame({
+        });
+	}
+</script>
+</html>

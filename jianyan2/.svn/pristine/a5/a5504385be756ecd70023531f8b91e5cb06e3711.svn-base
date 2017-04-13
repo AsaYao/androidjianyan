@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的评价</title>
+<link rel="stylesheet" type="text/css" href="css/evacss.css"/>
+</head>
+
+<body style="margin-top:20px;">
+<div class="maincon">
+<!--商品删除部分-->
+	<div class="conn1">
+		<div class="connt">
+			<img id="imgId1" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(1)" />
+			<div class="connl">商品品评价：<span>好丽友  薯愿</span></div>
+			<div class="connr">2016-4-18</div>
+		</div>
+		<div class="connb">商品口味：<span>适中</span></div>
+		<div class="eva">好丽友是促销品牌，价格实惠，欢迎选购！！好丽友是促销品牌，价格实惠，欢迎选购！！好丽友是促销品牌，价格实惠，欢迎选购！！</div>
+	</div>
+<!--商品删除部分-->
+<!--商品评价部分-->
+	<div class="conn1">
+		<div class="connt">
+			<div class="connl">商品品评价：<span>好丽友  薯愿</span></div>
+			<div class="connr">2016-4-18</div>
+		</div>
+		<div class="connb">商品口味：<span>适中</span></div>
+		<div class="eva">好丽友是促销品！</div>
+	</div>
+<!--商品评价部分-->
+	<div class="bk"></div>
+</div>
+
+
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+function changeImage(x)
+{
+	imgid=document.getElementById("imgId"+x);
+	if (imgid.src.match("wxz"))
+  	{
+ 		 imgid.src="img/pro_xz.png";
+		 document.getElementById("mainbR").style.color="#36b160";
+  	}
+	else
+  	{
+  		imgid.src="img/pro_wxz.png";
+		document.getElementById("mainbR").style.color="#000000";
+  	}
+}
+
+
+
+
+		var widthb=document.documentElement.clientWidth;
+		var mainwidth=widthb-2;
+		var mainz=(mainwidth/2-70)/2;
+		$(document).ready(function(){
+			$(".mainpl").width(mainwidth/2);
+			$(".mainpr").width(mainwidth/2);
+			$(".mainz").css("margin-left",mainz);
+			$(".connl").width(widthb*0.95-118);
+			
+  		});
+</script>
+</body>
+</html>

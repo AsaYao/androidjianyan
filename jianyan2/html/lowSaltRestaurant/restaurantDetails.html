@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <style>
+    	body{
+			margin:0;
+			padding:0;
+		}
+    	body,html{
+    		height: 100%;
+    		width: 100%;
+    	}
+    	#main{
+    		height: 100%;
+    		width: 100%;
+    		background-color: #F3F5F3;
+    		padding-top: 10px;
+    	}
+    	#main table{
+    		background-color: #FFFFFF;
+    		width: 100%;
+    	}
+    	#businesshours,#contractphone,#address{
+    		height: 70px;
+    	
+    	}
+    	#contractphone,#address{
+    		margin-top: 10px;
+    	}
+    	#businessscope{
+    		height: 90px;
+    		margin-top: 15px;
+    		}
+    	#saltpicture{
+    		margin-bottom:10px;
+			padding:15px 20px 15px 40px;
+			text-align:left;
+			background:#fff;
+			color:#000;
+			height:130px;
+    	}
+    	
+    	
+    	
+    	.superino{
+	
+		background:#f3f5f4;
+	}
+	.superinobox1{
+		line-height:20px;
+		margin-bottom:3px;
+		padding-left:40px;
+		text-align:left;
+		background:#fff;
+		color:#000;
+		height:50px;
+	}
+	.superinobox1l{
+		float:left;
+		font-size:16px;
+		margin:15px 0;
+		
+		
+	}
+	.superinobox1m{
+		float:left;
+		font-size:14px;
+		color:#999999;
+		height:auto;
+		overflow:hidden;
+		margin:15px 0;
+		
+	}
+	.superinobox1r{
+		float:right;
+		margin:5px 10px 0 10px;
+		border-left:1px solid #f3f5f4;
+	}
+	.superinobox3r{
+		float:right;
+		margin:10px 10px 0 10px;
+		border-left:1px solid #f3f5f4;
+	}
+	.superinobox3{
+		margin-bottom:10px;
+		padding-left:40px;
+		text-align:left;
+		background:#fff;
+		color:#000;
+		
+	}
+	.superinobox3m{
+		float:left;
+		font-size:14px;
+		color:#999999;
+		height:auto;
+		overflow:hidden;
+		margin:15px 0;
+		
+	}
+	.superinobox4{
+		
+		padding:10px 20px 30px 40px;
+		text-align:left;
+		background:#fff;
+		color:#000;
+		
+	}
+	.superinobox4l{
+		font-size:16px;
+		margin:15px 0;
+		
+		
+	}
+	
+    </style>
+</head>
+<body>
+	<div id="main" >
+		<div class="superino">
+			<div class="superinobox1">
+			
+				<div class="superinobox1l">营业时间：</div>
+				<div id="businesstime" class="superinobox1m"></div>
+			
+			</div>
+			<div class="superinobox1">
+				<div class="superinobox1l">联系电话：</div>
+				<div class="superinobox3m" id="tel"></div>
+				<div class="superinobox1r" onclick="call()"><img src="../../image/dh.png" width="40px" height="40px" /></div>
+			</div>
+			<div class="superinobox3">
+				<div class="superinobox1l">餐厅地址：</div>
+				<div class="superinobox3m" id="addresss"></div>
+				<div class="superinobox3r" onclick="openmap()"><img src="../../image/dt.png" width="40px" height="40px" /></div>
+			</div>
+			<div class="superinobox4">
+				<div class="superinobox4l">商家证照：</div>
+				<div id="box5img1" class="box5img"></div>
+			</div>
+				
+				
+				
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+	var params = api.pageParam;
+
+	$api.byId('businesstime').innerHTML	= params.bussinessHours;
+
+	$api.byId('tel').innerHTML	= params.contractPhone;
+	var address=params.province+params.city+params.county+params.town+params.address;
+	$api.byId('addresss').innerHTML	= address;
+	var box3hm=$("#addresss").height();
+	$(".superinobox3").height(box3hm+30);
+
+	if(box3hm<20){
+		$(".superinobox3").height(60);
+	}
+	
+//	$api.byId('scope').innerHTML = params.businessscope;
+//	var box4hm=$("#scope").height();
+//	$(".superinobox4").height(box4hm+30);
+//
+//	if(0<box4hm<20 && box4hm==0 ){
+//		$(".superinobox4").height(50);
+//	}
+//	
+						
+//						var add = document.getElementById("box5img");
+//						var bigImg = document.createElement("img");
+//						bigImg.style.height = "97px";
+//						bigImg.style.width = "97px";
+//						bigImg.id="Img1";
+//						//cancelled by w.g 
+//						bigImg.src = "../../image/default.png";						
+//						bigImg.src = SERVER_URL + SERVER_ROOT_PATH + params.workpictureone;					
+//						//add by w.g end
+//						add.appendChild(bigImg);
+//	
+//						$("#Img1").click(function(){
+//							api.openWin({
+//								name: 'iconpreview',
+//								url: './icon_preview.html',
+//								pageParam:{
+//								'pageParam': params,
+//								'number': 1
+//								}
+//								});
+//					     })
+//
+//	
+	
+					var add1 = document.getElementById("box5img1");
+						var bigImg1 = document.createElement("img");
+						bigImg1.style.height = "300px";
+						bigImg1.style.width = "300px";
+						bigImg1.id="Img";
+						//cancelled by w.g 
+						bigImg1.src = "../../image/default.png";
+//						alert(params.licencepic);						
+						bigImg1.src = SERVER_URL + SERVER_ROOT_PATH + params.licencepic;					
+						//add by w.g end
+						add1.appendChild(bigImg1);
+						$("#Img").click(function(){
+								api.openWin({
+									name: 'iconpreview',
+									url: './icon_preview.html',
+									pageParam:{
+									'pageParam': params,
+									'number':0
+									}
+									});
+						     })
+	
+	
+//						var add2 = document.getElementById("box5img2");
+//						var bigImg2 = document.createElement("img");
+//						bigImg2.style.height = "97px";
+//						bigImg2.style.width = "97px";
+//						bigImg2.id="Img3";
+//						//cancelled by w.g 
+//						bigImg2.src = "../../image/default.png";						
+//						bigImg2.src = SERVER_URL + SERVER_ROOT_PATH + params.workpicturethree;					
+//						//add by w.g end
+//						add2.appendChild(bigImg2);
+//						$("#Img3").click(function(){
+//								api.openWin({
+//									name: 'iconpreview',
+//									url: './icon_preview.html',
+//									pageParam:{
+//									'pageParam': params,
+//									'number': 3
+//									}
+//									});
+//						     })
+//	
+	};
+	function openmap(){
+		var params = api.pageParam;
+		api.openWin({
+	            name: 'restaurantMap_windows',
+	            url: './restaurantMap_windows.html',
+	            pageParam : params
+            });	
+	}
+	function call(){
+		var params = api.pageParam;
+		var phone = params.contractPhone;
+		api.call({
+		    type: 'tel_prompt',
+		    number: phone
+		});
+	}
+</script>
+<script type="text/javascript">
+	$(function(){
+		var x=document.documentElement.clientWidth;
+		var imgx=(x-372)*0.5;
+		var img5=(x-360)*0.5;
+		$(".superinobox1").width(x-40);
+		$(".superinobox3").width(x-40);
+		$(".superinobox4").width(x-60);
+		$(".superinobox5").width(x-80);
+		$(".superinobox5m").width(x-80);
+		
+		$(".superinobox1m").width(x-140);
+		$(".superinobox4m").width(x-140);
+		$(".superinobox3m").width(x-190);
+		$(".box5img").css("margin-left",img5);
+		if(imgx>0){
+			$(".imgjg").width(imgx);
+		}else{
+			$(".imgjg").width(10);
+			$(".superinobox5").height(272);
+		}
+		
+		
+	});
+</script>
+</html>

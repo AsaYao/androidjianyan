@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>详细信息</title>
+<link rel="stylesheet" type="text/css" href="../../css/info/percencss.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/info/basiccss.css"/>
+</head>
+
+<body>
+	<div class="boxk"></div>
+	<div class="cenb">
+		<div class="cenbtext1">真实姓名</div>
+		<div class="cenbright1"><span>未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">身份证</div>
+		<div class="cenbright1"><span>未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">工作单位</div>
+		<div class="cenbright1"><span>未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">家庭住址</div>
+		<div class="cenbright1"><span>未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="bk"></div>
+	<div class="basicbc"><img src="../../image/userInfo/pro_bc.png" /></div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var imgw=widthb-20;
+		var imgh=imgw*120/1034;
+		var ml=(widthb-imgw)/2;
+		var basicz=(widthb*0.5-100)/2;
+		
+		$(document).ready(function(){
+			$(".basicbc").css("margin-left",ml);
+			$(".basicbc img").width(imgw);
+			$(".basicbc img").height(imgh);
+			$(".basicz").css("margin-left",basicz);
+  		});
+</script>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>食品录入</title>
+		<link rel="stylesheet" type="text/css" href="../../css/apimy.css"/>
+		<style>
+			body {
+				font-family: sans-serif;
+				height: 100%;
+				/*background-color: #F3F6F5;*/
+				background-color: #FFFFFF;
+			}
+	
+			.table_border {
+				/*border: solid 1px #B4B4B4;
+				 border-collapse: collapse;*/
+				width: 100%;
+			}
+			.table_border tr th {
+				/*background: url("../../images/gray/bg_table_th.gif") repeat;*/
+				padding-left: 14px;
+				height: 27px;
+				border-bottom: solid 1px #B4B4B4;
+			}
+			.table_border tr {
+				height: 45px;
+				padding: 4px;
+				padding-left: 14px;
+				border-bottom: solid 1px #B4B4B4;
+			}
+			.table_border td {
+				height: 40px;
+				padding: 4px;
+				padding-left: 14px;
+			}
+			.input_text_readonly {
+				width: 95%;
+				font-size: 11pt;
+				border: 0
+			}
+			.input_text {
+				/*background-color: #F3F6F5;*/
+				font-family: sans-serif;
+				width: 95%;
+				font-size: 11pt;
+				height: 30px;
+				outline: none;
+				border: 1 solid black;
+				border-radius: 5px;
+			}
+			
+			.arrowright {
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 0px;
+				height: 40px;
+			}
+			.arrowline {
+			
+				margin: 0;
+				padding: 0px;
+				width: 100%;
+				/*background-color: #00a0e9;*/
+				/*color: #FFFFFF;*/
+				text-align: center;
+				line-height: 40px;
+				font-size: 10pt;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+			<table class="table_border">
+				<tr width='100%' >
+					<td  ><div id = "first" style="float:left" onclick="preAndDelIcon()"></div>
+					<div id ="picaddbtn" style="float:left" ><img src="../../image/scancode/pic_add.png" height="60px" width="60px" onclick="addPic()"/>
+					</div></td>
+					<td width='75%'>
+					<input type="text" placeholder="图片上传，最多上传两张(必填)" readonly='true'  style="width:95%;border:0;font-size:11pt;"/>
+					</td>
+				</tr>
+				<tr style="height:10px;padding:0px;background:#F3F6F5">
+					<td style="height:30px;padding:0px"></td><td style="height:5px;padding:0px"></td>
+				</tr>
+				<tr>
+					<td>企业名称</td>
+					<td>
+					<input type="text" placeholder="请输入企业名称" class="input_text" id = "name" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>产品名称</td>
+					<td>
+					<input type="text" placeholder="请输入产品名称" class="input_text" id = "name" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>一维码</td>
+					<td>
+					<input type="text"  id = "scancode" value="" readonly ='true' style="width:95%;border:0;font-size:11pt;"/>
+					</td>
+				</tr>
+				<tr>
+					<td>品  牌</td>
+					<td>
+					<input type="text" placeholder="请输入食品品牌" class="input_text" id = "name" value="" />
+					</td>
+				</tr>
+				<tr style="height:10px;padding:0px;background:#F3F6F5">
+					<td style="height:30px;padding:0px"></td><td style="height:5px;padding:0px"></td>
+				</tr>
+				<tr width="100%">
+					<td>产品类别</td>
+					<td width="75%">
+					<div onclick='choiceType()' class='arrowline' >
+						<div  class='arrowright'><img src='../../image/inputfood/arrow_circle_right.png' width="60px" height="40px"/>
+						</div>
+						<p id="type">&nbsp;</p>
+					</div>
+					</td>
+				</tr>
+				<tr style="height:10px;padding:0px;background:#F3F6F5">
+					<td style="height:30px;padding:0px"></td><td style="height:5px;padding:0px"></td>
+				</tr>
+				<tr width="100%">
+					<td>生产地址</td>
+					<td width="75%">
+						<div onclick='choiceMadein()' id = 'madein' class='arrowline'>
+							<div  class='arrowright'><img src='../../image/inputfood/arrow_circle_right.png' width="60px" height="40px"/>
+							</div>
+							&nbsp;
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript">
+				function backTo(){
+		api.closeWin({
+		});
+		}
+		function backToHome(){
+		api.closeToWin({
+		name: 'root'
+		});
+		}
+		function addPic() {
+		api.openWin({
+		name: 'iconinput',
+		url: './icons/icon_input.html'
+		});
+		}
+		function preAndDelIcon() {
+		api.openWin({
+		name: 'iconpreview',
+		url: './icons/icon_preview.html',
+		pageParam:{'pics':pics}
+		});
+		}
+		function choiceMadein() {
+		api.openWin({
+		name: 'choiceMadein',
+		url: './madein/listmadein.html'
+		});
+		}
+		function choiceType() {
+		api.openWin({
+		name: 'choiceType',
+		url: './type/listtype.html'
+		});
+		}
+		var madeins;
+		function changeMadein(ret) {
+		madrins = ret;
+		//			alert("event" + JSON.stringify(ret));
+		var str='';
+		for (var i = 0;i < 4; i ++) {
+		str += ret.data[i].title + ' ';
+		}
+		$api.byId('madein').innerHTML = str;
+		}
+		function changeType (ret) {
+		var str='';
+		for (var i = 0;i < 2; i ++) {
+		str += ret.data[i].title;
+		if (i < 1) {
+		str += ">";
+		}
+		}
+		$api.byId('type').innerHTML = str;
+		}
+		var pics = new Array(2);
+		pics[0] = null;
+		pics[1] = null;
+		function changeIcon (ret) {
+		//		alert(JSON.stringify(ret));
+		for (var i = 0;i < 2; i ++) {
+		if (pics[i] == null) {
+		pics[i] = ret.savePath;
+		break;
+		}
+		}
+		showIcon();
+		//			var allchild = document.getElementById("first").childNodes;
+		//			for (var i = 0; i < allchild.length; i ++) {
+		//				var chld = allchild[i];
+		//				document.getElementById("first").removeChild(chld);
+		//			}
+		//			for (var i = 0; i <2; i ++) {
+		//				if (pics[i] != null) {
+		//					var add =document.getElementById("first");
+		//					var bigImg = document.createElement("img");
+		//					bigImg.src= pics[i];
+		//					bigImg.style.width = "60px";
+		//					bigImg.style.height = "60px";
+		//			        add.appendChild(bigImg);
+		//			  	}
+		//			}
+		//
+		//			if (pics[1] != null) {
+		//				var add =document.getElementById("picaddbtn");
+		//				add.style.display = "none";
+		//			}  else {
+		//				var add = document.getElementById("picaddbtn");
+		//				add.style.display = "";
+		//			}
+		}
+		function delIcon(arr) {
+		//			alert(JSON.stringify(arr));
+		for (var i = 0; i < 2; i ++) {
+		if(arr.delarr[i]) {
+		pics[i] = null;
+		//					alert(JSON.stringify(pics[i]));
+		}
+		}
+		showIcon();
+		}
+		function showIcon() {
+		var allchild = document.getElementById("first").childNodes;
+		//			alert(allchild.length);
+		var len = allchild.length;
+		for (var i = 0; i < len; i ++) {
+		var chld = allchild[0];
+		document.getElementById("first").removeChild(chld);
+		//				alert("remove" + chld + "i=" + i);
+		}
+		for (var i = 0; i <2; i ++) {
+		if (pics[i] != null) {
+		var add =document.getElementById("first");
+		var bigImg = document.createElement("img");
+		bigImg.src= pics[i];
+		bigImg.style.width = "60px";
+		bigImg.style.height = "60px";
+		add.appendChild(bigImg);
+		}
+		}
+		if (pics[1] != null && pics[0] !=null) {
+		var add =document.getElementById("picaddbtn");
+		add.style.display = "none";
+		}  else {
+		var add = document.getElementById("picaddbtn");
+		add.style.display = "";
+		}
+		}
+		apiready = function() {
+		api.addEventListener({
+		        	name: 'changeIcon'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeIcon(ret.value);
+		        }
+		        });
+		api.addEventListener({
+		        	name: 'deleteIcon'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	delIcon(ret.value);
+		        }
+		        });
+		 api.addEventListener({
+		        	name: 'changeMadein'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeMadein(ret.value);
+		        }
+		        });
+		api.addEventListener({
+		        	name: 'changeType'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeType(ret.value);
+		        }
+		        });
+		var params = api.pageParam;
+		var code = $api.byId('scancode');
+		//			alert(params.productcode);
+		$api.val(code, params.productcode);
+		//			$api.append(code,'value = ' + params.productcode);
+		};
+	</script>
+</html>

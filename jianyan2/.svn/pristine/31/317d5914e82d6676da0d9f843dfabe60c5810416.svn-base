@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget id="A6994640485254" version="0.0.1"> 
+  <name>jianyan2</name>  
+  <description/>  
+  <author email="ygangw186@163.com" href="http://www.apicloud.com">wyg186</author>  
+  <content src="index.html"/>  
+  <preference name="pageBounce" value="false"/>  
+  <preference name="appBackground" value="rgba(0,0,0,0.0)"/>  
+  <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>  
+  <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>  
+  <preference name="hScrollBarEnabled" value="true"/>  
+  <preference name="vScrollBarEnabled" value="true"/>  
+  <preference name="autoLaunch" value="true"/>  
+  <preference name="fullScreen" value="false"/>  
+  <preference name="autoUpdate" value="true"/>  
+  <preference name="smartUpdate" value="false"/>  
+  <preference name="debug" value="false"/>  
+  <preference name="statusBarAppearance" value="false"/>  
+  <preference name="softInputMode" value="resize"/>  
+  <preference name="backgroundMode" value="location"/>  
+  <permission name="readPhoneState"/>  
+  <permission name="camera"/>  
+  <permission name="record"/>  
+  <permission name="location"/>  
+  <permission name="fileSystem"/>  
+  <permission name="internet"/>  
+  <permission name="bootCompleted"/>  
+  <permission name="hardware"/>  
+  <access origin="*"/>  
+  <feature name="bMap"> 
+    <param name="android_api_key" value="rHzqmUsUrxVrzFkXtXO9yKqb"/>  
+    <param name="ios_api_key" value="IMuosliw0L4vQ7jwkKLgPOSY"/> 
+  </feature>  
+  <feature name="qq"> 
+    <param name="urlScheme" value="tencent1105051647"/>  
+    <param name="apiKey" value="1105051647"/> 
+  </feature>  
+  <feature name="wx"> 
+    <param name="urlScheme" value="wx4868b35061f87885"/>  
+    <param name="apiKey" value="wx4868b35061f87885"/>  
+    <param name="apiSecret" value="64020361b8ec4c99936c0e3999a9f249"/> 
+  </feature> 
+</widget>

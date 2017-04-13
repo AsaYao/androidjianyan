@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>食品录入</title>
+		<link rel="stylesheet" type="text/css" href="../../css/apimy.css"/>
+		<style>
+			body {
+				font-family: sans-serif;
+				height: 100%;
+				background-color: #F3F6F5;
+				/*background-color: #FFFFFF;*/
+			}
+			.table_border {
+				/*border: solid 1px #B4B4B4;
+				 border-collapse: collapse;*/
+				width: 100%;
+				background-color: #FFFFFF;
+			}
+			.table_border tr th {
+				/*background: url("../../images/gray/bg_table_th.gif") repeat;*/
+				padding-left: 14px;
+				height: 27px;
+				border-bottom: solid 1px #B4B4B4;
+			}
+			.table_border tr {
+				height: 45px;
+				padding: 4px;
+				padding-left: 14px;
+				border-bottom: solid 1px #B4B4B4;
+			}
+			.table_border td {
+				height: 40px;
+				padding: 4px;
+				padding-left: 14px;
+			}
+			
+			
+			
+			
+			
+			
+			.table_noborder {
+				border: 0;
+				 border-collapse: collapse;
+				width: 100%;
+				background-color: #FFFFFF;
+			}
+			.table_noborder tr th {
+				/*background: url("../../images/gray/bg_table_th.gif") repeat;*/
+				padding-left: 14px;
+				height: 27px;
+				*border-bottom: 0;
+			}
+			.table_noborder tr {
+				height: 45px;
+				padding: 4px;
+				padding-left: 14px;
+				border-bottom: 0;
+			}
+			.table_noborder td {
+				height: 40px;
+				padding: 4px;
+				padding-left: 14px;
+			}
+			
+			
+			
+			
+			
+			
+			.input_text_readonly {
+				width: 95%;
+				font-size: 11pt;
+				border: 0
+			}
+			.input_text {
+				/*background-color: #F3F6F5;*/
+				font-family: sans-serif;
+				width: 95%;
+				font-size: 11pt;
+				height: 30px;
+				outline: none;
+				border: 1 solid black;
+				border-radius: 5px;
+			}
+			.arrowright {
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 0px;
+				height: 40px;
+			}
+			.arrowline {
+				margin: 0;
+				padding: 0px;
+				width: 100%;
+				/*background-color: #00a0e9;*/
+				/*color: #FFFFFF;*/
+				text-align: left;
+				line-height: 40px;
+				font-size: 10pt;
+			}
+			.BtnNext {
+				background: url('../../image/inputfood/btn_input_next.png');
+				background-repeat: no-repeat;
+				display: block;
+				color: white;
+				/*margin: 20px 30%;*/
+				position: absolute;
+				left: 50%;
+				margin-left: -62px;
+				margin-top: 20px;
+				text-align: center;
+				/*border-radius: 8px;*/
+				height: 50px;
+				width: 124px;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<table class="table_border">
+				<tr width='100%'>
+					<td colspan="2"><div id = "first" style="float:left" onclick="preAndDelIcon()"></div>
+					<div id ="picaddbtn" style="float:left;" >
+					<img id="image1" src="../../image/scancode/pic_add.png" height="60px" width="60px" onclick="addPic()"/>
+					</div>
+					
+					<div style="float:left;line-height: 60px;margin-left: 15px"><input type="text" placeholder="图片上传，最多2张" readonly='true'  style="width:95%;border:0;font-size:11pt;"/></div>
+					</td>
+				</tr>
+				<tr style="height:10px;padding:0px;background:#F3F6F5">
+					<td style="height:30px;padding:0px"></td><td style="height:5px;padding:0px"></td>
+				</tr>
+				<tr>
+					<td>企业名称</td>
+					<td width='75%'> 
+					<input type="text" placeholder="请入输入食品厂商名称" class="input_text" id = "enterpriseName" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>产品名称</td>
+					<td>
+					<input type="text" placeholder="请输入产品名称" maxlength="20" class="input_text" id = "productName" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>一维码</td>
+					<td>
+					<input type="text"  id = "scancode" value="" readonly ='true' style="width:95%;border:0;font-size:11pt;"/>
+					</td>
+				</tr>
+				<tr>
+					<td>品  牌</td>
+					<td>
+					<input type="text" placeholder="请输入食品品牌" maxlength="20" class="input_text" id = "brand" value="" />
+					</td>
+				</tr>
+				<tr style="height:10px;padding:0px;background:#F3F6F5">
+					<td style="height:30px;padding:0px"></td><td style="height:5px;padding:0px"></td>
+				</tr>
+				<tr width="100%">
+					<td>产品类别</td>
+					<td width="75%">
+					
+					<table class="table_noborder" onclick='choiceType()'><tr><td><div class='arrowline' >
+						
+						<p id="type" >
+							&nbsp;
+						</p>
+					</div></td><td align="right" width="60px" ><div class='arrowright'><img src='../../image/inputfood/arrow_circle_right.png' width="60px" height="40px"/>
+						</div>
+						</td></tr></table>
+					
+					</td>
+					
+				</tr>
+				<tr style="height:10px;padding:0px;background:#F3F6F5">
+					<td style="height:30px;padding:0px"></td><td style="height:5px;padding:0px"></td>
+				</tr>
+				<tr width="100%">
+					<td>生产地址</td>
+					<td width="75%">
+					<table class="table_noborder" onclick='choiceMadein()'><tr><td><div class='arrowline'>
+						
+						<p id = 'madein'>
+							&nbsp;
+						</p>
+					</div></td> <td><div class='arrowright'><img src='../../image/inputfood/arrow_circle_right.png' width="60px" height="40px"/>
+						</div></td></tr></table>
+					</td>
+					
+				</tr>
+			</table>
+			<div class='BtnNext' onclick="checkToNext()">
+				下一步
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src = "../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		var serverPics = new Array(2);
+		serverPics[0] = null;
+		serverPics[1] = null;
+		function backTo(){
+		api.closeWin({
+		});
+		}
+		function backToHome(){
+			api.closeToWin({
+				name: 'root'
+			});
+		}
+		function addPic() {
+			api.openWin({
+				name: 'iconinput',
+				url: './icons/icon_input.html'
+			});
+		}
+		function preAndDelIcon() {
+			api.openWin({
+				name: 'iconpreview',
+				url: './icons/icon_preview.html',
+				pageParam:{'pics':pics}
+			});
+		}
+		function choiceMadein() {
+		api.openWin({
+		name: 'choiceMadein',
+		url: './madein/listmadein.html'
+		});
+		}
+		function choiceType() {
+		api.openWin({
+		name: 'choiceType',
+		url: './type/listtype.html'
+		});
+		}
+		var madeins = null;
+		function changeMadein(ret) {
+		madeins = ret;
+		//			alert("event" + JSON.stringify(ret));
+		var str='';
+		for (var i = 0;i < 4; i ++) {
+		str += ret.data[i].title + ' ';
+		if(i<3){
+			str+='>';
+		}
+		}
+		$api.byId('madein').innerHTML = str;
+		}
+		
+		var types = null;
+		
+		function changeType (ret) {
+		types = ret;
+		var str='';
+		for (var i = 0;i < 2; i ++) {
+		str += ret.data[i].title;
+		if (i < 1) {
+		str += ">";
+		}
+		}
+		$api.byId('type').innerHTML = str;
+		}
+		var pics = new Array(2);
+		pics[0] = null;
+		pics[1] = null;
+		function changeIcon (ret) {
+		//		alert(JSON.stringify(ret));
+		for (var i = 0;i < 2; i ++) {
+		if (pics[i] == null) {
+		pics[i] = ret.savePath;
+		break;
+		}
+		}
+		showIcon();
+
+		}
+		function delIcon(arr) {
+//					alert(JSON.stringify(arr));
+		for (var i = 0; i < 2; i ++) {
+		if(arr.delarr[i]) {
+		pics[i] = null;
+		//					alert(JSON.stringify(pics[i]));
+		}
+		}
+		//删除一张后， 再次删除的时候，
+//		if (arr.delarr[0] && pics[1] != null) {
+//			pics[1] = null;
+//		}
+		if (pics[0] == null && pics[1] != null) {
+			pics[0] = pics[1];
+			pics[1] = null;
+		}
+
+		showIcon();
+		}
+		function showIcon() {
+			var allchild = document.getElementById("first").childNodes;
+			var len = allchild.length;
+			for (var i = 0; i < len; i ++) {
+				var chld = allchild[0];
+				document.getElementById("first").removeChild(chld);
+				//				alert("remove" + chld + "i=" + i);
+			}
+			for (var i = 0; i <2; i ++) {
+				if (pics[i] != null) {
+					var add =document.getElementById("first");
+					var bigImg = document.createElement("img");
+					bigImg.src= pics[i];
+					bigImg.style.width = "60px";
+					bigImg.style.height = "60px";
+					add.appendChild(bigImg);
+				}
+			}
+			if (pics[1] != null && pics[0] !=null) {
+				var add =document.getElementById("picaddbtn");
+				add.style.display = "none";
+			}  else {
+				var add = document.getElementById("picaddbtn");
+				add.style.display = "";
+			}
+		}
+		
+		
+		
+		function checkToNext() {
+			if (pics[0] == null && pics[1] == null) {
+				alert("请输入商品图片");
+				return;
+			} 
+			
+			var enterpriseName =  document.getElementById('enterpriseName').value;
+			var productName = document.getElementById('productName').value;
+			var brand = document.getElementById('brand').value;
+			var fontnumber = enterpriseName.length;
+			
+			
+			if (enterpriseName == '') {
+				alert('请输入企业名称');
+				return;
+			}
+			
+			if(fontnumber<3 || fontnumber>30){
+				alert('企业名称长度在3-30之间');
+				return;
+			}
+			if (productName == '') {
+				alert('请输入产品名称');
+				return;
+			}
+			
+			if (brand == '') {
+				alert('请输入品牌');
+				return;
+			}
+			
+			
+//			if (types == null) {
+//				alert('请选择产品类别');
+//				return;
+//			}
+//			if (madeins == null) {
+//				alert('请选择生产地址');
+//				return;
+//			}
+			//alert ("ok,Let's go!" + 'types' + JSON.stringify(types) + 'madeins' + JSON.stringify(madeins));
+			var params = api.pageParam;
+			
+			api.openWin({
+	            name: 'foodinputstep2',
+	            url: './food_input_windows2.html',
+	            pageParam:{'productcode':params.productcode,
+	            			'pics':pics,
+	            			'enterpriseName':enterpriseName,
+	            			'productName':productName,
+	            			'brand':brand,
+	            			'types':types,
+	            			'madeins':madeins,
+	            			'energyPerVal':params.energyPerVal,
+	            			'energyNrvVal':params.energyNrvVal,
+	            			'proteinPerVal':params.proteinPerVal,
+	            			'proteinNrvVal':params.proteinNrvVal,
+	            			'fatPerVal':params.fatPerVal,
+	            			'fatNrvVal':params.fatNrvVal,
+	            			'carbohydratePerVal':params.carbohydratePerVal,
+	            			'carbohydrateNrvVal':params.carbohydrateNrvVal,
+	            			'sodiumPerVal':params.sodiumPerVal,
+	            			'sodiumNrvVal':params.sodiumNrvVal
+	            			},
+	            
+            });
+		}
+		
+		
+		apiready = function() {
+			var params = api.pageParam;
+//			alert(JSON.stringify(params));
+			var add = $api.byId('first');
+			if(params.thumbnailPath!=null&&params.thumbnailPath!=''){
+				var src= SERVER_URL + SERVER_ROOT_PATH+params.thumbnailPath;
+				pics[0] = src;
+				$api.append(add,'<img src="'+src+'" width="60px" height = "60px" />');
+			}
+			if(params.compositionPath!=null&&params.compositionPath!=''){
+				src= SERVER_URL + SERVER_ROOT_PATH+paramscompositionPath;
+				pics[1]=src;
+				$api.append(add,'<img src="'+src+'" width="60px" height = "60px" />');
+			}
+			
+//			$("#enterpriseName").attr("placeholder",params.enterpriseName);
+			$("#enterpriseName").attr("value",params.enterpriseName);
+			$("#productName").attr("value",params.productName);
+			$api.byId('scancode').value=params.barcodeVal;
+			$("#brand").attr("value",params.brand);
+			var productType = $api.byId('type');
+			$api.text(productType, params.productType);
+			var address = $api.byId('madein');
+			var str = params.province + '>' + params.city + '>' + params.country;
+			$api.text(address, str);
+			api.addEventListener({
+		        name: 'changeIcon'
+		    }, function(ret){
+		        if(ret && ret.value){
+		        	changeIcon(ret.value);
+		        }
+		    });
+			api.addEventListener({
+		        	name: 'deleteIcon'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	delIcon(ret.value);
+		        }
+		        });
+		 	api.addEventListener({
+		        	name: 'changeMadein'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeMadein(ret.value);
+		        }
+		        });
+			api.addEventListener({
+		        	name: 'changeType'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeType(ret.value);
+		        }
+		        });
+			api.addEventListener({
+	            name:'saveEvent'
+            },function(ret,err){
+            	checkToSave();
+            });
+		};
+		
+		
+		
+		
+		
+		//图片添加
+		
+		function showConfirm() {
+			api.confirm({
+				tittle : '添加图片',
+				msg : '请选择图片来源',
+				buttons : ['拍摄', '相册', '取消']
+			}, function(ret, err) {
+				switch (ret.buttonIndex) {
+					case 1:
+//						getPictureAndClip('camera');
+						api.openWin({
+								name: 'iconinput',
+								url: './icons/icon_input.html',
+								pageParam:{'type':'camera'}
+								});
+						break;
+					case 2:
+//						getPictureAndClip('album');
+						api.openWin({
+								name: 'iconinput',
+								url: './icons/icon_input.html',
+								pageParam:{'type':'album'}
+								});
+						break;
+					case 3:
+//						backTo();
+						break;
+					default:
+						backTo();
+						break;
+				}
+			});
+		}
+		
+		
+		function getPictureAndClip(sourceType) {
+			api.getPicture({
+				sourceType : sourceType,
+				encodingType : 'jpg',
+				mediaValue : 'pic',
+				destinationType : 'url',
+				allowEdit : true,
+				quality : 100,
+				//				targetWidth : 100,
+				//				targetHeight : 100,
+				saveToPhotoAlbum : false
+			}, function(ret, err) {
+				if (ret) {
+					var imageClip = api.require('imageClip');
+					imageClip.open({
+						path : ret.data,
+						x : 0,
+						y : 50,
+						h : api.winHeight - 50,
+						w : api.winWidth,
+						clipRect : {
+							x : api.winWidth / 2 - 100,
+							y : api.winHeight / 2 - 125,
+							w : 200,
+							h : 200,
+							fixation : true
+						}
+					}, function(ret, err) {
+//						alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+					});
+//					api.alert({
+//						msg : ret.data
+//					});
+				} else {
+					api.alert({
+						msg : err.msg
+					});
+				}
+			});
+		}
+		function checkToSave(){
+			if (pics[0] == null && pics[1] == null) {
+				alert("请输入商品图片");
+				return;
+			} 
+			
+			var enterpriseName =  document.getElementById('enterpriseName').value;
+			var productName = document.getElementById('productName').value;
+			var brand = document.getElementById('brand').value;
+			var fontnumber = enterpriseName.length;
+			
+			
+			if (enterpriseName == '') {
+				alert('请输入企业名称');
+				return;
+			}
+			
+			if(fontnumber<3 || fontnumber>30){
+				alert('企业名称长度在3-30之间');
+				return;
+			}
+			if (productName == '') {
+				alert('请输入产品名称');
+				return;
+			}
+			
+			if (brand == '') {
+				alert('请输入品牌');
+				return;
+			}
+			uploadFile1(pics[0],pics[1]);
+		}
+		function uploadFile1(filePath,filePath2) {
+			
+			api.showProgress({
+				title:'图片1上传',
+				text:'正在提交图片1...',
+            });
+            
+			api.ajax({
+						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!uploadFile.action',
+						method : 'post',
+						timeout : 300,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							
+							//files:{'uploadFile': 'widget://icon/icon150x150.png'}
+							files : {
+//								'uploadFile' : 'fs://picture/p-df80540d.jpg'
+								'uploadFile' : filePath
+							}
+						}
+					}, function(ret, err) {
+//						alert(JSON.stringify(ret));
+						if (!varIsNull(err)) {
+							alert(err.msg);
+						} else {
+//						alert('severPath' + ret.data.filePath);
+							serverPics[0] = ret.data.filePath;
+							uploadFile2(filePath2);
+						}
+						
+						api.hideProgress();
+						
+					});
+				
+		}
+		
+		
+		function uploadFile2(filePath) {
+			if (filePath == null) {
+				submitProductToServer();
+				return;
+			}
+			var severPath = null;
+			api.showProgress({
+				title:'图片2上传',
+				text:'正在提交图片2...',
+            });
+            
+			api.ajax({
+						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!uploadFile.action',
+						method : 'post',
+						timeout : 300,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							
+							//files:{'uploadFile': 'widget://icon/icon150x150.png'}
+							files : {
+//								'uploadFile' : 'fs://picture/p-df80540d.jpg'
+								'uploadFile' : filePath
+							}
+						}
+					}, function(ret, err) {
+//						alert(JSON.stringify(ret));
+						if (!varIsNull(err)) {
+							alert(err.msg);
+						} else {
+							serverPics[1] = ret.data.filePath;
+							submitProductToServer();
+						}
+//						
+						api.hideProgress();
+					});
+				return severPath;
+		}
+		function submitProductToServer() {
+
+			var params = api.pageParam;
+			var enterpriseName = $("#enterpriseName").val();
+			var productName = $("#productName").val();
+			var brand = $("#brand").val();
+			var enterpriseType = null;
+			var productType = null;
+			if(types!=null){
+				enterpriseType = types.data[0].uid;
+				productType = types.data[1].uid;
+			}
+			var province = null;
+			var city = null;
+			var country = null;
+			var town = null;
+			if(madeins!=null){
+				province = madeins.data[0].uid;
+				city = madeins.data[1].uid;
+				country = madeins.data[2].uid;
+				town = madeins.data[3].uid;
+			}
+			var paramsa = {
+								'enterpriseName':enterpriseName,
+								'barcodeVal':params.barcodeVal,
+								'enterpriseType':enterpriseType,
+								'productType':productType,
+								'productName':productName,
+								'brand':brand,
+								'provinceId':province,
+								'cityId':city,
+								'countyId':country,
+								'townId':town,
+								'address':'',
+								'filePath1':serverPics[0] == null ? '':serverPics[0]  ,
+								'filePath2':serverPics[1] == null ? '':serverPics[1] 
+							};
+			api.ajax({
+						url : SERVER_URL + '/salt_reduction/common/foodsNrvAction!saveEditFoodsNrv.action',
+						method : 'post',
+						timeout : 10,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							values:paramsa
+						}
+					}, function(ret, err) {
+						if (!varIsNull(err)) {
+							alert(err.msg);
+						} else {
+							api.openWin({
+	                            name: 'inputsuccess',
+	                            url: './food_input_success_windows.html'
+                            });
+						}
+						api.hideProgress();
+					});
+			
+		}
+	</script>
+</html>

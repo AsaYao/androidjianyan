@@ -1,0 +1,34 @@
+
+    .qiushi-tabBar{
+        height: 48px;
+        background-color: #CDCDCD;
+        position: relative;
+		text-align: center;
+    }
+    .qiushi-tabBar .tabBar-btn{
+        width: 33%;
+        height: 47px;
+        border-bottom: 1px solid #CDCDCD;
+        font-size: 0.8em;
+        line-height: 48px;
+        color: #63625E;
+    }
+    .qiushi-tabBar .tabBar-btn:active,.qiushi-tabBar .tabBar-btn.tap-active{
+        background-color: #E5E5E5;
+        color: #72716E;
+    }
+    .qiushi-tabBar .tabBar-btn.active{
+        color: #008000;
+    }
+    .qiushi-tabBar .tabBar-bar{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 33%;
+        height: 4px;
+        background-color: #008000;
+        -webkit-transition: all .25s ease;
+        transition: all .25s ease;
+    }
+
+   

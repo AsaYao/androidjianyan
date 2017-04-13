@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>减盐食品</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+<style>
+		body {
+				margin:0px;
+				padding:0px;
+			}
+			#wrap {
+			}
+			#header {
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				width: 100%;
+				height: 45px;
+				background: url(../../image/detailsfood/background.png);
+				background-repeat: repeat-x;
+			}
+			 .menu {
+				width: 100%;
+			}
+			.menuback {
+				float:left;
+				margin:6px 0px 0px 10px;
+				
+			}
+			.form{
+				float:left;
+			}
+			.input-wrap {
+				margin-top:10px;
+				border-radius:5px;
+				font-size:13px;
+				text-align:center;
+				display: -webkit-box;
+				background-color: rgba(255, 255, 255, 1);
+			}
+			.salt {
+				margin-left:8px;
+				margin-top:6px;
+				display: block;
+				width: 15px;
+				height: 15px;
+				background-size: 15px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url("../../image/main/navibar_search_icon_search.png");
+			}
+			.input-wrap input {
+			vertical-align:middle;
+				margin-top:4px;
+				font-size:15px;
+				margin-left:20px;
+				display: block;
+				-webkit-box-flex: 1;
+				background-color: rgba(255, 255, 255, 0);
+				outline: none;
+				height: 20px;
+				width:250px;
+			}
+			.menuhome{
+				float:right;
+				width:55px;
+				height:45px;
+				line-height: 45px;
+				text-align:center;
+			}	
+</style>
+
+		
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div id = "menu">
+					<div class="menuback"  onclick="backTo()">
+						<img src="../../image/statusbar/back.png" height="32px" width="32px" />
+					</div>
+
+					<div class="form">
+						<div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+							<i class="salt"></i>
+							<input type="text" placeholder="搜索减盐超市"  class="txt" id="searchtext" value=""/>
+						</div>
+					</div>
+					<div class="menuhome" onclick="search()">搜索</div>
+				</div>
+			</div>
+			<div id = "main"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+    <script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		var widthb=document.documentElement.clientWidth;
+		
+		$(document).ready(function(){
+			$(".input-wrap input").width(widthb-140);
+  		});
+	
+	
+		function backTo() {
+			api.closeWin({
+			});
+		}
+
+		function backToHome() {
+			api.closeToWin({
+				name : 'root'
+			});
+		}
+		
+		function search() {
+			var val = document.getElementById('searchtext').value;
+//			alert(val);
+			api.openWin({
+	            name: 'searchSupermarktet',
+	            url: 'search_list_win.html',
+	            pageParam:{key:val},
+            });
+		}
+
+		var main = $api.byId('main');
+		var mainPos = $api.offset(main);
+		var header = $api.byId('header');
+		var headerPos = $api.offset(header);
+		
+		apiready = function() {
+//			var params = api.pageParam;
+
+			api.openFrame({
+				name : 'lowSalt_fra1',
+				url : './lowSaltSupermarket_header.html',
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : 'auto',
+					h : 'auto'
+				},
+				bounces : false,
+				
+//				opaque : false,
+//				vScrollBarEnabled : false,
+				hScrollBarEnabled : false
+			});
+		};
+	</script>
+</html>

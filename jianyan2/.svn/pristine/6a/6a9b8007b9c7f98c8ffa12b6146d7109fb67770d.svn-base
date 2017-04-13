@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+		<title>积分明细</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/info/intercss.css"/>
+		<style>
+			html,body {
+				margin:0px;
+				padding:0px;
+				background:#f3f5f4;
+				height:100%;
+			}
+			/*#listview {
+			 width: 100%;
+			 }*/
+			#loadingmore {
+				vertical-align: middle;
+				text-align: center;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				/*margin-left: 5px;*/
+				/*margin-top:0;*/
+				padding: 0px;
+				/*border:1px solid black;*/
+				font-size: 14px;
+				display: none;
+			}
+			#loadingmore img {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				/*border:1px solid #9ea0a2;*/
+				vertical-align: middle;
+				margin: 0px auto;
+				margin-bottom: 3px;
+			}
+			#kb {
+				display: block;
+				width: 100%;
+				height: 30px;
+				background:#f3f5f4;
+			}
+			.help{
+				position: absolute;
+				right: 10%;
+				color:#00A0E9;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="integ">我的积分：<span id="mypoint">0</span></div>
+		<div id="mainb">
+		</div>
+		<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" > 加载中...
+		</div>
+		<div id='kb'></div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		//		是否 还有 内容 当status 为 1 时 没有
+		var hasMore = true;
+		//页码
+		var page_num = 1;
+		//最大页码
+		var max_page = 10;
+		//窗口是否为选择状态
+		var widthb=document.documentElement.clientWidth;
+		function positions(){
+			$(".texttop").width(widthb-90);
+			$(".textbot").width(widthb-90);
+  		}
+  		
+		apiready = function() {
+			showMyPoint();
+			$api.setStorage('checkOne',false);
+			api.setRefreshHeaderInfo({
+				visible : true,
+				loadingImg : 'widget://image/listview/default_ptr_flip.png',
+				bgColor : '#ccc',
+				textColor : '#fff',
+				textDown : '下拉刷新...',
+				textUp : '松开刷新...',
+				showTime : true
+			}, function(ret, err) {
+				//参数重置
+				var el = $api.byId('mainb');
+				$api.html(el,'');
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage(page_num);
+				api.refreshHeaderLoadDone();
+			});
+			getContentByPage(page_num);
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : 0 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				// 加载下一页的数据，然后向现有页面追加数据。
+				page_num = page_num + 1;
+				//		    alert(page_num);
+				getContentByPage(page_num);
+				
+			});
+			
+		}
+		
+		function hiddenLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "none";
+		}
+
+		function showLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "block";
+		}
+
+		function hiddenkb() {
+			var kbh = $api.byId('kb');
+			kbh.style.display = "none";
+		}
+
+		function showkb() {
+			var kbs = $api.byId('kb');
+			kbs.style.display = "block";
+		}
+
+		function getContentByPage(pagenum) {
+			if (!hasMore) {
+				//  		hiddenLoadMore();
+				/*lx添加*/
+				hiddenkb();
+				api.toast({
+					msg : '已经是最后了'
+				});
+				return;
+			}
+			if (pagenum > 1) {
+				/*lx添加*/
+				hiddenkb();
+				showLoadMore();
+				/*lx添加*/
+				showkb();
+			}
+			api.showProgress({
+			});
+			getFoods(pagenum);
+		}
+
+		function getFoods(pagenum) {
+			
+//			alert(JSON.stringify($api.getStorage("userInfo")));
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/pointHistoryAction!fetchMyPoint.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'userID' : $api.getStorage("userInfo").userID,
+						'currentPageIndex' : pagenum
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+				hiddenLoadMore();
+				if (processNetWorkErr(err)) {
+					return;
+				}
+				if (ret.status == 0) {
+					var el, div;
+					el = $api.byId('mainb');
+//					alert(JSON.stringify(ret.data));
+					var arr = ret.data;
+//					alert(JSON.stringify(arr));
+					for (var i = 0; i < arr.length; i++) {
+						var time = arr[i].addpoint;
+						if(time>0){
+							time = '+'+time;
+						}
+						div= '<div class="cenbi">'+
+								'<div class="cenbl">'+
+									'<div class="texttop">'+arr[i].description+'</div>'+
+									'<div class="textbot">'+arr[i].addtime+'</div>'+
+								'</div>'+
+								'<div class="cenbr">+10</div>'+
+							'</div>';
+//						alert(el.innerHTML);
+						$api.append(el, div);
+						positions();
+					}
+					
+					var el, div;
+					el = $api.byId('mainb');
+					div='<div class="bk">'+
+						'</div>';
+					$api.append(el, div);
+					
+				} else if (ret.status == 1) {
+					hasMore = false;
+//					api.toast({
+//						msg: ret.data.errorMsg,
+//						duration: 2000,
+//						location: 'bottom'
+//					});
+				} else {
+					alert(ret.data.errorMsg);
+				}
+				
+			});
+		}
+		function showMyPoint(){
+//			alert($api.getStorage("userInfo").userID);
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/pointHistoryAction!getMyPoint.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'userID' : $api.getStorage("userInfo").userID
+					}
+				}
+			}, function(ret, err) {
+				if(ret.status==0){
+					var point = ret.data.point;
+					$("#mypoint").text(point);
+				} else if (ret.status == 1) {
+					hasMore = false;
+					api.toast({
+						msg: ret.data.errorMsg,
+						duration: 2000,
+						location: 'bottom'
+					});
+				} else {
+					api.alert({
+						msg : err.msg
+					});
+				}
+			});
+		}
+	</script>
+</html>

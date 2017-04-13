@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索列表</title>
+<link rel="stylesheet" type="text/css" href="css/searchlist.css"/>
+</head>
+
+<body>
+<div class="searchbox">
+	<div class="searcht"><span>菜品</span></div>
+	<div class="mainb">
+		<div class="mainbox">
+			<div class="mainboxl">
+				<img src="img/tx.jpg" width="75px" height="75px">
+			</div>
+			<div class="mainboxr">
+				<div class="cpm">炸<span style="color:#36b160">薯</span>条</div>
+				<div class="jg"><span>￥16元</span>/份</div>		
+			</div>
+		</div>
+	</div>
+	<div class="mainb">
+		<div class="mainbox">
+			<div class="mainboxl">
+				<img src="img/tx.jpg" width="75px" height="75px">
+			</div>
+			<div class="mainboxr">
+				<div class="cpm">拔丝红<span style="color:#36b160">薯</span></div>
+				<div class="jg"><span>￥16元</span>/份</div>		
+			</div>
+		</div>
+	</div>
+	<div class="searchb"><img src="img/fdj.png" width="15px" height="15px">更多菜品</div>
+</div>
+<div class="boxk"></div>
+<div class="searchbox">
+	<div class="searcht"><span>餐厅</span></div>
+	<div class="mainb">
+		<div class="mainbox">
+			<div class="mainboxl">
+				<img src="img/tx.jpg" width="75px" height="75px">
+			</div>
+			<div class="mainboxr">
+				<h1>乐<span style="color:#36b160">薯</span>主题餐厅</h1>
+				<div class="mainboxrr">
+					<div class="mainboxrr1">营业时间</div>
+					<div class="mainboxf">&#58;</div>
+					<div class="mainboxrr2" >趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>			
+				</div>														
+				<div class="mainboxrr">
+					<div class="mainboxrr1">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+					<div class="mainboxf">&#58;</div>
+					<div class="mainboxrr2" >趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>
+				</div>																													
+			</div>
+		</div>
+	</div>&nbsp;
+	<div class="mainb">
+		<div class="mainbox">
+			<div class="mainboxl">
+				<img src="img/tx.jpg" width="75px" height="75px">
+			</div>
+			<div class="mainboxr">
+				<h1>奇<span style="color:#36b160">薯</span>巴士主题餐厅</h1>
+				<div class="mainboxrr">
+					<div class="mainboxrr1">营业时间</div>
+					<div class="mainboxf">&#58;</div>
+					<div class="mainboxrr2" >趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>			
+				</div>														
+				<div class="mainboxrr">
+					<div class="mainboxrr1">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+					<div class="mainboxf">&#58;</div>
+					<div class="mainboxrr2" >趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>
+				</div>			
+			</div>
+		</div>
+	</div>
+	<div class="searchb"><img src="img/fdj.png" width="15px" height="15px">更多菜品</div>
+</div>
+
+
+
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		$(document).ready(function(){
+			$(".mainbox").width(widthb);
+			$(".mainboxr").width(widthb-97);
+			$("h1").width(widthb-97);
+			$(".mainboxrr2").width(widthb-163);
+			
+  		});
+</script>
+</body>
+</html>

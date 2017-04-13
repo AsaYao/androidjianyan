@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>已经签到</title>
+<link rel="stylesheet" type="text/css" href="css/percencss.css"/>
+</head>
+
+<body>
+	<div class="topcen">
+		<div class="headpro"><img src="img/tx.jpg" width="80px" height="80px"></div>
+		<div class="topcentext">
+			<span>152****1250</span>
+			<div class="xtb"><img src="img/pro_hjf.png" width="15px" height="14px"><span>积分</span><span>100</span></div>
+		</div>
+		<div class="transbox">
+			<div class="qd1">已经签到<span>5</span>天</div>
+		</div>
+	</div>
+	<div class="boxk"></div>
+	<div class="ts">签到成功，获得<span>5</span>积分</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_xx.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的信息</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_jf.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的积分</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_input.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的录入</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_sm.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的扫码记录</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_pj.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的评价</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_share.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的分享</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbleft"><img src="img/pro_sz.png" width="20px" height="20px" /></div>
+		<div class="cenbtext">我的设置</div>
+		<div class="cenbright"><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="bk"></div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var heightb=widthb/2-20;
+		var x=(widthb-200)*0.5+20;
+		$(document).ready(function(){
+  			$(".topcen").height(heightb);
+			$(".ts").css("margin-left",x);
+  		});
+</script>
+</html>

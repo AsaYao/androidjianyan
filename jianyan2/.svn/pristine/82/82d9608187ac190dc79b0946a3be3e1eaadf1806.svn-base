@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+    <style>
+    	html, body {
+			 	/*background-color: #808080;*/
+			 /*	filter:alpha(Opacity=80);
+			 	-moz-opacity:0.5;
+			 	opacity: 0.5;*/
+			 	background-color: transparent;
+			 }
+			 .button_one {
+				position: absolute;
+				left: 70px;
+				top: 180px;
+				width: 240px;
+				height:190px;
+				background-color: #E8E8E8;
+			}
+			.button_two {
+				position: absolute;
+				right: 50px;
+				top: 20px;
+			}
+			
+    </style>
+</head>
+<body>
+	<div class="button_one" >
+			<div class="button_two">
+				<input type="button" onclick="gocancel()" value="取消"/>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+	var xp = document.documentElement.clientWidth;
+	var yp = document.documentElement.clientHeight;
+	var weights = 0;
+	var timer;
+	apiready = function(){
+		var UICustomPicker = api.require('UICustomPicker');
+			UICustomPicker.open({
+				rect : {
+					x : (xp - 180) / 2,
+					y : (yp - 200) / 2,
+					w : 120,
+					h : 130
+				},
+				styles : {
+					bg : 'rgba(0,0,0,0)',
+					normalColor : '#959595',
+					selectedColor : '#3685dd',
+					selectedSize : 25,
+					tagColor : '#3685dd',
+					tagSize : 20
+				},
+				data : [{
+					tag : 'kg',
+					scope : '25-300'
+				}],
+				rows : 3,
+				fixedOn : api.frameName,
+				fixed : true
+			}, function(ret, err) {
+				if (ret) {
+					weights = ret.data;
+					if(heights!=null){
+						makeSuer();
+					}
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+	};
+	function makeSuer(){
+		clearTimeout(timer) ;
+		timer = setTimeout("doIt();",2000)
+	}
+	function doIt(){
+		api.sendEvent({
+    		name: 'weightEvent',
+    		extra: {
+        		weight: weights
+    		}
+		});
+		var userInfo = $api.getStorage('userInfo');
+		userInfo.weight = weights;
+		$api.setStorage('userInfo',userInfo);
+		api.closeFrame({
+        });
+	}
+	function gocancel(){
+		api.closeFrame({
+        });
+	}
+</script>
+</html>

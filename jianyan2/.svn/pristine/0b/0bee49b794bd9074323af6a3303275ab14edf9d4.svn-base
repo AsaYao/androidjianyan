@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>同类低盐推荐——frame</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<style>
+			body{
+			padding:0px; 
+			margin:0px;
+		}
+			#con {
+				margin: 10px;
+				font-size: 24px;
+			}
+			ul {
+				margin-bottom: 10px;
+			}
+			ul li {
+				margin: 5px 10px;
+				padding: 5px;
+				color: #000;
+				word-wrap: break-word;
+			}
+			.item {
+				width: 100%;
+				line-height: 30px;
+				text-align: left;
+				font-size: 15px;
+				/*background-color: #CCCCCC;*/
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin: 0px;
+				border-bottom: 1px solid #000000;
+			}
+			.line {
+				width: 100%;
+				height: 1px;
+				border: 1px solid #000000;
+				padding: 0;
+			}
+			#listview {
+				width: 100%;
+			}
+			#loadingmore {
+				vertical-align: middle;
+				text-align: center;
+				height: 35px;
+				line-height: 35px;
+				/*margin-left: 5px;*/
+				/*margin-top:0;*/
+				padding: 0;
+				/*border:1px solid black;*/
+				font-size: 12px;
+				display: none;
+			}
+			#loadingmore img {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				/*border:1px solid #9ea0a2;*/
+				vertical-align: middle;
+				margin: 0px auto;
+				margin-bottom: 3px;
+			}
+			
+			.sallmain {
+				width: 100%;
+				height: 95px;
+				border-bottom: 2px solid #e5e5e5;
+			}
+			.sallmain:hover {
+				background: #f3f5f4;
+			}
+			.sallmainbox {
+				width: 97%;
+				height: 75px;
+				padding: 10px;
+			}
+			.sallmainboxl {
+				float: left;
+			}
+			.sallmainboxl img {
+				border-radius: 10px;
+			}
+			.sallmainboxr {
+				width: 70%;
+				float: left;
+				margin-left: 12px;
+			}
+			.sallmainboxr h1 {
+				width: 100%;
+				height: 17px;
+				font-size: 14px;
+				margin: 8px 0;
+				color: #000000;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.sallmainboxrr {
+				width: 100%;
+				height: 17px;
+				margin: 3px 0;
+				font-size: 12px;
+				line-height: 17px;
+			}
+			.sallmainboxf {
+				display: block;
+				float: left;
+				width: 12px;
+				height: 17px;
+				color: #7f7f80;
+			}
+			.sallmainboxrr1 {
+				float: left;
+				height: 17px;
+				width: 54px;
+				color: #7f7f80;
+			}
+			.sallmainboxrr2 {
+				float: left;
+				width: 70%;
+				height: 17px;
+				color: #7f7f80;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div class="topall">
+			共有<span id = 'totalnum'>0</span>家减盐超市出售此商品
+		</div>-->
+		<div id='listview'></div>
+		<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" > 加载中...
+		</div>
+		<!--<table id = "loadingmore" width="100%"><tr width = "100%" align="center"><td align="right"><img src ='../image/loading_more.gif' width="32px" height="32px" ></td>
+		<td align="left">加载中...</td></tr></table>-->
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		//是否 还有 内容 当status 为 1 时 没有
+		var hasMore = true;
+		//页码
+//		var page_num = 1;
+		//最大页码
+//		var max_page = 10;
+		//当前商品id，此值需要从上个页面传过来，
+//		var codevalue = 0;
+		var longitude=0;
+		var latitude=0;
+		apiready = function() {
+			//  	alert('ready');
+			codevalue = api.pageParam.productcode;
+			//  	alert(codevalue);
+			//Frame 中添加
+			api.setRefreshHeaderInfo({
+				visible : true,
+				loadingImg : 'widget://image/listview/default_ptr_flip.png',
+				bgColor : '#ccc',
+				textColor : '#fff',
+				textDown : '下拉刷新...',
+				textUp : '松开刷新...',
+				showTime : true
+			}, function(ret, err) {
+				//参数重置
+				var el = document.getElementById('listview');
+				el.innerHTML = "";
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage();
+				api.refreshHeaderLoadDone();
+			});
+			getContentByPage();
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : 0 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				// 加载下一页的数据，然后向现有页面追加数据。
+//				page_num = page_num + 1;
+				//		    alert(page_num);
+				getContentByPage();
+			});
+		};
+		function hiddenLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "none";
+		};
+		function showLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "block";
+		}
+
+		function getContentByPage() {
+			if (!hasMore) {
+				//  		hiddenLoadMore();
+				api.toast({
+					msg : '已经是最后了'
+				});
+				return;
+			}
+//			if (pagenum > 1) {
+//				showLoadMore();
+//			}
+			//  	alert("pagenum" +pagenum);
+			api.showProgress({
+			});
+				var map = api.require('bMap');
+					map.getLocation({
+					    accuracy: '100m',
+					    autoStop: true,
+					    filter: 1
+					}, function(ret, err){
+					    if(ret.status){
+					    
+						    latitude = ret.lat;
+							longitude= ret.lon;//得道的经纬度
+//							alert(latitud+"...."+longitutd);
+								api.ajax({
+									url : SERVER_URL+SERVER_ROOT_PATH+'/supermarket/supermarketAction!nearbySupermarket.action',
+									method : 'post',
+									timeout : 30,
+									data : {
+										values : {
+											'longitude' : longitude,
+											'latitude' : latitude,
+										}
+									}
+								}, function(ret, err) {
+									api.hideProgress();
+									//      	var loadmorediv = $api.byId('loadingmore');
+									//	    	loadmorediv.style.display = "none";
+									hiddenLoadMore();
+									//      	alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
+									if (processNetWorkErr(err)) {
+										return;
+									}
+									//coding...查询共有多少条数据
+					
+									if (ret.status == 0) {
+										//document.getElementById("totalnum").innerHTML = ret.totoalCount;
+										var el, div;
+										el = document.getElementById('listview');
+										//      		var arr = eval(ret.data.list);
+										var arr = ret.data;
+										//      		alert(JSON.stringify(arr));
+										//图标路径，如果服务器端没有图标，则显示默认图标
+										var iconpath = '';
+										for (var i = 0; i < arr.length; i++) {
+											//默认
+											iconpath = '../../image/default.png';
+											//如果服务器端有图标则显示服务器端的图标，没有验证服务器端的图标是否存在，只是根据值判定
+											if (!varIsNull(arr[i].picture)) {
+												iconpath = SERVER_URL+SERVER_ROOT_PATH+arr[i].picture;
+											}
+											div = document.createElement('div');
+											//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+											
+											//获得手机屏幕的宽度
+							            	var widthmore=document.documentElement.clientWidth;
+							            	//给各个值确定宽度，以保证可以在页面上饱满显示
+							            	var widthmainbox=widthmore-20;
+							            	var widthmainboxr=widthmore-107;
+							            	var widthh=widthmore-107;
+							            	var widthmainboxrr2=widthmore-173;
+											
+											
+											
+											div.innerHTML=
+														'<div class="sallmain" onclick="selectItem(this,\''+arr[i].gid+'\',\''+arr[i].name+'\',\''+arr[i].bussinessHours+'\',\''+arr[i].contractPhone+'\',\''+arr[i].province+'\',\''+arr[i].city+'\',\''+arr[i].county+'\',\''+arr[i].town+'\',\''+arr[i].address+'\',\''+arr[i].businessscope+'\',\''+arr[i].workpictureone+'\',\''+arr[i].workpicturetwo+'\',\''+arr[i].workpicturethree+'\',\''+arr[i].longitude+'\',\''+arr[i].latitude+'\')">' +
+												        '<div class="sallmainbox" style="width:'+widthmainbox+'px">' +
+												            '<div class="sallmainboxl">' +
+												                '<img src="' + iconpath + '" width="75px" height="75px">' +
+												            '</div>' +
+												            '<div class="sallmainboxr" style="width:'+widthmainboxr+'px">' +
+												                '<h1 style="width:'+widthh+'px">' +arr[i].name +'</h1>' +
+												                '<div class="sallmainboxrr">' +
+												                    '<div class="sallmainboxrr1">营业时间</div>' +
+												                    '<div class="sallmainboxf">&#58;</div>' +
+												                    '<div class="sallmainboxrr2" style="width:'+widthmainboxrr2+'px">' + arr[i].bussinessHours +'</div>' +
+												                '</div>' +
+												                '<div class="sallmainboxrr">' +
+												                    '<div class="sallmainboxrr1">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>' +
+												                    '<div class="sallmainboxf">&#58;</div>' +
+												                    '<div class="sallmainboxrr2" style="width:'+widthmainboxrr2+'px">' +arr[i].province + arr[i].city + arr[i].county + arr[i].town + arr[i].address + '</div>' +
+												                '</div>' +
+												            '</div>' +
+												        '</div>' +
+												    '</div>' 
+											//		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+											//		            alert(div);
+											el.appendChild(div, el.childNodes[0]);
+											//		            var line = document.createElement('div');
+											//		            line.innerHTML = '<div class = "line"><hr/></div>';
+											//		            el.appendChild(line,el.childNodes[0]);
+										}
+										hasMore = false;
+									} else if (ret.status == 1) {
+										//      		if (pagenum == 1) {
+										//      		document.getElementById("totalnum").innerHTML = ;
+										//      		}
+										alert("附近暂无超市录入");
+										hasMore = false;
+									} else {
+										//根据json规范进行的显示
+										alert(ret.data.errmsg);
+									}
+								});
+						}
+								})	
+		}
+
+		function openDetail(code) {
+			//  	alert('open' + code);
+			api.openWin({
+				name : 'fooddetailssamefood',
+				url : '../fooddetails/commodity_details_windows.html',
+				pageParam : {
+					productcode : code,
+					hiddentable : 'yes',
+				}
+			});
+		};
+		//跳转超市商品和超市信息页面businessscope
+		    function selectItem(obj,gid,name,bussinessHours,contractPhone,province,city,county,town,address,businessscope,workpictureone,workpicturetwo,workpicturethree,longitude,latitude){
+ 
+				api.openWin({
+			        name: 'LowSaltWindowsList',
+			        url: './supermarketList_windows.html',
+			        pageParam:{"gid":gid,
+			        			'name':name,
+			        			'bussinessHours':bussinessHours,
+			        			'contractPhone':contractPhone,
+			        			'province':province,
+			        			'city':city,
+			        			'county':county,
+			        			'town':town,
+			        			'address':address,
+			        			'businessscope':businessscope,
+			        			'workpictureone':workpictureone,
+			        			'workpicturetwo':workpicturetwo,
+			        			'workpicturethree':workpicturethree,
+			        			'longitude':longitude,
+			        			'latitude':latitude,
+			        			},
+       			 });
+
+    		}
+	</script>
+	<script type="text/javascript">
+		var x = document.documentElement.clientWidth;
+		$(function() {
+			$(".sallmainbox").width(x - 20);
+			$(".sallmainboxr").width(x - 107);
+			$("h1").width(x - 107);
+			$(".sallmainboxrr2").width(x - 173);
+		})
+	</script>
+</html>

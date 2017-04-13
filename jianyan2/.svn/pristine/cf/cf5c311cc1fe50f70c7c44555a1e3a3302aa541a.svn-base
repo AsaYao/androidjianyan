@@ -1,0 +1,110 @@
+
+body{
+	margin:0px;
+	padding:0px;
+	background:#f3f5f4;
+	height:100%;
+}
+
+
+.boxk{
+	widht:100%;
+	height:15px;
+	
+}
+.fooddt{
+	width:100%;
+	height:52px;
+	background:#ffffff;
+}
+.fooddtl{
+	float:left;
+	width:50%;
+	height:50px;
+	line-height:50px;
+	border-bottom:2px solid #e5e5e5;
+	text-align:center;
+}
+.xz{
+	color:#36b160;
+	border-bottom:2px solid #36b160;
+}
+
+.foodm{
+	width:100%;
+	height:100px;
+	background:#ffffff;
+}
+.foodml{
+	width:50%;
+	height:100px;
+	float:left;
+}
+
+.foodmly{
+	width:200px;
+	height:20px;
+	line-height:20px; 
+	margin:10px 0 0 30px;
+	font-size:12px;
+}
+.foodmly span{
+	color:#ff0000;
+}
+
+.foodmr{
+	width:50%;
+	height:100px;
+	float:left;
+}
+.foodmr img{
+	border-radius:10px;
+	margin:10px 0 0 50px;
+}
+
+.foodys{
+	width:100%;
+	height:200px;
+	background:#ffffff;
+}
+.foodyst{
+	width:100%;
+	height:40px;
+	border-bottom:2px solid #e5e5e5;
+	line-height:40px;
+}
+.foodyst span{
+	display:block;
+	width:80px;
+	height:40px;
+	line-height:40px;
+	border-left:5px solid #36b160;
+	text-align:right;
+}
+
+.foodys table{
+	border-collapse:collapse;
+	margin:20px 0 0 30px;
+}
+.foodys table td{
+	width:100px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+
+.foodjk{
+	width:100%;
+	height:100px;
+	background:#ffffff;
+}
+.foodjkt{
+	width:200px;
+	height:50px;
+	margin:20px 0 0 30px;
+}
+.foodcl{
+	width:100%;
+	height:60px;
+	background:#ffffff;
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+		<title>我的评价（商品）</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/evacss.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/foodevajg.css"/>
+		<style>
+			html,body {
+			margin:0px;
+			padding:0px;
+			background:#ffffff;
+			height:100%;
+			}
+			/*#listview {
+			 width: 100%;
+			 }*/
+			#loadingmore {
+				vertical-align: middle;
+				text-align: center;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				/*margin-left: 5px;*/
+				/*margin-top:0;*/
+				padding: 0px;
+				/*border:1px solid black;*/
+				font-size: 14px;
+				display: none;
+			}
+			#loadingmore img {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				/*border:1px solid #9ea0a2;*/
+				vertical-align: middle;
+				margin: 0px auto;
+				margin-bottom: 3px;
+			}
+			#kb {
+				display: block;
+				width: 100%;
+				height: 30px;
+			}
+			.wypj{
+				position:fixed;
+				
+			}
+			.wypj img{
+				margin-bottom:8px;
+			}
+	.sallsup{
+		width:100%;
+		height:40px;
+		background:#f3f5f4;
+		text-align:center;
+		line-height:40px;
+		padding: 0;
+		
+	}
+	.conn1{
+	width:100%;
+	height:auto;
+	border-top:0px solid #e5e5e5;
+	border-bottom:2px solid #e5e5e5;
+	padding-bottom:10px;
+}
+		</style>
+	</head>
+	<body>
+		<div class="sallsup">共有<span id = 'totalnum'>0</span>人评价此商品</div>
+		<div id="mainb">
+		</div>
+		<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" > 加载中...
+		</div>
+		<div id="kb"></div>
+		<div class="wypj" onclick="goRate()"><img src="../../image/userInfo/wypj.png" width="200"  height="42"/></div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	var x = document.documentElement.clientWidth;
+	xl=(x-200)*0.5;
+		$(function() {
+			$(".wypj").css("margin-left",xl);
+		})
+	
+		//		是否 还有 内容 当status 为 1 时 没有
+		var hasMore = true;
+		//页码
+		var page_num = 1;
+		//最大页码
+		var max_page = 10;
+		var israte;
+		var widthb=document.documentElement.clientWidth;
+		var pageIndex = 0;
+		function positions(){
+			$(".mainbox").width(widthb-20);
+			$(".mainboxr").width(widthb-107);
+			$("h1").width(widthb-123);
+			$(".mainboxrr2").width(widthb-173);
+			$(".connl span").width(widthb-230);
+			
+  		}
+  		
+		apiready = function() {
+//			alert(JSON.stringify(api.pageParam));
+			api.addEventListener({
+	            name:'fooddetails_reload'
+            },function(ret,err){
+            	var el = $api.byId('mainb');
+				$api.html(el,'');
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage(page_num);
+				api.refreshHeaderLoadDone();
+            });
+			$api.setStorage('checkOne',false);
+			api.setRefreshHeaderInfo({
+				visible : true,
+				loadingImg : 'widget://image/listview/default_ptr_flip.png',
+				bgColor : '#ccc',
+				textColor : '#fff',
+				textDown : '下拉刷新...',
+				textUp : '松开刷新...',
+				showTime : true
+			}, function(ret, err) {
+				//参数重置
+				var el = $api.byId('mainb');
+				$api.html(el,'');
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage(page_num);
+				api.refreshHeaderLoadDone();
+			});
+			getContentByPage(page_num);
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : 0 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				// 加载下一页的数据，然后向现有页面追加数据。
+				page_num = page_num + 1;
+				//		    alert(page_num);
+				getContentByPage(page_num);
+				
+			});
+		}
+		
+		function hiddenLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "none";
+		}
+
+		function showLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "block";
+		}
+
+		function hiddenkb() {
+			var kbh = $api.byId('kb');
+			kbh.style.display = "none";
+		}
+
+		function showkb() {
+			var kbs = $api.byId('kb');
+			kbs.style.display = "block";
+		}
+
+		function getContentByPage(pagenum) {
+			if (!hasMore) {
+				//  		hiddenLoadMore();
+				/*lx添加*/
+				hiddenkb();
+				api.toast({
+					msg : '已经是最后了'
+				});
+				return;
+			}
+			if (pagenum > 1) {
+				/*lx添加*/
+				hiddenkb();
+				showLoadMore();
+				/*lx添加*/
+				showkb();
+			}
+			api.showProgress({
+			});
+			getFoods(pagenum);
+		}
+		function getFoods(pagenum) {
+//			alert(api.pageParam.gid);
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/foodsRatingAction!fetchOneFoodRating.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'userId' : $api.getStorage("userInfo").userID,
+						'foodId':api.pageParam.gid,
+						'currentPageIndex' : pagenum
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+				hiddenLoadMore();
+				if (processNetWorkErr(err)) {
+					return;
+				}	
+				if (ret.status == 0) {
+					var el, div;
+					el = $api.byId('mainb');
+//					alert(JSON.stringify(ret.data));
+					var arr = ret.data;
+					$("#totalnum").text(arr.length);
+					for (var i = 0; i < arr.length; i++) {
+						var rate = "";
+						if(arr[i].status=='审核通过'){
+							rate = arr[i].rating;
+						}
+						var name = arr[i].productName;
+						if(name.length>7){
+							var firstt = name.substring(0,3);
+							var lastt = name.substring(name.length-4,name.length);
+							name = firstt+"****"+lastt;
+						}
+						div= '<div class="conn1">'+
+								'<div class="connt" onclick="selectItem(this,\''+arr[i].barcodeVal+'\',\''+arr[i].gid+'\')">'+
+									'<div class="connl"><span>'+name+'</span></div>'+
+									'<div class="connr">'+arr[i].ratetime+'</div>'+
+								'</div>'+
+								'<div class="connb">审核状态：'+arr[i].status+'</div>'+
+								'<div class="connb">商品口味：<span>'+arr[i].type+'</span></div>'+
+								'<div class="eva">'+rate+'</div>'+
+							'</div>';
+//						alert(el.innerHTML);
+						$api.append(el, div);
+						positions();
+					}
+					
+				} else if (ret.status == 1) {
+					hasMore = false;
+//					api.toast({
+//						msg: ret.data.errorMsg,
+//						duration: 2000,
+//						location: 'bottom'
+//					});
+
+				} else {
+					alert(ret.data.errorMsg);
+				}
+
+				isRated();
+				if(!israte){
+				//设置成不可用状态
+					//$(".wypj img").attr("src","../../image/userInfo/bkywypj.png");
+				}
+			});
+		}
+
+		
+		function goRate(){
+			israte&&api.openWin({
+	            name: 'myrate_windows',
+	            url: './myrate_windows.html',
+	            pageParam: api.pageParam
+            });
+		}
+		function isRated(){
+//			alert(JSON.stringify(api.pageParam));
+			api.ajax({
+			url:SERVER_URL+SERVER_ROOT_PATH+'/common/foodsRatingAction!isRatedFood.action',
+			method : 'post',
+			timeout : 30,
+			data : {
+				values:{
+					userId:$api.getStorage("userInfo").userID,
+					'foodId':api.pageParam.gid
+				}
+			}
+		},function(ret,err){
+			if(ret.status==0){
+				israte=ret.data.bool;
+				if(israte){
+					$(".wypj > img").attr("src","../../image/userInfo/wypj.png");
+				}else{
+					$(".wypj > img").attr("src","../../image/userInfo/bkywypj.png");
+				}
+			}else if(ret.status==1){
+				alert(ret.data.errorMsg);
+			}else{
+				api.alert({
+				msg : err.msg
+				});
+			}
+		});
+		}
+	</script>
+</html>

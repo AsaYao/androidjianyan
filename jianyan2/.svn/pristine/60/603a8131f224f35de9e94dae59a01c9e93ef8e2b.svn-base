@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>联想词搜索</title>
+<style type="text/css">
+body{
+	margin:0px;
+	padding:0px;
+	background:#f3f5f4;
+	height:100%;
+}
+.hotsearch{
+	width:92%;
+	margin:0 auto;
+}
+.hotbox{
+	width:100%;
+	height:30px;
+	line-height:30px;
+	margin:0 auto;
+	border-bottom:1px solid #e5e5e5;
+	color:#868686;
+	font-size:14px;
+}
+.hotbox span{
+	margin-left:10px;
+}
+</style>
+</head>
+<div class="hotsearch">
+	<div class="hotbox"><span>可比克薯片</span></div>
+	<div class="hotbox"><span>薯片百</span>事</div>
+	<div class="hotbox"><span>好丽友薯片</span></div>
+	<div class="hotbox"><span>雷士薯片</span></div>
+</div>
+<body>
+</body>
+</html>

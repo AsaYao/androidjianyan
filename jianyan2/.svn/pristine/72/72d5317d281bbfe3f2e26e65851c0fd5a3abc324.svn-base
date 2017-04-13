@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的录入 删除</title>
+<link rel="stylesheet" type="text/css" href="css/inputcss.css"/>
+</head>
+
+<body>
+<div class="mainp">
+	<div class="mainpl"><div class="mainz">已通过</div></div>
+	<div class="br"></div>
+	<div class="mainpm">待审核</div>
+	<div class="br"></div>
+	<div class="mainpr">未通过</div>
+</div>
+<div class="maincon">
+	<div class="conn">
+		<img id="imgId1" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(1)" />
+		<div class="connll">好丽友薯愿</div>
+		<div class="connr">2016-4-18</div>
+	</div>
+	<div class="conn">
+		<img id="imgId2" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(2)" />
+		<div class="connll">好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿</div>
+		<div class="connr">2016-4-18</div>
+	</div>
+	<div class="conn">
+		<img id="imgId3" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(3)" />
+		<div class="connll">好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿</div>
+		<div class="connr">2016-4-18</div>
+	</div>
+</div>
+
+<div class="mainb">
+	<div class="mainbl">全选</div>
+	<div class="br"></div>
+	<div class="mainbr" id="mainbR">删除</div>
+</div>
+
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+function changeImage(x)
+{
+	imgid=document.getElementById("imgId"+x);
+	if (imgid.src.match("wxz"))
+  	{
+ 		 imgid.src="img/pro_xz.png";
+		 document.getElementById("mainbR").style.color="#36b160";
+  	}
+	else
+  	{
+  		imgid.src="img/pro_wxz.png";
+		document.getElementById("mainbR").style.color="#000000";
+  	}
+}
+
+		var widthb=document.documentElement.clientWidth;
+		var heighth=document.documentElement.clientHeight;
+		var mainwidth=widthb-4;
+		var mainz=(mainwidth/3-70)/2;
+		$(document).ready(function(){
+			$(".mainpl").width(mainwidth/3);
+			$(".mainpm").width(mainwidth/3);
+			$(".mainpr").width(mainwidth/3);
+			$(".connll").width(widthb-150);
+			$(".mainz").css("margin-left",mainz);
+			$(".mainbl").width((widthb-2)/2);
+			$(".mainbr").width((widthb-2)/2);
+			$(".maincon").height(heighth-104);
+			
+  		});
+</script>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>个人中心</title>
+	</head>
+	<style>
+		body {
+			margin: 0px;
+			padding: 0px;
+			background: #f3f5f4;
+			position: relative;
+		}
+		.topcen {
+			position: relative;
+			width: 100%;
+			background: url('../../image/userInfo/pro_tx.png') no-repeat;
+			background-size: 100% auto;
+		}
+		.headpro {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			height: 80px;
+			width: 80px;
+			border-radius: 40px;
+			box-shadow: 3px 3px 5px #aaaaaa;
+			overflow: hidden;
+		}
+		.topcentext {
+			width: 100px;
+			height: 50px;
+			position: absolute;
+			top: 35px;
+			left: 110px;
+			font-size: 20px;
+		}
+		.xtb {
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			color: #535353;
+			margin-top: 5px;
+			font-size: 17px;
+		}
+		.xtb img {
+			margin-top: 5px;
+		}
+		.xtb span {
+			margin-left: 5px;
+		}
+		.transbox {
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			height: 50px;
+			background: #000000;
+			ilter: alpha(opacity=50);
+			-moz-opacity: 0.5;
+			-khtml-opacity: 0.5;
+			opacity: 0.5;
+		}
+		.qd {
+			width: 60px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			border: 1px solid #DCDCDC;
+			color: #FFFFFF;
+			font-size: 16px;
+			margin: 12px 0 0 30px;
+		}
+		.qd1 {/*用于已经签到页面*/
+			width: 140px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			border: 1px solid #DCDCDC;
+			color: #FFFFFF;
+			font-size: 16px;
+			margin: 12px 0 0 30px;
+		}
+		.boxk {
+			widht: 100%;
+			height: 15px;
+		}
+		.cenb {
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			background: #ffffff;
+			border-top: 2px solid #e5e5e5;
+		}
+		.cenbleft {
+			float: left;
+			margin: 10px 10px 0 20px;
+		}
+		.cenbtext {
+			float: left;
+			color: #666666;
+		}
+		.cenbright {
+			float: right;
+			margin: 14px 15px 0 0;
+		}
+		.cenbright1 span {/*用于已经签到页面*/
+			display: block;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			float: left;
+			color: #535353;
+			text-align: right;
+			margin-right: 5px;
+			font-size: 14px;
+		}
+		.cenbright1 img {/*用于已经签到页面*/
+			margin: 14px 15px 0 0;
+		}
+		.cenbright2 {
+			width: 35px;
+			height: 35px;
+			border-radius: 17px;
+			overflow: hidden;
+		}
+		.bk {
+			width: 100%;
+			border-bottom: 2px solid #e5e5e5;
+		}
+		.ts {
+			position: absolute;
+			width: 200px;
+			height: 25px;
+			margin-top: 30px;
+			background: url(../../image/userInfo/pro_bg.png) no-repeat;
+			line-height: 25px;
+			text-align: center;
+			color: #FFFFFF;
+		}
+	</style>
+	<body>
+		<div class="topcen">
+			<div class="headpro"><img src="../../image/userInfo/tx.jpg" width="80px" height="80px" id="first" onclick="favicon()">
+			</div>
+			<div class="topcentext">
+				<span id='phone'>未填写</span>
+				<div class="xtb"><img src="../../image/userInfo/pro_hjf.png" width="15px" height="14px"><span>积分</span><span id="getPoint">100</span>
+				</div>
+			</div>
+			<div class="transbox">
+				<div class="qd1" id ="signin" onclick = "signin();">
+					签到
+				</div>
+			</div>
+		</div>
+		<div class="boxk"></div>
+		<div class="cenb" onclick="myInfo()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_xx.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext">
+				我的信息
+			</div>
+			<div class="cenbright" ><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="mypoint()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_jf.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext">
+				我的积分
+			</div>
+			<div class="cenbright"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="myenter()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_input.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext">
+				我的录入
+			</div>
+			<div class="cenbright"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="myscan()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_sm.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext">
+				我的扫码记录
+			</div>
+			<div class="cenbright"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="myrate()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_pj.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext">
+				我的评价
+			</div>
+			<div class="cenbright"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="myshare()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_share.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext" >
+				我的分享
+			</div>
+			<div class="cenbright"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="myset()">
+			<div class="cenbleft"><img src="../../image/userInfo/pro_sz.png" width="20px" height="20px" />
+			</div>
+			<div class="cenbtext">
+				我的设置
+			</div>
+			<div class="cenbright"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="bk"></div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script>
+		var widthb=document.documentElement.clientWidth;
+		var heightb=widthb/2-20;
+		$(document).ready(function(){
+			$(".topcen").height(heightb);
+		});
+		
+		
+		//add by w.g
+		var cansign = true;
+		function checkCanSignin() {
+			var saveuser = $api.getStorage('userId');
+			api.ajax({
+	        url : SERVER_URL + SERVER_ROOT_PATH + CAN_SIGNIN,
+			method : 'post',
+			timeout : 30,
+			dataType : 'json',
+			returnAll : false,
+			data : {
+				values : {
+					userId : saveuser,
+					
+				}
+			}
+        	},function(ret,err){
+        	 
+        	
+	//      	alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+	        	//coding...
+	        	if (processNetWorkErr(err)) {
+	        		return;
+	        	}
+	        	if (ret.status == 0) {
+	        		
+	        	} else if (ret.status == 1) {
+//	        		cansign = false;
+//	        		
+//	        		if(!varIsNull(ret.data.total)) {
+//	        			var phone = $api.byId('signin');
+//	        			$api.text(phone, '已经签到'+ret.data.total + '天');
+//	        		}
+					showSingined(ret);
+	        	}
+	        	
+	        });
+		}
+		
+		function signin() {
+			if(!cansign) {
+//				alert("返回");
+				return;
+			}	
+			var saveuser = $api.getStorage('userId');
+			api.ajax({
+	        url : SERVER_URL + SERVER_ROOT_PATH + SIGNIN,
+			method : 'post',
+			timeout : 30,
+			dataType : 'json',
+			returnAll : false,
+			data : {
+				values : {
+					userId : saveuser,
+					
+				}
+			}
+        	},function(ret,err){
+        	 
+        	
+	//      	alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+	        	//coding...
+	        	if (processNetWorkErr(err)) {
+	        		return;
+	        	}
+	        	if (ret.status == 0) {
+	        		api.toast({
+					    msg: ret.data.alert,
+					    duration: 2000,
+					    location: 'middle'
+					});
+					//add by xinye
+					showMyPoint();
+					//add by xinye end
+					showSingined(ret);
+	        	} else if (ret.status == 1) {
+	        		
+	        	}
+	        	
+	        });
+		}
+		
+		
+		function showSingined(ret) {
+			cansign = false;
+	    		
+    		if(!varIsNull(ret.data.total)) {
+    			var phone = $api.byId('signin');
+    			$api.text(phone, '已经签到'+ret.data.total + '天');
+    			$api.removeCls(phone, 'qd');
+    			$api.addCls(phone, 'qd1');
+    		}
+	   }
+		//add by w.g
+		
+		
+		apiready = function(){
+		
+			//add by w.g
+			checkCanSignin();
+			//add by w.g end
+		
+			var name = $api.getStorage("username");
+			
+			var phone = $api.byId('phone');
+			if($api.getStorage("userInfo")==null){
+				var userInfo = {'username':name,'userID':'','sex':'','pic':'','birthday':'','height':'','weight':'','realName':'','personID':'','company':'','address':''};
+				$api.setStorage("userInfo",userInfo);
+			}else{
+				var userInfo = $api.getStorage("userInfo");
+				userInfo.username = name;
+				$api.setStorage('userInfo',userInfo);
+			}
+			if(name.length>7){
+				var first = name.substring(0,3);
+				var last = name.substring(name.length-4,name.length);
+				for(i=0;i<name.length-7;i++){
+					first=first+'*';
+				}
+				name = first+last;
+			}
+			$api.text(phone, name);
+			api.addEventListener({
+		        	name: 'changeIconInfo'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeIcon(ret.value);
+					savePic(ret.value);
+		        }
+		     });
+			getInfo();
+			setTimeout("showMyPoint()",300);
+			api.addEventListener({
+		        	name: 'getInfo'
+		        }, function(ret){
+		        if(ret){
+		        	getInfo();
+		        }
+		     });
+		}
+		function favicon(){
+			api.confirm({
+				title:"提示消息",
+				msg:"上传方式选择",
+				buttons:['拍照上传','本地上传','取消']
+			},function(ret,err){
+				if(ret){
+					if(ret.buttonIndex==1){
+						api.openWin({
+							name: 'iconinput',
+							url: './icons/personalIcon_header.html',
+							pageParam:{'type':'camera'}
+						});
+					}else if(ret.buttonIndex==2){
+						api.openWin({
+							name: 'iconinput',
+							url: './icons/personalIcon_header.html',
+							pageParam:{'type':'album'}
+						});
+					}
+				}
+			});
+		}
+		function backTo(){
+		api.closeWin({});
+		}
+		function changeIcon (ret) {
+		var pics = ret.savePath;
+		var icon = $api.byId("first");
+		icon.src=pics;
+		//		if (pics!= null) {
+		//		var add =document.getElementById("headpro");
+		//		add.style.display = "none";
+		//		}  else {
+		//		var add = document.getElementById("headpro");
+		//		add.style.display = "";
+		//		}
+		}
+		function savePic(ret){
+		api.ajax({
+		url:SERVER_URL+SERVER_ROOT_PATH+'/common/userInfoAction!saveIcon.action',
+		method : 'post',
+		timeout : 30,
+		data : {
+		values:{
+		userName:$api.getStorage("username")
+		},
+		files: {
+		icon: ret.savePath
+		}
+		}
+		},function(ret,err){
+		if(ret.status==0){
+		}else if(ret.status==1){
+		alert(ret.data.errorMsg);
+		}else{
+		api.alert({
+		msg : err.msg
+		});
+		}
+		});
+		}
+		function myInfo(){
+		api.openWin({
+		name: 'info/',
+		url: './myinfo_windows.html',
+		rect: {
+		x:0,
+		y:0,
+		w:'auto',
+		h:'auto'
+		}
+		});
+		}
+		function getInfo(){
+//		alert("获取个人信息！");
+		api.ajax({
+			url:SERVER_URL+SERVER_ROOT_PATH+'/common/userInfoAction!information.action',
+			method : 'post',
+			timeout : 30,
+			data : {
+				values:{
+					userName:$api.getStorage("username")
+				}
+			}
+		},function(ret,err){
+//		      	alert(JSON.stringify(ret));
+			if(ret.status==0){
+				var pics = ret.data.icon;
+				var userInfo = $api.getStorage('userInfo');
+				if(pics!=null&&pics!=''){
+					var icon = $api.byId("first");
+					icon.src=SERVER_URL+SERVER_ROOT_PATH+pics;
+					userInfo.pic = SERVER_URL+SERVER_ROOT_PATH+pics;
+				}
+//				alert(ret.data.sex);
+				userInfo.sex=ret.data.sex;
+	 			userInfo.birthday=ret.data.birthday;
+				userInfo.height=ret.data.height;
+				userInfo.weight=ret.data.weight;
+				userInfo.realName=ret.data.realname;
+				userInfo.personID=ret.data.IDNumber;
+				userInfo.company=ret.data.company;
+				userInfo.address=ret.data.homeaddress;
+				userInfo.userID = ret.data.userID;
+				$api.setStorage('userInfo',userInfo);
+			}else if(ret.status==1){
+				alert(ret.data.errorMsg);
+			}else{
+				api.alert({
+				msg : err.msg
+				});
+			}
+		});
+		}
+		function myenter(){
+			api.openWin({
+				name: 'myenter_windows',
+				url: './myenter_windows.html',
+				rect: {
+					x:0,
+					y:0,
+					w:'auto',
+					h:'auto'
+				}
+			});
+		}
+		function myshare(){
+			api.openWin({
+				name: 'myeshare_windows',
+				url: './myshare_windows.html',
+				rect: {
+					x:0,
+					y:0,
+					w:'auto',
+					h:'auto'
+				}
+			});
+		}
+		function myrate(){
+			api.openWin({
+				name: 'myrating_windows',
+				url: './myrating_windows.html',
+				rect: {
+					x:0,
+					y:0,
+					w:'auto',
+					h:'auto'
+				}
+			});
+		}
+		function myscan(){
+			api.openWin({
+				name: 'myscan_windows',
+				url: './myscan_windows.html',
+				rect: {
+					x:0,
+					y:0,
+					w:'auto',
+					h:'auto'
+				}
+			});
+		}
+		function myset(){
+			api.openWin({
+	            name: 'myset_windows',
+	            url: './myset_windows.html'
+            });
+		}
+		function mypoint(){
+			api.openWin({
+	            name: 'mypoint_windows',
+	            url: './mypoint_windows.html'
+            });
+		}
+		function showMyPoint(){
+//			alert($api.getStorage("userInfo").userID);
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/pointHistoryAction!getMyPoint.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'userID' : $api.getStorage("userInfo").userID
+					}
+				}
+			}, function(ret, err) {
+				if(ret.status==0){
+					var point = ret.data.point;
+					$("#getPoint").text(point);
+				} else if (ret.status == 1) {
+					hasMore = false;
+					api.toast({
+						msg: ret.data.errorMsg,
+						duration: 2000,
+						location: 'bottom'
+					});
+				} else {
+					api.alert({
+						msg : err.msg
+					});
+				}
+			});
+		}
+	</script>
+</html>

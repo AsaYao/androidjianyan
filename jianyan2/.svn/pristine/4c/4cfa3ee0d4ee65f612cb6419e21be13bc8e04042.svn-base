@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>基本信息</title>
+<link rel="stylesheet" type="text/css" href="css/percencss.css"/>
+<link rel="stylesheet" type="text/css" href="css/basiccss.css"/>
+</head>
+
+<body>
+<div class="basic">
+	<div class="basicj"><div class="basicz">基本信息</div></div>
+	<div class="basicx">详细信息</div>
+</div>
+<div class="boxk"></div>
+	<div class="cenb">
+		<div class="cenbtext1">头像</div>
+		<div class="cenbright2"><img src="img/tx.jpg" width="35px" height="35px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">我的账号</div>
+		<div class="cenbright1"><span style="margin-right:30px;">152****1250</span></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">性别</div>
+		<div class="cenbright1"><span>女</span><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">出生日期</div>
+		<div class="cenbright1"><span>1995-5-1</span><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">身高</div>
+		<div class="cenbright1"><span>165cm</span><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="cenb">
+		<div class="cenbtext1">体重</div>
+		<div class="cenbright1"><span>45kg</span><img src="img/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<div class="bk"></div>
+	<div class="basicbc"><img src="img/pro_bc.png" /></div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var imgw=widthb-20;
+		var imgh=imgw*120/1034;
+		var ml=(widthb-imgw)/2;
+		var basicz=(widthb*0.5-100)/2;
+		
+		$(document).ready(function(){
+			$(".basicbc").css("margin-left",ml);
+			$(".basicbc img").width(imgw);
+			$(".basicbc img").height(imgh);
+			$(".basicz").css("margin-left",basicz);
+  		});
+</script>
+</html>

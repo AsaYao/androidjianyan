@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		
+			
+			.head {
+				background-image: url(../../image/main/renwubg.png);
+				background-repeat: no-repeat;
+				background-size:100% 100%;
+				width: 100%;
+			}
+			.pos{
+				width:50px;
+				height:50px;
+				line-height:50px;
+				float:right;
+				margin-right: 15px;
+				color:#ffffff;
+				text-align: right;
+			}
+			/*#secHeader{
+			 padding-top: 25px;
+			 }*/
+			.localcity {
+				color: white;
+			}
+			.point{
+				margin-top: 10px;
+				float:left;
+				margin-left: 2px;
+				
+			}
+			.main {
+				
+				margin-top:15px;
+				width: 100%;
+				text-align: center;
+				max-width: 100%;
+				float: right;
+			}
+			.nav12 img {
+				/*width: 30%;
+				hight: 20%
+				*/
+				width:30%;
+			}
+			.nav13 img {
+				width: 30%;
+				/*height: 20%*/
+			}
+			.search {
+				float:left;
+				margin-left:10px;
+				height: 34px;
+				line-height: 34px;
+				padding-left: 10px;
+				border-radius: 5px;
+				margin-top: 8px;
+				position: absolute;
+				left: 20px;
+				right: 60px;
+				font-size: 14px;
+				background-color: #E8E8E8;
+				color: #999;
+			}
+			.search img {
+				display:block;
+				float:left;
+				vertical-align: top;
+				width: 20px;
+				padding-top: 7px;
+				padding-right: 10px;
+			}
+			.search input {
+				display:block;
+				float:left;
+				vertical-align:middle;
+				margin-top:7px;
+				font-size:14px;
+				-webkit-box-flex: 1;
+				background-color: rgba(255, 255, 255, 0);
+				outline: none;
+				width:150px;
+				height: 20px;
+				line-height:20px;
+			}
+			/*#topbar_refresh {
+				width: 40px;
+				padding: 5px 10px;
+			}*/
+			.whitebar {
+				background-color: #00A0E9;
+			}
+			#whitecity {
+			
+				height: 50px;
+				line-height: 50px;
+				
+				font-size: 18px;
+				color: #6ab494;
+				padding-right: 0
+				
+			}
+			.secCitylistarrow {
+			
+				vertical-align: top;
+				width: 15px;
+				padding-top: 18px;
+				padding-left: 5px;
+			}
+			.secSearch {
+			
+				left: 100px;
+				right: 60px;
+				background-color: #E8E8E8;
+				color: #999;
+			}
+			.topbar {
+				background: #24974b;
+				height: 50px;
+				border-bottom: 0;
+			}
+			/*.topbar_title {
+			 display: inline-block;
+			 font-size: 20px;
+			 line-height: 50px;
+			 padding-left: 12px;
+			 }
+			 */
+			.fr {
+				float: right;
+			}
+			.fl {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">
+			<table id="secHeader" class=""  width="100%">
+				<tr class="topbar whitebar">
+					<td class="citylist fl" id="whitecity" tapmode onclick="" width="70" align="center">
+						<div id = "localcity" class = "localcity"></div>
+					</td>
+					<td class="point">
+						<img src="../../image/main/point.png" alt="" height="30" onclick="">
+					</td>
+					<td class="search secSearch" tapmode onclick="">
+						<img src="../../image/main/navibar_search_icon_search.png" alt="">
+						<input type="text" placeholder="请输入任意商品名称"  class="txt" id="searchtext" value=""/>
+					</td>
+					<td class="pos" onclick="search()">搜索</td>
+				</tr>
+			</table>
+		</div>
+		<div class="main" >
+			<div class="main1">
+				<div class="nav12"  >
+					<img src="../../image/main/saoma.png" onclick="openScanner()">
+					<img src="../../image/main/diyanshipin.png" onclick="lowSalt()">
+					<img src="../../image/main/jianyanzhuangui.png" onclick="lowSaltSupermarket()">
+				</div>
+				<div class="nav13" >
+					<img src="../../image/main/jianyan.png" onclick="lowSaltRestaurant()">
+					<img src="../../image/main/jiankangjiaoyu.png">
+					<img src="../../image/main/gerenzhongxin.png" onclick="userInfo()">
+				</div>
+			</div>
+			<!--<ul>	
+          <li tapmode="activebtn0 activebtn" onclick="">	
+            <a class="../../image/main/saoma.png" onclick="openScanner()">食品扫码</a>	
+          </li>	
+          <li tapmode="activebtn0 activebtn" onclick="">	
+            <a class="../../image/main/diyanshipin.png" onclick="">减盐食品</a>	
+          </li>	<li tapmode="activebtn0 activebtn" onclick="">	
+            <a class="../../image/main/jianyanzhuangui.png" onclick="">减盐超市</a>	
+          </li>	
+          </ul>
+          <ul>
+          <li tapmode="activebtn0 activebtn" onclick="">	
+            <a class="../../image/main/jianyan.png" onclick="">减盐餐厅</a>	
+          </li>	<li tapmode="activebtn0 activebtn" onclick="">	
+            <a class="../../image/main/jiankangjiaoyu.png" onclick="">健康教育</a>	
+          </li>	
+          <li tapmode="activebtn0 activebtn" onclick="">	
+            <a class="../../image/main/gerenzhongxin.png" onclick="">个人中心</a>	
+          </li>	
+        </ul>	-->
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		var y=document.documentElement.clientHeight;
+		var x=document.documentElement.clientWidth;
+		
+		var yb=y-55;
+		var yh=yb*0.55;
+		var ym=$(".main1").height();
+		var ymmt=(ym-(yb-yh))*0.5;
+		
+		$("body").height(yb);
+		$(".head").height(yb*0.55);
+		$(".search input").width(x-220);
+		
+		
+	});
+	</script>
+	<script type="text/javascript">
+	
+	function search() {
+			var val = document.getElementById('searchtext').value;
+//			alert(val);
+			api.openWin({
+	            name: 'searchFood_home',
+	            url: 'search_list_win.html',
+	            pageParam:{key:val},
+            });
+		}
+	
+	
+	
+		function openScanner() {
+			var obj = api.require('FNScanner');
+			obj.openScanner({
+				//				sound : 'widget://res/beep.wav',
+				autorotation : true,
+				saveToAlbum : false,
+			}, function(reta) {
+				//				alert(ret.eventType);
+				if (reta.eventType == 'success') {
+					//					alert(JSON.stringify(reta));
+					api.showProgress({
+						title : '查询中',
+						text : '努力查询中...',
+					});
+					api.ajax({
+						url : SERVER_URL + SCANCODE_QUERY_PATH,
+						//						url : 'http://192.168.1.222:8080/salt_reduction/common/foodsNrvAction!gotoDetail.action',
+						method : 'post',
+						timeout : 30,
+						dataType : 'json',
+						returnAll : false,
+						data : {
+							values : {
+								codeValue : reta.content
+							}
+						}
+					}, function(ret, err) {
+						//coding...
+						//progress hide
+						api.hideProgress();
+						var process = processNetWorkErr(err);
+						if (process) {
+							return;
+						}
+						//						alert(ret.status);
+						if (ret.status == 1) {
+							api.openWin({
+								name : 'searchresult',
+								url : '../scancode/search_window.html',
+								pageParam : {
+									productcode : reta.content
+								}
+							});
+						} else if(ret.status==0){
+							api.openWin({
+	                            name: 'fooddetails',
+	                            url: '../fooddetails/commodity_details_windows.html',
+	                            pageParam : {
+									productcode : reta.content
+								}
+                            });
+						}
+						//						if (ret) {
+						//							api.openWin({
+						//								name : 'luru',
+						//								url : 'luru.html'
+						//							});
+						//						} else if (ret) {
+						//							api.openWin({
+						//								name : 'search',
+						//								url : 'search_window.html'
+						//							});
+						//						}
+					});
+				} else if (reta.evenType == 'fail') {
+					//					alert('fail!!!!');
+				}
+			});
+		}
+
+		//		function openScanner1() {
+		//			//					api.openWin({
+		//			//	                                name: 'luru',
+		//			//	                                url: 'search_window.html'
+		//			//                              });
+		//			var scanner = api.require('FNScanner');
+		//			scanner.openScanner({
+		//				autorotation : false,
+		//				saveToAlbum : false,
+		//				saveImg : {
+		//					path : 'fs://a.jpg', //字符串类型；保存的文件路径；若路径不存在，则创建此路径，只支持fs://协议
+		//					w : 200, //（可选项）数字类型；生成图片的宽度，默认：200
+		//					h : 200 //（可选项）数字类型；生成图片的高度，默认：200
+		//				}
+		//			}, function(reta) {
+		//				//coding...
+		//				if (reta.eventType == 'success') {
+		//					//						alert(JSON.stringify(ret));
+		//					api.ajax({
+		//						url : '',
+		//						method : 'post',
+		//						timeout : 30,
+		//						dataType : 'json',
+		//						returnAll : false,
+		//						data : {
+		//							values : {
+		//								jsonParam : reta.content
+		//							}
+		//						}
+		//					}, function(ret, err) {
+		//						//coding...
+		//						if (ret) {
+		//							api.openWin({
+		//								name : 'luru',
+		//								url : 'luru.html'
+		//							});
+		//						} else if (ret) {
+		//							api.openWin({
+		//								name : 'search',
+		//								url : 'search_window.html'
+		//							});
+		//						}
+		//					});
+		//				}
+		//				//    if(ret){
+		//				//      alert(JSON.stringify(ret));
+		//				//   }
+		//			});
+		//		}
+		
+		function lowSalt(){
+			api.openWin({
+	            name: 'lowSalt',
+	            url: '../lowSalt/lowSalt_windows.html'
+            });
+		}
+		function lowSaltSupermarket(){
+			api.openWin({
+		            name: 'lowSalt',
+		            url: '../lowSaltSupmarket/lowSaltSupmarket_windows.html'
+	            });		
+		}
+		function lowSaltRestaurant(){
+			api.openWin({
+	            name: 'restaurant',
+	            url: '../lowSaltRestaurant/lowSaltRestaurant_windows.html'
+            });
+		}
+		function userInfo(){
+			api.openWin({
+	            name: 'userInfo',
+	            url: '../userInformation/personalcen.html'
+            });
+		}
+		apiready = function() {
+			getMyLocation();
+		};
+		function getMyLocation() {
+			var baiduMap = api.require('bMap');
+			baiduMap.getLocation({
+			    accuracy: '100m',
+			    autoStop: true,
+			    filter: 100
+			},function(ret, err) {
+//				alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+				var sta = ret.status;
+				var lat = ret.lat;
+				var lon = ret.lon;
+				var t = ret.timestamp;
+				if (sta) {
+					//					var str = '经度：' + lon + '<br>';
+					//					str += '纬度：' + lat + '<br>';
+					//					str += '更新时间：' + t + '<br>';
+					//					api.alert({
+					//						msg : str
+					//					});
+					//
+					baiduMap.getNameFromCoords({
+						lon : lon,
+						lat : lat
+					}, function(ret, err) {
+//						alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+						if (ret.status) {
+							var localcity = $api.byId('localcity');
+							localcity.innerHTML = ret.city;
+							//							api.alert({
+							//								title : '搜索结果',
+							//								msg : ret.province + ret.city + ret.district + ret.streetName + ret.streetNumber + '->' + ret.add
+							//							});
+						} else {
+							//							api.alert({
+							//								title : '搜索错误代码',
+							//								msg : err.msg
+							//							});
+						}
+					});
+				} else {
+					//					api.alert({
+					//						msg : err.msg
+					//					});
+				}
+			});
+		}
+	</script>
+	
+</html>

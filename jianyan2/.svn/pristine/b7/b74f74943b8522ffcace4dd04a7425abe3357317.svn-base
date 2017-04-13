@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+		<style>
+			body, html {
+				height: 100%;
+			}
+			body {
+				background-image: url(../../image/login/bg.jpg);
+				background-repeat: repeat-y;
+				background-size: 100%;
+			}
+			header {
+				display: -webkit-box;
+			}
+			.title {
+				-webkit-box-flex: 1;
+				text-align: center;
+				line-height: 60px;
+				font-size: 30px;
+			}
+			.btn {
+				width: 50px;
+				height: 50px;
+			}
+			i {
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-size: 30px;
+				background-repeat: no-repeat no-repeat;
+				background-position: center;
+			}
+			/*.user {
+			 background-image: url("../image/login_account@2x.png");
+			 }
+			 .password {
+			 background-image: url("../image/logn_password@2x.png");
+			 }*/
+			.input-wrap {
+				padding: 10px 0;
+				display: -webkit-box;
+			}
+			.input-wrap:first-child {
+				border-bottom: 1px solid #d4d4d4;
+			}
+			.form {
+				background-color: rgba(255, 255, 255, 0.8);
+				margin: 35% 20px 0 20px;
+				border-radius: 8px;
+				padding: 0 10px;
+				line-height: 30px;
+			}
+			.input-wrap input {
+				display: block;
+				-webkit-box-flex: 1;
+				background-color: rgba(255, 255, 255, 0);
+				outline: none;
+				height: 30px;
+			}
+			.find-pwd {
+				float: right;
+				text-align: right;
+				margin: 40px;
+			}
+			.find {
+				float: left;
+				text-align: left;
+				margin: 40px;
+			}
+			.button.green {
+				margin: 40px;
+				margin-top: 10%;
+				margin: 40px;
+				background-color: #36b05e;
+			}
+			.button {
+				display: block;
+				color: white;
+				margin: 0 40px;
+				text-align: center;
+				border-radius: 8px;
+				height: 40px;
+				line-height: 40px;
+			}
+			.button.yellow {
+				background-color: #FF7800;
+			}
+			.margin-top-25 {
+				margin-top: 25px;
+			}
+			#password::-webkit-input-placeholder:before {
+				display: block;
+				position: absolute;
+				width: 100px;
+				height: 25px;
+				margin-top: -20px;
+				font-size: 15px;
+				line-height: 36px;
+				color: #999;
+				content: "请输入密码";
+			}
+			#password::-webkit-input-placeholder:after {
+				display: block;
+				position: absolute;
+				width: 100px;
+				height: 50px;
+				font-size: 10px;
+				margin-top: -10px;
+				line-height: 20px;
+				color: #999;
+				content: "(密码长度6-20位，字母、数字、下划线)";
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="btn cancel" tapmode="" ></div>
+			<div class="title"></div>
+			<div class="btn"></div>
+		</header>
+		<div class="content">
+			<div class="form">
+				<div class="input-wrap">
+					<i class="user"></i>
+					<input type="tel"  placeholder="请输入手机号" class="txt" id="username"    value=""/>
+				</div>
+				<div class="input-wrap">
+					<i class="password"></i>
+					<input type="password" placeholder="." class="txt" onfocus="teledit()" id="password" value=""/>
+				</div>
+			</div>
+			<div class="button green" id="login" tapmode="" onclick="login()">
+				登录
+			</div>
+			<b class="find-pwd" onclick="forget()"> <span>忘记密码</span> </b>
+			<b class="find" onclick="register()"> <span>立即注册</span> </b>
+		</div>
+	</body>
+</html>
+<script src="../../script/zepto.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script>
+	$('input#username').keyup(function() {
+		var c = $(this);
+		if (/[^\d]/.test(c.val())) {//替换非数字字符
+			var temp_amount = c.val().replace(/[^\d]/g, '');
+			$(this).val(temp_amount);
+			alert('手机格式有误')
+		}
+	})
+	//			function key(obj){
+	//
+	//				obj.value=obj.value.replace(/\D/g,'')
+	//
+	//
+	//
+	//			}
+//	function upperCase() {
+//		var username = $("#username").val();
+//		if (username.length != 11 && username.length != 0) {
+//			api.toast({
+//				msg : '您的手机号格式有误',
+//				duration : 2000,
+//				location : 'middle'
+//			});
+//			//				alert('您的手机号格式有误')
+//		}
+//	}
+			function teledit() {
+					var username = $("#username").val();
+			var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+		reg_str.test(username)
+		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+			api.toast({
+				msg : '您的手机号格式有误',
+				duration : 2000,
+				location : 'middle'
+			});
+//			return false;
+		}
+			}
+
+	function fixStatusBar(headerid, callback) {
+		var header = $api.byId(headerid);
+		var systemType = api.systemType;
+		var systemVersion = parseFloat(api.systemVersion);
+		if (systemType == "ios" || (systemType == "android" && systemVersion >= 4.4)) {
+			if (systemType == "android") {
+				header.style.paddingTop = '25px';
+			}
+			$api.fixStatusBar(header);
+		} else {
+			$api.fixIos7Bar(header);
+		}
+		var headerPos = $api.offset(header);
+		if ( typeof callback == "function") {
+			callback(headerPos);
+		}
+	}
+
+	//			function checkUserId() {
+	//				if (localStorage.getItem('userId')) {
+	//					$(".user").addClass('login-user');
+	//				} else {
+	//					$(".user").removeClass('login-user');
+	//				}
+	//			}
+	function register() {
+		api.openWin({
+			name : 'register',
+			url : '../register/win_register.html',
+			delay : 200
+		})
+	}
+
+	function forget() {
+		api.openWin({
+			name : 'forget',
+			url : '../register/win_forget.html'
+		})
+	}
+
+	//			function login() {
+	//			api.openWin({
+	//	            name: '123',
+	//	            url: '../html/1.html'
+	//          });
+	//			}
+	function login() {
+		var username = $("#username").val();
+		var password = $("#password").val();
+		//				api.alert({
+		//				title:'begin:' + username +':end',
+		//				buttons:['确定']
+		//              },function(ret,err){
+		//              	//coding...
+		//              });
+		//
+		//				return;
+		if (username == '') {
+			api.alert({
+				msg : '请输入用户名',
+				buttons : ['确定']
+			}, function(ret, err) {
+				$("#password").val('');
+			});
+			return;
+		}
+		if (password.length < 6) {
+			api.alert({
+				msg : '您的密码数小于规定格式',
+				buttons : ['确定']
+			}, function(ret, err) {
+				$("#password").val('');
+			});
+			return;
+		}
+		if (password.length > 20) {
+			api.alert({
+				msg : '您的密码数大于规定格式',
+				buttons : ['确定']
+			}, function(ret, err) {
+				$("#password").val('');
+			});
+			return;
+		}
+		if (password == '') {
+			api.alert({
+				msg : '请输入密码',
+				buttons : ['确定']
+			}, function(ret, err) {
+			});
+			return;
+		}
+		api.showProgress({
+    style: 'default',
+    animationType: 'fade',
+    title: '努力登录中...',
+  text: '',
+    modal: false
+});
+		api.ajax({
+			//					url : 'http://192.168.1.222:8080/salt_reduction/login/appLogin.action',
+			url : SERVER_URL + '/salt_reduction/login/appLogin.action',
+			method : 'post',
+			timeout : 30,
+			dataType : 'json',
+			returnAll : false,
+			data : {
+				values : {
+					userName : username,
+					password : password
+				}
+			}
+		}, function(ret, err) {
+			api.hideProgress();
+			//					api.alert({
+			//						msg : 'ret:' + ret + ':retend -err:' + err + ':errend',
+			//						buttons : ['确定']
+			//					}, function(ret, err) {
+			//						//coding...
+			//					});
+			//
+			//
+			if (!varIsNull(err)) {
+				api.alert({
+					//							msg : '请检测网络！' + err + 'end',
+					msg : '登录失败，请重新登录',
+					buttons : ['确定']
+				}, function(ret, err) {
+
+					$("#password").val('');
+
+				
+				api.hideProgress();
+//					api.alert({
+//						msg : 'ret:' + ret + ':retend -err:' + err + ':errend',
+//						buttons : ['确定']
+//					}, function(ret, err) {
+//						//coding...
+//					});
+					
+					
+					//
+					//
+//					
+//					if (!varIsNull(err) ) {
+//						api.alert({
+////							msg : '请检测网络！' + err + 'end',
+//							msg : '登录失败，请重新登录',
+//							buttons : ['确定']
+//						}, function(ret, err) {
+//							$("#password").val('');
+//						});
+//						
+//						return;
+//					}
+//					
+//					
+//					if (ret.status == 0) {
+////						alert('登陆成功');
+//						//存储用户名密码等相关的东西
+//						var saveuser = $api.getStorage('username');
+//						if(saveuser==''){
+//							$api.setStorage("username",username);
+//						
+//						api.setPrefs({
+//							    key: 'userId',
+//							    value: ret.data.userId
+//							});
+//						}
+//						
+//							
+//							
+//						api.execScript({
+//							name : 'root',
+//							script : 'openMain();'
+//						});
+//						
+						
+//						//跳转到主界面
+//						api.openFrame({
+//							name : 'frame1',
+//							url : '../html/1.html',
+//							bounces : false,
+//							rect : {
+//								x : 0,
+//								y : 0,
+//								w : 'auto',
+//								h : 'auto'
+//							}
+//						});
+//					api.closeWin();
+//					} else {
+//						alert("您的账号与密码不符");
+//						$("#password").val('');
+//					}
+
+				});
+				return;
+			}
+			if (ret.status == 0) {
+			
+				//存储用户名密码等相关的东西
+					var saveuser = $api.getStorage('username');
+						if(saveuser == null || saveuser == '' || saveuser == undefined){
+							$api.setStorage("username",username);
+						
+						api.setPrefs({
+							    key: 'userId',
+							    value: ret.data.userId
+							});
+						}
+				
+				api.execScript({
+					name : 'root',
+					script : 'openMain();'
+				});
+				
+				//						//跳转到主界面
+				//						api.openFrame({
+				//							name : 'frame1',
+				//							url : '../html/1.html',
+				//							bounces : false,
+				//							rect : {
+				//								x : 0,
+				//								y : 0,
+				//								w : 'auto',
+				//								h : 'auto'
+				//							}
+				//						});
+				//					api.closeWin();
+			} else {
+				alert("您的账号与密码不符");
+				$("#password").val('');
+			}
+		});
+	}
+
+	apiready = function() {
+	
+		api.addEventListener({
+		    name: 'myEvent'
+		}, function(ret, err){
+		    
+		  //  alert(ret.value.name);
+			var username = ret.value.name;
+		    var code = $api.byId('username');
+		
+			$api.val(code, username);
+		
+		});
+	
+		var params = api.pageParam;
+		var code = $api.byId('username');
+		if (params.name == null || params.name == '' || params.name == undefined) {
+			return false;
+		} else {
+			$api.val(code, params.name);
+		}
+		//			api.closeWin({
+		//			name: 'newfeature'
+		//          });
+		//			屏蔽返回键
+		api.addEventListener({
+			name : 'keyback'
+		}, function(ret, err) {
+			//operation
+		});
+		//			屏蔽返回键end
+		//		alert('firsttime' + $api.getStorage('firsttime'));
+		//
+		//		if (!$api.getStorage('firsttime')) {
+		//			api.openWin({
+		//				name : 'newfeature',
+		//				url : 'widget://html/guide/index.html'
+		//			});
+		//		}
+		//				var username = $api.setStorage(username,'username');
+		//			var username = $api.getStorage('username');
+		//得到本地存储中的userid
+		//				if (username) {
+		//					api.openWin({
+		//						name : 'main',
+		//						url : 'html/frame1.html',
+		//						bounces : false,
+		//						delay : 300,
+		//						animation : {
+		//							type : 'fade'
+		//						}
+		//					});
+		//					api.closeWin();
+		//				} else {
+		//					api.closeWin();
+		//				}
+	}; 
+</script>

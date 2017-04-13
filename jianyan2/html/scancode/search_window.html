@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+			body {
+			}
+			#header {
+				line-height:40px;
+				text-align: center;
+				color: #fff;
+				width: 100%;
+				height: 45px;
+				background: url(../../image/statusbar/background.png);
+				background-repeat: repeat-x;
+			}
+			#header h1 {
+				font-size:15pt;
+				font-family: sans-serif;
+			}
+			
+			.menu {
+				margin: 0;
+				padding: 0px;
+				width: 100%;
+				/*background-color: #00a0e9;*/
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 40px;
+				font-size: 10px;
+				position: fixed;
+			}
+			.menu1 {
+				/*background-color: #00a0e9;*/
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 4px;
+				height: 50px;
+			}
+			.menu2 {
+				margin-top: 5px;
+				margin-right: auto;
+				margin-bottom: auto;
+				/*background-color: #00a0e9;*/
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				margin-left: 0px;
+				float: left;
+				position: static;
+			}
+			.menu2 img {
+				color: #36b160;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="menu" >
+					<div class="menu2"  onclick="back()">
+						<img src="../../image/scancode/rollback_btn2.png" height="32px" width="32px" />
+					</div>
+					<div class="menu1"  onclick="toMain()">
+						<img src="../../image/scancode/home_page.png" height="32px" width="32px" />
+					</div>
+					<h1>提示</h1>
+				</div>
+			</div>
+			<div id="main"></div>
+			<div id="footer"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script>
+		function back() {
+			api.closeWin({
+			});
+		}
+		
+		function toMain () {
+			api.closeToWin({
+	            name: 'root'
+            });
+		}
+
+		var main = $api.byId('main');
+		var mainPos = $api.offset(main);
+		var header = $api.byId('header');
+		var headerPos = $api.offset(header);
+		apiready = function() {
+//			var header = document.querySelector('#header');
+//			$api.fixStatusBar(header);
+			// 设置ios7的标题栏字体变亮，全局用一个就行了
+			api.setStatusBarStyle({
+				style : 'dark'
+			});
+			var main = $api.byId('main');
+			var mainPos = $api.offset(main);
+			var header = $api.byId('header');
+			var headerPos = $api.offset(header);
+			
+			var params = api.pageParam;
+			
+			api.openFrame({
+				name : 'search_frame',
+				url : './search_frame.html',
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : 'auto',
+					h : 'auto'
+				},
+				bounces : false,
+				pageParam:params,
+				//				opaque : false,
+				//				vScrollBarEnabled : false,
+				hScrollBarEnabled : false
+			});
+		}
+	</script>
+</html>

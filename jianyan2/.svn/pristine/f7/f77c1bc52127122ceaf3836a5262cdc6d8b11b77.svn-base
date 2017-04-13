@@ -1,0 +1,995 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>首页搜索</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/searchlist.css" />
+	<style>
+		#con{
+			margin: 10px;
+			font-size: 24px; 
+		}
+		ul{
+			margin-bottom: 10px;
+		}
+		ul li{ 
+			margin: 5px 10px;
+			padding: 5px;
+			color: #000;
+			word-wrap: break-word;
+		}
+		
+		
+		.item{
+        width:100%;
+        line-height: 30px; 
+        text-align: left;
+         font-size: 15px;
+        /*background-color: #CCCCCC;*/
+        margin-top: 5px;
+        margin-bottom:5px;
+        margin: 0px;
+        
+        border-bottom: 1px solid #000000;
+    }
+    
+   		.line{
+   			width:100%;
+   			height:1px;
+   			border:1px solid #000000;
+   			padding:0;
+   			
+   		}
+   		
+   		#listview {
+   			width:100%;
+   		}
+    
+    #loadingmore {
+    	
+    	vertical-align:middle;
+    	text-align: center;
+    	width:100%;
+    	height:30px;
+    	line-height: 30px;
+    	/*margin-left: 5px;*/ 
+    	/*margin-top:0;*/
+    	padding:0px;
+    	/*border:1px solid black;*/
+    	font-size:14px;
+    	display:none;
+    	
+    }
+    #loadingmore img {
+    	display:inline-block;
+		 width:20px;
+		 height:20px;
+		 /*border:1px solid #9ea0a2;*/
+		 vertical-align:middle;
+		 margin:0px auto;
+		 margin-bottom:3px;
+    }
+   #kb{
+    	display:block;
+    	width:100%;
+    	height:30px;
+    }
+    
+    
+    
+    
+    
+    
+
+	
+	.listmainb{
+		width:100%;
+		height:97px;
+		border-bottom:2px solid #e5e5e5;
+	}
+	.listmainb:hover{
+		background:#f3f5f4;
+	}
+	.listmainbox{
+		width:97%;
+		height:77px;
+		padding:10px 0 10px 10px;
+	}
+	.listmainboxl{
+		float:left;
+	}
+	.listmainboxl img{
+		border-radius:10px;
+	}
+	.listmainboxr{
+		width:70%;
+		float:left;
+		margin-left:12px;
+	}
+	.listmainboxr h1{
+		width:100%;
+		height:17px;
+		font-size:14px;
+		margin:0 0 5px;
+		color:#000000;
+		text-overflow:ellipsis;
+		white-space:nowrap; 
+		overflow:hidden; 
+	}
+	.listmainboxrr{
+	 	width:100%;
+		height:17px;
+		margin:3px 0;
+		font-size:12px;
+		line-height:17px;
+	}
+	.listmainboxf{
+		display:block;
+		float:left;
+		width:12px;
+		height:17px;
+		color:#7f7f80;
+	}
+	.listmainboxrr1{
+		float:left;
+		height:17px;
+		width:54px;
+		color:#7f7f80;
+	}
+	.listmainboxrr2{
+		float:left;
+		width:70%;
+		height:17px;
+		color:#7f7f80;
+		text-overflow:ellipsis;
+		white-space:nowrap; 
+		overflow:hidden; 
+	}
+	.listjg{
+		letter-spacing:4px;
+	}
+	.listjg1{
+		letter-spacing:12px;
+	}
+	
+	
+	
+	
+	.sallmain {
+				width: 100%;
+				height: 95px;
+				border-bottom: 2px solid #e5e5e5;
+			}
+			.sallmain:hover {
+				background: #f3f5f4;
+			}
+			.sallmainbox {
+				width: 97%;
+				height: 75px;
+				padding: 10px;
+			}
+			.sallmainboxl {
+				float: left;
+			}
+			.sallmainboxl img {
+				border-radius: 10px;
+			}
+			.sallmainboxr {
+				width: 70%;
+				float: left;
+				margin-left: 12px;
+			}
+			.sallmainboxr h1 {
+				width: 100%;
+				height: 17px;
+				font-size: 14px;
+				margin: 8px 0;
+				color: #000000;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.sallmainboxrr {
+				width: 100%;
+				height: 17px;
+				margin: 3px 0;
+				font-size: 12px;
+				line-height: 17px;
+			}
+			.sallmainboxf {
+				display: block;
+				float: left;
+				width: 12px;
+				height: 17px;
+				color: #7f7f80;
+			}
+			.sallmainboxrr1 {
+				float: left;
+				height: 17px;
+				width: 54px;
+				color: #7f7f80;
+			}
+			.sallmainboxrr2 {
+				float: left;
+				width: 70%;
+				height: 17px;
+				color: #7f7f80;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+	
+	
+	
+	</style>
+</head>
+<body>
+   
+	<div id='listview'></div>
+	<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" >  加载中...</div>
+	<div id='kb'></div>
+	<!--<table id = "loadingmore" width="100%"><tr width = "100%" align="center"><td align="right"><img src ='../image/loading_more.gif' width="32px" height="32px" ></td>
+	<td align="left">加载中...</td></tr></table>-->
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	//是否 还有 内容 当status 为 1 时 没有
+	var hasMore = true;
+	//页码
+	var page_num = 1;
+	//最大页码
+	var max_page = 10;
+
+	//当前商品id，此值需要从上个页面传过来，
+	var codevalue;
+	
+
+	//搜索结果每类显示的条数 必须小于 page_size
+	var max_type_size = 3;
+	var page_size = max_type_size +1;
+	
+
+	function changeSearch(key) {
+		codevalue = key;
+		reset();
+		getContentByPage(1);
+	}
+	
+	
+	function reset() {
+	 	var el = document.getElementById('listview');
+	    el.innerHTML = "";
+	    page_num = 1;
+	    hasMore = true;
+	}
+
+    apiready = function(){
+    	
+    	codevalue = api.pageParam.key;
+    	
+//	alert(codevalue);
+    	//Frame 中添加
+		api.setRefreshHeaderInfo({
+	    visible: true,
+	    loadingImg: 'widget://image/listview/default_ptr_flip.png',
+	    bgColor: '#ccc',
+	    textColor: '#fff',
+	    textDown: '下拉刷新...',
+	    textUp: '松开刷新...',
+	    showTime: true
+	}, function(ret, err){
+		//参数重置
+//	    var el = document.getElementById('listview');
+//	    el.innerHTML = "";
+//	    page_num = 1;
+//	    hasMore = true;
+
+		reset();
+	   //参数重置
+	   
+	   // 这里写重新渲染页面的方法
+	    getContentByPage(page_num);
+	    api.refreshHeaderLoadDone();
+	});
+	
+	 getContentByPage(page_num);
+	
+	
+//		api.addEventListener({
+//		    name:'scrolltobottom',
+//		    extra:{
+//		        threshold:0           //设置距离底部多少距离时触发，默认值为0，数字类型
+//		    }
+//		},function(ret,err){
+//		    // 加载下一页的数据，然后向现有页面追加数据。
+//		    page_num = page_num + 1;
+////		    alert(page_num);
+//		    getContentByPage(page_num);
+//		});
+	
+
+    };
+    
+    
+//  function hiddenLoadMore() {
+//  	var loadmorediv = $api.byId('loadingmore');
+//	    	loadmorediv.style.display = "none";
+//  };
+//  
+//  function showLoadMore() {
+// 	 	var loadmorediv = $api.byId('loadingmore');
+//	    loadmorediv.style.display = "block";
+//  }
+///*lx添加*/  function hiddenkb() {
+//  	
+//  	var kbh = $api.byId('kb');
+//	    	kbh.style.display = "none";
+//  };
+//  
+///*lx添加*/  function showkb() {
+// 		
+// 	 	var kbs = $api.byId('kb');
+//	    kbs.style.display = "block";
+//	   
+//	    
+//  }   
+    function getContentByPage(pagenum) {
+
+//  	alert("pagenum" +pagenum);
+//		alert(codevalue);
+		api.showProgress({
+        });
+
+
+    	api.ajax({
+			url:SERVER_URL + SERVER_ROOT_PATH + SEARCH_FOOD,
+	        method : 'post',
+			timeout : 30,
+			data: {
+				values: {
+					'jsonParam': codevalue,
+					'currentPageIndex':pagenum,
+					'pageSize':page_size,
+				}
+			}
+        },function(ret,err){
+        	
+//      	alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
+        	if (processNetWorkErr(err)) {
+        	api.hideProgress();
+        		return;
+        	}
+        	
+        	var el, div;
+        		el = document.getElementById('listview');
+        		div = document.createElement('div');         
+		        div.innerHTML = '<div class="searcht"><span>减盐食品</span></div>';
+        		
+				el.appendChild(div, el.childNodes[0]);	
+        	
+        	
+
+        	
+        	//coding...
+        	if (ret.status == 0) {
+        		
+        		var rowHasMore = true;
+        		var rowsize = max_type_size;
+        		
+        		if (ret.data.length < rowsize) {
+        			rowHasMore = false;
+        			rowsize = ret.data.length;
+        		}
+        		
+        		
+        		
+        		
+//      		var arr = eval(ret.data.list);
+        		var arr = ret.data;
+//      		alert(JSON.stringify(arr));
+
+				//图标路径，如果服务器端没有图标，则显示默认图标
+				var iconpath = '';
+        		
+        		for (var i = 0; i < rowsize; i ++) {
+        			//默认
+        			iconpath = '../../image/default.png';
+        			//如果服务器端有图标则显示服务器端的图标，没有验证服务器端的图标是否存在，只是根据值判定
+        			if (!varIsNull(arr[i].thumbnailPath)) {
+        				iconpath = SERVER_URL + SERVER_ROOT_PATH + arr[i].thumbnailPath;
+        			}
+        			
+        			
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            
+		            var widthlist=document.documentElement.clientWidth;
+		            
+		            var listbox=widthlist-20;
+		            
+		            var listboxr=widthlist-107;
+		            
+		            var listboxrr2=widthlist-173;
+		            
+
+		            div.innerHTML =
+		            
+					'<div class="listmainb" onclick = "openDetail(' +arr[i].barcodeVal + ')">' +
+							'<div class="listmainbox" style="width:'+listbox+'px">' +
+								'<div class="listmainboxl">' +
+									'<img src="' + iconpath +'" width="75px" height="75px">' +
+								'</div>' +
+								'<div class="listmainboxr" style="width:'+listboxr+'px">' +
+									'<h1 style="width:'+listboxr+'px">' + arr[i].productName + '</h1>' +
+									'<div class="listmainboxrr">' +
+										'<div class="listmainboxrr1 listjg">含盐量</div>' +
+										'<div class="listmainboxf">：</div>' +
+										'<div class="listmainboxrr2" style="width:'+listboxrr2+'px">'+ toFixedWithNoZeroEnd(arr[i].sodiumVal.toFixed(2)) +'/100g(ml)</div>' +
+									'</div>' +
+									'<div class="listmainboxrr">' +
+										'<div class="listmainboxrr1 listjg1">品牌</div>' +
+										'<div class="listmainboxf">：</div>' +
+										'<div class="listmainboxrr2" style="width:'+listboxrr2+'px">' + arr[i].brand +'</div>' +
+									'</div>' +
+									'<div class="listmainboxrr">' +
+										'<div class="listmainboxrr1">生产厂商</div>' +
+										'<div class="listmainboxf">：</div>' +
+										'<div class="listmainboxrr2" style="width:'+listboxrr2+'px">' +arr[i].enterpriseName + '</div>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+						'</div>' ; 
+		            
+		            
+		            
+//		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+//		            alert(div);
+		            el.appendChild(div, el.childNodes[0]);	
+//		            var line = document.createElement('div');
+//		            line.innerHTML = '<div class = "line"><hr/></div>';
+//		            el.appendChild(line,el.childNodes[0]);
+        		}
+        		
+        		if (rowHasMore) {
+        		
+        		
+        		
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            
+		            var widthlist=document.documentElement.clientWidth;
+		            
+		            var listbox=widthlist-20;
+		            
+		            var listboxr=widthlist-107;
+		            
+		            var listboxrr2=widthlist-173;
+		            
+
+		            div.innerHTML = '<div class="searchb"><img src="../../image/fdj.png" width="15px" height="15px">更多商品</div>';
+        		
+					el.appendChild(div, el.childNodes[0]);	
+        		}
+        		
+        		if (rowsize == 0) {
+        		
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            
+		            var widthlist=document.documentElement.clientWidth;
+		            
+		            var listbox=widthlist-20;
+		            
+		            var listboxr=widthlist-107;
+		            
+		            var listboxrr2=widthlist-173;
+		            
+
+		            div.innerHTML = '<div class="searchb">未查询到商品</div>';
+        		
+					el.appendChild(div, el.childNodes[0]);	
+        		}
+        		
+        		
+        		
+        	}  else if (ret.status == 1) {
+        			var el, div;
+        			el = document.getElementById('listview');
+        		
+        	
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            
+		            var widthlist=document.documentElement.clientWidth;
+		            
+		            var listbox=widthlist-20;
+		            
+		            var listboxr=widthlist-107;
+		            
+		            var listboxrr2=widthlist-173;
+		            
+
+		            div.innerHTML = '<div class="searchb">未查询到商品</div>';
+        		
+					el.appendChild(div, el.childNodes[0]);	
+//      		alert (pagenum);
+        	
+//      	if (pagenum == 1) {
+//      			var el, div;
+//      			el = document.getElementById('listview');
+//      			div = document.createElement('div');
+////		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+//		            div.innerHTML =
+//		            
+//					'<div class="mainb" >' +
+//							'  没有搜索到商品，请换关键词试试！' +
+//						'</div>' ; 
+//		            
+//		            
+//		            
+////		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+////		            alert(div);
+//		            el.appendChild(div, el.childNodes[0]);	
+//      		}
+        		hasMore = false;
+        	} else {
+        		//根据json规范进行的显示
+        		alert(ret.data.errmsg);
+        	}
+        	
+        	searchSupermarket();
+        	
+        });
+    }
+    
+    
+    
+   	function searchSupermarket() {
+// 		alert('searchmarket');
+//	   	api.showProgress({
+//				});
+				
+			
+			
+			var map = api.require('bMap');
+			map.getLocation({
+				accuracy: '100m',
+				autoStop: true,
+				filter: 1
+			}, function(ret, err){
+				if(ret.status){
+					map.getNameFromCoords({
+						lon:ret.lon,
+						lat:ret.lat
+					},function(ret,err){
+						if(ret.status){
+							province = ret.province;
+			
+			
+			
+			
+			api.ajax({
+				url : SERVER_URL+SERVER_ROOT_PATH+SEARCH_SUPERMARKET,
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'provinceName' : province,
+						key:codevalue,
+						'currentPageIndex':1,
+						'pageSize':page_size,
+					}
+				}
+			}, function(ret, err) {
+				
+				//      	var loadmorediv = $api.byId('loadingmore');
+				//	    	loadmorediv.style.display = "none";
+				
+				//      	alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
+				if (processNetWorkErr(err)) {
+					api.hideProgress();
+					return;
+				}
+				
+				
+				
+				var el, div;
+					el = document.getElementById('listview');
+				
+				div = document.createElement('div');         
+		        div.innerHTML = '<div class="searcht"><span>减盐超市</span></div>';
+        		
+				el.appendChild(div, el.childNodes[0]);	
+        	
+				//coding...查询共有多少条数据
+				if (ret.status == 0) {
+				//	document.getElementById("totalnum").innerHTML = ret.totoalCount;
+				
+				
+				var rowHasMore = true;
+        		var rowsize = max_type_size;
+        		
+        		if (ret.data.length < rowsize) {
+        			rowHasMore = false;
+        			rowsize = ret.data.length;
+        		}
+				
+					
+					//      		var arr = eval(ret.data.list);
+					var arr = ret.data;
+					//      		alert(JSON.stringify(arr));
+					//图标路径，如果服务器端没有图标，则显示默认图标
+					var iconpath = '';
+					for (var i = 0; i < rowsize; i++) {
+						//默认
+						iconpath = '../../image/default.png';
+						//如果服务器端有图标则显示服务器端的图标，没有验证服务器端的图标是否存在，只是根据值判定
+						if (!varIsNull(arr[i].picture)) {
+							iconpath = SERVER_URL+SERVER_ROOT_PATH+arr[i].picture;
+						}
+						div = document.createElement('div');
+						//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+						
+						//获得手机屏幕的宽度
+		            	var widthmore=document.documentElement.clientWidth;
+		            	//给各个值确定宽度，以保证可以在页面上饱满显示
+		            	var widthmainbox=widthmore-20;
+		            	var widthmainboxr=widthmore-107;
+		            	var widthh=widthmore-107;
+		            	var widthmainboxrr2=widthmore-173;
+						
+						
+						
+						div.innerHTML=
+							'<div class="sallmain" onclick="selectItem(this,\''+arr[i].gid+'\',\''+arr[i].name+'\',\''+arr[i].bussinessHours+'\',\''+arr[i].contractPhone+'\',\''+arr[i].province+'\',\''+arr[i].city+'\',\''+arr[i].county+'\',\''+arr[i].town+'\',\''+arr[i].address+'\',\''+arr[i].businessscope+'\',\''+arr[i].workpictureone+'\',\''+arr[i].workpicturetwo+'\',\''+arr[i].workpicturethree+'\',\''+arr[i].longitude+'\',\''+arr[i].latitude+'\')">' +
+							        '<div class="sallmainbox" style="width:'+widthmainbox+'px">' +
+							            '<div class="sallmainboxl">' +
+							                '<img src="' + iconpath + '" width="75px" height="75px">' +
+							            '</div>' +
+							            '<div class="sallmainboxr" style="width:'+widthmainboxr+'px">' +
+							                '<h1 style="width:'+widthh+'px">' +arr[i].name +'</h1>' +
+							                '<div class="sallmainboxrr">' +
+							                    '<div class="sallmainboxrr1">营业时间</div>' +
+							                    '<div class="sallmainboxf">&#58;</div>' +
+							                    '<div class="sallmainboxrr2" style="width:'+widthmainboxrr2+'px">' + arr[i].bussinessHours +'</div>' +
+							                '</div>' +
+							                '<div class="sallmainboxrr">' +
+							                    '<div class="sallmainboxrr1">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>' +
+							                    '<div class="sallmainboxf">&#58;</div>' +
+							                    '<div class="sallmainboxrr2" style="width:'+widthmainboxrr2+'px">' +arr[i].province + arr[i].city + arr[i].county + arr[i].town + arr[i].address + '</div>' +
+							                '</div>' +
+							            '</div>' +
+							        '</div>' +
+							    '</div>' 
+						//		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+						//		            alert(div);
+						el.appendChild(div, el.childNodes[0]);
+						//		            var line = document.createElement('div');
+						//		            line.innerHTML = '<div class = "line"><hr/></div>';
+						//		            el.appendChild(line,el.childNodes[0]);
+					}
+					
+					
+					if (rowHasMore) {
+        		
+        		
+        		
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            
+		            var widthlist=document.documentElement.clientWidth;
+		            
+		            var listbox=widthlist-20;
+		            
+		            var listboxr=widthlist-107;
+		            
+		            var listboxrr2=widthlist-173;
+		            
+
+		            div.innerHTML = '<div class="searchb"><img src="../../image/fdj.png" width="15px" height="15px">更多超市</div>';
+        		
+					el.appendChild(div, el.childNodes[0]);	
+        		}
+        		
+        		
+//      		if (rowsize == 0) {
+//      		
+//      			div = document.createElement('div');
+////		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+//		            
+//		            var widthlist=document.documentElement.clientWidth;
+//		            
+//		            var listbox=widthlist-20;
+//		            
+//		            var listboxr=widthlist-107;
+//		            
+//		            var listboxrr2=widthlist-173;
+//		            
+//
+//		            div.innerHTML = '<div class="searchb">未查询到超市</div>';
+//      		
+//					el.appendChild(div, el.childNodes[0]);	
+//      		}
+					
+	
+				} else if (ret.status == 1) {
+					
+					
+        			var el, div;
+        			el = document.getElementById('listview');
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            div.innerHTML =
+		            
+					'<div class="searchb">未查询到超市</div>' ; 
+		            
+		            
+		            
+//		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+//		            alert(div);
+		            el.appendChild(div, el.childNodes[0]);	
+        		
+					hasMore = false;
+				} else {
+					//根据json规范进行的显示
+					alert("全部区域"+ret.data.errorMsg);
+				}
+				
+				
+				searchRestaurant();
+				
+				
+			});
+			
+			}
+					})
+				}
+			});
+			
+			
+			
+			
+   	}
+    
+    
+    
+    
+    
+    
+    
+    
+    function searchRestaurant() {
+//  	api.showProgress({
+//			});
+			var map = api.require('bMap');
+			map.getLocation({
+				accuracy: '100m',
+				autoStop: true,
+				filter: 1
+			}, function(ret, err){
+				if(ret.status){
+					map.getNameFromCoords({
+						lon:ret.lon,
+						lat:ret.lat
+					},function(ret,err){
+						if(ret.status){
+							province = ret.province;
+			api.ajax({
+				url : SERVER_URL+SERVER_ROOT_PATH+SEARCH_RESTAURANT,
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'provinceName' : province,
+						'currentPageIndex':1,
+						key:codevalue,
+						'pageSize':page_size,
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+				
+				var el, div;
+					el = document.getElementById('listview');
+				
+				div = document.createElement('div');         
+		        div.innerHTML = '<div class="searcht"><span>减盐餐厅</span></div>';
+        		
+				el.appendChild(div, el.childNodes[0]);	
+        	
+        	
+				if (ret.status == 0) {
+				
+				
+					var rowHasMore = true;
+	        		var rowsize = max_type_size;
+	        		
+	        		if (ret.data.length < rowsize) {
+	        			rowHasMore = false;
+	        			rowsize = ret.data.length;
+	        		}
+				
+				//	document.getElementById("totalnum").innerHTML = ret.totoalCount;
+					hasMore =ret.hasMore;
+					var el, div;
+					el = document.getElementById('listview');
+					//      		var arr = eval(ret.data.list);
+					var arr = ret.data;
+					//      		alert(JSON.stringify(arr));
+					//图标路径，如果服务器端没有图标，则显示默认图标
+					var iconpath = '';
+					for (var i = 0; i < rowsize; i++) {
+						//默认
+						iconpath = '../../image/default.png';
+						//如果服务器端有图标则显示服务器端的图标，没有验证服务器端的图标是否存在，只是根据值判定
+						if (!varIsNull(arr[i].picture)) {
+							iconpath = SERVER_URL+SERVER_ROOT_PATH+arr[i].picture;
+						}
+						div = document.createElement('div');
+						//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+						
+						//获得手机屏幕的宽度
+		            	var widthmore=document.documentElement.clientWidth;
+		            	//给各个值确定宽度，以保证可以在页面上饱满显示
+		            	var widthmainbox=widthmore-20;
+		            	var widthmainboxr=widthmore-107;
+		            	var widthh=widthmore-107;
+		            	var widthmainboxrr2=widthmore-173;
+						
+						
+						
+						div.innerHTML=
+							'<div class="sallmain" onclick="selectItem2(this,\''+arr[i].gid+'\',\''+arr[i].name+'\',\''+arr[i].bussinessHours+'\',\''+arr[i].constractPhone+'\',\''+arr[i].province+'\',\''+arr[i].city+'\',\''+arr[i].county+'\',\''+arr[i].town+'\',\''+arr[i].address+'\',\''+arr[i].business_scope+'\',\''+arr[i].workpicture_one+'\',\''+arr[i].workpictrue_two+'\',\''+arr[i].workpicture_three+'\',\''+arr[i].logitude+'\',\''+arr[i].latitude+'\')">' +
+							        '<div class="sallmainbox" style="width:'+widthmainbox+'px">' +
+							            '<div class="sallmainboxl">' +
+							                '<img src="' + iconpath + '" width="75px" height="75px">' +
+							            '</div>' +
+							            '<div class="sallmainboxr" style="width:'+widthmainboxr+'px">' +
+							                '<h1 style="width:'+widthh+'px">' +arr[i].name +'</h1>' +
+							                '<div class="sallmainboxrr">' +
+							                    '<div class="sallmainboxrr1">营业时间</div>' +
+							                    '<div class="sallmainboxf">&#58;</div>' +
+							                    '<div class="sallmainboxrr2" style="width:'+widthmainboxrr2+'px">' + arr[i].bussinessHours +'</div>' +
+							                '</div>' +
+							                '<div class="sallmainboxrr">' +
+							                    '<div class="sallmainboxrr1">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>' +
+							                    '<div class="sallmainboxf">&#58;</div>' +
+							                    '<div class="sallmainboxrr2" style="width:'+widthmainboxrr2+'px">' +arr[i].province + arr[i].city + arr[i].county + arr[i].town + arr[i].address + '</div>' +
+							                '</div>' +
+							            '</div>' +
+							        '</div>' +
+							    '</div>' 
+						//		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+						//		            alert(div);
+						el.appendChild(div, el.childNodes[0]);
+						//		            var line = document.createElement('div');
+						//		            line.innerHTML = '<div class = "line"><hr/></div>';
+						//		            el.appendChild(line,el.childNodes[0]);
+					}
+					
+					if (rowHasMore) {
+        		
+        		
+        		
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            
+		            var widthlist=document.documentElement.clientWidth;
+		            
+		            var listbox=widthlist-20;
+		            
+		            var listboxr=widthlist-107;
+		            
+		            var listboxrr2=widthlist-173;
+		            
+
+		            div.innerHTML = '<div class="searchb"><img src="../../image/fdj.png" width="15px" height="15px">更多餐厅</div>';
+        		
+					el.appendChild(div, el.childNodes[0]);	
+        		}
+	
+				} else if (ret.status == 1) {
+					
+					
+        			var el, div;
+        			el = document.getElementById('listview');
+        			div = document.createElement('div');
+//		            div.innerHTML = '<div class="item"><img src ="'  + arr[i].urlimg + '" > ' + arr[i].dtitle +'</div>';
+		            div.innerHTML ='<div class="searchb">未查询到餐厅</div>' ; 
+		            
+		            
+//		            '<div class="item"><table><tr><td><img src ="'  + iconpath  + '" > </td><td>' + arr[i].productName +'</td></tr></table></div>';
+//		            alert(div);
+		            el.appendChild(div, el.childNodes[0]);	
+        		
+					hasMore = false;
+				} else {
+					//根据json规范进行的显示
+					alert("全部区域"+ret.data.errorMsg);
+				}
+			});
+						}
+					})
+				}
+			});
+    
+    }
+    
+    
+    
+    
+    
+    function openDetail(code) {
+//  	alert('open' + code);
+    	api.openWin({
+            name: 'fooddetails',
+            url: '../fooddetails/commodity_details_windows.html',
+            pageParam : {
+				productcode : code
+			}
+        });
+    };
+    
+    
+    
+     function selectItem(obj,gid,name,bussinessHours,contractPhone,province,city,county,town,address,businessscope,workpictureone,workpicturetwo,workpicturethree,longitude,latitude){
+
+				api.openWin({
+			        name: 'LowSaltWindowsList',
+			        url: '../lowSaltSupmarket/supermarketList_windows.html',
+			        pageParam:{"gid":gid,
+			        			'name':name,
+			        			'bussinessHours':bussinessHours,
+			        			'contractPhone':contractPhone,
+			        			'province':province,
+			        			'city':city,
+			        			'county':county,
+			        			'town':town,
+			        			'address':address,
+			        			'businessscope':businessscope,
+			        			'workpictureone':workpictureone,
+			        			'workpicturetwo':workpicturetwo,
+			        			'workpicturethree':workpicturethree,
+			        			'longitude':longitude,
+			        			'latitude':latitude,
+			        			},
+       			 });
+
+    		}
+    		
+    		
+    		
+    		 function selectItem2(obj,gid,name,bussinessHours,contractPhone,province,city,county,town,address,businessscope,workpictureone,workpicturetwo,workpicturethree,longitude,latitude){
+
+				api.openWin({
+			        name: 'LowSaltWindowsList',
+			        url: '../lowSaltRestaurant/restaurantList_windows.html',
+			        pageParam:{"gid":gid,
+			        			'name':name,
+			        			'bussinessHours':bussinessHours,
+			        			'contractPhone':contractPhone,
+			        			'province':province,
+			        			'city':city,
+			        			'county':county,
+			        			'town':town,
+			        			'address':address,
+			        			'businessscope':businessscope,
+			        			'workpictureone':workpictureone,
+			        			'workpicturetwo':workpicturetwo,
+			        			'workpicturethree':workpicturethree,
+			        			'longitude':longitude,
+			        			'latitude':latitude,
+			        			},
+       			 });
+
+    		}
+    
+    
+</script>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>基本信息</title>
+		<link rel="stylesheet" type="text/css" href="../../css/info/percencss.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/basiccss.css"/>
+	</head>
+	<body>
+		<div class="boxk"></div>
+		<div class="cenb">
+			<div class="cenbtext1">
+				头像
+			</div>
+			<div class="cenbright2"><img src="../../image/userInfo/tx.jpg" width="35px" height="35px" />
+			</div>
+		</div>
+		<div class="cenb">
+			<div class="cenbtext1">
+				我的账号
+			</div>
+			<div class="cenbright1">
+				<span style="margin-right:30px;" id="phone"></span>
+			</div>
+		</div>
+		<div class="cenb" onclick="changeSex();">
+			<div class="cenbtext1">
+				性别
+			</div>
+			<div class="cenbright1">
+				<span id="userSex">女</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="changeBirthday()">
+			<div class="cenbtext1" >
+				出生日期
+			</div>
+			<div class="cenbright1">
+				<span id="userBir">1995-5-1</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="changeHeight()">
+			<div class="cenbtext1">
+				身高
+			</div>
+			<div class="cenbright1">
+				<span id="userHeight">165cm</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb">
+			<div class="cenbtext1">
+				体重
+			</div>
+			<div class="cenbright1">
+				<span id="userWeight">45kg</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="bk"></div>
+		<div class="basicbc"><img src="../../image/userInfo/pro_bc.png" />
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script>
+		var widthb = document.documentElement.clientWidth;
+		var hthb = document.documentElement.clientHeight;
+		var imgw = widthb - 20;
+		var imgh = imgw * 120 / 1034;
+		var ml = (widthb - imgw) / 2;
+		var basicz = (widthb * 0.5 - 100) / 2;
+		$(document).ready(function() {
+			$(".basicbc").css("margin-left", ml);
+			$(".basicbc img").width(imgw);
+			$(".basicbc img").height(imgh);
+			$(".basicz").css("margin-left", basicz);
+		});
+		apiready = function() {
+			var name = $api.getStorage("username");
+			//			alert("name:"+name);
+			var phone = $api.byId('phone');
+			if (name.length > 7) {
+				var first = name.substring(0, 3);
+				var last = name.substring(name.length - 4, name.length);
+				for ( i = 0; i < name.length - 7; i++) {
+					first = first + '*';
+				}
+				name = first + last;
+			}
+			$api.text(phone, name);
+			var userInfo = $api.getStorage("userInfo");
+			//			alert(JSON.stringify(userInfo));
+			var sex = $api.byId('userSex');
+			$api.text(sex, userInfo.sex);
+			api.addEventListener({
+				name : 'sexEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(sex, ret.value.sex);
+				;
+			});
+			var bir = $api.byId('userBir');
+			api.addEventListener({
+				name : 'birthdayEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(bir, ret.value.birthday);
+				;
+			});
+			var hei = $api.byId('userHeight');
+			api.addEventListener({
+				name : 'heightEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(hei, ret.value.height + "cm");
+				;
+			});
+			var hei = $api.byId('userWeight');
+			api.addEventListener({
+				name : 'weightEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(hei, ret.value.weight + "kg");
+				;
+			});
+		}
+		function changeSex() {
+			api.openFrame({
+				name : 'selectsex',
+				url : './select/selectsex.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				}
+			});
+		}
+
+		function changeBirthday() {
+			//			alert("birthday");
+			api.openFrame({
+				name : 'selectbirthday',
+				url : './select/birthday.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				}
+			});
+		}
+
+		function changeHeight() {
+			api.openFrame({
+				name : 'selectheight',
+				url : './select/height.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				}
+			});
+		}
+
+		function changeWeight() {
+			api.openFrame({
+				name : 'selectweight',
+				url : './select/weight.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				}
+			});
+		}
+	</script>
+</html>

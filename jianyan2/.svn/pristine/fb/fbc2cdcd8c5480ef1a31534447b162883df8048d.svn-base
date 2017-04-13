@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+			body {
+			}
+			/*.BtnNext {
+			 background: url('../image/btn_input_next.png');
+			 background-repeat: no-repeat;
+			 display: block;
+			 color: white;
+			 /*margin: 20px 30%;
+			 position: absolute;
+			 left: 50%;
+			 margin-left: -62px;
+			 margin-top: 20px;
+			 text-align: center;
+			 /*border-radius: 8px;
+			 height: 50px;
+			 width: 124px;
+			 line-height: 50px;
+			 }*/
+			/*.main {
+				width: 100%;
+				height: 200px;
+				background-color: #CDCDCD;
+				text-align: center;
+				margin-top: 30%;
+			}
+			#pj{
+				padding-top: 95px
+			}*/
+			.evamain{ 
+				width:100%;
+			}
+			.evacon{
+				width:96%;
+				padding:10px;
+				border-bottom:2px solid #e5e5e5;
+			}
+			.evacont{
+				height:20px;
+				overflow:hidden;
+				margin-bottom:10px;
+			}
+			.evacontl{
+				float:left;
+			}
+			.evacontr{
+				float:right;
+			}
+			.evaconm{
+				height:20px;
+				margin-bottom:10px;
+			}
+			.evaconb{
+				height:auto;
+				color:#cecbcb;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<!--<div class='BtnNext' onclick="">
+		评价页面待完善
+		</div>-->
+		<div class="evamain">
+			<div class="evacon">
+				<div class="evacont">
+					<div class="evacontl">12345678912</div>
+					<div class="evacontr">2016-02-19</div>
+				</div>
+				<div class="evaconm">商品口味：适中</div>
+				<div class="evaconb"></div>
+			</div>
+			<div class="evacon">
+				<div class="evacont">
+					<div class="evacontl">12345678912</div>
+					<div class="evacontr">2016-02-19</div>
+				</div>
+				<div class="evaconm">商品口味：适中</div>
+				<div class="evaconb">非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃</div>
+			</div>
+			<div class="evacon">
+				<div class="evacont">
+					<div class="evacontl">12345678912</div>
+					<div class="evacontr">2016-02-19</div>
+				</div>
+				<div class="evaconm">商品口味：适中</div>
+				<div class="evaconb">非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好吃非常好</div>
+			</div>
+			<div class="evacon">
+				<div class="evacont">
+					<div class="evacontl">12345678912</div>
+					<div class="evacontr">2016-02-19</div>
+				</div>
+				<div class="evaconm">商品口味：适中</div>
+				<div class="evaconb"></div>
+			</div>
+			<div class="evacon">
+				<div class="evacont">
+					<div class="evacontl">12345678912</div>
+					<div class="evacontr">2016-02-19</div>
+				</div>
+				<div class="evaconm">商品口味：适中</div>
+				<div class="evaconb"></div>
+			</div>
+		</div>
+	</body>
+		<script type="text/javascript" src="../../script/api.js"></script>
+		<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript">
+	
+			var x=document.documentElement.clientWidth;
+			$(function(){
+				$(".evacon").width(x-20);
+			});
+	    </script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的分享（商品 & 菜品）</title>
+<link rel="stylesheet" type="text/css" href="css/sharecss.css"/>
+</head>
+
+<body>
+					<div class="mainb">
+						<div class="mainbox">
+								<div class="mainboxl">
+									<img src="img/tx.jpg" width="75px" height="75px">
+								</div>
+								<div class="mainboxr">
+									<h1>趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</h1>
+									<img id="imgId1" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(1)" />
+									<div class="mainboxrr">
+										<div class="mainboxrr1">含&nbsp;&nbsp;盐&nbsp;&nbsp;量</div>
+										<div class="mainboxf">&#58;</div>
+										<div class="mainboxrr2" >趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>
+									</div>
+									<div class="mainboxrr">
+										<div class="mainboxrr1">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌</div>
+										<div class="mainboxf">&#58;</div>
+										<div class="mainboxrr2" >趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>
+									</div>
+									<div class="mainboxrr">
+										<div class="mainboxrr1">生产厂商</div>
+										<div class="mainboxf">&#58;</div>
+										<div class="mainboxrr2">趣多多巧克力曲奇趣多多巧克力曲奇趣多多巧克力曲奇</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="mainb">
+							<div class="mainbox">
+								<div class="mainboxl">
+									<img src="img/tx.jpg" width="75px" height="75px">
+								</div>
+								<div class="mainboxr">
+									<img id="imgId2" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(2)" />
+									<div class="cpm">凉拌土豆丝</div>
+									<div class="jg"><span>￥16元</span>/份</div>
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="mainb">
+							<div class="mainbox">
+								<div class="mainboxl">
+									<img src="img/tx.jpg" width="75px" height="75px">
+								</div>
+								<div class="mainboxr">
+									<div class="cpm">凉拌土豆丝</div>
+									<div class="jg"><span>￥16元</span>/份</div>
+									
+								</div>
+							</div>
+						</div>
+
+
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+function changeImage(x)
+{
+	imgid=document.getElementById("imgId"+x);
+	if (imgid.src.match("wxz"))
+  	{
+ 		 imgid.src="img/pro_xz.png";
+		 document.getElementById("mainbR").style.color="#36b160";
+  	}
+	else
+  	{
+  		imgid.src="img/pro_wxz.png";
+		document.getElementById("mainbR").style.color="#000000";
+  	}
+}
+
+		var widthb=document.documentElement.clientWidth;
+		$(document).ready(function(){
+			
+			$(".mainbox").width(widthb-20);
+			$(".mainboxr").width(widthb-107);
+			$("h1").width(widthb-123);
+			$(".mainboxrr2").width(widthb-173);
+			
+  		});
+</script>
+</body>
+</html>

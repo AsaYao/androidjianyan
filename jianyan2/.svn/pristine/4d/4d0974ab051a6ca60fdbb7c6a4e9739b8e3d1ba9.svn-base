@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/inputcss.css"/>
+		<style>
+			body {
+			}
+			/*#listview {
+			 width: 100%;
+			 }*/
+			#loadingmore {
+				vertical-align: middle;
+				text-align: center;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				/*margin-left: 5px;*/
+				/*margin-top:0;*/
+				padding: 0px;
+				/*border:1px solid black;*/
+				font-size: 14px;
+				display: none;
+			}
+			#loadingmore img {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				/*border:1px solid #9ea0a2;*/
+				vertical-align: middle;
+				margin: 0px auto;
+				margin-bottom: 3px;
+			}
+			#kb {
+				display: block;
+				width: 100%;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='listview' class="maincon"></div>
+		<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" > 加载中...
+		</div>
+		<div id='kb'></div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		//		是否 还有 内容 当status 为 1 时 没有
+		var hasMore = true;
+		//页码
+		var page_num = 1;
+		//最大页码
+		var max_page = 10;
+		apiready = function() {
+			api.setRefreshHeaderInfo({
+				visible : true,
+				loadingImg : 'widget://image/listview/default_ptr_flip.png',
+				bgColor : '#ccc',
+				textColor : '#fff',
+				textDown : '下拉刷新...',
+				textUp : '松开刷新...',
+				showTime : true
+			}, function(ret, err) {
+				//参数重置
+				var el = document.getElementById('listview');
+				el.innerHTML = "";
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage(page_num);
+				api.refreshHeaderLoadDone();
+			});
+			getContentByPage(page_num);
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : 0 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				// 加载下一页的数据，然后向现有页面追加数据。
+				page_num = page_num + 1;
+				//		    alert(page_num);
+				getContentByPage(page_num);
+			});
+		}
+		function hiddenLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "none";
+		}
+
+		function showLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "block";
+		}
+
+		function hiddenkb() {
+			var kbh = $api.byId('kb');
+			kbh.style.display = "none";
+		}
+
+		function showkb() {
+			var kbs = $api.byId('kb');
+			kbs.style.display = "block";
+		}
+
+		function getContentByPage(pagenum) {
+			if (!hasMore) {
+				//  		hiddenLoadMore();
+				/*lx添加*/
+				hiddenkb();
+				api.toast({
+					msg : '已经是最后了'
+				});
+				return;
+			}
+			if (pagenum > 1) {
+				/*lx添加*/
+				hiddenkb();
+				showLoadMore();
+				/*lx添加*/
+				showkb();
+			}
+			api.showProgress({
+			});
+			getFoods(pagenum);
+		}
+
+		function getFoods(pagenum) {
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/foodsAppAction!fetchAllCheck.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						jsonParam : $api.getStorage("username"),
+						'currentPageIndex' : pagenum
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+				//      	var loadmorediv = $api.byId('loadingmore');
+				//	    	loadmorediv.style.display = "none";
+				hiddenLoadMore();
+				//      	alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
+				//				if (processNetWorkErr(err)) {
+				//					return;
+				//				}
+				if (ret.status == 0) {
+					var el, div;
+					el = document.getElementById('listview');
+					//      		var arr = eval(ret.data.list);
+					var arr = ret.data;
+					for (var i = 0; i < arr.length; i++) {
+						div = document.createElement('div');
+						div.innerHTML = '<div class="conn" onclick="selectItem(\' + JSON.stringify(arr[i]) + \')">' + '<div class="connl">' + arr[i].productName + '</div>' + '<div class="connr">' + arr[i].createdTime + '</div>' + '</div>';
+						el.appendChild(div, el.childNodes[0]);
+					}
+				} else if (ret.status == 1) {
+					hasMore = false;
+				} else {
+					api.alert({
+						msg : err.msg
+					});
+				}
+			});
+		}
+
+		//		  function selectItem(obj,gid,productName,enterpriseName,barcodeVal,brand,productType,province,city,county,energyPerVal,energyNrvVal,proteinPerVal,proteinNrvVal,fatPerVal,fatNrvVal,carbohydratePerVal,carbohydrateNrvVal,sodiumPerVal,sodiumNrvVal,createdTime){
+		function selectItem(obj) {
+			alert(obj.barcodeVal);
+//			api.openWin({
+//				name : 'myfood',
+//				url : './myfood_windows.html',
+//				pageParam : {
+//					productcode : obj
+//				}
+//				//			        pageParam:{
+//				//			        			'food':food
+//				//			        			'name':name,
+//				//			        			'productName':productName,
+//				//			        			'enterpriseName':enterpriseName,
+//				//			        			'barcodeVal':barcodeVal,
+//				//			        			'brand':brand,
+//				//			        			'productType':productType,
+//				//			        			'province':province,
+//				//			        			'city':city,
+//				//			        			'county':county,
+//				//			        			'energyPerVal':energyPerVal,
+//				//			        			'energyNrvVal':energyNrvVal,
+//				//			        			'proteinPerVal':proteinPerVal,
+//				//			        			'proteinNrvVal':proteinNrvVal,
+//				//			        			'fatPerVal':fatPerVal,
+//				//			        			'fatNrvVal':fatNrvVal,
+//				//			        			'carbohydratePerVal':carbohydratePerVal,
+//				//			        			'carbohydrateNrvVal':carbohydrateNrvVal,
+//				//			        			'sodiumPerVal':sodiumPerVal,
+//				//			        			'sodiumNrvVal':sodiumNrvVal,
+//				//			        			'createdTime':createdTime,
+//				//			        			}
+//			});
+		}
+	</script>
+</html>

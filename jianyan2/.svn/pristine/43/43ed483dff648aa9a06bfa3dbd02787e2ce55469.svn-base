@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>食品录入</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style>
+			body {
+				
+				height: 100%;
+				background-color: #F3F6F5;
+				/*background-color: #FFFFFF;*/
+			}
+			#wrap {
+				height: 100%;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-flex-flow: column;
+				flex-flow: column;
+			}
+			#header {
+				line-height:40px;
+				text-align: center;
+				color: #fff;
+				width: 100%;
+				height: 45px;
+				background: url(../../image/statusbar/background.png);
+				background-repeat: repeat-x;
+			}
+			#header h1 {
+				font-size:15pt;
+				font-family: sans-serif;
+			}
+			
+			.menu {
+				margin: 0;
+				padding: 0px;
+				width: 100%;
+				/*background-color: #00a0e9;*/
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 40px;
+				font-size: 10px;
+				position: fixed;
+			}
+			.menuhome {
+				/*background-color: #00a0e9;*/
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 0px;
+				height: 50px;
+			}
+			.menuback {
+				margin-top: 5px;
+				margin-right: auto;
+				margin-bottom: auto;
+				/*background-color: #00a0e9;*/
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				margin-left: 0px;
+				float: left;
+				position: static;
+			}
+			.menuback img {
+				color: #FFFFFF;
+				/*width: 45px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div id = "menu">
+					<div class="menuback"  onclick="backTo()">
+						<img src="../../image/statusbar/back.png" height="32px" width="32px" />
+					</div>
+					<div class="menuhome">
+						<img src="../../image/blank.png" height="32px" width="32px" />
+					</div>
+					<h1>录&nbsp;&nbsp;入</h1>
+				</div>
+			</div>
+			<div id = "main"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src = "../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		function backTo() {
+			api.closeWin({
+			});
+		}
+
+		function backToHome() {
+			api.closeToWin({
+				name : 'root'
+			});
+		}
+
+		var main = $api.byId('main');
+		var mainPos = $api.offset(main);
+		var header = $api.byId('header');
+		var headerPos = $api.offset(header);
+		
+		apiready = function() {
+			var params = api.pageParam;
+			$("h1").text(params.productName);
+			api.openFrame({
+				name : 'input_frame2',
+				url : './food_input_frame2.html',
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : 'auto',
+					h : 'auto'
+				},
+				bounces : false,
+				pageParam:params,
+//				opaque : false,
+//				vScrollBarEnabled : false,
+				hScrollBarEnabled : false
+			});
+		};
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的设置</title>
+<link rel="stylesheet" type="text/css" href="../../css/info/setupcss.css"/>
+</head>
+
+<body>
+	<div class="boxk"></div>
+	<div class="cenb" onclick="showUs()">
+		<div class="cenbtext1">关于我们</div>
+		<div class="cenbright1"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>
+	<!--<div class="cenb">
+		<div class="cenbtext1">版本更新</div>
+		<div class="cenbright1"><span style="margin-right:30px;">1.0</span></div>
+	</div>-->
+	<!--<div class="cenb">
+		<div class="cenbtext1">分享给好友</div>
+		<div class="cenbright1"><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" /></div>
+	</div>-->
+	<div class="bk"></div>
+	<div class="exit" onclick="exitDoor()"><img src="../../image/userInfo/pro_tcdl.png"></div>
+	
+	
+	
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var imgw=widthb-20;
+		var imgh=imgw*120/1034;
+		var ml=(widthb-imgw)/2;
+		$(document).ready(function(){
+			$(".exit img").width(imgw);
+			$(".exit img").height(imgh);
+			$(".exit").css("margin-left",ml);
+  		});
+  		function exitDoor(){
+  			$api.rmStorage("username");
+  			$api.rmStorage("userInfo");
+  			api.rebootApp();
+
+//         	api.execScript({
+//				name : 'root',
+//				script : 'checkLogin();'
+//			});
+//          api.openWin({
+//	            name: 'login',
+//	            url: '../login/login.html'
+//          });
+  		}
+  		function showUs(){
+  			api.openWin({
+			name : 'aboutOur',
+//			url : '' + SERVER_URL + '/salt_reduction/pages/aboutOur.jsp'
+			url:'./myset_about.html'
+		});
+  		}
+</script>
+</body>
+</html>

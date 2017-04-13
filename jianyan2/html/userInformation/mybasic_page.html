@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>基本信息</title>
+		<link rel="stylesheet" type="text/css" href="../../css/info/percencss.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/basiccss.css"/>
+	</head>
+	<style>
+			.allmain {
+				display: none;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+			}
+			.select-sex {
+				display: none;
+				width: 300px;
+				height: 264px;
+				background: #f2f2f3;
+			}
+			.sex-top {
+				width: 300px;
+				height: 50px;
+				border-bottom: 1px solid #dddddd;
+				font-size: 16px;
+				color: #525050;
+				background: #e5e5e5;
+				line-height: 50px;
+			}
+			.sex-top1 {
+				margin-left: 20px;
+			}
+			.sex-m1 {
+				width: 300px;
+				height: 50px;
+				border-bottom: 1px solid #dddddd;
+				font-size: 15px;
+				color: #666666;
+				line-height: 50px;
+			}
+			.sex-m1 img {
+				margin-left: 30px;
+			}
+			.sex-b {
+				width: 300px;
+				height: 60px;
+				line-height: 60px;
+				text-align: center;
+			}
+			.sex-b1 {
+				float: left;
+				width: 100px;
+				height: 40px;
+				border: 1px solid #dddddd;
+				border-radius: 5px;
+				line-height: 40px;
+				text-align: center;
+				margin: 10px 24px;
+				color: #666666;
+			}
+			
+	</style>
+	<body>
+		<div class="allmain" id="BodyMask">
+			<div class="select-sex" id="selectSex">
+				<div class="sex-top">
+					<div class="sex-top1">
+						性别选择
+					</div>
+				</div>
+				<div class="sex-m0">
+					<div class="sex-m1" onclick="changeImage(this)"><img class="sexImage" id="imgId1" src="../../image/userInfo/xz.png" width="15px" height="15px" />&nbsp;男
+					</div>
+					<div class="sex-m1" onclick="changeImage(this)" ><img class="sexImage" id="imgId2" src="../../image/userInfo/wxz.png" width="15px" height="15px" />&nbsp;女
+					</div>
+					<div class="sex-m1" onclick="changeImage(this)" ><img class="sexImage" id="imgId3" src="../../image/userInfo/wxz.png" width="15px" height="15px" />&nbsp;保密
+					</div>
+				</div>
+				<div class="sex-b">
+					<div class="sex-b1" onclick="cancelDo('selectSex')">
+						取消
+					</div>
+					<div class="sex-b1" onclick="suerSex()">
+						确定
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="boxk"></div>
+		<div class="cenb" onclick="favicon()">
+			<div class="cenbtext1">
+				头像
+			</div>
+			<div class="cenbright2"><img src="../../image/userInfo/tx.jpg" width="35px" height="35px" id="icon" />
+			</div>
+		</div>
+		<div class="cenb">
+			<div class="cenbtext1">
+				我的账号
+			</div>
+			<div class="cenbright1">
+				<span style="margin-right:30px;" id="phone"></span>
+			</div>
+		</div>
+		<div class="cenb" onclick="changeSex();">
+			<div class="cenbtext1">
+				性别
+			</div>
+			<div class="cenbright1">
+				<span id="userSex">未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="changeBirthday()">
+			<div class="cenbtext1" >
+				出生日期
+			</div>
+			<div class="cenbright1">
+				<span id="userBir">未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="changeHeight()">
+			<div class="cenbtext1">
+				身高
+			</div>
+			<div class="cenbright1">
+				<span id="userHeight">未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="cenb" onclick="changeWeight()">
+			<div class="cenbtext1">
+				体重
+			</div>
+			<div class="cenbright1">
+				<span id="userWeight">未填写</span><img src="../../image/userInfo/pro_yjt.png" width="10px" height="16px" />
+			</div>
+		</div>
+		<div class="bk"></div>
+		<div class="basicbc" onclick="saveInfo()"><img src="../../image/userInfo/pro_bc.png" />
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script>
+		var widthb = document.documentElement.clientWidth;
+		var hthb = document.documentElement.clientHeight;
+		var imgw = widthb - 20;
+		var imgh = imgw * 120 / 1034;
+		var ml = (widthb - imgw) / 2;
+		var basicz = (widthb * 0.5 - 100) / 2;
+		var sexl = (widthb - 300) / 2;
+		var sext = (hthb - 264) / 2-40;
+		$(document).ready(function() {
+			$(".basicbc").css("margin-left", ml);
+			$(".basicbc img").width(imgw);
+			$(".basicbc img").height(imgh);
+			$(".basicz").css("margin-left", basicz);
+			$(".select-sex").css("margin-left", sexl);
+			$(".select-sex").css("margin-top", sext);
+		});
+		apiready = function() {
+			var name = $api.getStorage("username");
+			//			alert("name:"+name);
+			var phone = $api.byId('phone');
+			if (name.length > 7) {
+				var first = name.substring(0, 3);
+				var last = name.substring(name.length - 4, name.length);
+				for ( i = 0; i < name.length - 7; i++) {
+					first = first + '*';
+				}
+				name = first + last;
+			}
+			$api.text(phone, name);
+			var userInfo = $api.getStorage("userInfo");
+			//			alert(JSON.stringify(userInfo));
+			var sex = $api.byId('userSex');
+			var num = userInfo.sex;
+			if(num=='0'){
+				$api.text(sex, '女');
+			}else if(num=='1'){
+				$api.text(sex, '男');
+			}else if(num=='2'){
+				$api.text(sex, '保密');
+			}else{
+				$api.text(sex, '未填写');
+			}
+			
+			api.addEventListener({
+				name : 'sexEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				var num = ret.value.sex;
+				if(num=='0'){
+					$api.text(sex, '女');
+				}else if(num=='1'){
+					$api.text(sex, '男');
+				}else if(num=='2'){
+					$api.text(sex, '保密');
+				}else{
+					$api.text(sex, '未填写');
+				}
+
+			});
+			api.addEventListener({
+		        	name: 'changeIcon_not'
+		        }, function(ret){
+		        if(ret && ret.value){
+		        	changeIcon(ret.value);
+					userInfo.pic = ret.value.savePath;
+//					savePic(ret.value);
+		        }
+		     });
+			var icon = $api.byId('icon');
+			icon.src = userInfo.pic;
+			var bir = $api.byId('userBir');
+			if(userInfo.birthday!=''&&userInfo.birthday!=null){
+//				alert(userInfo.birthday);
+				$api.text(bir, userInfo.birthday);
+			}
+			api.addEventListener({
+				name : 'birthdayEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(bir, ret.value.birthday);
+			});
+			var hei = $api.byId('userHeight');
+			if(userInfo.height!=''&&userInfo.height!=null){
+				$api.text(hei, userInfo.height + "cm");
+			}
+			api.addEventListener({
+				name : 'heightEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(hei, ret.value.height + "cm");
+			});
+			var wei = $api.byId('userWeight');
+			if(userInfo.weight!=''&&userInfo.weight!=null){
+				$api.text(wei, userInfo.weight + "kg");
+			}
+			api.addEventListener({
+				name : 'weightEvent'
+			}, function(ret, err) {
+				//			alert(JSON.stringify(ret));
+				$api.text(wei, ret.value.weight + "kg");
+			});
+		}
+		function changeSex() {
+			var sexx = $("#userSex").html();
+			if(sexx!='未填写'){
+				var arr = $(".sexImage");
+				var num = 0;
+				if(sexx=='女'){
+					num = 1;
+				}else if(sexx=='保密'){
+					num = 2;
+				}
+				
+				for(i=0;i<arr.length;i++){
+					$api.attr(arr[i],'src','../../image/userInfo/wxz.png');
+					if(i==num){
+						$api.attr(arr[i],'src','../../image/userInfo/xz.png');
+					}
+				}
+			}
+			document.getElementById("BodyMask").style.display="block";//显示
+			document.getElementById("selectSex").style.display="block";//显示
+		}
+
+		function changeBirthday() {
+			//			alert("birthday");
+			var bir = $("#userBir").html();
+			api.openFrame({
+				name : 'selectbirthday',
+				url : './select/birthday.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				},
+			    pageParam: {
+			        'bir': bir
+			    }
+			});
+		}
+
+		function changeHeight() {
+			var hei = $("#userHeight").html();
+			api.openFrame({
+				name : 'selectheight',
+				url : './select/height.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				},
+			    pageParam: {
+			        'hei': hei
+			    }
+			});
+		}
+
+		function changeWeight() {
+			var wei = $("#userWeight").html();
+			api.openFrame({
+				name : 'selectweight',
+				url : './select/weight.html',
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				},
+			    pageParam: {
+			        'wei': wei
+			    }
+			});
+		}
+		function favicon(){
+			api.confirm({
+				title:"提示消息",
+				msg:"上传方式选择",
+				buttons:['拍照上传','本地上传','取消']
+			},function(ret,err){
+				if(ret){
+					if(ret.buttonIndex==1){
+						api.openWin({
+							name: 'iconinput',
+							url: './icons/personalIcon.html',
+							pageParam:{'type':'camera'}
+						});
+					}else if(ret.buttonIndex==2){
+						api.openWin({
+							name: 'iconinput',
+							url: './icons/personalIcon.html',
+							pageParam:{'type':'album'}
+						});
+					}
+				}
+			});
+		}
+		function changeIcon (ret) {
+			var pics = ret.savePath;
+			var icon = $api.byId("icon");
+			icon.src=pics;
+		}
+
+		function saveInfo(){
+			var userInfo = $api.getStorage('userInfo');
+//			alert(JSON.stringify(userInfo));
+			api.ajax({
+				url:SERVER_URL+SERVER_ROOT_PATH+'/common/userInfoAction!saveInfo.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values:{
+						userName:userInfo.username,
+						sex:userInfo.sex,
+	 					birthday:userInfo.birthday,
+						height:userInfo.height,
+						weight:userInfo.weight,
+//						realName:userInfo.realName,
+//						personID:userInfo.personID,
+//						company:userInfo.company,
+//						address:userInfo.address
+					},
+					files: {
+						icon: $api.byId("icon").src
+					}
+				}
+			},function(ret,err){
+				if (processNetWorkErr(err)) {
+					return;
+				}	
+				if(ret.status==0){
+					alert('保存成功！');
+					api.sendEvent({
+					    name: 'myinfo_reload'
+					});
+				}else if(ret.status==1){
+					alert(ret.data.errorMsg);
+				}else{
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+		function suerSex() {
+			var userInfo = $api.getStorage("userInfo");
+			var arr = $(".sexImage");
+			//	alert(arr.length);
+			for ( i = 0; i < arr.length; i++) {
+				if (arr[i].src.match("/xz") != null) {
+					if (i == 0) {
+						i = 1;
+					} else if (i == 1) {
+						i = 0;
+					}
+					userInfo.sex = '' + i;
+					var sex = $api.byId('userSex');
+					switch(i) {
+						case 0:
+							$api.text(sex, '女');
+							break;
+						case 1:
+							$api.text(sex, '男');
+							break;
+						case 2:
+							$api.text(sex, '保密');
+							break;
+					}
+					break;
+				}
+			}
+			$api.setStorage("userInfo",userInfo);
+			$("#imgId1").attr("src", "../../image/userInfo/xz.png");
+			$("#imgId2").attr("src", "../../image/userInfo/wxz.png");
+			$("#imgId3").attr("src", "../../image/userInfo/wxz.png");
+			$("#BodyMask").css("display", "none");
+			$("#selectSex").css("display", "none");
+		}
+		function changeImage(obj) {
+			$("#imgId1").attr("src", "../../image/userInfo/wxz.png");
+			$("#imgId2").attr("src", "../../image/userInfo/wxz.png");
+			$("#imgId3").attr("src", "../../image/userInfo/wxz.png");
+			obj.children[0].src = "../../image/userInfo/xz.png";
+		}
+		function cancelDo(id) {
+			$("#" + id).css("display", "none");
+			$("#BodyMask").css("display", "none");
+			var UICustomPicker = api.require('UICustomPicker');
+			UICustomPicker.close({
+				id : 0
+			});
+		}
+	</script>
+</html>

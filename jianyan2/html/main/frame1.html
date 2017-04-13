@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		 <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+		<style>
+			body {
+			background-color: #666666
+			}
+			input{
+				margin-left:10px;
+				float:left;
+				background-color: #36B05E;
+				width:50px;
+				height:30px;
+			}
+			#appversion {
+				color:#FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<p>页面建设中...</p><br />
+		<div id = "appversion"></div>
+		
+		<input type="button" value="注销" onclick="logout()"/>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			var appVersion = api.appVersion;
+			var versiondiv = $api.byId('appversion');
+			versiondiv.innerHTML = '当前版本' + appVersion;
+		};
+		function logout() {
+//		$api.clearStorage();
+//		$api.setStorage("username",'');
+//		$api.rmStorage('username')
+		
+
+		$api.setStorage("username",'');
+		var saveuser = $api.getStorage('username');
+
+		if(saveuser==''){
+			alert('注销成功')
+			
+		}
+		
+		
+		};
+	</script>
+</html>

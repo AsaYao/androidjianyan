@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	body{
+    		margin:0px;
+			padding:0px;
+    	}
+		.jg{
+			width:100%;
+			height:15px;
+			background:#f3f5f4;
+		}
+		.main-img img{
+			margin:10px 0px 10px 20px;
+		}
+    	.main-qymz{
+    		height:40px;
+			line-height:40px;
+			padding-left:20px;
+    		border-bottom:1px solid #e5e5e5;
+    		font-size: 20px;
+    	}
+		.main-qymz1{
+    		height:40px;
+			line-height:40px;
+			padding-left:20px;
+    		font-size: 20px;
+    	}
+    	.main-qymz span{
+    		font-size: 16px;
+    		margin-left: 20px;
+    	}
+		.main-qymz1 span{
+    		font-size: 16px;
+    		margin-left: 20px;
+    	}
+		#show{
+			border-collapse:collapse;
+			width:300px;
+			margin: 10px 0;
+    	}
+    	table tr th{
+    		text-align: center;
+    		height:25px;
+    		line-height:25px;
+    		padding:2px 4px;
+    		font-size: 16px;
+    	}
+    	table tr td{
+    		text-align: center;
+    		height:25px;
+    		line-height:25px;
+    		padding:2px 4px;
+    		font-size: 14px;
+    	}
+    </style>
+</head>
+<body>
+<div id="mainD">
+	<div class="main-img">
+	<img id="image1" width="60px" height="60px" src=""/>
+	<img id="image2" width="60px" height="60px" src=""/>
+	</div>
+	<div class="jg"></div>
+	<div class="main-qymz">
+	企业名称：<span id= "enterpriseName">未填写</span>
+	</div>
+	<div class="main-qymz">
+	产品名称：<span id= "productName">未填写</span>
+	</div>
+	<div class="main-qymz">
+	一&nbsp;&nbsp;维&nbsp;&nbsp;码：<span id= "barcodeVa">未填写</span>
+	</div>
+	<div class="main-qymz1">
+	品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：<span id= "brand">未填写</span>
+	</div>
+	<div class="jg"></div>
+	<div class="main-qymz1">
+	产品类别：<span id= "productType">未填写</span>
+	</div>
+	<div class="jg"></div>
+	<div class="main-qymz1">
+	生产地址：<span id= "address">未填写</span>
+	</div>
+	<div class="jg"></div>
+	<div class="main-qymz1">营养成分表</div>
+	<table id="show" border="1px">
+	</table>
+</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src = "../../script/jquery-2.1.4.min.js"> </script>
+<script type="text/javascript">
+	var widthb = document.documentElement.clientWidth;
+	ml=(widthb-300)*0.5;
+	$(document).ready(function() {
+			$("#show").css("margin-left", ml);
+		});
+	apiready = function(){
+		var params= api.pageParam;
+//		alert(JSON.stringify(params));
+		if(params.thumbnailPath!=null&&params.thumbnailPath!=''){
+			$("#image1").attr("src",SERVER_URL + SERVER_ROOT_PATH + params.thumbnailPath);
+		}else{
+			$("#image1").attr("src","../../image/default.png");
+		}
+		if(params.compositionPath!=null&&params.compositionPath!=''){
+			$("#image2").attr("src",SERVER_URL + SERVER_ROOT_PATH + params.compositionPath);
+		}else{
+			$("#image2").hide();
+		}
+		var enterpriseName = $api.byId('enterpriseName');
+		$api.text(enterpriseName, params.enterpriseName);
+		var productName = $api.byId('productName');
+		$api.text(productName, params.productName);
+		var barcodeVa = $api.byId('barcodeVa');
+		$api.text(barcodeVa, params.barcodeVal);
+		var brand = $api.byId('brand');
+		$api.text(brand, params.brand);
+		var productType = $api.byId('productType');
+		$api.text(productType, params.productType);
+		var address = $api.byId('address');
+		var str = params.province+'>'+params.city+'>'+params.country;
+		$api.text(address, str);
+		var tables = $api.byId('show');
+		$api.html(tables,'<tr><th>项目</th><th>每100g</th><th>NRV%</th></tr>'+
+		'<tr><td>能量</td><td>'+params.energyPerVal+'</td><td>'+params.energyNrvVal+'</td></tr>'+
+		'<tr><td>蛋白质</td><td>'+params.proteinPerVal+'</td><td>'+params.proteinNrvVal+'</td></tr>'+
+		'<tr><td>脂肪</td><td>'+params.fatPerVal+'</td><td>'+params.fatNrvVal+'</td></tr>'+
+		'<tr><td>碳水化合物</td><td>'+params.carbohydratePerVal+'</td><td>'+params.carbohydrateNrvVal+'</td></tr>'+
+		'<tr><td>钠</td><td>'+params.sodiumPerVal+'</td><td>'+params.sodiumNrvVal+'</td></tr>');
+		api.addEventListener({
+	        name:'editEvent'
+        },function(ret,err){
+        	if(ret){
+        		changeBody();
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	};
+</script>
+</html>

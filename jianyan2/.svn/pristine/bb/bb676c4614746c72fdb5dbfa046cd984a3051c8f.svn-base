@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>菜品详情</title>
+<link rel="stylesheet" type="text/css" href="css/fooddetail.css"/>
+</head>
+
+<body>
+<div class="boxk"></div>
+<div class="fooddt">
+	<div class="fooddtl xz">菜品详情</div>
+	<div class="fooddtl">评价</div>
+</div>
+<div class="foodm">
+	<div class="foodml">
+		<div class="foodmly">菜品名称：凉拌土豆丝</div>
+		<div class="foodmly">参考价格：<span>￥13元</span>/份</div>
+		<div class="foodmly">总重量：1000g/份</div>
+	</div>
+	<div class="foodmr">
+		<img src="img/tx.jpg" width="80px" height="80px">
+	</div>
+</div>
+<div class="boxk"></div>
+<div class="foodys">
+	<div class="foodyst"><span>元素含量</span></div>
+	<table border="1">
+		<tr>
+			<td>添加食盐量</td>
+			<td>10mg/100g</td>
+		</tr>
+		<tr>
+			<td>含钠量</td>
+			<td>0.33mg/100g</td>
+		</tr>
+		<tr>
+			<td>含钾量</td>
+			<td>0.56mg/100g</td>
+		</tr>
+	</table>
+</div>
+<div class="boxk"></div>
+<div class="foodjk">
+	<div class="foodyst"><span>健康提示</span></div>
+	<div class="foodjkt">此菜品为低盐菜品</div>
+</div>
+
+<div class="boxk"></div>
+<div class="foodcl">
+	<div class="foodyst"><span>材料说明</span></div>
+</div>
+
+
+</body>
+</html>

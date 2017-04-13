@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的评价</title>
+<link rel="stylesheet" type="text/css" href="css/evacss.css"/>
+</head>
+
+<body>
+<div class="mainp">
+	<div class="mainpl">商品</div>
+	<div class="br"></div>
+	<div class="mainpr"><div class="mainz">菜品</div></div>
+</div>
+<div class="maink">共<span>3</span>个菜品评价记录</div>
+<div class="maincon">
+<!--菜品删除部分-->
+	<div class="conn">
+		<div class="connt">
+			<img id="imgId1" src="img/pro_wxz.png" width="15px" height="15px" onclick="changeImage(1)" />
+			<div class="connl">菜品评价：<span>萝粉鱼头豆腐汤萝粉鱼头豆腐汤</span></div>
+			<div class="connr">2016-4-18</div>
+		</div>
+		<div class="connb">是否有低盐提示服务：<span>是</span></div>
+		<div class="connb">菜品口感：<span>微咸</span></div>
+		<div class="connb">菜品质量：<img src="img/pro_xm.jpg" width="15px" height="15px" /><img src="img/pro_xm.jpg" width="15px" height="15px" /><img src="img/pro_xm.jpg" width="15px" height="15px" /><img src="img/pro_xb.jpg" width="15px" height="15px" /><img src="img/pro_xk.png" width="15px" height="15px" /></div>
+	</div>
+<!--菜品删除部分-->
+	<div class="bk"></div>
+	
+	
+</div>
+
+<div class="mainb">
+	<div class="mainbl">全选</div>
+	<div class="br"></div>
+	<div class="mainbr"><div class="mainbs">删除</div></div>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+function changeImage(x)
+{
+	imgid=document.getElementById("imgId"+x);
+	if (imgid.src.match("wxz"))
+  	{
+ 		 imgid.src="img/pro_xz.png";
+		 document.getElementById("mainbR").style.color="#36b160";
+  	}
+	else
+  	{
+  		imgid.src="img/pro_wxz.png";
+		document.getElementById("mainbR").style.color="#000000";
+  	}
+}
+
+
+
+		var widthb=document.documentElement.clientWidth;
+		var mainwidth=widthb-2;
+		var mainz=(mainwidth/2-70)/2;
+		$(document).ready(function(){
+			$(".mainpl").width(mainwidth/2);
+			$(".mainpr").width(mainwidth/2);
+			$(".mainz").css("margin-left",mainz);
+			$(".connl").width(widthb*0.95-118);
+			
+  		});
+</script>
+</body>
+</html>

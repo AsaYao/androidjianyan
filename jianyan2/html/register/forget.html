@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport"
+		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			body, html {
+				height: 90%;
+			}
+			body {
+				background-image: url(../../image/register/bg.jpg);
+				/*	display: -webkit-box;
+				 -webkit-box-orient: vertical;*/
+				background-repeat: repeat-y;
+				/*	background-image: url(../image/bg.jpg);*/
+				background-size: 100%;
+			}
+			/*header {
+			 border: none;
+			 }*/
+			
+			.content {
+				padding-top: 50px;
+				margin-top: 10%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-flex: 1;
+			}
+			/*i {
+			 display: block;
+			 width: 30px;
+			 height: 30px;
+			 background-size: 30px;
+			 background-repeat: no-repeat;
+			 background-position: center;
+			 }*/
+			.user {
+				margin-top:10px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-size: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url("../../image/register/shouji.png");
+			}
+			
+			
+			.check {
+				margin-top:10px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-size: 30px;
+				background-repeat: no-repeat;
+				
+				background-image: url("../../image/register/check.png");
+				background-position: center;
+			}
+			#send {
+				margin-top:10px;
+				background-color:#FF7800;
+				color:#FFFFFF;
+				font-size:12px;
+				text-align:center;
+				font-style:inherit;
+				margin-left: 10px;
+				margin-right: 10px;
+				padding-right: 10px;
+				padding-left: 10px;
+				display: block;
+				width: 60px;
+				height: 30px;
+				background-size: 60px;
+				background-repeat: no-repeat;
+				background-position: center;
+				/*background-image: url("../../image/register/send.png");*/
+			}
+			.input-wrap {
+				vertical-align:middle;
+				
+				display: -webkit-box;
+				background-color: rgba(255, 255, 255, 0.8);
+			}
+			.input-wrap:first-child {
+			
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+			.input-wrap:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			.form {
+				
+				
+				margin: 0 20px;
+				line-height: 30px;
+			}
+			.input-wrap input {
+			vertical-align:middle;
+				margin-top: 15px;
+				display: block;
+				-webkit-box-flex: 1;
+				background-color: rgba(255, 255, 255, 0);
+				outline: none;
+				height: 30px;
+			}
+			input {
+				padding-bottom:5px;
+				padding-left: 10px;
+			}
+			.input-wrap img {
+			vertical-align:middle;
+			}
+			/*.footer, .form {
+			 -webkit-box-flex: 1;
+			 }*/
+			.footer {
+				margin-top: 120px;
+			}
+			#register {
+				color: #000000;
+				margin: 0 40px;
+				text-align: center;
+				border-radius: 5px;
+				height: 40px;
+				line-height: 40px;
+				margin-top: 20px;
+				background-color: #FFFFFF;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="menu" >
+				<!--<div class="menu2"  onclick="closeWin() ">
+					<img src="../../image/register/zhucejiantou.png" height="20px" width="30px"/>
+				</div>
+				<h1>忘记密码</h1>-->
+			</div>
+		</header>
+		<div class="content">
+			<div class="form">
+				<div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+					<i class="user"></i>
+					<input type="tel" placeholder="请输入手机号" class="txt" id="username" value=""/>
+				</div>
+				
+				<div class="input-wrap">
+					<i class="check"></i>
+					<input type="tel" placeholder='请输入验证码' class="txt" id="check" value=""/>
+					<!--<img src="../../image/register/send.png" id="pic" onclick="sendCode()"/>-->
+					<button id="send" type="button" onclick="sendCode()" style="width: 35%">获取验证码
+					<!--<i class="send"></i>-->
+				</div>
+			</div>
+			
+			<footer class="footer">
+				<div class="blue" id="register" tapmode="blue-btn-active" onclick="forget()">
+					下一步
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
+<script src="../../script/zepto.min.js"></script>
+<script src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+	
+	var mob = null;
+	apiready = function() {
+	
+		mob = api.require('mobVerifyBts');
+		mob.register({
+			key : 'e3de57c0c184',
+			secret : '6f9a49a5b364a0af380e52da4746c247'
+		});
+	};
+		function sendCode() {
+		var username = $("#username").val();
+		
+			api.ajax({
+
+					url :  SERVER_URL + '/salt_reduction/login/validateUser.action',
+					method : 'post',
+					timeout : 30,
+					dataType : 'json',
+					returnAll : false,
+					data : {
+						values : {
+							userName : username,
+
+						}
+					}
+				}, function(ret, err) {
+
+					
+					
+					
+					
+					
+					
+					
+					if (ret.status !== 0) {
+						alert('该用户不存在');
+					
+						return false;
+						
+//						
+					} else {
+				var phone = document.getElementById('username').value;
+				mob.send({
+			phone : phone
+		}, function(ret, err) {
+			if (err) {
+				if (err.status == 462) {
+					alert('操作频繁，请稍后再试')
+				}
+				if (err.status == 456) {
+					alert('请输入手机号')
+				}
+				if (err.status == 457) {
+					alert('手机号格式不正确')
+				}
+				if (err.status == 476) {
+					alert('本机发送次数过多')
+				}
+				if (err.status == 477) {
+					alert('该手机号发送次数过多')
+				}
+								
+			} else {
+			var username = $("#username").val();
+			var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+		reg_str.test(username)
+		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+			alert('手机格式有误');
+			return false;
+		}else{
+				api.toast({
+					msg : '验证码已发出，请接收信息',
+					duration : 2000,
+					location : 'middle'
+				});
+				}
+				var obj = document.getElementById('send');
+	obj.disabled=true;
+	
+	var t=60;
+	var si = setInterval(function(){
+		t--;
+		if(t>0){
+			obj.innerHTML='等待'+t+'秒';
+		}else{
+			
+			obj.innerHTML='重新获取';
+			
+			clearInterval(si);
+			obj.disabled=false;
+
+		}
+	},1000);
+
+
+				
+			}
+		});
+
+					}
+				});
+		
+		
+		
+
+	}
+
+	
+			
+			function forget() {
+	
+		
+		var username = $("#username").val();
+		
+		var check = $("#check").val();
+		var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+		reg_str.test(username)
+		if (username == '') {
+			alert('请输入用户名');
+			return false;
+		}
+		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+			alert('输入正确手机号');
+			return false;
+		}
+		
+		if (check == '') {
+			alert('请输入验证码');
+			return false;
+		}
+		
+		
+		var phone = document.getElementById('username').value;
+		var code = document.getElementById('check').value;
+		mob.verify({
+			phone : phone,
+			code : code
+		}, function(ret, err) {
+			if (err) {
+			
+				api.alert({
+					msg : '验证码有误，请重新申请'
+				});
+				return false;
+			} else {
+				
+		var username = $("#username").val();
+		api.openWin({
+	        name: 'look',
+	        url: '../register/win_look.html',
+	        pageParam : {
+									username : username
+								}
+        });
+			}
+		});
+//		
+		
+		}
+		
+		
+		
+		
+//		alert(username);
+		
+//						api.showProgress();
+//						var model = api.require('model');
+//						var username = $("#username").val();
+//						var password = $("#password").val();
+//						var user = api.require('user');
+//						user.register({
+//							username : username,
+//							password : password
+//						}, function(ret, err) {
+//							api.hideProgress();
+//							if (ret) {
+//		
+//										api.closeWin();
+//		
+//							} else {
+//								api.toast({
+//									msg : err.message,
+//									location : "middle"
+//								})
+//							}
+//						});
+//	}
+		
+		
+	
+	function closeWin() {
+		api.closeWin({
+		})
+	}
+
+
+</script>

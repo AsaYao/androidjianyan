@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>餐厅菜品</title>
+<style>
+body{
+	margin:0px;
+	padding:0px;
+	background:#f3f5f4;
+	height:100%;
+}
+
+
+.boxtext{
+	widht:100%;
+	height:30px;
+	
+}
+.boxs{
+	width:100px;
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+	margin-left:20px;
+}
+.mainb{
+		width:100%;
+		height:97px;
+		border-bottom:2px solid #e5e5e5;
+		background:#ffffff;
+	}
+	.mainbox{
+		
+		height:77px;
+		padding:10px 0 10px 10px;
+	}
+	.mainboxl{
+		float:left;
+	}
+	.mainboxr{
+		
+		float:left;
+		margin-left:12px;
+	}
+	.cpm{
+		width:100px;
+		height:30px;
+		line-height:30px;
+		margin-left:30px;
+		margin-top:10px;
+		font-size:14px;
+	}
+	.jg{
+	float:left;
+		width:100px;
+		height:30px;
+		line-height:30px;
+		margin-left:30px;
+		font-size:12px;
+	}
+	.jg span{
+		color:#ff0000;
+	}
+	.mainboxr a{
+	display:block;
+	float:left;
+	}
+	.ckxq{
+		float:left;
+		border:1px solid #666666;
+		padding:5px;
+		font-size:12px;
+		color:#666666;
+		border-radius:8px;
+	}
+</style>
+</head>
+
+<body>
+<div class="boxtext">
+	<div class="boxs">凉菜素菜</div>
+</div>
+<div class="mainb">
+	<div class="mainbox">
+		<div class="mainboxl">
+			<img src="img/tx.jpg" width="75px" height="75px">
+		</div>
+		<div class="mainboxr">
+			<div class="cpm">凉拌土豆丝</div>
+			<div class="jg"><span>￥16元</span>/份</div>
+			<a href="#"><div class="ckxq">查看详情</div></a>			
+		</div>
+	</div>
+</div>
+<div class="mainb">
+	<div class="mainbox">
+		<div class="mainboxl">
+			<img src="img/tx.jpg" width="75px" height="75px">
+		</div>
+		<div class="mainboxr">
+			<div class="cpm">凉拌土豆丝</div>
+			<div class="jg"><span>￥16元</span>/份</div>
+			<a href="#"><div class="ckxq">查看详情</div></a>							
+		</div>
+	</div>
+</div>
+</body>
+</html>

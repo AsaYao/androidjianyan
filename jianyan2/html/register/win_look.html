@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport"
+		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			body, html {
+				height: 90%;
+			}
+			body {
+				
+
+				background-image: url(../../image/register/bg.jpg);
+				/*	display: -webkit-box;
+				 -webkit-box-orient: vertical;*/
+				background-repeat: repeat-y;
+				/*	background-image: url(../image/bg.jpg);*/
+				background-size: 100%;
+			}
+			
+			#menu {
+				height: 45px;
+				padding: 0px;
+				width: 100%;
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 40px;
+				font-size: 10px;
+			}
+			#menu h1 {
+				margin-top: 5px;
+			}
+			.menu2 {
+				margin-top: 5px;
+				margin-right: auto;
+				margin-bottom: auto;
+				text-align: right;
+				margin-left: 15px;
+				float: left;
+				height: 30px;
+			}
+			.menu2 img {
+				height: 100%;
+			}
+	/*		.content {
+				padding-top: 50px;
+				margin-top: 10%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-flex: 1;
+			}
+			i {
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-size: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.user {
+				background-image: url("../../image/register/shouji.png");
+			}
+			.password {
+				background-image: url("../../image/register/mima.png");
+			}
+			.passwordAgain {
+				background-image: url("../../image/register/mima.png");
+			}
+			.check {
+				background-image: url("../../image/register/check.png");
+			}
+			.send {
+				background-image: url("../../image/register/send.png");
+			}
+			.input-wrap {
+				padding: 5px 10px;
+				display: -webkit-box;
+				background-color: rgba(255, 255, 255, 0.8);
+			}
+			.input-wrap:first-child {
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+			.input-wrap:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			.form {
+				margin-top: 30px;
+				margin: 0 20px;
+				line-height: 30px;
+			}
+			.input-wrap input {
+				margin-top: 15px;
+				/*-webkit-box-flex: 1;
+				height: 20px;
+			}
+			input {
+				padding-left: 10px;
+			}
+			.input-wrap img {
+			}
+			/*.footer, .form {
+			 -webkit-box-flex: 1;
+			 }*/
+		/*	.footer {
+				margin-top: 20px;
+			}
+			#register {
+				color: #000000;
+				margin: 0 40px;
+				text-align: center;
+				border-radius: 5px;
+				height: 40px;
+				line-height: 40px;
+				margin-top: 15px;
+				background-color: #FFFFFF;
+			}
+			.sysm {
+				margin-top: 40px;
+				margin-bottom: 45px;
+				margin-left: 45px;
+			}
+			.sysm a {
+				color: #FFFFFF;
+			}
+			#pic {
+				height: 25px;
+				margin-left: -20px;
+				margin-top: 10px;
+			}
+			#password::-webkit-input-placeholder:before {
+				display: block;
+				position: absolute;
+				width: 100px;
+				height: 25px;
+				margin-top: -20px;
+				font-size: 15px;
+				line-height: 36px;
+				color: #999;
+				content: "请输入密码";
+			}
+			#password::-webkit-input-placeholder:after {
+				display: block;
+				position: absolute;
+				width: 100px;
+				height: 50px;
+				font-size: 10px;
+				margin-top: -10px;
+				line-height: 20px;
+				color: #999;
+				content: "(密码长度6-10位，字母、数字、下划线)";
+			}
+			#passwordAgain::-webkit-input-placeholder:before {
+				display: block;
+				position: absolute;
+				width: 100px;
+				height: 25px;
+				margin-top: -20px;
+				font-size: 15px;
+				line-height: 36px;
+				color: #999;
+				content: "请再次输入密码";
+			}
+			#passwordAgain::-webkit-input-placeholder:after {
+				display: block;
+				position: absolute;
+				width: 100px;
+				height: 50px;
+				font-size: 10px;
+				margin-top: -10px;
+				line-height: 20px;
+				color: #999;
+				content: "(密码长度6-10位，字母、数字、下划线)";
+			}*/
+		</style>
+	</head>
+	<body>
+		<header>
+		
+			<div id="menu" >
+				<div class="menu2"  onclick="closeWin() ">
+					<img src="../../image/register/zhucejiantou.png" height="20px" width="30px"/>
+				</div>
+				<h1>忘记密码</h1>
+			</div>
+			
+		</header>
+	<!--	<div class="content">
+			<div class="form">
+				<div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+					<i class="user"></i>
+					<input type="tel" placeholder="请输入手机号" class="txt" id="username" value=""/>
+				</div>
+				<div class="input-wrap"style="border-bottom: 1px solid #d4d4d4;">
+					<i class="password"></i>
+					<input type="password" placeholder='.' class="txt" id="password" value=""/>
+				</div>
+				<div class="input-wrap"style="border-bottom: 1px solid #d4d4d4;">
+					<i class="passwordAgain"></i>
+					<input type="password" placeholder='.' class="txt" id="passwordAgain" value=""/>
+				</div>
+				<div class="input-wrap">
+					<i class="check"></i>
+					<input type="text" placeholder='请输入四位验证码' class="txt" id="check" value=""/>
+					<img src="../../image/register/send.png" id="pic" onclick="sendCode()"/>
+					<!--<i class="send"></i>-->
+			<!--	</div>
+			</div>
+			<div class="sysm">
+				<input type="checkbox"  id="123"/>
+				<a  onclick="look()">《使用声明》</a>
+			</div>
+			<footer class="footer">
+				<div class="blue" id="register" tapmode="blue-btn-active" onclick="register()">
+					下一步
+				</div>
+			</footer>-->
+		</div>
+	</body>
+</html>
+<script src="../../script/zepto.min.js"></script>
+<script src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+	
+	apiready = function() {
+			var params = api.pageParam;
+//			
+			
+			
+	
+	
+			var main = $api.byId('main');
+			var mainPos = $api.offset(main);
+			var menu = $api.byId('menu');
+			var menuPos = $api.offset(menu);
+			
+			
+			
+			api.openFrame({
+				name : 'frame',
+				url : '../register/look.html',
+				rect : {
+					x : 0,
+					y : menuPos.h,
+					w : 'auto',
+					h : 'auto'
+				},
+				bounces : false,
+				pageParam:params,
+				//				opaque : false,
+				//				vScrollBarEnabled : false,
+				hScrollBarEnabled : false
+			});
+	}
+//	var mob = null;
+//	apiready = function() {
+//		mob = api.require('mobVerify');
+//		mob.register({
+//			appkey : 'dfc315a439f0',
+//			appsecret : '3a740949e539159c9218eb86fb64b9b2'
+//		});
+//	};
+//	function sendCode() {
+//		var phone = document.getElementById('username').value;
+//		mob.send({
+//			phone : phone
+//		}, function(ret, err) {
+//			if (err) {
+//				api.alert({
+//					msg : JSON.stringify(err)
+//				});
+//			} else {
+//				api.alert({
+//					msg : '短信已发送'
+//				});
+//			}
+//		});
+//	}
+//
+	function closeWin() {
+		api.closeWin({
+		})
+	}
+
+//	function look() {
+//		api.openWin({
+//			name : 'check',
+//			url :  '' + SERVER_URL + '/salt_reduction/pages/regLicense.html'
+//		});
+		//				api.ajax({
+		//					url : 'http://192.168.1.222:8080/salt_reduction/register/getXmlPath.action',
+		//					method : 'post',
+		//					timeout : 30,
+		//					dataType : 'json',
+		//					returnAll : false,
+		//					data : {
+		//						values : {
+		//						}
+		//					}
+		//				}, function(ret, err) {
+		//					if (ret.status == 0) {
+		//						alert(JSON.stringify(ret));
+		//					} else {
+		//						alert(ret.data.errorMsg);
+		//					}
+		//				});
+	//}
+
+//	function register() {
+//		var checkbox = document.getElementById('123');
+//		//				alert(checkbox.checked);
+//		var username = $("#username").val();
+//		var password = $("#password").val();
+//		var passwordAgain = $("#passwordAgain").val();
+//		var check = $("#check").val();
+//		var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+//		reg_str.test(username)
+//		if (username == '') {
+//			alert('请输入用户名');
+//			return false;
+//		}
+//		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+//			alert('输入正确手机号');
+//			return false;
+//		}
+//		if (password == '') {
+//			alert('请输入密码');
+//			return false;
+//		}if (password.length <6) {
+//			alert('密码长度不小于六位');
+//			return false;
+//		}
+//		if (password !== passwordAgain) {
+//			alert('密码不一致，请重新输入！');
+//			return false;
+//		}
+//		if (check == '') {
+//			alert('请输入验证码');
+//			return false;
+//		}
+//		if (checkbox.checked == false) {
+//			alert('请查看');
+//			return false;
+//		}
+//		
+//		var phone = document.getElementById('username').value;
+//		var code = document.getElementById('check').value;
+//		mob.verify({
+//			phone : phone,
+//			code : code
+//		}, function(ret, err) {
+//			if (err) {
+//			
+//				api.alert({
+//					msg : '验证码错误'
+//				});
+//				return false;
+//			} else {
+////				api.alert({
+////					msg : '验证码正确'
+////				});
+//				api.ajax({
+//			url : '' + SERVER_URL + '/salt_reduction/register/registerUser.action',
+//			method : 'post',
+//			timeout : 30,
+//			dataType : 'json',
+//			returnAll : false,
+//			data : {
+//				values : {
+//					userName : username,
+//					password : password
+//				}
+//			}
+//		}, function(ret, err) {
+//			if (ret.status == 0) {
+//				alert('注册成功');
+//				api.closeWin();
+//				//跳转到主界面
+//				//						api.openFrame({
+//				//						name: 'frame1',
+//				//						url: 'html/frame1_frame1.html',
+//				//						rect: {
+//				//						x:0,
+//				//						y:0,
+//				//						w:'auto',
+//				//						h:'auto'
+//				//					}
+//				//				});
+//			} else {
+//				alert(ret.data.errorMsg);
+//			}
+//		});
+//			}
+//		});
+//		//alert(username);
+//		
+//		//				api.showProgress();
+//		//				var model = api.require('model');
+//		//				var username = $("#username").val();
+//		//				var password = $("#password").val();
+//		//				var user = api.require('user');
+//		//				user.register({
+//		//					username : username,
+//		//					password : password
+//		//				}, function(ret, err) {
+//		//					api.hideProgress();
+//		//					if (ret) {
+//		//
+//		//								api.closeWin();
+//		//
+//		//					} else {
+//		//						api.toast({
+//		//							msg : err.message,
+//		//							location : "middle"
+//		//						})
+//		//					}
+//		//				});
+//	}
+</script>

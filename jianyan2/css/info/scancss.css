@@ -1,0 +1,174 @@
+
+body{
+	margin:0px;
+	padding:0px;
+	background:#f3f5f4;
+	height:100%;
+}
+
+.mainp{ 
+	width:100%; 
+	height:52px; 
+	background:#ffffff;
+}
+.br{
+	float:left;
+	height:52px;
+	border-right:2px solid #e5e5e5;
+}
+.mainpl{
+	 float:left; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-bottom:2px solid #e5e5e5;
+}
+
+.mainpr{ 
+	float:left; 
+	height:50px;
+	line-height:50px; 
+	text-align:center; 
+	border-bottom:2px solid #e5e5e5;
+}
+.mainz{
+	width:70px;
+	height:50px;
+	border-bottom:2px solid #36b160;
+	color:#36b160;
+}
+
+/*在库css开始*/
+.mainb{
+		width:100%;
+		height:97px;
+		border-bottom:2px solid #e5e5e5;
+	}
+	.mainb:hover{
+		background:#f3f5f4;
+	}
+	.mainbox{
+		
+		height:77px;
+		padding:10px 0 10px 10px;
+	}
+	.mainboxl{
+		float:left;
+	}
+	.mainboxl img{
+		border-radius:10px;
+	}
+	.mainboxr{
+		
+		float:left;
+		margin-left:12px;
+	}
+	.mainboxr h1{
+		display:block;
+		float:left;
+		height:17px;
+		font-size:14px;
+		margin:0 0 5px;
+		color:#000000;
+		text-overflow:ellipsis;
+		white-space:nowrap; 
+		overflow:hidden; 
+	}
+	.mainboxr img{
+		display:block;
+		float:left;
+	}
+	.mainboxrr{
+	 	float:left;
+		height:17px;
+		margin:2px 0;
+		font-size:12px;
+		line-height:17px;
+	}
+	.mainboxf{
+		display:block;
+		float:left;
+		width:12px;
+		height:17px;
+		color:#7f7f80;
+	}
+	.mainboxrr1{
+		float:left;
+		height:17px;
+		width:54px;
+		color:#7f7f80;
+	}
+	.mainboxrr2{
+		float:left;
+		
+		height:17px;
+		color:#7f7f80;
+		text-overflow:ellipsis;
+		white-space:nowrap; 
+		overflow:hidden; 
+	}
+/*在库css结束*/	
+/*不在库css开始*/
+.cenb{
+	width:100%;
+	height:40px;
+	line-height:40px;
+	background:#ffffff;
+	border-bottom:2px solid #e5e5e5;
+}
+.cenb img{
+	display:block;
+	float:left;
+	margin:14px 0 0 10px;
+}
+.cenbtext{
+	float:left;
+	color:#666666;
+	margin-left:25px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow: hidden;
+}
+.cenbtext1{
+	float:left;
+	color:#666666;
+	margin-left:10px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow: hidden;
+}
+.cenbright1{
+	float:right;
+	color:#666666;
+	width:110px;
+}
+
+
+/*不在库css结束*/
+
+.mainbb{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	height:52px;
+	background:#ffffff;
+}
+.mainbl{
+	float:left; 
+	 width:50%; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+}
+.mainbr{
+	float:left; 
+	 width:49%; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+}
+.mainbs{
+	color:#36b160;
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+		<title>我的扫码记录（不在库）</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/scancss.css"/>
+		<style>
+			html,body {
+				margin:0px;
+				padding:0px;
+				background:#f3f5f4;
+				height:100%;
+			}
+			/*#listview {
+			 width: 100%;
+			 }*/
+			#loadingmore {
+				vertical-align: middle;
+				text-align: center;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				/*margin-left: 5px;*/
+				/*margin-top:0;*/
+				padding: 0px;
+				/*border:1px solid black;*/
+				font-size: 14px;
+				display: none;
+			}
+			#loadingmore img {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				/*border:1px solid #9ea0a2;*/
+				vertical-align: middle;
+				margin: 0px auto;
+				margin-bottom: 3px;
+			}
+			#kb {
+				display: block;
+				width: 100%;
+				height: 30px;
+			}
+			.tipMess{
+				width:100%;
+				height:200px;
+				line-height:20px;
+				text-align: center;
+				padding-top:150px;
+				color:#868686;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tipMess">你还没有相关记录哟！</div>
+		<div id="mainb">
+		</div>
+		<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" > 加载中...
+		</div>
+		<div id='kb'></div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		//		是否 还有 内容 当status 为 1 时 没有
+		var hasMore = true;
+		//页码
+		var page_num = 1;
+		//最大页码
+		var max_page = 10;
+		//窗口是否为选择状态
+		var delCheck = false;
+//		var widthb=document.documentElement.clientWidth;
+		var pageIndex = 1;
+		function positions(){
+			var widthb=document.documentElement.clientWidth;
+			var mainwidth=widthb-2;
+			var mainz=(mainwidth/2-70)/2;
+			$(".mainpl").width(mainwidth/2);
+			$(".mainpr").width(mainwidth/2);
+			$(".mainz").css("margin-left",mainz);
+			$(".connl").width(widthb*0.95-118);
+			
+  		}
+  		
+		apiready = function() {
+		
+			$api.setStorage('checkOne',false);
+			api.setRefreshHeaderInfo({
+				visible : true,
+				loadingImg : 'widget://image/listview/default_ptr_flip.png',
+				bgColor : '#ccc',
+				textColor : '#fff',
+				textDown : '下拉刷新...',
+				textUp : '松开刷新...',
+				showTime : true
+			}, function(ret, err) {
+				//参数重置
+				var el = $api.byId('mainb');
+				$api.html(el,'');
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage(page_num);
+				api.refreshHeaderLoadDone();
+			});
+			getContentByPage(page_num);
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : 0 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				// 加载下一页的数据，然后向现有页面追加数据。
+				page_num = page_num + 1;
+				//		    alert(page_num);
+				getContentByPage(page_num);
+				
+			});
+			//监听header改变事件
+			api.addEventListener({
+	            name:'myscan_header'
+            },function(ret,err){
+            	pageIndex = ret.value.index;
+//          	alert("dish:"+pageIndex);
+            	if(delCheck){
+	            	if(pageIndex==1){
+		            	var arr = $(".cenb");
+		            	for(i=0;i<arr.length;i++){
+		            		$api.prepend(arr[i],'<img class="image" id="imgId1" src="../../image/userInfo/pro_wxz.png" width="15px" height="15px" />');
+	
+		            	}
+		            	isDel();
+            		}else{
+            			var arr = $(".image");
+	            		if(arr!=null){
+		            		for(i=0;i<arr.length;i++){
+		            			$api.remove(arr[i]);
+		            		}
+	            		}
+            		}
+            	}
+            });
+			api.addEventListener({
+	            name:'myscan_start'
+            },function(ret,err){
+            	if(ret){
+	            	delCheck = true;
+//	            	alert("当前页："+pageIndex);
+	            	if(pageIndex==1){
+		            	var arr = $(".cenb");
+		            	for(i=0;i<arr.length;i++){
+		            		$api.prepend(arr[i],'<img class="image" id="imgId1" src="../../image/userInfo/pro_wxz.png" width="15px" height="15px" />');
+		            	}
+	            	}
+            	}else{
+            		alert( JSON.stringify( err ) );
+            	}
+            });
+            api.addEventListener({
+	            name:'myscan_all'
+            },function(ret,err){
+            	if(pageIndex==1){
+	            	$("div").click();
+            	}
+            });
+            
+            api.addEventListener({
+	            name:'myscan_cancel'
+            },function(ret,err){
+            	if(ret){
+            		delCheck = false;
+	            	var arr = $(".image");
+	            	if(arr!=null&&arr.length>0){
+	            		for(i=0;i<arr.length;i++){
+	            			$api.remove(arr[i]);
+	            		}
+	            	}
+            	}
+            });
+            api.addEventListener({
+	            name:'myscan_request'
+            },function(ret,err){
+            	if(ret){
+            		var gid='';
+            		var arr = $(".image");
+            		if(arr!=null&&arr.length>0){
+	            		for(i=0;i<arr.length;i++){
+	            			image = arr[i];
+	            			if (image.src.match("pro_xz")) {
+								gid=gid+image.name+';';
+							}
+	            		}
+	            		api.sendEvent({
+							name : 'myscan_get',
+							extra : {
+								scan : gid
+							}
+						});
+            		}
+            	}
+            });
+            api.addEventListener({
+	            name:'myscan_reload'
+            },function(ret,err){
+            	if(ret){
+            		if(pageIndex==1){
+            			var el = $api.byId('mainb');
+						el.innerHTML = "";
+						page_num = 1;
+						hasMore = true;
+						//参数重置
+						// 这里写重新渲染页面的方法
+						getContentByPage(page_num);
+						var chil = $("#mainb");
+						if(chil.children[0]==null){
+							$(".tipMess").show();
+						}
+            		}
+            	}
+            });
+           //检查删除是否可用(通过判断img元素是否包含name属性，来判断删除是否可用，必须确保不想管的img没有name属性)
+//         api.addEventListener({
+//	           name:'myscan_delete'
+//         },function(ret,err){
+//         		if(delCheck){
+//         			var arr = $("img[name]");
+////         			alert('image数量：'+arr.length);
+//         			if(arr!=null&&arr.length>0){
+//		           		api.sendEvent({
+//						    name: 'myscan_able',
+//						    extra: {
+//						        isable: true
+//						    }
+//						});
+//         			}else{
+//         				api.sendEvent({
+//						    name: 'myscan_able',
+//						    extra: {
+//						        isable: false
+//						    }
+//						});
+//         			}
+//         		}
+//         });
+		}
+		
+		function hiddenLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "none";
+		}
+
+		function showLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "block";
+		}
+
+		function hiddenkb() {
+			var kbh = $api.byId('kb');
+			kbh.style.display = "none";
+		}
+
+		function showkb() {
+			var kbs = $api.byId('kb');
+			kbs.style.display = "block";
+		}
+
+		function getContentByPage(pagenum) {
+			if (!hasMore) {
+				//  		hiddenLoadMore();
+				/*lx添加*/
+				hiddenkb();
+				api.toast({
+					msg : '已经是最后了'
+				});
+				return;
+			}
+			if (pagenum > 1) {
+				/*lx添加*/
+				hiddenkb();
+				showLoadMore();
+				/*lx添加*/
+				showkb();
+			}
+			api.showProgress({
+			});
+			getFoods(pagenum);
+			setTimeout("afterFresh()",300);
+//			afterFresh();
+		}
+
+		function getFoods(pagenum) {
+			
+//			alert(JSON.stringify($api.getStorage("userInfo")));
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/scanHistoryAction!fetchOutStore.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						'userID' : $api.getStorage("userInfo").userID,
+						'currentPageIndex' : pagenum
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+
+				hiddenLoadMore();
+				if (ret.status == 0) {
+					$(".tipMess").hide();
+					var el, div;
+					el = $api.byId('mainb');
+//					alert(JSON.stringify(ret.data));
+					var arr = ret.data;
+					for (var i = 0;i < arr.length; i++) {
+						var quality = arr[i].quality;
+						var imgstr = '';
+						var allstar = '<img src="../../image/userInfo/pro_xm.jpg" width="15px" height="15px" />';
+						var emptystar = '<img src="../../image/userInfo/pro_xk.png" width="15px" height="15px" />';
+						for(j=0;j<5;j++){
+							if(j<quality){
+								imgstr=imgstr+allstar;
+							}else{
+								imgstr=imgstr+emptystar;
+							}
+						}
+//						alert(quality);
+//						alert(JSON.stringify(arr[i]));
+						div= '<div class="cenb" onclick="selectItem(this,\''+arr[i].codevalue+'\')">'+
+								'<div class="cenbtext">'+arr[i].codevalue+'</div>'+
+								'<div class="cenbright1"><span style="margin-right:30px;">'+arr[i].scantime+'</span></div>'+
+							'</div>';
+//						alert(div);
+						$api.append(el, div);
+						positions();
+					}
+				} else if (ret.status == 1) {
+					hasMore = false;
+//					api.toast({
+//						msg: ret.data.errorMsg,
+//						duration: 3000,
+//						location: 'bottom'
+//					});
+				} else {
+					api.alert({
+						msg : err.msg
+					});
+				}
+			});
+		}
+
+		function selectItem(obj,codevalue) {
+			if(delCheck){
+				imgid =  obj.children[0];
+				if (imgid.src.match("wxz")) {
+					$api.attr(imgid, "name", codevalue);
+					imgid.src = "../../image/userInfo/pro_xz.png";
+				} else {
+					$api.removeAttr(imgid, 'name')
+					imgid.src = "../../image/userInfo/pro_wxz.png";
+				}
+				isDel();
+				return;
+			}
+//			api.openWin({
+//				name : 'myfood',
+//				url : '../dishdetails/dish_details_windows.html',
+//				pageParam : {
+//					gid : id
+//				}
+//			});
+		}
+		function afterFresh(){
+//			alert(delCheck);
+			if(delCheck){
+				var image = $(".image");
+				
+				var num=0;
+				if(image!=null&&image.length>0){
+            		num = image.length;
+//          		alert("num:"+num);
+				}
+				var arr = $(".cenb");
+            	for(i=num;i<arr.length;i++){
+//          		alert("h1:"+arr.length);
+            		$api.prepend(arr[i],'<img class="image" id="imgId1" src="../../image/userInfo/pro_wxz.png" width="15px" height="15px" />');
+           		}
+           		isDel();
+			}
+		}
+		function isDel(){
+			var arr = $("img[src$='_xz.png']");
+			if(arr!=null&&arr.length>0){
+				api.sendEvent({
+					name: 'myscan_able',
+					extra: {
+						   isable: true
+					}
+				});
+           	}else{
+           		api.sendEvent({
+					name: 'myscan_able',
+					extra: {
+						   isable: false
+					}
+				});
+           }
+		}
+	</script>
+</html>

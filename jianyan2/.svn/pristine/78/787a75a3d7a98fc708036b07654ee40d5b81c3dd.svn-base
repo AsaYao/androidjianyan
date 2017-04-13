@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+		<style>
+			body {
+			}
+			#header {
+				line-height:40px;
+				text-align: center;
+				color: #fff;
+				width: 100%;
+				height: 45px;
+				background: url(../../../image/statusbar/background.png);
+				background-repeat: repeat-x;
+			}
+			#header h2 {
+				font-size:15pt;
+				font-family: sans-serif;
+			}
+			
+			.menu {
+				margin: 0;
+				padding: 0px;
+				width: 100%;
+				/*background-color: #00a0e9;*/
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 40px;
+				font-size: 10px;
+				position: fixed;
+			}
+			.menuhome {
+				/*background-color: #00a0e9;*/
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 0px;
+				height: 50px;
+			}
+			.menuback {
+				margin-top: 5px;
+				margin-right: auto;
+				margin-bottom: auto;
+				/*background-color: #00a0e9;*/
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				margin-left: 0px;
+				float: left;
+				position: static;
+			}
+			.menuback img {
+				color: #FFFFFF;
+				width: 45px;
+			}
+			#province {
+				border: 0;
+				margin-top: 0px;
+				padding: 0px;
+				width: 100%;
+				background-color: #d5d5d5;
+				/*color: #FF0000;*/
+				text-align: left;
+				line-height: 40px;
+				font-size: 18px;
+				position: fixed;
+			}
+			#city {
+				border: 0;
+				margin-top: 40px;
+				padding: 0px;
+				width: 100%;
+				background-color: #e5e5e5;
+				/*color: #FF0000;*/
+				text-align: left;
+				line-height: 40px;
+				font-size: 18px;
+				position: fixed;
+			}
+			#county {
+				border: 0;
+				margin-top: 80px;
+				padding: 0px;
+				width: 100%;
+				background-color: #F9F9F9;
+				/*color: #FF0000;*/
+				text-align: left;
+				line-height: 40px;
+				font-size: 18px;
+				position: fixed;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div id = "menu">
+					<div class="menuback"  onclick="backTo()">
+						<img src="../../../image/statusbar/back.png" height="32px" width="32px" />
+					</div>
+					<h2>生产地选择</h2>
+				</div>
+			</div>
+		</div>
+		<div id = "province" class="province" onclick="getAllProvince()">
+			
+		</div>
+		<div id = "city" class="city" onclick="getCitys(province_sel)">
+			
+		</div>
+		<div id = "county" class="county" onclick="getCountys(city_sel)">
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/bts_common.js"></script>
+	<script type="text/javascript">
+				var province_sel;/* {uid:"",title:""}*/
+		var city_sel;/* {uid:"",title:""}*/
+		var county_sel;
+		apiready = function() {
+		getAllProvince();
+		};
+		function getAllProvince() {
+		//			$api.byId("province").html().hidden;
+		api.showProgress({
+		});
+		api.ajax({
+		url : SERVER_URL + '/salt_reduction/area/areaAction!fetchProvinceList.action'
+		}, function(ret, err) {
+		api.hideProgress();
+		if (err) {
+		alert(JSON.stringify(err));
+		}
+		//				alert(JSON.stringify(ret));
+		//coding...
+		if (ret.status == 0) {
+		var json = eval(ret.data);
+		var data1 = [];
+		for (var i = 0; i < json.length; i++) {
+		//			       var pro = new Object();
+		//					pro.title = json[i].name;
+		//					pro.uid = json[i].gid;
+		//					var proarr = new Array();
+		//					proarr[0] = 'title';
+		//					proarr[1] = 'uid';
+		var pro = {
+		'title' : json[i].name,
+		'uid' : json[i].gid,
+		'code':json[i].code
+		};
+		data1[i] = pro;
+		}
+		}
+		//
+		//				alert(JSON.stringify(data1));
+		var obj = api.require('UIListView');
+		obj.open({
+		rect : {
+		x : 0,
+		y : 40,
+		w : api.winWidth,
+		h : api.winHeight - 40
+		},
+		data : data1,
+		styles : {
+		borderColor : '#696969',
+		item : {
+		bgColor : '#FFFFFF',
+		activeBgColor : '#F5F5F5',
+		height : 55.0,
+		imgWidth : 40,
+		imgHeight : 40,
+		placeholderImg : '',
+		titleSize : 17.0,
+		titleColor : '#000',
+		subTitleSize : 12.0,
+		subTitleColor : '#000',
+		remarkColor : '#000',
+		remarkSize : 16,
+		remarkIconWidth : 30
+		}
+		},
+		fixedOn : ''
+		}, function(ret) {
+		//					alert(JSON.stringify(ret) + 'province');
+		if (ret.eventType == 'clickContent') {
+		var obj = api.require('UIListView');
+		obj.getDataByIndex({
+		index : ret.index
+		}, function(ret) {
+		//						alert(JSON.stringify(ret.data) + 'province');
+		var el = $api.byId("province");
+		//							$api.byId("province").html(el, ret.data.title);
+		$api.byId("province").innerHTML = ret.data.title;
+		//							alert(JSON.stringify(ret.data));
+		province_sel = ret.data;
+		getCitys(ret.data);
+		});
+		}
+		});
+		});
+		}
+		//
+		function getCitys(pro) {
+		api.showProgress({
+		});
+		api.ajax({
+		url : SERVER_URL + '/salt_reduction/area/areaAction!fetchCityList.action',
+		method : 'post',
+		timeout : 30,
+		dataType : 'json',
+		returnAll : false,
+		data : {
+		values : {
+		jsonParam : pro.uid,
+		}
+		}
+		}, function(ret, err) {
+		api.hideProgress();
+		if (err) {
+		alert(JSON.stringify(err));
+		}
+		//				alert(JSON.stringify(ret));
+		//coding...
+		if (ret.status == 0) {
+		var json = eval(ret.data);
+		var data1 = [];
+		for (var i = 0; i < json.length; i++) {
+		//			       var pro = new Object();
+		//					pro.title = json[i].name;
+		//					pro.uid = json[i].gid;
+		//					var proarr = new Array();
+		//					proarr[0] = 'title';
+		//					proarr[1] = 'uid';
+		var pro = {
+		'title' : json[i].name,
+		'uid' : json[i].gid
+		};
+		data1[i] = pro;
+		}
+		}
+		//
+		//				alert(JSON.stringify(data1));
+		var obj = api.require('UIListView');
+		obj.open({
+		rect : {
+		x : 0,
+		y : 80,
+		w : api.winWidth,
+		h : api.winHeight - 80
+		},
+		data : data1,
+		styles : {
+		borderColor : '#696969',
+		item : {
+		bgColor : '#FFFFFF',
+		activeBgColor : '#F5F5F5',
+		height : 55.0,
+		imgWidth : 40,
+		imgHeight : 40,
+		placeholderImg : '',
+		titleSize : 17.0,
+		titleColor : '#000',
+		subTitleSize : 12.0,
+		subTitleColor : '#000',
+		remarkColor : '#000',
+		remarkSize : 16,
+		remarkIconWidth : 30
+		}
+		},
+		fixedOn : ''
+		}, function(ret) {
+		//					alert(JSON.stringify(ret) + 'city');
+		if (ret.eventType == 'clickContent') {
+		var obj = api.require('UIListView');
+		obj.getDataByIndex({
+		index : ret.index
+		}, function(ret) {
+		//							$api.byId("province").html(el, ret.data.title);
+		//							alert(JSON.stringify(ret.data) + 'city' + province_sel.title + $api.byId("province") + $api.byId("city"));
+		$api.byId("province").innerHTML = province_sel.title;
+		$api.byId("city").innerHTML = ret.data.title;
+		//							alert(JSON.stringify(ret.data));
+		city_sel = ret.data;
+		getCountys(ret.data);
+		});
+		}
+		});
+		});
+		}
+		//
+		function getCountys(pro) {
+		api.showProgress({
+		});
+		api.ajax({
+		url : SERVER_URL + '/salt_reduction/area/areaAction!fetchCountryList.action',
+		method : 'post',
+		timeout : 30,
+		dataType : 'json',
+		returnAll : false,
+		data : {
+		values : {
+		jsonParam : pro.uid,
+		}
+		}
+		}, function(ret, err) {
+		api.hideProgress();
+		if (err) {
+		alert(JSON.stringify(err));
+		}
+		//				alert(JSON.stringify(ret));
+		//coding...
+		if (ret.status == 0) {
+		var json = eval(ret.data);
+		var data1 = [];
+		for (var i = 0; i < json.length; i++) {
+		//			       var pro = new Object();
+		//					pro.title = json[i].name;
+		//					pro.uid = json[i].gid;
+		//					var proarr = new Array();
+		//					proarr[0] = 'title';
+		//					proarr[1] = 'uid';
+		var pro = {
+		'title' : json[i].name,
+		'uid' : json[i].gid
+		};
+		data1[i] = pro;
+		}
+		}
+		//
+		//				alert(JSON.stringify(data1));
+		var obj = api.require('UIListView');
+		obj.open({
+		rect : {
+		x : 0,
+		y : 120,
+		w : api.winWidth,
+		h : api.winHeight - 120
+		},
+		data : data1,
+		styles : {
+		borderColor : '#696969',
+		item : {
+		bgColor : '#FFFFFF',
+		activeBgColor : '#F5F5F5',
+		height : 55.0,
+		imgWidth : 40,
+		imgHeight : 40,
+		placeholderImg : '',
+		titleSize : 17.0,
+		titleColor : '#000',
+		subTitleSize : 12.0,
+		subTitleColor : '#000',
+		remarkColor : '#000',
+		remarkSize : 16,
+		remarkIconWidth : 30
+		}
+		},
+		fixedOn : ''
+		}, function(ret) {
+		//					alert(JSON.stringify(ret));
+		//					if (ret.eventType == 'clickContent') {
+		//						var obj = api.require('UIListView');
+		//						obj.getDataByIndex({
+		//							index : ret.index
+		//						}, function(ret) {
+		//							//							$api.byId("province").html(el, ret.data.title);
+		////							alert(JSON.stringify(ret.data) + "You should go！！");
+		////
+		////
+		////							api.openWin({
+		////	                            name: 'streetsel',
+		////	                            url: 'streetsel.html',
+		////	                            pageParam: {
+		////	                            	pid: province_sel.uid,
+		////	                            	cid: city_sel.uid,
+		////	                            	countyid:ret.data.uid,
+		////	                            }
+		////
+		////                          });
+		//
+		//
+		//
+		////							$api.byId("city").innerHTML = ret.data.title;
+		////							alert(JSON.stringify(ret.data));
+		////
+		////							getCitys(ret.data);
+		//						});
+		//					}
+		if (ret.eventType == 'clickContent') {
+		var obj = api.require('UIListView');
+		obj.getDataByIndex({
+		index : ret.index
+		}, function(ret) {
+		//							$api.byId("province").html(el, ret.data.title);
+		//							alert(JSON.stringify(ret.data) + 'city' + province_sel.title + $api.byId("province") + $api.byId("city"));
+		$api.byId("province").innerHTML = province_sel.title;
+		$api.byId("city").innerHTML = city_sel.title;
+		$api.byId("county").innerHTML = ret.data.title;
+		//							alert(JSON.stringify(ret.data));
+		county_sel = ret.data;
+		getStreets(ret.data);
+		});
+		}
+		});
+		});
+		}
+		//
+		function getStreets(pro) {
+		api.showProgress({
+		});
+		api.ajax({
+		url : SERVER_URL + '/salt_reduction/area/areaAction!fetchTownList.action',
+		method : 'post',
+		timeout : 30,
+		dataType : 'json',
+		returnAll : false,
+		data : {
+		values : {
+		jsonParam : pro.uid,
+		}
+		}
+		}, function(ret, err) {
+		api.hideProgress();
+		if (err) {
+		alert(JSON.stringify(err));
+		}
+		//				alert(JSON.stringify(ret));
+		//coding...
+		if (ret.status == 0) {
+		var json = eval(ret.data);
+		var data1 = [];
+		for (var i = 0; i < json.length; i++) {
+		//			       var pro = new Object();
+		//					pro.title = json[i].name;
+		//					pro.uid = json[i].gid;
+		//					var proarr = new Array();
+		//					proarr[0] = 'title';
+		//					proarr[1] = 'uid';
+		var pro = {
+		'title' : json[i].name,
+		'uid' : json[i].gid
+		};
+		data1[i] = pro;
+		}
+		}
+		//
+		//				alert(JSON.stringify(data1));
+		var obj = api.require('UIListView');
+		obj.open({
+		rect : {
+		x : 0,
+		y : 160,
+		w : api.winWidth,
+		h : api.winHeight - 160
+		},
+		data : data1,
+		styles : {
+		borderColor : '#696969',
+		item : {
+		bgColor : '#FFFFFF',
+		activeBgColor : '#F5F5F5',
+		height : 55.0,
+		imgWidth : 40,
+		imgHeight : 40,
+		placeholderImg : '',
+		titleSize : 17.0,
+		titleColor : '#000',
+		subTitleSize : 12.0,
+		subTitleColor : '#000',
+		remarkColor : '#000',
+		remarkSize : 16,
+		remarkIconWidth : 30
+		}
+		},
+		fixedOn : ''
+		}, function(ret) {
+		//					alert(JSON.stringify(ret) + 'city');
+		if (ret.eventType == 'clickContent') {
+		var obj = api.require('UIListView');
+		obj.getDataByIndex({
+		index : ret.index
+		}, function(ret) {
+		//						alert(ret.data.title);
+		var dataarr = new Array(province_sel,city_sel,county_sel,ret.data);
+		api.sendEvent({
+		                                    name: 'changeMadein',
+		                                    extra: {data:dataarr}
+		                                });
+		api.closeWin();
+		//							$api.byId("province").html(el, ret.data.title);
+		//							alert(JSON.stringify(ret.data) + 'city' + province_sel.title + $api.byId("province") + $api.byId("city"));
+		//							$api.byId("province").innerHTML = province_sel.title;
+		//							$api.byId("city").innerHTML = ret.data.title;
+		////							alert(JSON.stringify(ret.data));
+		//							city_sel = ret.data;
+		//
+		//							getCountys(ret.data);
+		});
+		}
+		});
+		});
+		}
+	</script>
+</html>

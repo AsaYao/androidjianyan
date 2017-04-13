@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的录入</title>
+<link rel="stylesheet" type="text/css" href="css/inputcss.css"/>
+</head>
+
+<body>
+<div class="mainp">
+	<div class="mainpl"><div class="mainz">已通过</div></div>
+	<div class="br"></div>
+	<div class="mainpm">待审核</div>
+	<div class="br"></div>
+	<div class="mainpr">未通过</div>
+</div>
+<div class="maincon">
+	<div class="conn">
+		<div class="connl">好丽友薯愿</div>
+		<div class="connr">2016-4-18</div>
+	</div>
+	<div class="conn">
+		<div class="connl">好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿好丽友薯愿</div>
+		<div class="connr">2016-4-18</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var mainwidth=widthb-4;
+		var mainz=(widthb/3-70)/2;
+		$(document).ready(function(){
+			$(".mainpl").width(mainwidth/3);
+			$(".mainpm").width(mainwidth/3);
+			$(".mainpr").width(mainwidth/3);
+			$(".connl").width(widthb-140);
+			$(".mainz").css("margin-left",mainz);
+  		});
+</script>
+</body>
+</html>

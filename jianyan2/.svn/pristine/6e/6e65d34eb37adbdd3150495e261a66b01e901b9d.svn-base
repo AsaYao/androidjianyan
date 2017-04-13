@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/info/inputcss.css"/>
+		<style>
+			html,body {
+				margin:0px;
+				padding:0px;
+				background:#f3f5f4;
+				height:100%;
+			}
+			/*#listview {
+			 width: 100%;
+			 }*/
+			#loadingmore {
+				vertical-align: middle;
+				text-align: center;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				/*margin-left: 5px;*/
+				/*margin-top:0;*/
+				padding: 0px;
+				/*border:1px solid black;*/
+				font-size: 14px;
+				display: none;
+			}
+			#loadingmore img {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				/*border:1px solid #9ea0a2;*/
+				vertical-align: middle;
+				margin: 0px auto;
+				margin-bottom: 3px;
+			}
+			#kb {
+				display: block;
+				width: 100%;
+				height: 30px;
+				background:#f3f5f4;
+			}
+			.tipMess{
+				width:100%;
+				height:200px;
+				line-height:20px;
+				text-align: center;
+				padding-top:150px;
+				color:#868686;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tipMess">你没有待审核的商品！</div>
+		<div id='listview' class="maincon"></div>
+		<div id = "loadingmore"><img src ='../../image/loading_more.gif' width="20px" height="20px" > 加载中...
+		</div>
+		<div id='kb'></div>
+	</body>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	var widthb=document.documentElement.clientWidth;
+		function positionss(){
+			$(".connl").width(widthb-150);
+  		}
+	
+	
+	
+	
+		//		是否 还有 内容 当status 为 1 时 没有
+		var hasMore = true;
+		//页码
+		var page_num = 1;
+		//最大页码
+		var max_page = 10;
+		delCheck = false;
+		var pageIndex = 0;
+		apiready = function() {
+			api.setRefreshHeaderInfo({
+				visible : true,
+				loadingImg : 'widget://image/listview/default_ptr_flip.png',
+				bgColor : '#ccc',
+				textColor : '#fff',
+				textDown : '下拉刷新...',
+				textUp : '松开刷新...',
+				showTime : true
+			}, function(ret, err) {
+				//参数重置
+				var el = document.getElementById('listview');
+				el.innerHTML = "";
+				page_num = 1;
+				hasMore = true;
+				//参数重置
+				// 这里写重新渲染页面的方法
+				getContentByPage(page_num);
+				api.refreshHeaderLoadDone();
+			});
+			getContentByPage(page_num);
+			api.addEventListener({
+				name : 'scrolltobottom',
+				extra : {
+					threshold : 0 //设置距离底部多少距离时触发，默认值为0，数字类型
+				}
+			}, function(ret, err) {
+				// 加载下一页的数据，然后向现有页面追加数据。
+				page_num = page_num + 1;
+				//		    alert(page_num);
+				getContentByPage(page_num);
+			});
+			api.addEventListener({
+	            name:'myenter_start'
+            },function(ret,err){
+            	if(ret){
+	            	delCheck = true;
+	            	if(pageIndex==1){
+		            	var arr = $(".conn");
+		            	for(i=0;i<arr.length;i++){
+		            		$api.prepend(arr[i],'<img src="../../image/userInfo/pro_wxz.png" width="15px" height="15px" />');
+	
+		            	}
+	            	}
+            	}else{
+            		alert( JSON.stringify( err ) );
+            	}
+            });
+            api.addEventListener({
+	            name:'myenter_all'
+            },function(ret,err){
+            	if(pageIndex==1){
+	            	$("div").click();
+            	}
+            });
+             api.addEventListener({
+	            name:'myenter_header'
+            },function(ret,err){
+            	pageIndex = ret.value.index;
+            	if(pageIndex!=1){
+//          		delCheck = false;
+            		var arr = $("img");
+            		for(i=0;i<arr.length;i++){
+            			$api.remove(arr[i]);
+            		}
+            	}else{
+            		if(delCheck){
+						isDel();
+            			var arr = $(".conn");
+            			for(i=0;i<arr.length;i++){
+//          				$api.removeAttr(arr[i], 'onclick')
+            				$api.prepend(arr[i],'<img src="../../image/userInfo/pro_wxz.png" width="15px" height="15px" />');
+            			}
+            		}
+            	}
+            });
+            api.addEventListener({
+	            name:'myenter_cancel'
+            },function(ret,err){
+            	if(ret){
+            		delCheck = false;
+	            	var arr = $("img");
+	            	if(arr!=null&&arr.length>0){
+	            		for(i=0;i<arr.length;i++){
+	            			$api.remove(arr[i]);
+	            		}
+	            	}
+            	}
+            });
+            api.addEventListener({
+	            name:'myenter_request'
+            },function(ret,err){
+            	if(ret){
+            		var codeVal='';
+            		var imgs = $(".conn > img");
+            		for(i=0;i<imgs.length;i++){
+	            		if (imgs[i].src.match("pro_xz")) {
+							codeVal=codeVal+imgs[i].name+';';
+						}
+            		}
+            		api.sendEvent({
+						name : 'myenter_get',
+						extra : {
+							code : codeVal
+						}
+					});
+            	}
+            });
+            api.addEventListener({
+	            name:'myenter_reload'
+            },function(ret,err){
+            	if(ret){
+            		if(pageIndex==1){
+//          		alert("run");
+            			var el = document.getElementById('listview');
+						el.innerHTML = "";
+//						$("#listview").html("");
+						page_num = 1;
+						hasMore = true;
+						//参数重置
+						// 这里写重新渲染页面的方法
+						getContentByPage(page_num);
+						api.refreshHeaderLoadDone();
+						var chil = $("#listview");
+						if(chil.children[0]==null){
+							$(".tipMess").show();
+						}
+            		}
+            	}
+            });
+//          api.addEventListener({
+//	           name:'myenter_delete'
+//         },function(ret,err){
+//         		if(delCheck){
+//         			var arr = $("img[src$='_xz.png']");
+////         			alert('image数量：'+arr.length);
+//         			if(arr!=null&&arr.length>0){
+//		           		api.sendEvent({
+//						    name: 'myenter_able',
+//						    extra: {
+//						        isable: true
+//						    }
+//						});
+//         			}else{
+//         				api.sendEvent({
+//						    name: 'myenter_able',
+//						    extra: {
+//						        isable: false
+//						    }
+//						});
+//         			}
+//         		}
+//         });
+		}
+		function hiddenLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "none";
+		}
+
+		function showLoadMore() {
+			var loadmorediv = $api.byId('loadingmore');
+			loadmorediv.style.display = "block";
+		}
+
+		function hiddenkb() {
+			var kbh = $api.byId('kb');
+			kbh.style.display = "none";
+		}
+
+		function showkb() {
+			var kbs = $api.byId('kb');
+			kbs.style.display = "block";
+		}
+
+		function getContentByPage(pagenum) {
+			if (!hasMore) {
+				//  		hiddenLoadMore();
+				/*lx添加*/
+				hiddenkb();
+				api.toast({
+					msg : '已经是最后了'
+				});
+				return;
+			}
+			if (pagenum > 1) {
+				/*lx添加*/
+				hiddenkb();
+				showLoadMore();
+				/*lx添加*/
+				showkb();
+			}
+			api.showProgress({
+			});
+			getFoods(pagenum);
+			setTimeout("afterFresh()",200);
+//			afterFresh();
+		}
+
+		function getFoods(pagenum) {
+			api.ajax({
+				url : SERVER_URL + SERVER_ROOT_PATH + '/common/enterHistoryAction!fetchAllUnCheck.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values : {
+						userID : $api.getStorage("userInfo").userID,
+						'currentPageIndex' : pagenum
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+				//      	var loadmorediv = $api.byId('loadingmore');
+				//	    	loadmorediv.style.display = "none";
+				hiddenLoadMore();
+				//      	alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
+				//				if (processNetWorkErr(err)) {
+				//					return;
+				//				}
+				if (processNetWorkErr(err)) {
+					return;
+				}	
+				if (ret.status == 0) {
+					$(".tipMess").hide();
+					var el, div;
+					el = document.getElementById('listview');
+					//      		var arr = eval(ret.data.list);
+					var arr = ret.data;
+					for (var i = 0; i < arr.length; i++) {
+						div = document.createElement('div');
+						div.innerHTML = '<div class="conn" id="'+arr[i].barcodeVal+'" onclick="selectItem(this,\''+arr[i].gid+'\',\''+arr[i].thumbnailPath+'\',\''+arr[i].compositionPath+'\',\''+arr[i].productName+'\',\''+arr[i].enterpriseName+'\',\''+arr[i].barcodeVal+'\',\''+
+						arr[i].brand+'\',\''+arr[i].productType+'\',\''+arr[i].produceProvince+'\',\''+arr[i].produceCity+'\',\''+arr[i].produceCounty+'\',\''+arr[i].energyPerVal+'\',\''+arr[i].energyNrvVal+'\',\''
+						+arr[i].proteinPerVal+'\',\''+arr[i].proteinNrvVal+'\',\''+arr[i].fatPerVal+'\',\''+arr[i].fatNrvVal+'\',\''+arr[i].carbohydratePerVal+'\',\''+arr[i].carbohydrateNrvVal+'\',\''+arr[i].sodiumPerVal+'\',\''+arr[i].sodiumNrvVal+'\',\''+arr[i].createdTime+'\')">' + '<div class="connl">' + arr[i].productName + '</div>' + '<div class="connr">' + arr[i].createdTime + '</div>' + '</div>';
+						el.appendChild(div, el.childNodes[0]);
+						
+						positionss();
+					}
+				} else if (ret.status == 1) {
+					hasMore = false;
+				} else {
+					alert(ret.data.errorMsg);
+				}
+			});
+		}
+
+		//		  function selectItem(obj,gid,productName,enterpriseName,barcodeVal,brand,productType,province,city,county,energyPerVal,energyNrvVal,proteinPerVal,proteinNrvVal,fatPerVal,fatNrvVal,carbohydratePerVal,carbohydrateNrvVal,sodiumPerVal,sodiumNrvVal,createdTime){
+		function selectItem(obj,gid,thumbnailPath,compositionPath,productName,enterpriseName,barcodeVal,brand,productType,province,city,county,energyPerVal
+		,energyNrvVal,proteinPerVal,proteinNrvVal,fatPerVal,fatNrvVal,carbohydratePerVal,carbohydrateNrvVal
+		,sodiumPerVal,sodiumNrvVal,createdTime) {
+			if(delCheck){
+				imgid =  obj.childNodes[0];
+				if (imgid.src.match("wxz")) {
+					imgid.src = "../../image/userInfo/pro_xz.png";
+					$api.attr(imgid,'name',barcodeVal);
+				} else {
+					imgid.src = "../../image/userInfo/pro_wxz.png";
+				}
+				isDel();
+				return;
+			}
+			api.openWin({
+				name : 'mycheckfood_windows',
+				url : './mycheckfood_windows.html',
+				pageParam : {
+					'gid' : gid,
+					'thumbnailPath' : thumbnailPath,
+					'compositionPath':compositionPath,
+					'productName' : productName,
+					'enterpriseName' : enterpriseName,
+					'barcodeVal' : barcodeVal,
+					'brand' : brand,
+					'productType' : productType,
+					'province' : province,
+					'city' : city,
+					'country' : county,
+					'energyPerVal' : energyPerVal,
+					'energyNrvVal' : energyNrvVal,
+					'proteinPerVal' : proteinPerVal,
+					'proteinNrvVal' : proteinNrvVal,
+					'fatPerVal' : fatPerVal,
+					'fatNrvVal' : fatNrvVal,
+					'carbohydratePerVal' : carbohydratePerVal,
+					'carbohydrateNrvVal' : carbohydrateNrvVal,
+					'sodiumPerVal' : sodiumPerVal,
+					'sodiumNrvVal' : sodiumNrvVal,
+					'createdTime' : createdTime
+				}
+			});
+		}
+	
+		function afterFresh(){
+			if(delCheck){
+				var image = $("img");
+				var num=1;
+				if(image!=null&&image.length>0){
+            		num = image.length;
+//          		alert(num);
+				}
+				var arr = $(".conn");
+            	for(i=num-1;i<arr.length;i++){
+            		$api.prepend(arr[i],"<img src='../../image/userInfo/pro_wxz.png' width='15px' height='15px' />");
+           		}
+				isDel();
+			}
+		}
+		function isDel(){
+			var arr = $("img[src$='_xz.png']");
+			if(arr!=null&&arr.length>0){
+				api.sendEvent({
+					name: 'myenter_able',
+					extra: {
+						   isable: true
+					}
+				});
+           	}else{
+           		api.sendEvent({
+					name: 'myenter_able',
+					extra: {
+						   isable: false
+					}
+				});
+           }
+		}
+	</script>
+</html>

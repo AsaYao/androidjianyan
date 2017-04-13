@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>积分明细</title>
+<link rel="stylesheet" type="text/css" href="css/percencss.css"/>
+<link rel="stylesheet" type="text/css" href="css/intercss.css"/>
+</head>
+
+<body>
+<div class="integ">我的积分：<span>800</span></div>
+<div class="cenbi">
+		<div class="cenbl">
+			<div class="texttop">签到</div>
+			<div class="textbot">2016-4-15 &nbsp;14：00</div>
+		</div>
+		<div class="cenbr">+10</div>
+</div>
+<div class="cenbi">
+		<div class="cenbl">
+			<div class="texttop">营养标签录入审核通过</div>
+			<div class="textbot">2016-4-15 &nbsp;14：00</div>
+		</div>
+		<div class="cenbr">+100</div>
+</div>
+<div class="cenbi">
+		<div class="cenbl">
+			<div class="texttop">用户注册</div>
+			<div class="textbot">2016-4-15 &nbsp;14：00</div>
+		</div>
+		<div class="cenbr">+50</div>
+</div>
+<div class="bk"></div>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		$(document).ready(function(){
+			$(".texttop").width(widthb-90);
+			$(".textbot").width(widthb-90);
+  		});
+</script>
+</body>
+</html>

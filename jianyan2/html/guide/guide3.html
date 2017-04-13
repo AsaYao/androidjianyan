@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+		<title>APP</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<style>
+			#main {
+				height: 100%;
+				width:100%;
+				background: url(../../res/guide_p3.jpg) center center no-repeat;
+				background-size: 100% 100%;
+			}
+			#blank1 {
+				height: 100%;
+				width:100%;
+			
+				
+				/*background-color:white*/
+			}
+			#btn {
+				text-align: center;
+				color: red;
+				margin-top:80%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="wrap">-->
+			<div id="main" >
+				<!--<div id ="blank1"><div id = "btn"><img src ="../../res/button.jpg" width = "83px" height="26px" ></div></div>-->
+				<!--<div id = "btn" onclick="guideToHome();" tapmode="tap-active">
+					立即体验
+				</div>-->
+				
+				<table width="100%" height="100%" padding = "0">
+					<tr hight = "85%"><td height="85%"></td>
+					</tr>
+					<tr><td align="center"><img src ="../../res/button.png" width = "83px" height="26px" onclick="guideToHome();" ></td></tr>
+				</table>
+				
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript">
+		//		var guideToHome = function() {
+		//			api.execScript({
+		//				name : 'root',
+		//				script : 'indexOrGuide();'
+		//			});
+		//		};
+		//
+		//
+		var guideToHome = function() {
+//		alert('guide3 to login');
+			//			api.closeWin();
+			api.execScript({
+				name : 'root',
+				script : 'checkLogin();'
+			});
+//			api.closeWin();
+		}
+	</script>
+</html>

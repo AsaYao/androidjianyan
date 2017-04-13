@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>详细信息</title>
+<link rel="stylesheet" type="text/css" href="../../css/info/percencss.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/info/basiccss.css"/>
+<style>
+	#personID{
+		right: 16px;
+	}
+</style>
+</head>
+
+<body>
+	<div class="boxk"></div>
+	<div class="cenb" onclick="changeMess(0)">
+		<div class="cenbtext1">真实姓名</div>
+		<div class="cenbright1" ><span id='name'>未填写</span><img src="../../image/userInfo/pro_pj.png" width="16px" height="16px" /></div>
+	</div>
+	<div class="cenb" onclick="changeMess(1)">
+		<div class="cenbtext1">身份证</div>
+		<div class="cenbright1"><span id='personID'>未填写</span><img src="../../image/userInfo/pro_pj.png" width="16px" height="16px" /></div>
+	</div>
+	<div class="cenb" onclick="changeMess(2)">
+		<div class="cenbtext1">工作单位</div>
+		<div class="cenbright1"><span id='company'>未填写</span><img src="../../image/userInfo/pro_pj.png" width="16px" height="16px" /></div>
+	</div>
+	<div class="cenb" onclick="changeMess(3)">
+		<div class="cenbtext1">家庭住址</div>
+		<div class="cenbright1"><span id='address'>未填写</span><img src="../../image/userInfo/pro_pj.png" width="16px" height="16px" /></div>
+	</div>
+	<div class="bk"></div>
+	<div class="basicbc" onclick="saveInfo()"><img src="../../image/userInfo/pro_bc.png" /></div>
+</body>
+<script type="text/javascript" src="../../script/bts_common.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+<script>
+		var widthb=document.documentElement.clientWidth;
+		var imgw=widthb-20;
+		var imgh=imgw*120/1034;
+		var ml=(widthb-imgw)/2;
+		var basicz=(widthb*0.5-100)/2;
+		var ID = false;//验证身份证号
+		$(document).ready(function(){
+			$(".basicbc").css("margin-left",ml);
+			$(".basicbc img").width(imgw);
+			$(".basicbc img").height(imgh);
+			$(".basicz").css("margin-left",basicz);
+			$(".cenbright1 span").width(widthb-145);
+  		});
+  		apiready = function(){
+  			var userInfo = $api.getStorage('userInfo');
+  			var name = $api.byId('name');
+  			var person = $api.byId('personID');
+  			var company = $api.byId('company');
+  			var address = $api.byId('address');
+  			if(userInfo.realName!=''&&userInfo.realName!=null){
+  				$api.text(name, userInfo.realName);
+  			}
+  			if(userInfo.personID!=''&&userInfo.personID!=null){
+  				$api.text(person, userInfo.personID);
+  			}
+  			if(userInfo.company!=''&&userInfo.company!=null){
+  				$api.text(company, userInfo.company);
+  			}
+  			if(userInfo.address!=''&&userInfo.address!=null){
+  				$api.text(address, userInfo.address);
+  			}
+  		}
+  		function changeMess(index){
+  			var obj = api.require('inputField');
+			obj.open({
+    			bgColor:'#e5e5e5',
+    			lineColor:'#e5e5e5',
+    			fileBgColor:'#ffffff',
+    			borderColor:'#ffffff',
+    			sendImg:'widget://image/check/checked1.png',
+    			fixedOn: api.frameName
+			},function( ret ){     
+				var mess = ret.msg;
+				switch(index){
+				case 0:
+					realName(mess);
+					break;
+				case 1:
+					personID(mess);
+					break;
+				case 2:
+					company(mess);
+					break;
+				case 3:
+					address(mess);
+					break;
+				}
+			});
+  		}
+  		function realName(mess){
+  			if(mess!=null&&$api.trim(mess)!=''){
+				if(mess.length>=20){
+					alert('字数不能超过20个！');
+				}else{
+					var userInfo = $api.getStorage('userInfo');
+					userInfo.realName = mess;
+					$api.setStorage('userInfo',userInfo);
+					var name = $api.byId('name');
+					$api.text(name, mess);
+					var obj = api.require('inputField');
+					obj.close();
+				}
+			} 
+  		}
+  		function personID(mess){
+  			checkIdcard(mess);
+//			alert(ID);
+  			if(ID){
+  				var userInfo = $api.getStorage('userInfo');
+  				userInfo.personID = mess;
+  				$api.setStorage('userInfo',userInfo);
+  				var person = $api.byId('personID');
+					$api.text(person, mess);
+					var obj = api.require('inputField');
+					obj.close();
+  			}
+  		}
+  		
+  		function checkIdcard(num){   
+        num = num.toUpperCase();  
+        //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。   
+        if (!(/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num)))   
+        { 
+            alert('输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。'); 
+        } 
+        //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。 
+        //下面分别分析出生日期和校验位 
+        var len, re; 
+        len = num.length; 
+        if (len == 15) 
+        { 
+            re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/); 
+            var arrSplit = num.match(re);
+
+            //检查生日日期是否正确 
+            var dtmBirth = new Date('19' + arrSplit[2] + '/' + arrSplit[3] + '/' + arrSplit[4]); 
+            var bGoodDay; 
+            bGoodDay = (dtmBirth.getYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4])); 
+            if (!bGoodDay) 
+            { 
+                alert('输入的身份证号里出生日期不对！');   
+            } 
+            else 
+            { 
+                    //将15位身份证转成18位 
+                    //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。 
+                    var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2); 
+                    var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'); 
+                    var nTemp = 0, i;   
+                    num = num.substr(0, 6) + '19' + num.substr(6, num.length - 6); 
+                    for(i = 0; i < 17; i ++) 
+                    { 
+                        nTemp += num.substr(i, 1) * arrInt[i]; 
+                    } 
+                    num += arrCh[nTemp % 11];   
+                    ID = true;   
+            }   
+        } 
+        if (len == 18) 
+        { 
+            re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/); 
+            var arrSplit = num.match(re);
+
+            //检查生日日期是否正确 
+            var dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]); 
+            var bGoodDay; 
+            bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4])); 
+            if (!bGoodDay) 
+            { 
+                //alert(dtmBirth.getYear()); 
+                //alert(arrSplit[2]); 
+                alert('输入的身份证号里出生日期不对！'); 
+            } 
+        else 
+        { 
+            //检验18位身份证的校验码是否正确。 
+            //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。 
+            var valnum; 
+            var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2); 
+            var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'); 
+            var nTemp = 0, i; 
+            for(i = 0; i < 17; i ++) 
+            { 
+                nTemp += num.substr(i, 1) * arrInt[i]; 
+            } 
+            valnum = arrCh[nTemp % 11]; 
+            if (valnum != num.substr(17, 1)) 
+            { 
+                alert('18位身份证的校验码不正确！应该为：' + valnum); 
+            } 
+            ID = true; 
+        } 
+        } 
+	}
+	function company(mess){
+		if(mess!=null&&$api.trim(mess)!=''){
+				if(mess.length>=50){
+					alert('字数不能超过200个！');
+				}else{
+					var userInfo = $api.getStorage('userInfo');
+					userInfo.company = mess;
+					$api.setStorage('userInfo',userInfo);
+					var company = $api.byId('company');
+					$api.text(company, mess);
+					var obj = api.require('inputField');
+					obj.close();
+				}
+			} 
+	}
+	function address(mess){
+		if(mess!=null&&$api.trim(mess)!=''){
+				if(mess.length>=50){
+					alert('字数不能超过300个！');
+				}else{
+					var userInfo = $api.getStorage('userInfo');
+					userInfo.address = mess;
+					$api.setStorage('userInfo',userInfo);
+					var address = $api.byId('address');
+					$api.text(address, mess);
+					var obj = api.require('inputField');
+					obj.close();
+				}
+			}
+	}
+	function saveInfo(){
+			var userInfo = $api.getStorage('userInfo');
+//			alert(JSON.stringify(userInfo));
+			api.ajax({
+				url:SERVER_URL+SERVER_ROOT_PATH+'/common/userInfoAction!saveInfo.action',
+				method : 'post',
+				timeout : 30,
+				data : {
+					values:{
+						userName:userInfo.username,
+//						sex:userInfo.sex,
+//	 					birthday:userInfo.birthday,
+//						height:userInfo.height,
+//						weight:userInfo.weight,
+						realName:userInfo.realName,
+						personID:userInfo.personID,
+						company:userInfo.company,
+						address:userInfo.address
+					}
+				}
+			},function(ret,err){
+				if(ret.status==0){
+					alert('保存成功！');
+				}else if(ret.status==1){
+					alert(ret.data.errorMsg);
+				}else{
+					api.alert({
+					msg : err.msg
+					});
+				}
+			});
+		}
+</script>
+</html>

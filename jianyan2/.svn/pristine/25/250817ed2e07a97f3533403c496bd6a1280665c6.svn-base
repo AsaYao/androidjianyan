@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+		<style>
+			body {
+			}
+			#header {
+				line-height:40px;
+				text-align: center;
+				color: #fff;
+				width: 100%;
+				height: 45px;
+				background: url(../../../image/statusbar/background.png);
+				background-repeat: repeat-x;
+			}
+			.menu {
+				margin: 0;
+				padding: 0px;
+				width: 100%;
+				
+				color: #FFFFFF;
+				text-align: center;
+				line-height: 40px;
+				font-size: 10px;
+				position: fixed;
+			}
+			.save {
+				
+				margin-right: 10px;
+				margin-bottom: auto;
+				float: right;
+				position: static;
+				margin-top: 5px;
+			}
+			.back {
+				margin-top: 5px;
+				margin-right: auto;
+				margin-bottom: auto;
+				/*background-color: #00a0e9;*/
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				margin-left: 0px;
+				float: left;
+				position: static;
+			}
+			.back img {
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="menu" >
+					<div class="back"  onclick="backTo()">
+						<img src="../../../image/scancode/rollback_btn2.png" height="30px" width="30px" />
+					</div>
+					<div class="save"  onclick="checkDelete()">
+						<img id="checkimg" src="../../../image/check/checked.png" height="30px" width="30px" />
+					</div>
+					<h1>商品图标查看和删除</h1>
+				</div>
+			</div>
+			<div id ="main"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript">
+	
+		var pic_index = 0; //当前显示的图片index
+		var del_pics = new Array(2);//是否删除标志，如果多图，此处可更改为根据传入参数个数进行初始化
+		del_pics[0] = false;
+		del_pics[1] = false;
+		
+		function backTo() {
+			api.sendEvent({
+                    	name: 'deleteIcon',
+                        extra: {'delarr':del_pics}
+                 	});
+			api.closeWin();
+		}
+		
+		
+		function checkDelete() {
+			del_pics[pic_index] = !del_pics[pic_index];
+			refreshCheckBtn();
+		}
+		
+		
+		function refreshCheckBtn() {
+			if (!del_pics[pic_index]) {
+				document.getElementById("checkimg").src = "../../../image/check/checked.png";
+			} else {
+				document.getElementById("checkimg").src = "../../../image/check/unchecked2.png";
+			}
+		}
+	
+		apiready = function() {
+		
+		api.addEventListener({
+			    name:'keyback'
+			},function(ret,err){
+			    if (ret) {
+			    	backTo();
+			    }
+			});
+		
+		
+		
+			var params = api.pageParam;
+//			alert(JSON.stringify(params));
+			frames = [];
+        for (var i = 0,len = params.pics.length; i < len; i++) {
+        		if(params.pics[i] == null) {
+        			continue;
+        		}
+                frames.push( { 
+                    name: 'frame'+i, 
+                    url: './icon_frame.html', 
+                    pageParam:{'imgurl': params.pics[i]},
+                    bgColor : 'rgba(0,0,0,.2)',
+                    bounces:false,
+                    vScrollBarEnabled:false,                 //（可选项）是否显示垂直滚动条，布尔型，默认值：true
+    				hScrollBarEnabled:false, 
+                } )
+        }
+		
+		api.openFrameGroup({
+            name: 'group',
+//          scrollEnabled: false,
+            rect: {
+                x: 0, 
+                y: $api.byId('header').offsetHeight, 
+                w: api.winWidth, 
+                h: api.winHeight - $api.byId('header').offsetHeight, 
+            },
+            index: 0,
+            frames: frames
+        }, function (ret, err) {
+//			alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+			pic_index = ret.index;
+			refreshCheckBtn();
+        });
+		}
+	</script>
+</html>

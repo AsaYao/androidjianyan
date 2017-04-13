@@ -1,0 +1,111 @@
+body{
+	margin:0px;
+	padding:0px;
+	background:#f3f5f4;
+	height:100%;
+}
+
+.mainp{ 
+	width:100%; 
+	height:52px; 
+}
+.br{
+	float:left;
+	height:52px;
+	border-right:2px solid #e5e5e5;
+}
+.mainpl{
+	 float:left; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-bottom:2px solid #e5e5e5;
+}
+.mainpm{ 
+	float:left; 
+	height:50px;
+	line-height:50px; 
+	text-align:center; 
+	border-bottom:2px solid #e5e5e5;
+}
+.mainpr{ 
+	float:left; ; 
+	height:50px;
+	line-height:50px; 
+	text-align:center; 
+	border-bottom:2px solid #e5e5e5;
+}
+.mainz{
+	width:70px;
+	height:50px;
+	border-bottom:2px solid #36b160;
+	color:#36b160;
+}
+.maincon{
+	width:100%;
+	height:auto;
+}
+.conn{
+	width:100%;
+	height:50px;
+	background:#ffffff;
+	border-bottom:2px solid #e5e5e5;
+}
+.conn img{
+	display:block;
+	float:left;
+	margin: 20px 0px 0px 15px;
+}
+.connl{
+	float:left;
+	height:50px;
+	margin-left:20px;
+	line-height:50px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.connll{
+	float:left;
+	height:50px;
+	margin-left:10px;
+	line-height:50px;
+
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.connr{
+	float:right;
+	width:100px;
+	height:50px;
+	margin-left:10px;
+	margin-right:20px;
+	line-height:50px;
+}
+.mainb{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	height:52px;
+	background:#ffffff;
+}
+.mainbl{
+	float:left; 
+	 width:50%; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+}
+.mainbr{
+	float:left; 
+	 width:49%; 
+	 height:50px;
+	 line-height:50px; 
+	 text-align:center; 
+	 border-top:2px solid #e5e5e5;
+}
+.mainbs{
+	color:#36b160;
+}

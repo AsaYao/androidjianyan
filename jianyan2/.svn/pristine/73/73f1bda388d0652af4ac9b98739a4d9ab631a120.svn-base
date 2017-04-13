@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/apimy.css"/>
+		<style>
+			body {
+			background-color: #EBEAEA;
+			width:100%;
+			padding-bottom:5px;
+			}
+			.sptp {
+				width: 100%;
+				margin-top: 11px;
+				margin-right:0px;
+				background-color: #EBEAEA;
+			}
+			.yycfb {
+				width: 100%;
+				margin-top: 10px;
+				border-bottom: 2px solid gray;
+			}
+			.xxxx {
+				width: 93%;
+				height: 213px;
+				text-align: center;
+				margin-top: 17px;
+				margin-left: 3.5%;
+				font-size: 15.7px;
+			}
+			.jkts {
+				width: 100%;
+				margin-top: 17px;
+				height: 60px;
+			}
+			#ts {
+				border-bottom: 2px solid gray;
+			}
+			.qttl {
+				height: 50px;
+				width: 100%;
+				margin-top: 0px;
+				border-bottom: 2px solid gray;
+				
+			}
+			.spphoto {				
+				width: 97px;
+				height: 97px;				
+				text-align: center;
+				margin-left:15px;
+				margin-right:13px;
+				border-radius: 8px;
+				overflow:hidden;				
+			}
+			#foodxx {
+				height: 100px;
+				width: 100%;
+				/*border-color: #0000FF*/
+			}
+			p {
+				margin-top: 5px;
+			}
+			#tlsphy {
+			}
+			/*	#hyl{
+			 height: 80px;
+			 background-color: #F3F6F5
+			 }*/
+			#Sodium, #brand, #enterpriseName {
+				text-align: left;
+			}
+			#bjt, #bjt2, #samefoodtable {
+				background-image: url(../../image/detailsfood/daohang.png);
+				width: 100%;
+				height:30px;
+				background-repeat: no-repeat;
+			}
+			#sys-info {
+			}
+			.hanyanliang{
+				position:absolute;
+			
+				height:33px;
+				width: 47.5px;
+				margin-left: 59px;
+				margin-top: -16px;
+		
+	/*	background-color:#008000*/
+		/*	filter:alpha(opacity=10);*/
+			
+			}
+			#huanhang{
+				
+				
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+			}
+			#huanhang1{
+				/*background-color:#00A0E9;*/
+				
+				line-height:35px;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+			}
+			#brand{
+				font-size: 12.5px;
+				/*background-color:#00A0E9;*/
+				width:150px;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+			}
+			#enterpriseName{
+				font-size: 12.5px;
+				color: #606068;
+				/*background-color:#00A0E9;*/
+				width: 150px;
+				height:32px;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;				
+				word-wrap: break-word;
+			}
+			#samefoodtable {
+				display:"";
+			}
+		</style>
+	</head>
+	<body>
+		
+		<table class="sptp">
+			<tr>
+				<td>
+					<div class="spphoto" id="img" onclick="">
+						<div class="hanyanliang">
+							<img  id="salt" style="margin-right: 3.5px" height="33.75px" width="42px"/>
+						</div>
+					</div>
+				</td>
+				<td>
+					<table id="foodxx" >
+						<tr>
+							<td style="font-size:16px" colspan="2"><div id="huanhang1"><b id="productName" style="margin-left:5px;"></b></div></td>
+						</tr>
+						<tr>
+							<td style="font-size: 0.8em;text-align:center;width:90px;">含&nbsp;&nbsp;&nbsp;盐&nbsp;&nbsp;&nbsp;量&nbsp;：</td>
+							<td id="Sodium" style="font-size: 12.5px;padding-left:2px"><div id="huanhang"><span id="first"> </span><span>mg/</span><span id="two">100</span><span id="three"></span></div> 
+							</td>
+						</tr>
+						<tr>
+							<td style="font-size: 0.8em;text-align:center;width:90px;"> 排名/总数&nbsp;：</td>
+							<td id="Sodium" style="font-size: 12.5px;padding-left:2px"><div id="huanhang"> <span style="font-size:12.5px;color:red"> NO.</span><span id="nowNum" style="font-size:14px;color:red">1</span>/<span id="sumNum">20</span></div></td>
+						</tr>
+						<tr>
+							<td style="font-size: 0.8em;text-align:center;width:90px;">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌&nbsp;：</td>
+							<td  style="padding-left:2px"><div id="brand"></div></td>
+						</tr>
+						<tr>
+							<td style="font-size: 0.8em;text-align:center;padding-bottom: 18px;width:90px;">生&nbsp;产&nbsp;厂&nbsp;商：</td>
+							<td><div id="enterpriseName"></div></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"  id="tlsphy">
+					<div style="float:left;color:#c48d08;font-weight:bold;margin-left: 16.5px;font-size: 12.5px;margin-top: 10px;">同类食品含盐对比(系统内)</div>
+					<div style="float:right;margin-right:20px;font-size:10px;color:#7e7e80;margin-top: 10px;"><b>[单位mg/100g]</b></div>
+				</td>
+			</tr>
+			<tr id="#hyl" style="height:70px;">
+				<td colspan="2" style="padding-left: 50px;padding-right: 70px;">
+					<div id='sys-info' style = "border:2px;width = 100%;height=2px; position:relative;padding-bottom: 30px"></div>
+				</td>
+			</tr>
+
+		</table>
+		<table class="yycfb">
+			<tr>
+				<td id="bjt"><b style="margin-left: 16.5px;font-size:16.7px">营养成分表</b></td>
+			</tr>
+		</table>
+		<table class="xxxx" border="1">
+			<tr style="background-color:#F6F4BE;height:32px;">
+				<td width='33%'>营养成分</td>
+				<td id="guige">每100g</td>
+				<td>NRV%</td>
+			</tr>
+			<tr style="height:35px;">
+				<td>能量</td>
+				<td><span  id="energyPerVal"></span><span id="energyPerUnit"></span></td>
+				<td ><span id="energyNrvVal"></span>%</td>
+			</tr>
+			<tr style="background-color:#E0E0E0;height:35px">
+				<td>蛋白质</td>
+				<td ><span id="proteinPerVal"></span>g</td>
+				<td ><span id="proteinNrvVal"></span>%</td>
+			</tr>
+			<tr style="height:35px;">
+				<td>脂肪</td>
+				<td ><span id="fatPerVal"></span>g</td>
+				<td ><span id="fatNrvVal"></span>%</td>
+			</tr>
+			<tr style="background-color:#E0E0E0;height:35px">
+				<td>碳水化合物</td>
+				<td><span id="carbohydratePerVal"></span>g</td>
+				<td ><span id="carbohydrateNrvVal"></span>%</td>
+			</tr>
+			<tr style="height:35px;">
+				<td>钠</td>
+				<td><span id="sodiumPerVal"></span>mg</td>
+				<td ><span id="sodiumNrvVal"></span>%</td>
+			</tr>
+		</table>
+		<table class="jkts" >
+			<tr id="ts">
+				<td id="bjt2"><b style="margin-left: 16.5px;font-size:16.7px">健康提示</b></td>
+			</tr>
+			<tr style="background-color: #EBEAEA">
+				<td><p style="text-indent:16.5px;font-size: 13px;color: #606068;" id="foodResult"></p></td>
+			</tr>
+		</table>
+		<table class="qttl" id="samefoodtable" onclick="samefood()">
+			<tr>
+				<td width="60%"><b>&nbsp;&nbsp;&nbsp;&nbsp;其他同类低盐商品</b></td>
+				<td>
+				<img style="float: right;margin-right: 15px" src="../../image/detailsfood/qtdy.png" height="30px" />
+				</td>
+			</tr>
+		</table>
+		<!--<input type="text" id="btn_getNum"/>
+		<input type="button" value="得到数字" onclick="getNum(btn_getNum.value);"/>-->
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/bts_common.js"></script>
+	<script type="text/javascript" src = "../../script/jquery-2.1.4.min.js"> </script>
+	<script type="text/javascript">
+	
+		function samefood() {
+			api.openWin({
+	            name: 'samefood',
+	            url: '../samefood/commodity_samefood_windows.html',
+	            pageParam:{
+						productcode : productCode
+						}
+	            
+	            
+            });
+		}
+		function getProductDetail(codeid) {
+			//			var sodium =document.getElementById('Sodium');
+			//			sodium.innerHTML = "KJ";
+			//			alert("codefid" + codeid);
+			api.showProgress({
+				
+            });
+			api.ajax({
+
+//				url : 'http://183.196.20.24:9090/' + '/salt_reduction/common/foodsNrvAction!gotoDetail.action',
+				url :  SERVER_URL + '/salt_reduction/common/foodsNrvAction!gotoDetail.action',
+
+				method : 'post',
+				timeout : 30,
+				dataType : 'json',
+				returnAll : false,
+				data : {
+					values : {
+						codeValue : codeid
+					}
+				}
+			}, function(ret, err) {
+				api.hideProgress();
+				//alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
+				if (!varIsNull(err)) {
+					api.alert({
+						msg : err.msg
+					}, function(ret, err) {
+						//coding...
+					});
+					return;
+				}
+				if (ret) {
+					if (ret.status == 0) {
+						//var productName = document.getElementById('productName');
+						//						var sodium = document.getElementById('Sodium');
+						//						var brand = document.getElementById('brand');
+						//						var enterpriseName = document.getElementById('enterpriseName');
+						//						var energyPerVal = document.getElementById('energyPerVal');
+						//						var energyNrvVal = document.getElementById('energyNrvVal');
+						//						var energyPerUnit = document.getElementById('energyPerUnit');
+						//						var proteinPerVal = document.getElementById('proteinPerVal');
+						//						var proteinNrvVal = document.getElementById('proteinNrvVal');
+						//						var fatPerVal = document.getElementById('fatPerVal');
+						//						var fatNrvVal = document.getElementById('fatNrvVal');
+						//						var carbohydratePerVal = document.getElementById('carbohydratePerVal');
+						//						var carbohydrateNrvVal = document.getElementById('carbohydrateNrvVal');
+						//						var sodiumPerVal = document.getElementById('sodiumPerVal');
+						//						var sodiumNrvVal = document.getElementById('sodiumNrvVal');
+						//						var foodResult = document.getElementById('foodResult');
+						//						productName.innerHTML = ret.data.productName;
+						productName.innerHTML = ret.data.productName;
+						brand.innerHTML = ret.data.brand;
+						$api.byId('enterpriseName').innerHTML = ret.data.enterpriseName;
+						$api.byId('energyPerVal').innerHTML = ret.data.energyPerVal;
+						$api.byId('energyNrvVal').innerHTML = ret.data.energyNrvVal;
+						$api.byId('proteinPerVal').innerHTML = ret.data.proteinPerVal;
+						$api.byId('proteinNrvVal').innerHTML = ret.data.proteinNrvVal;
+						$api.byId('fatPerVal').innerHTML = ret.data.fatPerVal;
+						$api.byId('fatNrvVal').innerHTML = ret.data.fatNrvVal;
+						$api.byId('carbohydratePerVal').innerHTML = ret.data.carbohydratePerVal;
+						$api.byId('carbohydrateNrvVal').innerHTML = ret.data.carbohydrateNrvVal;
+						$api.byId('sodiumPerVal').innerHTML = ret.data.sodiumPerVal;
+						$api.byId('sodiumNrvVal').innerHTML = ret.data.sodiumNrvVal;
+						$api.byId('foodResult').innerHTML = ret.data.foodResult;
+						
+						//判断中盐低盐高盐
+						var foodResult=ret.data.foodResult;
+						if(foodResult=="低盐"){
+					
+							salt.src="../../image/detailsfood/lowsalt.png";
+						
+						}
+						if(foodResult=="中盐"){
+					
+							salt.src="../../image/detailsfood/midsalt.png";
+						
+						}
+						if(foodResult=="高盐"){
+					
+							salt.src="../../image/detailsfood/highsalt.png";
+						
+						}
+						
+						//alert(ret.data.productName);
+						//插入商品图片
+						var add = document.getElementById("img");
+						var bigImg = document.createElement("img");
+						bigImg.style.height = "97px";
+						bigImg.style.width = "97px";
+						//cancelled by w.g 
+//						bigImg.src = SERVER_URL + SERVER_ROOT_PATH + ret.data.thumbnailPath;
+//						//cancelled by w.g end
+						//add by w.g 
+						//设置默认图片
+						bigImg.src = "../../image/default.png";
+						if (!varIsNull(ret.data.thumbnailPath)) {
+							bigImg.src = SERVER_URL + SERVER_ROOT_PATH + ret.data.thumbnailPath;
+						}
+						//add by w.g end
+						//alert(bigImg.src);SERVER_URL + SCANCODE_QUERY_PATH
+						add.appendChild(bigImg);
+						//判断单位
+//						alert(ret.data.energyPerUnit);
+						if (ret.data.energyPerUnit == 1) {
+							energyPerUnit.innerHTML = "Kcal";
+						} else {
+							energyPerUnit.innerHTML = "KJ";
+						}
+						//含盐量计算
+						
+						var specType=ret.data.specType;
+						var specVal=ret.data.specVal;
+						var sodiumPerVal=ret.data.sodiumPerVal;
+//						alert(specVal);
+//						alert(specType);
+//						var specType="其它";
+						if(specType==""){
+							
+							guige.innerHTML="每"+specVal;
+							var value = specVal.replace(/[^0-9]/ig,""); 
+		    				var sodium = 100/value*sodiumPerVal;
+		    				//add by w.g  @20160201
+		    				sodium = sodium.toFixed(2);
+		    				sodium = toFixedWithNoZeroEnd(sodium);
+		    				//add by w.g end
+		    				first.innerHTML=sodium;
+							var company=specVal.substring(specVal.length-1);
+
+
+							if(company=='g'){
+							three.innerHTML="g";
+						
+							}if(company=='l'){
+							three.innerHTML="ml";
+							}						
+						}else{
+							guige.innerHTML=specType;
+	//						alert(ret.data.specType);
+							var value = specType.replace(/[^0-9]/ig,""); 
+			    			var sodium = 100/value*sodiumPerVal;
+			    			sodium = sodium.toFixed(2);
+		    				sodium = toFixedWithNoZeroEnd(sodium);
+			    			first.innerHTML=sodium;
+							var company=specType.substring(specType.length-1);
+	//						alert(company);
+	//						alert(ret.data.produceProvince);
+	//						alert(ret.data.specVal);
+							if(company=='g'){
+								three.innerHTML="g";
+							
+							}if(company=='l'){
+								three.innerHTML="ml";
+							}
+
+						}
+						//排名总数计算
+						$api.byId('nowNum').innerHTML=ret.data.nowNum;
+						$api.byId('sumNum').innerHTML=ret.data.sumNum;
+						//将参数传入食品含盐量对比
+						var minSodium=ret.data.minSodium;
+						var maxSodium=ret.data.maxSodium;
+						var averageSodium=ret.data.averageSodium;
+						//var minSodium=ret.data.minSodium;	
+//						alert(averageSodium);
+						var numberfixed=averageSodium.toFixed(2);//取两位小数	
+						var maxSodium=maxSodium.toFixed(2);	
+						var minSodium=minSodium.toFixed(2);	
+						
+						numberfixed = toFixedWithNoZeroEnd(numberfixed);
+						maxSodium = toFixedWithNoZeroEnd(maxSodium);
+						minSodium = toFixedWithNoZeroEnd(minSodium);		
+						drawLinePoint(minSodium,maxSodium,numberfixed,sodium);
+					
+					}
+				}
+			});
+		}
+	
+		function toFixedWithNoZeroEnd(num) {
+			var strnum = String(num);
+			if (strnum.indexOf(".00") > 0) {
+			 return parseInt(strnum);
+			}
+			
+			if (strnum.indexOf("0") == strnum.length -1) {
+				return parseFloat(strnum).toFixed(1);
+			}
+			
+			return num;
+			
+		}
+			
+		var productCode;	
+		apiready = function() {
+			var params =api.pageParam;
+//			alert(JSON.stringify(params));
+//			alert(params.productcode);
+
+			//add by w.g
+			checkShowSameFoodTable(params.hiddentable);
+			//add by w.g end
+
+			productCode = params.productcode;
+			getProductDetail(params.productcode);
+		
+		};
+		
+		//add by w.g
+			function checkShowSameFoodTable(hiddenval) {
+//				alert(hiddenval);
+				if (!varIsNull(hiddenval)) {
+//					alert(hiddenval);
+					var add = document.getElementById("samefoodtable");
+//					alert(add);
+					add.style.display = "none";
+//					$("#samefoodtable").css("display","none");
+//					$api.byId('samefoodtable').style.display = 'none';
+				}
+			}
+		//add by w.g end
+		
+		 function drawLinePoint(pmin, pmax, pavg, pcur) {
+			var len = pmax - pmin;
+			var total = 1.0 * len;
+			
+//			var maxv = len;
+			var pavglo = (pavg - pmin) / total * 100.0;
+			
+			var pcurlo = (pcur - pmin) / total * 100.0;
+//			alert(pcurlo);
+			$api.byId('sys-info').innerHTML = '<div><img src = "../../image/detailsfood/backline.png" width = "100%" height = "2" background-color:#c48d08></div>'
+			//平均值
+			 + '<div><img src= "../../image/detailsfood/avg_p.png" width = "15px" height = "15px" style = "left:'+( pavglo-1.5) + '%; position:absolute;margin-top:-12px;">' +
+			'<b style="left:'  +( pavglo-2.5) +  '%; position:absolute;text-align:center;font-size:10px;color:#7e7e80;margin-top:-23px;" >'+pavg+'mg&nbsp;&nbsp;平均值</b></div>' 
+			 //最大值
+			+ '<div><img src= "../../image/detailsfood/min_p.png" width = "15px" height = "15px" style = "left:98.3%; position:absolute;margin-top:-12px;">' +
+			'<b style="right:-50px; position:absolute;text-align:center;font-size:10px;color:#7e7e80;margin-top:-17px;"> '+pmax+'mg</b>' 
+			+ '<b style="right:-50px; position:absolute;text-align:center;font-size:10px;color:#7e7e80;margin-top:-7px;">最大值  </b></div>' 
+			
+			//最小值
+			+ '<div><img src= "../../image/detailsfood/min_p.png" width = "15px" height = "15px" style = "left:-1.7%; position:absolute;margin-top:-12px;">' +
+			'<b style="left:-40px; position:absolute;text-align:center;font-size:10px;color:#7e7e80; margin-top:-16px;" >'+pmin+'mg</b>' 
+			+ '<b style="left:-40px; position:absolute;text-align:center;font-size:10px;color:#7e7e80;margin-top:-6px;">最小值  </b></div>'
+			
+		    //当前值
+			 + '<div><img src= "../../image/detailsfood/cur_p.png" width = "35px" height = "35px" style = "left:' + (pcurlo-6)+ '%; position:absolute;margin-top:-11px;">' + 
+			 '<b style="left:' + (pcurlo-7)+ '%; position:absolute;width:80px;font-size:10px;color:#606068;margin-top:15px;">本产品'+pcur+'mg</b>' 
+			+ '</div>' 
+			//<b style="right:-50px; position:absolute;text-align:center;font-size:10px;color:#7e7e80;margin-top:35px;">[单位mg/100g]</b>
+			
+		}
+
+
+	</script>
+	<script type="text/javascript">
+		var x = document.documentElement.clientWidth;
+		$(function() {
+			$("#huanhang1").width(x - 130);
+			$("#huanhang").width(x - 220);
+			$("#enterpriseName").width(x - 220);
+			$("#brand").width(x - 220);
+		})
+	</script>
+</html>
