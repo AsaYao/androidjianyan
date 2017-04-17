@@ -33,7 +33,6 @@
     		line-height:38px;
     		width:80%;
     		margin-left:10%;
-    		
     	}
     	.itemcancel {
     		color:#000000;
@@ -82,8 +81,7 @@
 	    name: 'dialog'
     });
 	}
-	
-	
+
 //	function qq () {
 //			var obj = api.require('qq');
 //		obj.installed(function(ret,err){
@@ -136,48 +134,33 @@
 //	}
 
 
-
-
-
 	function qq () {
 			var obj = api.require('qq');
 		obj.installed(function(ret,err){
 		    if(ret.status){
 //		       api.alert({msg: "安装"});
-		      
-		       
 		       		addtohistory();
-					        
-					        
 			        obj.shareImage({
 					    title:'分享',
-					    description:'',
-					    imgPath:'fs://cache/test.png'
-			//			imgPath:'widget://res/button.jpg'
+					    description:'新闻描述',
+						imgPath:'fs://cache/test.png',
+						type:'QFriend'
 					},function(ret,err) {
 //						alert("fen");
-						 
 			   			if (ret.status) {
 					      api.alert({msg:'分享成功'});
-					      
 					   }else{
 					      api.alert({msg:err.msg});
 					   }
-							
+
 			    	});
 			        
-			       setTimeout('cancel()',3000)
-			        
-					        
-					    
-		       
+//			       setTimeout('cancel()',3000);
+
 		    }else{
 		        api.alert({msg: "没有安装"});
 		    } 
 		});
-
-
-		
 	}
 
 
@@ -253,11 +236,6 @@
 //		ts.style.marginTop = (api.winHeight - dh) /3 + 'px';
 //		ts.style.marginLeft= (api.winWidth - DW)/2 + 'px';
 		ts.style.display = "block";
-		
-		
-		
-		
-	
 	};
 </script>
 </html>

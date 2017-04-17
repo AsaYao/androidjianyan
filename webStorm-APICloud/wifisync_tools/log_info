@@ -23,3 +23,7 @@
  04-17 17:44:49.214 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
  04-17 17:45:11.006 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
  04-17 17:46:04.663 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 18:04:37.874 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 18:04:37.879 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 18:04:48.012 I/app3c   (2):  at allAreaSupermarket_page.html : 266
+ 04-17 18:04:48.162 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267

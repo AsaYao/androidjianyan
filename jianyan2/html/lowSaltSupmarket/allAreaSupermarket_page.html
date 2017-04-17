@@ -238,38 +238,26 @@
 			});
 			
 			var map = api.require('bMap');
-
-			map.getNameFromCoords({
-				lon: 116.384767,
-				lat: 39.989539
-			}, function(ret, err) {
-				if (ret.status) {
-					alert(JSON.stringify(ret));
-				}
-			});
-
 			map.getLocation({
 				accuracy: '100m',
 				autoStop: true,
 				filter: 1
 			}, function(ret, err){
 				if(ret.status){
-					alert(ret.lon);
-					alert(ret.lat);
-					alert(map);
 					map.getNameFromCoords({
 						lon:ret.lon,
 						lat:ret.lat
 					},function(ret,err){
 						if(ret.status){
 							province = ret.province;
+//							alert(province);
 			api.ajax({
 				url : SERVER_URL+SERVER_ROOT_PATH+'/supermarket/supermarketAction!allAreaSupermarket.action',
 				method : 'post',
 				timeout : 30,
 				data : {
 					values : {
-						'provinceName' : province,
+						'provinceName' : "河北省",
 						'currentPageIndex':pagenum,
 						'pageSize':'10',
 					}
