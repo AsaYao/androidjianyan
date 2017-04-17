@@ -19,21 +19,19 @@
         -webkit-flex-flow: column;
                flex-flow: column;
     }
-    
     </style>
 </head>
 <body>
      <div id="main">
-     
+
     </div>
 </body>
+<script src="http://10.192.1.52:8080/target/target-script-min.js#anonymous"></script>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript" src="./script/bts_common.js"></script>
 <script type="text/javascript">
     apiready = function(){
 		console.log("Hello APICloud");
-		
-		
 		api.setWinAttr({
             name: 'root',
             bounces: false
@@ -72,11 +70,8 @@
         }
 
     };
-    
-    
     function openMain() {
 //  	alert('执行');
-    
     	api.openFrame({
 	                name: 'main',
 	                url: 'html/main/main_index.html',
@@ -118,7 +113,6 @@
 //		alert('checkLogin execute' + saveuser);
 
 
-
 	if(varIsNull(saveuser)) {
 		api.openFrame({
 	        name: 'login',
@@ -140,8 +134,6 @@
     
     
     var indexOrGuide = function() {
-		
-//	
 				api.openFrameGroup({
 					name : 'guide',
 					background : '#000000',
@@ -180,9 +172,6 @@
 					var index = ret.index;
 					$api.setStorage('firsttime', true);
 				});
-			
 		};
-		
-    
 </script>
 </html>
