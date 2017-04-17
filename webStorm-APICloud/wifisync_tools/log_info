@@ -1,0 +1,58 @@
+ 04-17 11:16:21.801 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 11:16:21.808 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 11:20:10.261 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 11:20:10.263 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 11:20:59.619 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 11:21:00.239 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at fra_register.html : 316
+ 04-17 14:04:17.103 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:04:17.829 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at fra_register.html : 316
+ 04-17 14:04:59.088 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:06:40.258 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:07:11.593 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:07:12.110 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at forget.html : 186
+ 04-17 14:07:24.294 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:07:24.598 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at forget.html : 186
+ 04-17 14:08:47.247 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:10:29.234 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:10:29.306 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:20:21.357 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:20:21.366 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:26:11.404 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:26:11.416 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:27:27.643 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:27:27.646 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:27:32.640 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:32:58.081 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:32:58.088 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:32:58.588 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:32:58.604 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:33:53.986 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:33:53.991 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:33:58.501 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:34:43.593 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:34:43.628 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:36:12.742 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:36:13.051 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:36:27.595 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:37:23.610 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:37:23.635 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:37:44.397 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:37:44.403 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:37:44.801 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:37:44.807 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:37:49.319 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:40:10.576 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:40:10.902 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:40:20.685 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:40:20.695 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:40:21.066 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:40:21.084 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:40:27.723 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-17 14:42:05.630 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:42:05.641 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:42:05.793 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:42:05.800 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:42:29.178 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:42:29.179 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-17 14:42:29.205 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-17 14:42:29.207 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498

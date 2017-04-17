@@ -1,669 +1,684 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="viewport"
-		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
-		<style>
-			* {
-				margin: 0px;
-				padding: 0px;
-			}
-			body, html {
-				height: 90%;
-			}
-			body {
-				background-image: url(../../image/register/bg.jpg);
-				background-repeat: repeat-y;
-				background-size: 100%;
-			}
-			/*header {
-			 border: none;
-			 }*/
-			/*	.menu {
-			 height: 45px;
-			 padding: 0px;
-			 width: 100%;
-			 color: #FFFFFF;
-			 text-align: center;
-			 line-height: 40px;
-			 font-size: 10px;
-			 }
-			 .menu h1 {
-			 margin-top: 5px;
-			 }
-			 .menu2 {
-			 margin-top: 5px;
-			 margin-right: auto;
-			 margin-bottom: auto;
-			 text-align: right;
-			 margin-left: 15px;
-			 float: left;
-			 height: 30px;
-			 }
-			 .menu2 img {
-			 height: 100%;
-			 }*/
-			.content {
-				padding-top: 50px;
-				margin-top: 10%;
-				display: -webkit-box;
-				-webkit-box-orient: vertical;
-				-webkit-box-flex: 1;
-			}
-			/*i {
-			 display: block;
-			 width: 30px;
-			 height: 30px;
-			 background-size: 30px;
-			 background-repeat: no-repeat;
-			 background-position: center;
-			 }*/
-			.user {
-				margin-top:10px;
-				display: block;
-				width: 30px;
-				height: 30px;
-				background-size: 30px;
-				background-repeat: no-repeat;
-				background-position: center;
-				background-image: url("../../image/register/shouji.png");
-			}
-			.password {
-				display: block;
-				width: 30px;
-				height: 30px;
-				background-size: 30px;
-				background-repeat: no-repeat;
-				background-position: center;
-				background-image: url("../../image/register/mima.png");
-			}
-			.passwordAgain {
-				display: block;
-				width: 30px;
-				height: 30px;
-				background-size: 30px;
-				background-repeat: no-repeat;
-				background-position: center;
-				background-image: url("../../image/register/mima.png");
-			}
-			.check {
-				margin-top:10px;
-				display: block;
-				width: 30px;
-				height: 30px;
-				background-size: 30px;
-				background-repeat: no-repeat;
-				
-				background-image: url("../../image/register/check.png");
-				background-position: center;
-			}
-			#send {
-				margin-top:10px;
-				background-color:#FF7800;
-				color:#FFFFFF;
-				font-size:12px;
-				text-align:center;
-				font-style:inherit;
-				margin-left: 10px;
-				margin-right: 10px;
-				padding-right: 10px;
-				padding-left: 10px;
-				display: block;
-				width: 60px;
-				height: 30px;
-				background-size: 60px;
-				background-repeat: no-repeat;
-				background-position: center;
-				/*background-image: url("../../image/register/send.png");*/
-			}
-			.input-wrap {
-				vertical-align:middle;
-				
-				display: -webkit-box;
-				background-color: rgba(255, 255, 255, 0.8);
-			}
-			.input-wrap:first-child {
-			
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-			}
-			.input-wrap:last-child {
-				border-bottom-left-radius: 5px;
-				border-bottom-right-radius: 5px;
-			}
-			.form {
-				
-				
-				margin: 0 20px;
-				line-height: 30px;
-			}
-			.input-wrap input {
-			vertical-align:middle;
-				margin-top: 15px;
-				display: block;
-				-webkit-box-flex: 1;
-				background-color: rgba(255, 255, 255, 0);
-				outline: none;
-				height: 30px;
-			}
-			input {
-				padding-bottom:5px;
-				padding-left: 10px;
-			}
-			.input-wrap img {
-			vertical-align:middle;
-			}
-			/*.footer, .form {
-			 -webkit-box-flex: 1;
-			 }*/
-			.footer {
-				margin-top: 20px;
-			}
-			#register {
-				color: #000000;
-				margin: 0 40px;
-				text-align: center;
-				border-radius: 5px;
-				height: 40px;
-				line-height: 40px;
-				margin-top: 15px;
-				background-color: #FFFFFF;
-			}
-			.sysm {
-				margin-top: 40px;
-				margin-bottom: 45px;
-				margin-left: 35px;
-			}
-			.sysm a {
-				color: #FFFFFF;
-			}
-			#pic {
-				height: 25px;
-				margin-left: -20px;
-				margin-top: 10px;
-			}
-			#password::-webkit-input-placeholder:before {
-				display: block;
-				position: absolute;
-				width: 100px;
-				height: 25px;
-				margin-top: -20px;
-				font-size: 15px;
-				line-height: 36px;
-				color: #999;
-				content: "请输入密码";
-			}
-			#password::-webkit-input-placeholder:after {
-				display: block;
-				position: absolute;
-				width: 100px;
-				height: 50px;
-				font-size: 10px;
-				margin-top: -10px;
-				line-height: 20px;
-				color: #999;
-				content: "(密码长度6-20位，字母、数字、下划线)";
-			}
-			#passwordAgain::-webkit-input-placeholder:before {
-			background-position: center;
-				display: block;
-				position: absolute;
-				width: 100px;
-				height: 25px;
-				margin-top: -20px;
-				font-size: 15px;
-				line-height: 36px;
-				color: #999;
-				content: "请再次输入密码";
-			}
-			#passwordAgain::-webkit-input-placeholder:after {
-			background-position: center;
-				display: block;
-				position: absolute;
-				width: 100px;
-				height: 50px;
-				font-size: 10px;
-				margin-top: -10px;
-				line-height: 20px;
-				color: #999;
-				content: "(密码长度6-20位，字母、数字、下划线)";
-			}
-		</style>
-	</head>
-	<body>
-		<!--<header>
-		<div class="menu" >
-		<div class="menu2"  onclick="closeWin() ">
-		<img src="../../image/register/zhucejiantou.png" height="20px" width="30px"/>
-		</div>
-		<h1>注册</h1>
-		</div>
-		</header>-->
-		<div class="content">
-			<div class="form">
-				<div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
-					<i class="user"></i>
-					<input type="tel" placeholder="请输入手机号"  class="txt" id="username" value=""/>
-				</div>
-				<div class="input-wrap"style="border-bottom: 1px solid #d4d4d4;">
-					<i class="password"></i>
-					<input type="password" placeholder='.'  class="txt" id="password" value="" onfocus="teledit()" />
-				</div>
-				<div class="input-wrap"style="border-bottom: 1px solid #d4d4d4;">
-					<i class="passwordAgain"></i>
-					<input type="password" placeholder='.'  class="txt" id="passwordAgain" value="" onfocus="teledit()" />
-				</div>
-				<div class="input-wrap">
-					<i class="check"></i>
-					<input type="tel" placeholder='请输入验证码' style="width: 50%" class="txt" id="check" value="" onfocus="teledit()" />
-					<!--	<img src="../../image/register/send.png" id="pic" onclick="sendCode()"/>-->
-					<!--<i class="send" onclick="sendCode()"></i>-->
-					<button id="send" type="button"  onclick="sendCode()" style="width: 35%">获取验证码
-					<!--<div class="send"onclick="sendCode()">
-						获取验证码
-					</div>-->
-				</div>
-			</div>
-			<div class="sysm">
-				<input type="checkbox" onfocus="teledit()"   id="123"/>
-				<a  onclick="look()">《使用声明》</a>
-			</div>
-			<footer class="footer">
-				<div class="blue" id="register" tapmode="blue-btn-active" onclick="register()">
-					注册
-				</div>
-			</footer>
-		</div>
-	</body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body, html {
+            height: 90%;
+        }
+
+        body {
+            background-image: url(../../image/register/bg.jpg);
+            background-repeat: repeat-y;
+            background-size: 100%;
+        }
+
+        /*header {
+         border: none;
+         }*/
+        /*	.menu {
+         height: 45px;
+         padding: 0px;
+         width: 100%;
+         color: #FFFFFF;
+         text-align: center;
+         line-height: 40px;
+         font-size: 10px;
+         }
+         .menu h1 {
+         margin-top: 5px;
+         }
+         .menu2 {
+         margin-top: 5px;
+         margin-right: auto;
+         margin-bottom: auto;
+         text-align: right;
+         margin-left: 15px;
+         float: left;
+         height: 30px;
+         }
+         .menu2 img {
+         height: 100%;
+         }*/
+        .content {
+            padding-top: 50px;
+            margin-top: 10%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-box-flex: 1;
+        }
+
+        /*i {
+         display: block;
+         width: 30px;
+         height: 30px;
+         background-size: 30px;
+         background-repeat: no-repeat;
+         background-position: center;
+         }*/
+        .user {
+            margin-top: 10px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../../image/register/shouji.png");
+        }
+
+        .password {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../../image/register/mima.png");
+        }
+
+        .passwordAgain {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../../image/register/mima.png");
+        }
+
+        .check {
+            margin-top: 10px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+
+            background-image: url("../../image/register/check.png");
+            background-position: center;
+        }
+
+        #send {
+            margin-top: 10px;
+            background-color: #FF7800;
+            color: #FFFFFF;
+            font-size: 12px;
+            text-align: center;
+            font-style: inherit;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding-right: 10px;
+            padding-left: 10px;
+            display: block;
+            width: 60px;
+            height: 30px;
+            background-size: 60px;
+            background-repeat: no-repeat;
+            background-position: center;
+            /*background-image: url("../../image/register/send.png");*/
+        }
+
+        .input-wrap {
+            vertical-align: middle;
+
+            display: -webkit-box;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .input-wrap:first-child {
+
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .input-wrap:last-child {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .form {
+
+            margin: 0 20px;
+            line-height: 30px;
+        }
+
+        .input-wrap input {
+            vertical-align: middle;
+            margin-top: 15px;
+            display: block;
+            -webkit-box-flex: 1;
+            background-color: rgba(255, 255, 255, 0);
+            outline: none;
+            height: 30px;
+        }
+
+        input {
+            padding-bottom: 5px;
+            padding-left: 10px;
+        }
+
+        .input-wrap img {
+            vertical-align: middle;
+        }
+
+        /*.footer, .form {
+         -webkit-box-flex: 1;
+         }*/
+        .footer {
+            margin-top: 20px;
+        }
+
+        #register {
+            color: #000000;
+            margin: 0 40px;
+            text-align: center;
+            border-radius: 5px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 15px;
+            background-color: #FFFFFF;
+        }
+
+        .sysm {
+            margin-top: 40px;
+            margin-bottom: 45px;
+            margin-left: 35px;
+        }
+
+        .sysm a {
+            color: #FFFFFF;
+        }
+
+        #pic {
+            height: 25px;
+            margin-left: -20px;
+            margin-top: 10px;
+        }
+
+        #password::-webkit-input-placeholder:before {
+            display: block;
+            position: absolute;
+            width: 100px;
+            height: 25px;
+            margin-top: -20px;
+            font-size: 15px;
+            line-height: 36px;
+            color: #999;
+            content: "请输入密码";
+        }
+
+        #password::-webkit-input-placeholder:after {
+            display: block;
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            font-size: 10px;
+            margin-top: -10px;
+            line-height: 20px;
+            color: #999;
+            content: "(密码长度6-20位，字母、数字、下划线)";
+        }
+
+        #passwordAgain::-webkit-input-placeholder:before {
+            background-position: center;
+            display: block;
+            position: absolute;
+            width: 100px;
+            height: 25px;
+            margin-top: -20px;
+            font-size: 15px;
+            line-height: 36px;
+            color: #999;
+            content: "请再次输入密码";
+        }
+
+        #passwordAgain::-webkit-input-placeholder:after {
+            background-position: center;
+            display: block;
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            font-size: 10px;
+            margin-top: -10px;
+            line-height: 20px;
+            color: #999;
+            content: "(密码长度6-20位，字母、数字、下划线)";
+        }
+    </style>
+</head>
+<body>
+<!--<header>
+<div class="menu" >
+<div class="menu2"  onclick="closeWin() ">
+<img src="../../image/register/zhucejiantou.png" height="20px" width="30px"/>
+</div>
+<h1>注册</h1>
+</div>
+</header>-->
+<div class="content">
+    <div class="form">
+        <div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+            <i class="user"></i>
+            <input type="tel" placeholder="请输入手机号" class="txt" id="username" value=""/>
+        </div>
+        <div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+            <i class="password"></i>
+            <input type="password" placeholder='.' class="txt" id="password" value="" onfocus="teledit()"/>
+        </div>
+        <div class="input-wrap" style="border-bottom: 1px solid #d4d4d4;">
+            <i class="passwordAgain"></i>
+            <input type="password" placeholder='.' class="txt" id="passwordAgain" value="" onfocus="teledit()"/>
+        </div>
+        <div class="input-wrap">
+            <i class="check"></i>
+            <input type="tel" placeholder='请输入验证码' style="width: 50%" class="txt" id="check" value=""
+                   onfocus="teledit()"/>
+            <!--	<img src="../../image/register/send.png" id="pic" onclick="sendCode()"/>-->
+            <!--<i class="send" onclick="sendCode()"></i>-->
+            <button id="send" type="button" onclick="sendCode()" style="width: 35%">获取验证码
+                <!--<div class="send"onclick="sendCode()">
+                    获取验证码
+                </div>-->
+        </div>
+    </div>
+    <div class="sysm">
+        <input type="checkbox" onfocus="teledit()" id="123"/>
+        <a onclick="look()">《使用声明》</a>
+    </div>
+    <footer class="footer">
+        <div class="blue" id="register" tapmode="blue-btn-active" onclick="register()">
+            注册
+        </div>
+    </footer>
+</div>
+</body>
 </html>
 <script src="../../script/zepto.min.js"></script>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript" src="../../script/bts_common.js"></script>
 <script>
-//		var clickreg = false;
-			
-			function teledit() {
-					var username = $("#username").val();
-			var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
-		reg_str.test(username)
-		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
-			api.toast({
-				msg : '您的手机号格式有误',
-				duration : 2000,
-				location : 'middle'
-			});
+    //		var clickreg = false;
+
+    function teledit() {
+        var username = $("#username").val();
+        var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+        reg_str.test(username)
+        if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+            api.toast({
+                msg: '您的手机号格式有误',
+                duration: 2000,
+                location: 'middle'
+            });
 //			return false;
-		}
-			}
-			
+        }
+    }
 
-	$('input#username').keyup(function() {
-		var c = $(this);
-		if (/[^\d]/.test(c.val())) {//替换非数字字符
-			var temp_amount = c.val().replace(/[^\d]/g, '');
-			$(this).val(temp_amount);
-			alert('手机格式有误')
-		}
-	})
-	var mob = null;
-	apiready = function() {
-	
-		mob = api.require('mobVerifyBts');
-		mob.register({
-			key : 'e3de57c0c184',
-			secret : '6f9a49a5b364a0af380e52da4746c247'
-		});
-	}
-	function sendCode() {
-	
-			var username = $("#username").val();
-		
-			api.ajax({
 
-					url :  SERVER_URL + '/salt_reduction/login/validateUser.action',
-					method : 'post',
-					timeout : 30,
-					dataType : 'json',
-					returnAll : false,
-					data : {
-						values : {
-							userName : username,
+    $('input#username').keyup(function () {
+        var c = $(this);
+        if (/[^\d]/.test(c.val())) {//替换非数字字符
+            var temp_amount = c.val().replace(/[^\d]/g, '');
+            $(this).val(temp_amount);
+            alert('手机格式有误')
+        }
+    })
+    var mob = null;
+    apiready = function () {
 
-						}
-					}
-				}, function(ret, err) {
+        mob = api.require('mobVerify');
+        mob.register({
+            key: '1d11620fb6840',
+            secret: '4bcab7f43a29fd13cb7788cfd4184d50'
+        });
+    }
+    function sendCode() {
+        var username = $("#username").val();
+        alert("aaa");
+        api.ajax({
+            url: SERVER_URL + '/salt_reduction/login/validateUser.action',
+            method: 'post',
+            timeout: 30,
+            dataType: 'json',
+            returnAll: false,
+            data: {
+                values: {
+                    userName: username,
 
-					
-					
-					
-					
-					
-					
-					
-					if (ret.status == 0) {
+                }
+            }
+        }, function (ret, err) {
+            alert(ret.msg + "--" + ret.status + "---" + err.msg);
+
+            if (ret.status == 0) {
 //						alert('该用户已存在');
 //					
 //						return false;
 
-						api.confirm({
-							title : '提示',
-							msg : '该账号已注册，是否登录',
-							buttons : ['确定', '取消']
-						}, function(ret, err) {
-							if (ret.buttonIndex == 1) {
+                api.confirm({
+                    title: '提示',
+                    msg: '该账号已注册，是否登录',
+                    buttons: ['确定', '取消']
+                }, function (ret, err) {
+                    if (ret.buttonIndex == 1) {
 //							
-							api.sendEvent({
-						    name: 'myEvent',
-						    extra: {
-						        name: username, 
-						        
-						    }
-						});
+                        api.sendEvent({
+                            name: 'myEvent',
+                            extra: {
+                                name: username,
+
+                            }
+                        });
 //					
-							
-							api.closeWin({
-                            });
+
+                        api.closeWin({});
 //		
-							} else {
-								$("#password").val('');
-						$("#passwordAgain").val('');
-						$("#check").val('');
-						$("#username").val('');
-							}
-						});
-						
+                    } else {
+                        $("#password").val('');
+                        $("#passwordAgain").val('');
+                        $("#check").val('');
+                        $("#username").val('');
+                    }
+                });
+
 //						
-					} else {
-	
-		var phone = document.getElementById('username').value;
-		mob.send({
-			phone : phone
-		}, function(ret, err) {
-			if (err) {
-				if (err.status == 462) {
-					alert('操作频繁，请稍后再试')
-				}
-				if (err.status == 456) {
-					alert('请输入手机号')
-				}
-				if (err.status == 457) {
-					alert('手机号格式不正确')
-				}
-				if (err.status == 476) {
-					alert('本机发送次数过多')
-				}
-				if (err.status == 477) {
-					alert('该手机号发送次数过多')
-				}
+            } else {
+
+                var phone = document.getElementById('username').value;
+                mob.send({
+                    phone: phone
+                }, function (ret, err) {
+                    alert(ret.msg + "---" + err.msg);
+                    if (err) {
+                        if (err.status == 462) {
+                            alert('操作频繁，请稍后再试')
+                        }
+                        if (err.status == 456) {
+                            alert('请输入手机号')
+                        }
+                        if (err.status == 457) {
+                            alert('手机号格式不正确')
+                        }
+                        if (err.status == 476) {
+                            alert('本机发送次数过多')
+                        }
+                        if (err.status == 477) {
+                            alert('该手机号发送次数过多')
+                        }
 //								api.alert({
 //									msg : JSON.stringify(err)
 //								});
-			} else {
-			var username = $("#username").val();
-			var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
-		reg_str.test(username)
-		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
-			alert('手机格式有误');
-			return false;
-		}else{
-				api.toast({
-					msg : '验证码已发出，请接收信息',
-					duration : 2000,
-					location : 'middle'
-				});
-				}
-				var obj = document.getElementById('send');
-	obj.disabled=true;
-	
-	var t=60;
-	var si = setInterval(function(){
-		t--;
-		if(t>0){
-			obj.innerHTML='等待'+t+'秒';
-		}else{
-			
-			obj.innerHTML='重新获取';
-			
-			clearInterval(si);
-			obj.disabled=false;
+                    } else {
+                        var username = $("#username").val();
+                        var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+                        reg_str.test(username)
+                        if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+                            alert('手机格式有误');
+                            return false;
+                        } else {
+                            api.toast({
+                                msg: '验证码已发出，请接收信息',
+                                duration: 2000,
+                                location: 'middle'
+                            });
+                        }
+                        var obj = document.getElementById('send');
+                        obj.disabled = true;
+
+                        var t = 60;
+                        var si = setInterval(function () {
+                            t--;
+                            if (t > 0) {
+                                obj.innerHTML = '等待' + t + '秒';
+                            } else {
+
+                                obj.innerHTML = '重新获取';
+
+                                clearInterval(si);
+                                obj.disabled = false;
 //			j=j+1;
 //			if(j>3){
 //				alert('操作频繁，请稍后再试')
 //				
 //			}
-		}
-	},1000);
+                            }
+                        }, 1000);
 
 //				var t=setTimeout("alert('5 seconds!')",5000)
-					}
-		});
-			}
-		});
-	}
-	
-//	function upperCase() {
-//	if(clickreg) {
-//	
-//	return false;
-//	}else{
-// 
-//		var username = $("#username").val();
-//		if (username.length != 11 && username.length != 0) {
-//			api.toast({
-//				msg : '您的手机号格式有误',
-//				duration : 2000,
-//				location : 'middle'
-//			});
-//		}
-//			//				alert('您的手机号格式有误')
-//		}
-//			}
+                    }
+                });
+            }
+        });
+    }
 
-	function closeWin() {
-		api.closeWin({
-		})
-	}
+    //	function upperCase() {
+    //	if(clickreg) {
+    //
+    //	return false;
+    //	}else{
+    //
+    //		var username = $("#username").val();
+    //		if (username.length != 11 && username.length != 0) {
+    //			api.toast({
+    //				msg : '您的手机号格式有误',
+    //				duration : 2000,
+    //				location : 'middle'
+    //			});
+    //		}
+    //			//				alert('您的手机号格式有误')
+    //		}
+    //			}
 
-	function look() {
-		api.openWin({
-			name : 'check',
+    function closeWin() {
+        api.closeWin({})
+    }
+
+    function look() {
+        api.openWin({
+            name: 'check',
 //			url : '' + SERVER_URL + '/salt_reduction/pages/regLicense.html'
-			//add by xinye
-			url : '' + SERVER_URL + '/salt_reduction/pages/regLicense.jsp'
-			//add by xinye end
-		});
-		//				api.ajax({
-		//					url : 'http://192.168.1.222:8080/salt_reduction/register/getXmlPath.action',
-		//					method : 'post',
-		//					timeout : 30,
-		//					dataType : 'json',
-		//					returnAll : false,
-		//					data : {
-		//						values : {
-		//						}
-		//					}
-		//				}, function(ret, err) {
-		//					if (ret.status == 0) {
-		//						alert(JSON.stringify(ret));
-		//					} else {
-		//						alert(ret.data.errorMsg);
-		//					}
-		//				});
-	}
+            //add by xinye
+            url: '' + SERVER_URL + '/salt_reduction/pages/regLicense.jsp'
+            //add by xinye end
+        });
+        //				api.ajax({
+        //					url : 'http://192.168.1.222:8080/salt_reduction/register/getXmlPath.action',
+        //					method : 'post',
+        //					timeout : 30,
+        //					dataType : 'json',
+        //					returnAll : false,
+        //					data : {
+        //						values : {
+        //						}
+        //					}
+        //				}, function(ret, err) {
+        //					if (ret.status == 0) {
+        //						alert(JSON.stringify(ret));
+        //					} else {
+        //						alert(ret.data.errorMsg);
+        //					}
+        //				});
+    }
 
-	function register() {
-		
-		 
-		var checkbox = document.getElementById('123');
-	
-		var username = $("#username").val();
-		var password = $("#password").val();
-		var passwordAgain = $("#passwordAgain").val();
-		var check = $("#check").val();
-		var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
-		reg_str.test(username)
-		if (username == '') {
-			alert('请输入用户名');
-			$("#password").val('');
-			$("#passwordAgain").val('');
-			$("#check").val('');
-			return false;
-		}
-		if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
-			alert('手机格式有误');
-			return false;
-		}
-		if (password == '') {
-			alert('请输入密码');
-			$("#password").val('');
-			$("#passwordAgain").val('');
-			$("#check").val('');
-			return false;
-		}
-		if (check == '') {
-			alert('请输入验证码');
-			return false;
-		}
-		if (checkbox.checked == false) {
-			alert('请查看使用声明');
-			return false;
-		}
-		if (password.length < 6) {
-			alert('密码长度不小于六位');
-			$("#password").val('');
-			$("#passwordAgain").val('');
-			$("#check").val('');
-			return false;
-		}
-		if (password.length > 20) {
-			alert('密码长度不大于二十位');
-			$("#password").val('');
-			$("#passwordAgain").val('');
-			$("#check").val('');
-			return false;
-		}
-		if (password !== passwordAgain) {
-			alert('您两次输入的密码不一致');
-			$("#password").val('');
-			$("#passwordAgain").val('');
-			$("#check").val('');
-			return false;
-		}
-				api.showProgress({
-			    style: 'default',
-			    animationType: 'fade',
-			    title: '正在注册...',
-			  	text: '',
-			    modal: false
-			});
-			
-		var phone = document.getElementById('username').value;
-		var code = document.getElementById('check').value;
-		
-		mob.verify({
-			phone : phone,
-			code : code
-			
-		}, function(ret, err) {
-		  api.hideProgress();
-			if (err) {
-				api.alert({
-					msg : '验证码有误，请重新申请'
-				});
-				
-				$("#check").val('');
-				return false;
-			} else {
-				api.ajax({
-					url : '' + SERVER_URL + '/salt_reduction/register/registerUser.action',
-					method : 'post',
-					timeout : 30,
-					dataType : 'json',
-					returnAll : false,
-					data : {
-						values : {
-							userName : username,
-							password : password
-						}
-					}
-					
-				}, function(ret, err) {
-					if (ret.status == 0) {
-			alert('注册成功');
-				//存储用户名密码等相关的东西
-					
-					
-							$api.setStorage("username",username);
-							$api.setStorage('userId',ret.data.userId);//add by w.g
-						api.setPrefs({
-							    key: 'userId',
-							    value: ret.data.userId
-							});
-						api.closeWin({
-						})
+    function register() {
+
+
+        var checkbox = document.getElementById('123');
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var passwordAgain = $("#passwordAgain").val();
+        var check = $("#check").val();
+        var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
+        reg_str.test(username)
+        if (username == '') {
+            alert('请输入用户名');
+            $("#password").val('');
+            $("#passwordAgain").val('');
+            $("#check").val('');
+            return false;
+        }
+        if (!/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i.test(username)) {
+            alert('手机格式有误');
+            return false;
+        }
+        if (password == '') {
+            alert('请输入密码');
+            $("#password").val('');
+            $("#passwordAgain").val('');
+            $("#check").val('');
+            return false;
+        }
+        if (check == '') {
+            alert('请输入验证码');
+            return false;
+        }
+        if (checkbox.checked == false) {
+            alert('请查看使用声明');
+            return false;
+        }
+        if (password.length < 6) {
+            alert('密码长度不小于六位');
+            $("#password").val('');
+            $("#passwordAgain").val('');
+            $("#check").val('');
+            return false;
+        }
+        if (password.length > 20) {
+            alert('密码长度不大于二十位');
+            $("#password").val('');
+            $("#passwordAgain").val('');
+            $("#check").val('');
+            return false;
+        }
+        if (password !== passwordAgain) {
+            alert('您两次输入的密码不一致');
+            $("#password").val('');
+            $("#passwordAgain").val('');
+            $("#check").val('');
+            return false;
+        }
+        api.showProgress({
+            style: 'default',
+            animationType: 'fade',
+            title: '正在注册...',
+            text: '',
+            modal: false
+        });
+
+        var phone = document.getElementById('username').value;
+        var code = document.getElementById('check').value;
+
+        mob.verify({
+            phone: phone,
+            code: code
+
+        }, function (ret, err) {
+            api.hideProgress();
+            if (err) {
+                api.alert({
+                    msg: '验证码有误，请重新申请'
+                });
+
+                $("#check").val('');
+                return false;
+            } else {
+                api.ajax({
+                    url: '' + SERVER_URL + '/salt_reduction/register/registerUser.action',
+                    method: 'post',
+                    timeout: 30,
+                    dataType: 'json',
+                    returnAll: false,
+                    data: {
+                        values: {
+                            userName: username,
+                            password: password
+                        }
+                    }
+
+                }, function (ret, err) {
+                    if (ret.status == 0) {
+                        alert('注册成功');
+                        //存储用户名密码等相关的东西
+
+
+                        $api.setStorage("username", username);
+                        $api.setStorage('userId', ret.data.userId);//add by w.g
+                        api.setPrefs({
+                            key: 'userId',
+                            value: ret.data.userId
+                        });
+                        api.closeWin({})
 //				
-				api.execScript({
-					name : 'root',
-					script : 'openMain();'
-				});
-		
+                        api.execScript({
+                            name: 'root',
+                            script: 'openMain();'
+                        });
+
 //						alert('注册成功~~~');
-					} else {
-						//alert(ret.data.errorMsg);
-						api.hideProgress();
-						api.confirm({
-							title : '提示',
-							msg : '该账号已注册，是否登录',
-							buttons : ['确定', '取消']
-						}, function(ret, err) {
-							if (ret.buttonIndex == 1) {
+                    } else {
+                        //alert(ret.data.errorMsg);
+                        api.hideProgress();
+                        api.confirm({
+                            title: '提示',
+                            msg: '该账号已注册，是否登录',
+                            buttons: ['确定', '取消']
+                        }, function (ret, err) {
+                            if (ret.buttonIndex == 1) {
 //							
-							
+
 //					
-							
-							api.closeWin({
-                            });
+
+                                api.closeWin({});
 //		
-							} else {
-								$("#password").val('');
-						$("#passwordAgain").val('');
-						$("#check").val('');
-						$("#username").val('');
-							}
-						});
+                            } else {
+                                $("#password").val('');
+                                $("#passwordAgain").val('');
+                                $("#check").val('');
+                                $("#username").val('');
+                            }
+                        });
 //						$("#password").val('');
 //						$("#passwordAgain").val('');
 //						$("#check").val('');
-					}
-				});
-			}     
-		});
-		
-		//alert(username);
-		//				api.showProgress();
-		//				var model = api.require('model');
-		//				var username = $("#username").val();
-		//				var password = $("#password").val();
-		//				var user = api.require('user');
-		//				user.register({
-		//					username : username,
-		//					password : password
-		//				}, function(ret, err) {
-		//					api.hideProgress();
-		//					if (ret) {
-		//
-		//								api.closeWin();
-		//
-		//					} else {
-		//						api.toast({
-		//							msg : err.message,
-		//							location : "middle"
-		//						})
-		//					}
-		//				});
-	}
+                    }
+                });
+            }
+        });
+
+        //alert(username);
+        //				api.showProgress();
+        //				var model = api.require('model');
+        //				var username = $("#username").val();
+        //				var password = $("#password").val();
+        //				var user = api.require('user');
+        //				user.register({
+        //					username : username,
+        //					password : password
+        //				}, function(ret, err) {
+        //					api.hideProgress();
+        //					if (ret) {
+        //
+        //								api.closeWin();
+        //
+        //					} else {
+        //						api.toast({
+        //							msg : err.message,
+        //							location : "middle"
+        //						})
+        //					}
+        //				});
+    }
+
 </script>
+<script src="http://10.192.1.120:8080/target/target-script-min.js#anonymous"></script>

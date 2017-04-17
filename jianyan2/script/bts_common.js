@@ -1,5 +1,5 @@
 
-var SERVER_URL = "http://10.192.2.66";
+var SERVER_URL = "http://10.192.2.66:8080";
 //var SERVER_URL = "http://192.168.1.222:8080";
 
 var SCANCODE_QUERY_PATH = "/common/foodsNrvAction!gotoDetail.action";
