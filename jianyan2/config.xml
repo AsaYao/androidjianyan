@@ -26,12 +26,20 @@
   <permission name="fileSystem"/>  
   <permission name="internet"/>  
   <permission name="bootCompleted"/>  
-  <permission name="hardware"/>  
-  <access origin="*"/>  
-  <feature name="bMap"> 
-    <param name="android_api_key" value="rHzqmUsUrxVrzFkXtXO9yKqb"/>  
-    <param name="ios_api_key" value="IMuosliw0L4vQ7jwkKLgPOSY"/> 
-  </feature>  
+  <permission name="hardware"/>
+
+  <access origin="*"/>
+  <feature name="baiduLocation">
+    <param name="apiKey" value="WoCQ2796XXyrHr0P81nDA6yoYUUEifdW" />
+  </feature>
+  <feature name="baiduMap">
+    <param name="android_api_key" value="WoCQ2796XXyrHr0P81nDA6yoYUUEifdW" />
+    <param name="ios_api_key" value="fef72715gshjelke" />
+  </feature>
+  <!--<feature name="bMap"> -->
+    <!--<param name="android_api_key" value="WoCQ2796XXyrHr0P81nDA6yoYUUEifdW"/>-->
+    <!--<param name="ios_api_key" value="IMuosliw0L4vQ7jwkKLgPOSY"/> -->
+  <!--</feature>  -->
   <feature name="qq"> 
     <param name="urlScheme" value="tencent1105291781"/>  
     <param name="apiKey" value="1105291781"/> 
@@ -40,5 +48,5 @@
     <param name="urlScheme" value="wxa9051f397e7dd854"/>  
     <param name="apiKey" value="wxa9051f397e7dd854"/>  
     <param name="apiSecret" value="ed28a0ec075d45f76683ca75f91e9149"/> 
-  </feature> 
+  </feature>
 </widget>

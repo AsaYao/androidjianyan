@@ -10,7 +10,6 @@
 				margin: 0;
 				padding: 0;
 			}
-		
 			
 			.head {
 				background-image: url(../../image/main/renwubg.png);
@@ -213,12 +212,12 @@
 		$("body").height(yb);
 		$(".head").height(yb*0.55);
 		$(".search input").width(x-220);
-		
-		
 	});
+		$(function(){
+
+		});
 	</script>
 	<script type="text/javascript">
-	
 	function search() {
 			var val = document.getElementById('searchtext').value;
 //			alert(val);
@@ -228,8 +227,6 @@
 	            pageParam:{key:val},
             });
 		}
-	
-	
 	
 		function openScanner() {
 			var obj = api.require('FNScanner');
@@ -363,10 +360,21 @@
 		//		}
 		
 		function lowSalt(){
-			api.openWin({
-	            name: 'lowSalt',
-	            url: '../lowSalt/lowSalt_windows.html'
-            });
+			alert(1);
+//			com.g1026991316.mtq
+			var map = api.require('bMap');
+			map.getNameFromCoords({
+				lon: 116.384767,
+				lat: 39.989539
+			}, function(ret, err) {
+				if (ret.status) {
+					alert(JSON.stringify(ret));
+				}
+			});
+//			api.openWin({
+//	            name: 'lowSalt',
+//	            url: '../lowSalt/lowSalt_windows.html'
+//            });
 		}
 		function lowSaltSupermarket(){
 			api.openWin({
