@@ -306,3 +306,4 @@
 /A6947513243604/script/jquery-1.8.2.min.js
 /A6947513243604/script/jquery-2.1.4.min.js
 /A6947513243604/script/zepto.min.js
+/A6947513243604/script/debuggap.js

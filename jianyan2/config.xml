@@ -49,4 +49,9 @@
     <param name="apiKey" value="wxa9051f397e7dd854"/>  
     <param name="apiSecret" value="ed28a0ec075d45f76683ca75f91e9149"/> 
   </feature>
+
+  <feature name="smsVerify">
+    <param name="android_app_key" value="1d11620fb6840"/>
+    <param name="android_app_secret" value="4bcab7f43a29fd13cb7788cfd4184d50"/>
+  </feature>
 </widget>
