@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0edc4441-52b0-4400-81af-6e349b1db343" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/config.xml" afterPath="$PROJECT_DIR$/jianyan2/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/login/login.html" afterPath="$PROJECT_DIR$/jianyan2/html/login/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/allAreaSupermarket_page.html" afterPath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/allAreaSupermarket_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/lowSaltSupermarket_header.html" afterPath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/lowSaltSupermarket_header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/lowSaltSupmarket_windows.html" afterPath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/lowSaltSupmarket_windows.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html" afterPath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/main/frame0.html" afterPath="$PROJECT_DIR$/jianyan2/html/main/frame0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/register/forget.html" afterPath="$PROJECT_DIR$/jianyan2/html/register/forget.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/index.html" afterPath="$PROJECT_DIR$/jianyan2/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/script/bts_common.js" afterPath="$PROJECT_DIR$/jianyan2/script/bts_common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webStorm-APICloud/wifisync_tools/config_info" afterPath="$PROJECT_DIR$/webStorm-APICloud/wifisync_tools/config_info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webStorm-APICloud/wifisync_tools/log_info.1" afterPath="$PROJECT_DIR$/webStorm-APICloud/wifisync_tools/log_info.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="Android.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -164,8 +153,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="60" />
-    <option name="y" value="580" />
+    <option name="x" value="205" />
+    <option name="y" value="511" />
     <option name="width" value="1280" />
     <option name="height" value="731" />
   </component>
@@ -390,7 +379,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="60" y="580" width="1280" height="731" extended-state="0" />
+    <frame x="205" y="511" width="1280" height="731" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31532964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
