@@ -107,17 +107,14 @@
 				font-size: 18px;
 				color: #6ab494;
 				padding-right: 0
-				
 			}
 			.secCitylistarrow {
-			
 				vertical-align: top;
 				width: 15px;
 				padding-top: 18px;
 				padding-left: 5px;
 			}
 			.secSearch {
-			
 				left: 100px;
 				right: 60px;
 				background-color: #E8E8E8;
@@ -199,6 +196,7 @@
 	<script type="text/javascript" src="../../script/api.js"></script>
 	<script type="text/javascript" src="../../script/bts_common.js"></script>
 	<script type="text/javascript" src="../../script/jquery-2.1.4.min.js"></script>
+	<!--<script src="http://api.map.baidu.com/api?v=2.0&ak=WoCQ2796XXyrHr0P81nDA6yoYUUEifdW" type="text/javascript"></script>-->
 	<script type="text/javascript">
 		$(function(){
 		var y=document.documentElement.clientHeight;
@@ -360,21 +358,10 @@
 		//		}
 		
 		function lowSalt(){
-			alert(1);
-//			com.g1026991316.mtq
-			var map = api.require('bMap');
-			map.getNameFromCoords({
-				lon: 116.384767,
-				lat: 39.989539
-			}, function(ret, err) {
-				if (ret.status) {
-					alert(JSON.stringify(ret));
-				}
-			});
-//			api.openWin({
-//	            name: 'lowSalt',
-//	            url: '../lowSalt/lowSalt_windows.html'
-//            });
+			api.openWin({
+	            name: 'lowSalt',
+	            url: '../lowSalt/lowSalt_windows.html'
+            });
 		}
 		function lowSaltSupermarket(){
 			api.openWin({

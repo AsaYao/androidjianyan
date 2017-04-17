@@ -41,8 +41,8 @@
     <!--<param name="ios_api_key" value="IMuosliw0L4vQ7jwkKLgPOSY"/> -->
   <!--</feature>  -->
   <feature name="qq"> 
-    <param name="urlScheme" value="tencent1105291781"/>  
-    <param name="apiKey" value="1105291781"/> 
+    <param name="urlScheme" value="tencent1106029097"/>
+    <param name="apiKey" value="1106029097"/>
   </feature>  
   <feature name="wx"> 
     <param name="urlScheme" value="wxa9051f397e7dd854"/>  
