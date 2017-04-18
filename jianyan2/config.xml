@@ -43,10 +43,10 @@
   <feature name="qq"> 
     <param name="urlScheme" value="tencent1106029097"/>
     <param name="apiKey" value="1106029097"/>
-  </feature>  
-  <feature name="wx"> 
-    <param name="urlScheme" value="wxa9051f397e7dd854"/>  
-    <param name="apiKey" value="wxa9051f397e7dd854"/>  
-    <param name="apiSecret" value="ed28a0ec075d45f76683ca75f91e9149"/> 
+  </feature>
+  <feature name="wx">
+    <param name="urlScheme" value="wx3b81912c34039cbb"/>
+    <param name="apiKey" value="wx3b81912c34039cbb"/>
+    <param name="apiSecret" value="2999e9ab7eda641a4f43bc7e7f3b4e94"/>
   </feature>
 </widget>

@@ -138,21 +138,23 @@
 			var obj = api.require('qq');
 		obj.installed(function(ret,err){
 		    if(ret.status){
+				var wx = api.require('wx');
+
 //		       api.alert({msg: "安装"});
-		       		addtohistory();
-			        obj.shareImage({
-					    title:'分享',
-					    description:'新闻描述',
-						imgPath:'fs://cache/test.png',
-						type:'QFriend'
-					},function(ret,err) {
-//						alert("fen");
-			   			if (ret.status) {
-					      api.alert({msg:'分享成功'});
-					   }else{
-					      console.log({msg:err.msg});
-					   }
-			    	});
+//		       		addtohistory();
+//			        obj.shareImage({
+//					    title:'分享',
+//					    description:'新闻描述',
+//						imgPath:'fs://cache/test.png',
+//						type:'QFriend'
+//					},function(ret,err) {
+////						alert("fen");
+//			   			if (ret.status) {
+//					      api.alert({msg:'分享成功'});
+//					   }else{
+//					      console.log({msg:err.msg});
+//					   }
+//			    	});
 			        
 //			       setTimeout('cancel()',3000);
 
@@ -168,9 +170,7 @@
 		var wx = api.require('wx');
 		wx.isInstalled(function(ret, err){
 			if(ret.installed){
-			        
-			    addtohistory();    
-			        
+			    addtohistory();
 			    wx.shareImage({
 			    apiKey: '',
 			    scene: 'timeline',
@@ -184,7 +184,7 @@
 			    }
 			});  
 		        
-		     setTimeout('cancel()',3000)
+//		     setTimeout('cancel()',3000)
 		    }else{
 		    	 api.alert({msg:'当前设备未安装微信客户端'});
 //		        alert('');
