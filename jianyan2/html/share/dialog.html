@@ -138,23 +138,21 @@
 			var obj = api.require('qq');
 		obj.installed(function(ret,err){
 		    if(ret.status){
-				var wx = api.require('wx');
-
 //		       api.alert({msg: "安装"});
-//		       		addtohistory();
-//			        obj.shareImage({
-//					    title:'分享',
-//					    description:'新闻描述',
-//						imgPath:'fs://cache/test.png',
-//						type:'QFriend'
-//					},function(ret,err) {
-////						alert("fen");
-//			   			if (ret.status) {
-//					      api.alert({msg:'分享成功'});
-//					   }else{
-//					      console.log({msg:err.msg});
-//					   }
-//			    	});
+		       		addtohistory();
+			        obj.shareImage({
+					    title:'分享',
+					    description:'新闻描述',
+						imgPath:'fs://cache/test.png',
+						type:'QFriend'
+					},function(ret,err) {
+//						alert("fen");
+			   			if (ret.status) {
+					      api.alert({msg:'分享成功'});
+					   }else{
+					      console.log({msg:err.msg});
+					   }
+			    	});
 			        
 //			       setTimeout('cancel()',3000);
 
@@ -170,6 +168,7 @@
 		var wx = api.require('wx');
 		wx.isInstalled(function(ret, err){
 			if(ret.installed){
+				alert(1);
 			    addtohistory();
 			    wx.shareImage({
 			    apiKey: '',
@@ -182,7 +181,7 @@
 			    }else{
 			        alert(err.code);
 			    }
-			});  
+			});
 		        
 //		     setTimeout('cancel()',3000)
 		    }else{

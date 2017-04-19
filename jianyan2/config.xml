@@ -47,6 +47,6 @@
   <feature name="wx">
     <param name="urlScheme" value="wx3b81912c34039cbb"/>
     <param name="apiKey" value="wx3b81912c34039cbb"/>
-    <param name="apiSecret" value="2999e9ab7eda641a4f43bc7e7f3b4e94"/>
+    <param name="apiSecret" value="2fb5f73094691d9cd0a284217f3f3470"/>
   </feature>
 </widget>
