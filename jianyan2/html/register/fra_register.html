@@ -287,9 +287,9 @@
             <!--	<img src="../../image/register/send.png" id="pic" onclick="sendCode()"/>-->
             <!--<i class="send" onclick="sendCode()"></i>-->
             <button id="send" type="button" onclick="sendCode()" style="width: 35%">获取验证码</button>
-                <!--<div class="send"onclick="sendCode()">
-                    获取验证码
-                </div>-->
+            <!--<div class="send"onclick="sendCode()">
+                获取验证码
+            </div>-->
         </div>
     </div>
     <div class="sysm">
@@ -333,18 +333,19 @@
             alert('手机格式有误')
         }
     })
-    var mob = null;
+    var smsVerify = null;
     apiready = function () {
-
-        mob = api.require('mobVerify');
-        mob.register({
-            key: '1d11620fb6840',
-            secret: '4bcab7f43a29fd13cb7788cfd4184d50'
+        smsVerify = api.require('smsVerify');
+        smsVerify.register(function (ret, err) {
+            if (ret.status) {
+            } else {
+                api.alert({msg: err.code + ' 注册失败'});
+            }
         });
-    }
+
+    };
     function sendCode() {
         var username = $("#username").val();
-        alert("aaa");
         api.ajax({
             url: SERVER_URL + '/salt_reduction/login/validateUser.action',
             method: 'post',
@@ -358,8 +359,6 @@
                 }
             }
         }, function (ret, err) {
-            alert(ret.msg + "--" + ret.status + "---" + err.msg);
-
             if (ret.status == 0) {
 //						alert('该用户已存在');
 //					
@@ -379,8 +378,6 @@
 
                             }
                         });
-//					
-
                         api.closeWin({});
 //		
                     } else {
@@ -395,10 +392,11 @@
             } else {
 
                 var phone = document.getElementById('username').value;
-                mob.send({
-                    phone: phone
+                smsVerify.sms({
+                    phone: phone,
+                    country: "86"
                 }, function (ret, err) {
-                    alert(ret.msg + "---" + err.msg);
+                    alert(err.msg + "---" + err.status + err.data);
                     if (err) {
                         if (err.status == 462) {
                             alert('操作频繁，请稍后再试')
@@ -511,10 +509,7 @@
     }
 
     function register() {
-
-
         var checkbox = document.getElementById('123');
-
         var username = $("#username").val();
         var password = $("#password").val();
         var passwordAgain = $("#passwordAgain").val();
@@ -579,16 +574,15 @@
         var phone = document.getElementById('username').value;
         var code = document.getElementById('check').value;
 
-        mob.verify({
+        smsVerify.verify({
             phone: phone,
+            country:"86",
             code: code
 
         }, function (ret, err) {
             api.hideProgress();
             if (err) {
-                api.alert({
-                    msg: '验证码有误，请重新申请'
-                });
+                api.alert({msg: '验证码有误，请重新申请'});
 
                 $("#check").val('');
                 return false;

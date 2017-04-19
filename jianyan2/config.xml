@@ -43,10 +43,15 @@
   <feature name="qq"> 
     <param name="urlScheme" value="tencent1106029097"/>
     <param name="apiKey" value="1106029097"/>
-  </feature>
+  </feature>  
   <feature name="wx">
     <param name="urlScheme" value="wx3b81912c34039cbb"/>
     <param name="apiKey" value="wx3b81912c34039cbb"/>
     <param name="apiSecret" value="2fb5f73094691d9cd0a284217f3f3470"/>
+  </feature>
+
+  <feature name="smsVerify">
+    <param name="android_app_key" value="1d11620fb6840"/>
+    <param name="android_app_secret" value="4bcab7f43a29fd13cb7788cfd4184d50"/>
   </feature>
 </widget>
