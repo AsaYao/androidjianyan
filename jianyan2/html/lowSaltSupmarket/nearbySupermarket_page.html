@@ -234,11 +234,10 @@
 					    filter: 1
 					}, function(ret, err){
 					    if(ret.status){
-					    
-//						    latitude = ret.lat;
-//							longitude= ret.lon;//得道的经纬度
-							latitude = 39.0485090000;
-							longitude = 115.8682720000;
+						    latitude = ret.lat;
+							longitude= ret.lon;//得道的经纬度
+//							latitude = 39.0485090000;
+//							longitude = 115.8682720000;
 //							alert(latitud+"...."+longitutd);
 								api.ajax({
 									url : SERVER_URL+SERVER_ROOT_PATH+'/supermarket/supermarketAction!nearbySupermarket.action',

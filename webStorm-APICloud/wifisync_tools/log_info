@@ -95,3 +95,13 @@
  04-19 09:36:52.456 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
  04-19 09:38:45.448 I/app3c   (2): Hello APICloud at index.html : 34
  04-19 09:38:45.449 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-19 10:04:40.183 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-19 10:04:40.186 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-19 10:04:40.188 E/app3c   (1): Uncaught ReferenceError: varIsNull is not defined at index.html : 49
+ 04-19 10:06:23.241 I/app3c   (2): Hello APICloud at index.html : 34
+ 04-19 10:06:23.248 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-19 10:06:23.248 E/app3c   (1): Uncaught ReferenceError: varIsNull is not defined at index.html : 49
+ 04-19 10:07:58.606 I/app3c   (2): Hello APICloud at index.html : 36
+ 04-19 10:07:58.611 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-19 10:08:09.317 I/app3c   (2):  at allAreaSupermarket_page.html : 266
+ 04-19 10:08:09.465 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
