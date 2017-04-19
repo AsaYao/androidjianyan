@@ -168,21 +168,22 @@
 		var wx = api.require('wx');
 		wx.isInstalled(function(ret, err){
 			if(ret.installed){
-			        
-			    addtohistory();    
-			        
-			    wx.shareImage({
-			    apiKey: '',
-			    scene: 'timeline',
-			    thumb: '',
-			    contentUrl: 'fs://cache/test.png'
-			}, function(ret, err){
-			    if(ret.status){
-			        alert('分享成功');
-			    }else{
-			        alert(err.code);
-			    }
-			});  
+				//alert(1)
+			    addtohistory();
+				  wx.shareImage({
+					  apiKey:'',
+					  scene: 'timeline',
+					  thumb: '',
+					 contentUrl: 'fs://cache/test.png'
+              },function(ret, err){
+                    //  alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+                    // alert(ret.msg+"--"+err.msg);
+                  if(ret.status){
+                      alert('分享成功');
+                  }else{
+                      alert(err.code);
+                  }
+              });
 		        
 		     setTimeout('cancel()',3000)
 		    }else{
@@ -194,7 +195,9 @@
 	
 
 	function addtohistory() {
-		var params = api.pageParam;
+
+
+	    var params = api.pageParam;
 		
 		var saveuser = $api.getStorage('userId');
 		
@@ -212,7 +215,8 @@
 				}
 			}
         },function(ret,err){
-//      	alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+
+      	//alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
         	//coding...
         });
 		
