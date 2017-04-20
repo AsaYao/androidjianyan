@@ -176,15 +176,20 @@
 					  thumb: '',
 					 contentUrl: 'fs://cache/test.png'
               },function(ret, err){
-                    //  alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+                    // alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
                     // alert(ret.msg+"--"+err.msg);
                   if(ret.status){
                       alert('分享成功');
-                  }else{
-                      alert(err.code);
-                  }
+                  }else {
+                     // alert(err.code);
+                      if(err.code==3){
+                          alert('分享失败');
+                      }
+				  }
+
+
               });
-//		     setTimeout('cancel()',3000)
+		    // setTimeout('cancel()',3000)
 		    }else{
 		    	 api.alert({msg:'当前设备未安装微信客户端'});
 //		        alert('');

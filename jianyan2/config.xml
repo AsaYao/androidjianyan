@@ -47,7 +47,7 @@
   <feature name="wx">
     <param name="urlScheme" value="wx3b81912c34039cbb"/>
     <param name="apiKey" value="wx3b81912c34039cbb"/>
-    <param name="apiSecret" value="2fb5f73094691d9cd0a284217f3f3470"/>
+    <param name="apiSecret" value="945e101791cd3eb78a06a5672188aeb6"/>
   </feature>
 
   <feature name="smsVerify">
