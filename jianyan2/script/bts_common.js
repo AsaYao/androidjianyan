@@ -1,6 +1,7 @@
 
-var SERVER_URL = "http://10.192.2.66:8080";
+var SERVER_URL = "http://47.92.92.21:8090";
 //var SERVER_URL = "http://10.192.6.19:8080";
+
 
 var SCANCODE_QUERY_PATH = "/common/foodsNrvAction!gotoDetail.action";
 var SERVER_ROOT_PATH = '/salt_reduction';
