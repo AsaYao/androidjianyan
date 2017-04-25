@@ -368,7 +368,9 @@
 		        }, function(ret){
 		        if(ret && ret.value){
 		        	changeIcon(ret.value);
-					savePic(ret.value);
+					    savePic(ret.value);
+                        userInfo.pic = ret.value.savePath;
+                        $api.setStorage("userInfo",userInfo);
 		        }
 		     });
 			getInfo();

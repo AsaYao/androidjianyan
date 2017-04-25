@@ -338,8 +338,7 @@
         smsVerify = api.require('smsVerify');
         smsVerify.register(function (ret, err) {
             if (ret.status) {
-            } else {
-                api.alert({msg: err.code + ' 注册失败'});
+            } else {//api.alert({msg: err.code + ' 注册失败'});
             }
         });
 
@@ -396,7 +395,6 @@
                     phone: phone,
                     country: "86"
                 }, function (ret, err) {
-                    alert(err.msg + "---" + err.status + err.data);
                     if (err) {
                         if (err.status == 462) {
                             alert('操作频繁，请稍后再试')
@@ -413,9 +411,6 @@
                         if (err.status == 477) {
                             alert('该手机号发送次数过多')
                         }
-//								api.alert({
-//									msg : JSON.stringify(err)
-//								});
                     } else {
                         var username = $("#username").val();
                         var reg_str = /^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/i;
@@ -619,9 +614,9 @@
                             script: 'openMain();'
                         });
 
-//						alert('注册成功~~~');
+//
                     } else {
-                        //alert(ret.data.errorMsg);
+
                         api.hideProgress();
                         api.confirm({
                             title: '提示',
@@ -675,4 +670,3 @@
     }
 
 </script>
-<script src="http://10.192.1.120:8080/target/target-script-min.js#anonymous"></script>

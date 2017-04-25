@@ -165,6 +165,7 @@
 
 //			       setTimeout('cancel()',3000);
 
+<<<<<<< HEAD
             } else {
                 api.alert({msg: "没有安装"});
             }
@@ -195,6 +196,44 @@
 //		     setTimeout('cancel()',3000)
             } else {
                 api.alert({msg: '当前设备未安装微信客户端'});
+=======
+		    }else{
+		        api.alert({msg: "没有安装"});
+		    } 
+		});
+	}
+
+
+
+	function weixin() {
+		var wx = api.require('wx');
+		wx.isInstalled(function(ret, err){
+			if(ret.installed){
+				//alert(1)
+			    addtohistory();
+				  wx.shareImage({
+					  apiKey:'',
+					  scene: 'timeline',
+					  thumb: '',
+					 contentUrl: 'fs://cache/test.png'
+              },function(ret, err){
+                    // alert(JSON.stringify(ret) + "err" + JSON.stringify(err));
+                    // alert(ret.msg+"--"+err.msg);
+                  if(ret.status){
+                      alert('分享成功');
+                  }else {
+                     // alert(err.code);
+                      if(err.code==3){
+                          alert('分享失败');
+                      }
+				  }
+
+
+              });
+		    // setTimeout('cancel()',3000)
+		    }else{
+		    	 api.alert({msg:'当前设备未安装微信客户端'});
+>>>>>>> 29427e5b4d5bbfdb7444f4fcbbbdd91b7a5db5e2
 //		        alert('');
             }
         });

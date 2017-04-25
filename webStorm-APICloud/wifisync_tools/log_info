@@ -1,164 +1,26 @@
- 04-17 16:30:45.155 I/app3c   (2): Hello APICloud at index.html : 34
- 04-17 16:30:45.162 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-17 16:30:45.606 E/app3c   (1): WebSocket connection to 'ws://10.192.1.120:10915/debuggap_client' failed: Connection closed before receiving a handshake response at debuggap.js : 2
- 04-17 16:30:48.700 E/app3c   (1): Please check your network,client could not talk with server! at debuggap.js : 1
- 04-17 16:31:11.092 E/app3c   (1): WebSocket connection to 'ws://10.192.1.120:10915/debuggap_client' failed: Connection closed before receiving a handshake response at debuggap.js : 2
- 04-17 16:31:14.227 E/app3c   (1): Please check your network,client could not talk with server! at debuggap.js : 1
- 04-17 17:08:12.368 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:17:30.743 E/app3c   (1): Uncaught ReferenceError: mob is not defined at fra_register.html : 589
- 04-17 17:18:23.608 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:19:57.942 E/app3c   (1): Uncaught ReferenceError: mob is not defined at fra_register.html : 589
- 04-17 17:23:36.950 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:24:06.146 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:26:00.315 E/app3c   (1): Uncaught ReferenceError: mob is not defined at fra_register.html : 589
- 04-17 17:29:16.076 I/app3c   (2): Hello APICloud at index.html : 34
- 04-17 17:29:16.082 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-17 17:29:20.416 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:31:02.707 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:39:20.074 I/app3c   (2): Hello APICloud at index.html : 34
- 04-17 17:39:20.095 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-17 17:39:44.651 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:39:44.967 E/app3c   (1): Uncaught TypeError: Cannot call method 'register' of undefined at forget.html : 186
- 04-17 17:44:49.177 I/app3c   (2): Hello APICloud at index.html : 34
- 04-17 17:44:49.214 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-17 17:45:11.006 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 17:46:04.663 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-17 18:04:37.874 I/app3c   (2): Hello APICloud at index.html : 34
- 04-17 18:04:37.879 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-17 18:04:48.012 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-17 18:04:48.162 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-17 18:13:35.896 I/app3c   (2): Hello APICloud at index.html : 34
- 04-17 18:13:35.933 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 09:13:00.387 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 09:13:00.391 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 09:14:16.161 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 09:14:16.169 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 09:14:21.811 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 09:14:22.513 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at forget.html : 198
- 04-18 09:14:39.614 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 09:14:40.328 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at fra_register.html : 339
- 04-18 09:16:07.833 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 09:16:08.378 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at fra_register.html : 339
- 04-18 09:17:39.528 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 09:17:39.942 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 09:17:45.372 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 09:17:45.985 E/app3c   (1): Uncaught TypeError: Cannot read property 'register' of undefined at fra_register.html : 339
- 04-18 10:15:29.493 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 10:15:35.810 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 14:06:03.031 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 14:06:03.037 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 14:06:15.934 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 14:06:18.628 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-18 14:40:04.632 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 14:40:04.638 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 14:40:40.063 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 266
- 04-18 14:40:40.073 I/app3c   (2):  at allAreaSupermarket_page.html : 267
- 04-18 14:40:49.999 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 14:40:50.004 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 14:42:17.446 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 14:42:17.451 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 14:42:33.802 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:42:34.083 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:42:35.570 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:42:35.575 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:42:37.923 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:42:37.927 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:42:39.362 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:42:39.371 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:42:56.052 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:42:56.058 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:43:02.814 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:43:02.817 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:43:14.018 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:43:14.022 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:43:22.588 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:43:22.589 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:45:03.234 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:45:03.240 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 14:50:14.754 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 14:50:14.758 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 15:54:12.043 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 15:54:12.048 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-18 16:08:43.486 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 16:08:43.492 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 16:16:03.554 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 16:16:03.592 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 16:16:06.425 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 16:16:06.456 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 16:16:08.466 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-18 16:16:08.478 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-18 17:32:09.200 I/app3c   (2): Hello APICloud at index.html : 34
- 04-18 17:32:09.203 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 09:36:24.029 I/app3c   (2): Hello APICloud at index.html : 34
- 04-19 09:36:24.085 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 09:36:52.452 I/app3c   (2): Hello APICloud at index.html : 34
- 04-19 09:36:52.456 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 09:38:45.448 I/app3c   (2): Hello APICloud at index.html : 34
- 04-19 09:38:45.449 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 10:04:40.183 I/app3c   (2): Hello APICloud at index.html : 34
- 04-19 10:04:40.186 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 10:04:40.188 E/app3c   (1): Uncaught ReferenceError: varIsNull is not defined at index.html : 49
- 04-19 10:06:23.241 I/app3c   (2): Hello APICloud at index.html : 34
- 04-19 10:06:23.248 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 10:06:23.248 E/app3c   (1): Uncaught ReferenceError: varIsNull is not defined at index.html : 49
- 04-19 10:07:58.606 I/app3c   (2): Hello APICloud at index.html : 36
- 04-19 10:07:58.611 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 10:08:09.317 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 10:08:09.465 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 10:57:57.060 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 10:57:57.065 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 11:04:24.788 I/app3c   (2): Hello APICloud at index.html : 36
- 04-19 11:04:24.790 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 15:36:48.862 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:36:50.399 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 15:37:25.650 E/app3c   (1): Uncaught TypeError: Cannot read property 'errorMsg' of undefined at lowSalt_fra.html : 330
- 04-19 15:40:10.080 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:40:10.147 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 15:40:31.248 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:40:31.997 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 15:40:43.511 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:40:43.628 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 15:41:51.547 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:41:51.639 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 15:57:11.253 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:57:11.322 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 15:58:18.541 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 15:58:18.625 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:18.182 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:18.186 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:21.249 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:21.256 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:28.628 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:28.632 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:30.371 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:30.379 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:32.620 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:32.625 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:56.489 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:56.494 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:36:58.734 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:36:58.738 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:00.475 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:00.481 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:05.084 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:05.089 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:08.979 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:08.981 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:12.152 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:12.154 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:13.686 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:13.692 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:15.221 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:15.226 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:16.864 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:16.870 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:57.513 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:57.522 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:37:59.458 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:37:59.463 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:38:00.995 I/app3c   (2):  at allAreaSupermarket_page.html : 266
- 04-19 16:38:00.999 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
- 04-19 16:45:15.833 I/app3c   (2): Hello APICloud at index.html : 36
- 04-19 16:45:15.844 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
- 04-19 16:45:20.167 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
- 04-19 16:46:24.164 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:38:20.143 I/app3c   (2): Hello APICloud at index.html : 36
+ 04-25 10:38:20.149 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-25 10:38:31.304 I/app3c   (2):  at allAreaSupermarket_page.html : 266
+ 04-25 10:38:31.308 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
+ 04-25 10:38:45.026 I/app3c   (2): Hello APICloud at index.html : 36
+ 04-25 10:38:45.033 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-25 10:38:57.621 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:39:16.667 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:40:15.241 E/app3c   (1): Uncaught ReferenceError: api is not defined at fra_register.html : 349
+ 04-25 10:42:02.728 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:45:34.493 I/app3c   (2):  at allAreaSupermarket_page.html : 266
+ 04-25 10:45:34.496 I/app3c   (2): [object Object] at allAreaSupermarket_page.html : 267
+ 04-25 10:50:31.046 I/app3c   (2): Hello APICloud at index.html : 35
+ 04-25 10:50:31.048 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-25 10:50:39.956 I/app3c   (2): Hello APICloud at index.html : 35
+ 04-25 10:50:39.959 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-25 10:50:43.641 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:51:05.254 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:51:14.567 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 10:56:54.810 I/app3c   (2): Hello APICloud at index.html : 35
+ 04-25 10:56:54.824 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-25 10:57:23.622 I/app3c   (2): Hello APICloud at index.html : 35
+ 04-25 10:57:23.624 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
+ 04-25 10:57:28.127 W/app3c   (3): $api.offset Function need el param, el param must be DOM Element at api.js : 394
+ 04-25 11:00:26.104 I/app3c   (2): Hello APICloud at index.html : 35
+ 04-25 11:00:26.113 W/app3c   (3): $api.fixStatusBar Function need el param, el param must be DOM Element at api.js : 498
