@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="414a2182-15be-425c-8755-65f5057bceb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/login/login.html" afterPath="$PROJECT_DIR$/jianyan2/html/login/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html" afterPath="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jianyan2/html/userInformation/myshare_food.html" afterPath="$PROJECT_DIR$/jianyan2/html/userInformation/myshare_food.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nearbySupermarket_page.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nearbySupermarket_page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="-114">
               <caret line="237" column="28" lean-forward="false" selection-start-line="237" selection-start-column="28" selection-end-line="237" selection-end-column="28" />
               <folding>
                 <marker date="1494386713647" expanded="true" signature="7902:7926" ph="..." />
@@ -54,7 +54,61 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="myshare_dish.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jianyan2/html/userInformation/myshare_dish.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4245">
+              <caret line="146" column="43" lean-forward="false" selection-start-line="146" selection-start-column="43" selection-end-line="146" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myshare_food.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jianyan2/html/userInformation/myshare_food.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-298">
+              <caret line="155" column="29" lean-forward="false" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+              <folding>
+                <marker date="1494398596358" expanded="true" signature="8764:8770" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="8770:8776" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="8777:8783" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="8783:8789" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="8835:8840" ph="..." />
+                <marker date="1494398596358" expanded="true" signature="9029:9035" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9035:9041" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9041:9047" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9047:9053" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9053:9059" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9059:9065" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9065:9071" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="9117:9122" ph="..." />
+                <marker date="1494398596358" expanded="true" signature="9343:9348" ph="..." />
+                <marker date="1494398596358" expanded="true" signature="10164:10170" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10170:10176" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10177:10183" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10183:10189" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10235:10240" ph="..." />
+                <marker date="1494398596358" expanded="true" signature="10429:10435" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10435:10441" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10441:10447" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10447:10453" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10453:10459" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10459:10465" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10465:10471" ph=" " />
+                <marker date="1494398596358" expanded="true" signature="10517:10522" ph="..." />
+                <marker date="1494398596358" expanded="true" signature="10743:10748" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>alert</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,6 +118,8 @@
       <list>
         <option value="$PROJECT_DIR$/jianyan2/html/login/login.html" />
         <option value="$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html" />
+        <option value="$PROJECT_DIR$/jianyan2/html/userInformation/myshare_dish.html" />
+        <option value="$PROJECT_DIR$/jianyan2/html/userInformation/myshare_food.html" />
       </list>
     </option>
   </component>
@@ -118,64 +174,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jianyan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="androidjianyan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="androidjianyan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jianyan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="androidjianyan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="androidjianyan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jianyan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="androidjianyan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="androidjianyan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jianyan2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lowSaltSupmarket" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -280,18 +278,18 @@
       <updated>1493192720717</updated>
       <workItem from="1493192723991" duration="1185000" />
       <workItem from="1493890526502" duration="147000" />
-      <workItem from="1494381888794" duration="3492000" />
+      <workItem from="1494381888794" duration="6553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4824000" />
+    <option name="totallyTimeSpent" value="7885000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24255952" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32933104" sideWeight="0.5089286" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -344,9 +342,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/main/frame1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-179">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/main/main_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/main/frame0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2375">
+          <caret line="164" column="23" lean-forward="true" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jianyan2/html/lowSaltSupmarket/nearbySupermarket_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="-114">
           <caret line="237" column="28" lean-forward="false" selection-start-line="237" selection-start-column="28" selection-end-line="237" selection-end-column="28" />
           <folding>
             <marker date="1494386713647" expanded="true" signature="7902:7926" ph="..." />
@@ -364,6 +386,69 @@
             <marker date="1494386713647" expanded="true" signature="8832:8838" ph=" " />
             <marker date="1494386713647" expanded="true" signature="8908:8913" ph="..." />
             <marker date="1494386713647" expanded="true" signature="8991:9018" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/userInformation/myshare_windows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1612">
+          <caret line="210" column="34" lean-forward="true" selection-start-line="210" selection-start-column="34" selection-end-line="210" selection-end-column="34" />
+          <folding>
+            <marker date="1493192669794" expanded="true" signature="4418:4478" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/userInformation/myshare_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-901">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/userInformation/myshare_dish.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4245">
+          <caret line="146" column="43" lean-forward="false" selection-start-line="146" selection-start-column="43" selection-end-line="146" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jianyan2/html/userInformation/myshare_food.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-298">
+          <caret line="155" column="29" lean-forward="false" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+          <folding>
+            <marker date="1494398596358" expanded="true" signature="8764:8770" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="8770:8776" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="8777:8783" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="8783:8789" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="8835:8840" ph="..." />
+            <marker date="1494398596358" expanded="true" signature="9029:9035" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9035:9041" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9041:9047" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9047:9053" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9053:9059" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9059:9065" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9065:9071" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="9117:9122" ph="..." />
+            <marker date="1494398596358" expanded="true" signature="9343:9348" ph="..." />
+            <marker date="1494398596358" expanded="true" signature="10164:10170" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10170:10176" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10177:10183" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10183:10189" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10235:10240" ph="..." />
+            <marker date="1494398596358" expanded="true" signature="10429:10435" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10435:10441" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10441:10447" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10447:10453" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10453:10459" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10459:10465" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10465:10471" ph=" " />
+            <marker date="1494398596358" expanded="true" signature="10517:10522" ph="..." />
+            <marker date="1494398596358" expanded="true" signature="10743:10748" ph="..." />
           </folding>
         </state>
       </provider>
