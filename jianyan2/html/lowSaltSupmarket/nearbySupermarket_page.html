@@ -237,7 +237,7 @@
 							longitude= ret.lon;//得道的经纬度
 //							latitude = 39.0485090000;
 //							longitude = 115.8682720000;
-//							alert(latitud+"...."+longitutd);
+							/*alert(latitude+"...."+longitude);*/
 								api.ajax({
 									url : SERVER_URL+SERVER_ROOT_PATH+'/supermarket/supermarketAction!nearbySupermarket.action',
 									method : 'post',
@@ -250,6 +250,7 @@
 									}
 								}, function(ret, err) {
 									api.hideProgress();
+                                   // alert(JSON.stringify(ret) + 'err' + JSON.stringify(err));
 									//      	var loadmorediv = $api.byId('loadingmore');
 									//	    	loadmorediv.style.display = "none";
 									hiddenLoadMore();
